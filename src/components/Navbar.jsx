@@ -1,7 +1,7 @@
 ﻿import { Link } from "react-router-dom";
 import ss from "../assets/ss.png";
 
-export default function Navbar() {
+export default function Navber() {
   return (
     <nav className="sticky top-0 z-50 bg-slate-950/95 text-white border-b border-slate-800 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">

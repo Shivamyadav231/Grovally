@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/navber";
+import Navbar from "./components/Navbar";
 
 import Home from "./components/pages/Home";
 import IT from "./components/pages/IT";
@@ -14,7 +14,7 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 
 import Profile from "./components/Profile"
-import Recycle from "./components/Recycle";
+
 import Grovall from "./components/Grovall";
 
 
@@ -40,7 +40,7 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp/>}/>
             <Route path="/profile" element={<Profile/>} />
-            <Route path ="/recycle" element={<Recycle/>} />
+           
             <Route path ="/grovallyAI" element ={<Grovall/>}/>
             
            
