@@ -3,19 +3,47 @@ import { useState } from "react";
 export default function Chat() {
   const [msg, setMsg] = useState("");
   const [chat, setChat] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     if (!msg.trim()) return;
 
-    setChat((prev) => [
-      ...prev,
-      { role: "user", text: msg },
-      { role: "bot", text: "Hello 👋 I am Grovally AI" },
-      { role: "bot", text: "I am a AI assistant built by Grovally, how can I help you today?" },
-      
-    ]);
+    // user message add
+    const userMessage = { role: "user", text: msg };
 
+    setChat((prev) => [...prev, userMessage]);
+
+    const currentMsg = msg;
     setMsg("");
+    setLoading(true);
+
+    try {
+      const res = await fetch("http://127.0.0.1:8000/get", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ msg: currentMsg }),
+      });
+
+      const data = await res.json();
+
+      // bot response add
+      setChat((prev) => [
+        ...prev,
+        { role: "bot", text: data.reply },
+      ]);
+    } catch (error) {
+      setChat((prev) => [
+        ...prev,
+        {
+          role: "bot",
+          text: "Server error 😢",
+        },
+      ]);
+    }
+
+    setLoading(false);
   };
 
   return (
@@ -40,6 +68,12 @@ export default function Chat() {
             {c.text}
           </div>
         ))}
+
+        {loading && (
+          <div className="bg-slate-800 px-4 py-3 rounded-2xl w-fit">
+            Typing...
+          </div>
+        )}
       </div>
 
       {/* Input Box */}

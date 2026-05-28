@@ -1,226 +1,141 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <section className="space-y-12">
-      <div className="overflow-hidden rounded-[2rem] bg-gradient-to-br from-red-900 via-slate-800 to-cyan-900 px-6 py-16 shadow-2xl sm:px-12">
-        <div className="mx-auto max-w-3xl space-y-8 text-center">
-          <span className="inline-flex rounded-full bg-cyan-400/15 px-4 py-1 text-sm font-semibold text-cyan-200">
-            AI-powered business solutions for modern teams
-          </span>
-          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-            Grovally: Smart IT, BPO, KPO & Finance services under one roof.
+    <section className="relative min-h-screen w-full overflow-hidden bg-[#020617] text-white">
+
+      {/* Background Effects */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-cyan-500/20 blur-[120px] animate-pulse"></div>
+
+        <div className="absolute bottom-0 right-0 h-[500px] w-[500px] rounded-full bg-red-500/20 blur-[120px] animate-pulse"></div>
+
+        <div className="absolute left-1/2 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-500/10 blur-[120px]"></div>
+      </div>
+
+      {/* Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
+
+      {/* HERO SECTION */}
+      <div className="relative flex min-h-screen flex-col items-center justify-center px-6 py-20">
+
+        <motion.div
+          initial={{ opacity: 0, y: 80 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="w-full max-w-7xl rounded-[40px] border border-white/10 bg-white/5 p-10 md:p-20 backdrop-blur-2xl shadow-[0_20px_120px_rgba(0,255,255,0.15)]"
+        >
+          {/* Badge */}
+          <div className="mb-6 inline-flex rounded-full border border-cyan-500/30 bg-cyan-500/10 px-5 py-2 text-sm tracking-[0.2em] text-cyan-300">
+            AI-POWERED BUSINESS SOLUTIONS
+          </div>
+
+          {/* Heading */}
+          <h1 className="text-5xl font-black leading-tight md:text-8xl">
+            Grovally
+            <span className="block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+              Future Of Innovation
+            </span>
           </h1>
-          <p className="mx-auto max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-            Build your next project faster with our premium digital and business operations services. From cloud software to customer support and finance workflows, Grovally delivers a polished experience.
+
+          {/* Description */}
+          <p className="mt-8 max-w-4xl text-lg leading-9 text-slate-300 md:text-xl">
+            Smart IT, BPO, KPO & Finance services under one roof.
+            Build your next-generation business with AI-powered
+            automation, cloud systems, customer support, and financial
+            intelligence.
           </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:justify-center">
+
+          {/* Buttons */}
+          <div className="mt-10 flex flex-col gap-5 sm:flex-row">
             <Link
               to="/services"
-              className="inline-flex items-center justify-center rounded-full bg-cyan-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300"
+              className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-cyan-400 px-8 py-4 text-sm font-bold text-slate-950 transition hover:scale-105"
             >
-              Explore Services
+              <span className="relative z-10">Explore Services</span>
+
+              <div className="absolute inset-0 translate-y-full bg-white/20 transition duration-500 group-hover:translate-y-0"></div>
             </Link>
+
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center rounded-full border border-slate-700 bg-slate-950/70 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-400 hover:text-cyan-300"
+              className="rounded-full border border-white/10 bg-white/5 px-8 py-4 text-sm font-bold text-white backdrop-blur-xl transition hover:border-cyan-400 hover:text-cyan-300"
             >
               Contact Sales
             </Link>
           </div>
-        </div>
-      </div>
+        </motion.div>
 
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-        {[
-          {
-            title: "IT Innovation",
-            description: "Custom applications, AI models, and cloud systems built for growth.",
-          },
-          {
-            title: "BPO Excellence",
-            description: "Smart support, back-office automation, and multilingual customer care.",
-          },
-          {
-            title: "KPO Insights",
-            description: "Research, analytics, and strategic intelligence for fast decision-making.",
-          },
-          {
-            title: "Finance Services",
-            description: "Loan support, credit insights, and financial workflow automation.",
-          },
-        ].map((card) => (
-          <article key={card.title} className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6 shadow-xl transition hover:-translate-y-1 hover:border-cyan-500/50 hover:bg-slate-900">
-            <h2 className="text-xl font-semibold text-white">{card.title}</h2>
-            <p className="mt-3 text-slate-400">{card.description}</p>
-          </article>
-        ))}
-      </div>
+        {/* Floating Cards */}
+        <div className="mt-20 grid w-full max-w-7xl gap-8 md:grid-cols-2 xl:grid-cols-4">
 
-      <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-8 shadow-2xl">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-white">Why Choose Grovally?</h2>
-          <p className="mt-3 text-slate-400">We combine expertise, innovation, and reliability to deliver outstanding results.</p>
-        </div>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
           {[
             {
-              icon: "🚀",
-              title: "Fast Delivery",
-              description: "Quick turnaround times without compromising quality.",
+              title: "IT Innovation",
+              description:
+                "Custom applications, AI models, and cloud systems built for growth.",
+              icon: "💻",
             },
             {
-              icon: "🔒",
-              title: "Secure & Reliable",
-              description: "Enterprise-grade security and 99.9% uptime guarantee.",
+              title: "BPO Excellence",
+              description:
+                "Smart support, automation, and multilingual customer care.",
+              icon: "📞",
             },
             {
-              icon: "💡",
-              title: "Innovative Solutions",
-              description: "Cutting-edge technology tailored to your business needs.",
-            },
-          ].map((feature) => (
-            <div key={feature.title} className="text-center">
-              <div className="text-4xl">{feature.icon}</div>
-              <h3 className="mt-4 text-xl font-semibold text-white">{feature.title}</h3>
-              <p className="mt-2 text-slate-400">{feature.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-8 shadow-2xl">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-white">What Our Clients Say</h2>
-          <p className="mt-3 text-slate-400">Trusted by businesses worldwide for delivering exceptional results.</p>
-        </div>
-        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {[
-            {
-              name: "Cheten Singh",
-              role: "CEO  and Founder",
-              testimonial: "Grovally transformed our IT infrastructure, reducing costs by 40% and improving efficiency. Their AI solutions are game-changing.",
+              title: "KPO Insights",
+              description:
+                "Research, analytics, and strategic intelligence.",
+              icon: "📊",
             },
             {
-              name: "Dibhayanshu Pal",
-              role: "Operations Manager, Grovally",
-              testimonial: "The BPO services provided seamless customer support. Our response times improved dramatically, and customer satisfaction soared.",
+              title: "Finance Services",
+              description:
+                "Loan support, credit insights, and finance automation.",
+              icon: "💳",
             },
-
-          ].map((testimonial) => (
-            <blockquote key={testimonial.name} className="rounded-2xl border border-slate-700 bg-slate-950/50 p-6">
-              <p className="text-slate-300 italic">"{testimonial.testimonial}"</p>
-              <footer className="mt-4">
-                <cite className="text-sm font-semibold text-cyan-400">{testimonial.name}</cite>
-                <p className="text-xs text-slate-500">{testimonial.role}</p>
-              </footer>
-            </blockquote>
-          ))}
-        </div>
-      </div>
-
-      <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-8 shadow-2xl">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-white">Our Services</h2>
-          <p className="mt-3 text-slate-400">Explore our comprehensive range of business solutions.</p>
-        </div>
-
-        <div className="space-y-12">
-          <div>
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-2xl font-semibold text-cyan-400">IT Solutions</h3>
-              <Link to="/it" className="text-cyan-400 hover:text-cyan-300">View All →</Link>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {[
-                { title: "AI-Powered IT Solutions", tech: "Python, TensorFlow" },
-                { title: "Custom Software Development", tech: "React, Node.js" },
-                { title: "Cloud Computing Services", tech: "AWS, Docker" },
-              ].map((service) => (
-                <div key={service.title} className="rounded-xl border border-slate-700 bg-slate-950/50 p-4">
-                  <h4 className="font-semibold text-white">{service.title}</h4>
-                  <p className="text-sm text-slate-400 mt-1">{service.tech}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-2xl font-semibold text-fuchsia-400">BPO Services</h3>
-              <Link to="/bpo" className="text-fuchsia-400 hover:text-fuchsia-300">View All →</Link>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {[
-                { title: "AI-powered customer support", tools: "ChatGPT, Dialogflow" },
-                { title: "Back office automation", tools: "RPA, Zapier" },
-                { title: "Data entry & processing", tools: "Excel, Databases" },
-              ].map((service) => (
-                <div key={service.title} className="rounded-xl border border-slate-700 bg-slate-950/50 p-4">
-                  <h4 className="font-semibold text-white">{service.title}</h4>
-                  <p className="text-sm text-slate-400 mt-1">{service.tools}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-2xl font-semibold text-violet-400">KPO Services</h3>
-              <Link to="/kpo" className="text-violet-400 hover:text-violet-300">View All →</Link>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {[
-                { title: "Market research & competitor mapping", tools: "Google Analytics, SEMrush" },
-                { title: "Data analytics & business intelligence", tools: "Tableau, Python" },
-                { title: "Financial modeling & forecasting", tools: "Excel, R" },
-              ].map((service) => (
-                <div key={service.title} className="rounded-xl border border-slate-700 bg-slate-950/50 p-4">
-                  <h4 className="font-semibold text-white">{service.title}</h4>
-                  <p className="text-sm text-slate-400 mt-1">{service.tools}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-2xl font-semibold text-green-400">Finance Services</h3>
-              <Link to="/finance" className="text-green-400 hover:text-green-300">View All →</Link>
-            </div>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {[
-                { title: "EMI Calculator", desc: "Calculate loan EMIs easily" },
-                { title: "Credit Score Calculator", desc: "Check your creditworthiness" },
-                { title: "Loan Types", desc: "Various loan options available" },
-              ].map((service) => (
-                <div key={service.title} className="rounded-xl border border-slate-700 bg-slate-950/50 p-4">
-                  <h4 className="font-semibold text-white">{service.title}</h4>
-                  <p className="text-sm text-slate-400 mt-1">{service.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="rounded-3xl border border-slate-800 bg-gradient-to-r from-cyan-900/20 to-slate-900/80 p-8 shadow-2xl">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold text-white">Stay Updated</h2>
-          <p className="mt-3 text-slate-400">Subscribe to our newsletter for the latest insights on IT, BPO, KPO, and finance trends.</p>
-          <form className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 rounded-full border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition focus:border-cyan-400"
-            />
-            <button
-              type="submit"
-              className="inline-flex items-center justify-center rounded-full bg-cyan-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300"
+          ].map((card, index) => (
+            <motion.article
+              key={card.title}
+              initial={{ opacity: 0, y: 80 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.8,
+                delay: index * 0.2,
+              }}
+              whileHover={{
+                rotateX: -8,
+                rotateY: 8,
+                scale: 1.05,
+              }}
+              className="group relative overflow-hidden rounded-[35px] border border-white/10 bg-white/5 p-8 backdrop-blur-2xl transition-all duration-500"
+              style={{
+                transformStyle: "preserve-3d",
+                perspective: 1000,
+              }}
             >
-              Subscribe
-            </button>
-          </form>
+              {/* Glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-purple-500/10 opacity-0 transition duration-500 group-hover:opacity-100"></div>
+
+              {/* Shine */}
+              <div className="absolute -left-32 top-0 h-full w-24 rotate-12 bg-white/10 blur-2xl transition-all duration-700 group-hover:left-[120%]"></div>
+
+              <div className="relative z-10">
+                <div className="mb-6 text-6xl">{card.icon}</div>
+
+                <h2 className="text-2xl font-bold text-white">
+                  {card.title}
+                </h2>
+
+                <div className="mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500"></div>
+
+                <p className="mt-6 leading-8 text-slate-300">
+                  {card.description}
+                </p>
+              </div>
+            </motion.article>
+          ))}
         </div>
       </div>
     </section>

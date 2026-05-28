@@ -1,5 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+} from "react";
+
 import { useNavigate } from "react-router-dom";
+
+import { motion } from "framer-motion";
 
 const BACKEND = "http://localhost:8000";
 
@@ -39,66 +46,32 @@ function Profile() {
 
   const photoInputRef = useRef(null);
 
-  const [user, setUser] = useState(null);
-
   const [profile, setProfile] = useState(null);
 
-  const [photoFile, setPhotoFile] = useState(null);
+  const [photoFile, setPhotoFile] =
+    useState(null);
 
-  const [docFiles, setDocFiles] = useState([]);
+  const [docFiles, setDocFiles] =
+    useState([]);
 
-  const [loanType, setLoanType] = useState("Home Loan");
+  const [loanType, setLoanType] =
+    useState("Home Loan");
 
   const [selectedDocType, setSelectedDocType] =
     useState("PAN Card");
 
-  const [loanAmount, setLoanAmount] = useState("");
+  const [loanAmount, setLoanAmount] =
+    useState("");
 
-  const [payAmount, setPayAmount] = useState("");
-
-  const [loading, setLoading] = useState(true);
-
-  const [cibilScore, setCibilScore] = useState("");
+  const [cibilScore, setCibilScore] =
+    useState("");
 
   // ================= FETCH PROFILE =================
 
-  const fetchProfile = async (email) => {
-
-    try {
-
-      setLoading(true);
-
-      const res = await fetch(
-        `${BACKEND}/profile?email=${encodeURIComponent(email)}`
-      );
-
-      const text = await res.text();
-
-      if (!res.ok) {
-        throw new Error(text || "Profile fetch failed");
-      }
-
-      const data = JSON.parse(text);
-
-      setProfile(data);
-
-    } catch (error) {
-
-      console.error(error);
-
-      alert(error.message);
-
-    } finally {
-
-      setLoading(false);
-    }
-  };
-
-  // ================= CHECK LOGIN =================
-
   useEffect(() => {
 
-    const raw = localStorage.getItem("user");
+    const raw =
+      localStorage.getItem("user");
 
     if (!raw) {
 
@@ -107,20 +80,13 @@ function Profile() {
       return;
     }
 
-    try {
+    const parsed = JSON.parse(raw);
 
-      const parsedUser = JSON.parse(raw);
-
-      setUser(parsedUser);
-
-      fetchProfile(parsedUser.email);
-
-    } catch (err) {
-
-      console.error(err);
-
-      navigate("/login");
-    }
+    fetch(
+      `${BACKEND}/profile?email=${parsed.email}`
+    )
+      .then((res) => res.json())
+      .then((data) => setProfile(data));
 
   }, [navigate]);
 
@@ -128,225 +94,12 @@ function Profile() {
 
   useEffect(() => {
 
-    const docs = docRequirements[loanType] || [];
+    const docs =
+      docRequirements[loanType] || [];
 
     setSelectedDocType(docs[0] || "");
 
   }, [loanType]);
-
-  // ================= PHOTO UPLOAD =================
-
-  const handlePhotoUpload = async () => {
-
-    if (!photoFile || !user) {
-      return alert("Select photo first");
-    }
-
-    try {
-
-      setLoading(true);
-
-      const fd = new FormData();
-
-      fd.append("email", user.email);
-
-      fd.append("file", photoFile);
-
-      const res = await fetch(
-        `${BACKEND}/upload-photo`,
-        {
-          method: "POST",
-          body: fd,
-        }
-      );
-
-      if (!res.ok) {
-
-        const errorText = await res.text();
-
-        throw new Error(errorText);
-      }
-
-      await fetchProfile(user.email);
-
-      alert("Photo uploaded successfully");
-
-    } catch (error) {
-
-      console.error(error);
-
-      alert(error.message);
-
-    } finally {
-
-      setLoading(false);
-    }
-  };
-
-  // ================= DOCS UPLOAD =================
-
-  const handleDocsUpload = async () => {
-
-    if (!docFiles.length || !user) {
-      return alert("Choose documents");
-    }
-
-    try {
-
-      setLoading(true);
-
-      const fd = new FormData();
-
-      fd.append("email", user.email);
-
-      fd.append("doc_type", selectedDocType);
-
-      docFiles.forEach((file) => {
-        fd.append("files", file);
-      });
-
-      const res = await fetch(
-        `${BACKEND}/upload-docs`,
-        {
-          method: "POST",
-          body: fd,
-        }
-      );
-
-      if (!res.ok) {
-
-        const errorText = await res.text();
-
-        throw new Error(errorText);
-      }
-
-      await fetchProfile(user.email);
-
-      alert("Documents uploaded");
-
-    } catch (error) {
-
-      console.error(error);
-
-      alert(error.message);
-
-    } finally {
-
-      setLoading(false);
-    }
-  };
-
-  // ================= APPLY LOAN =================
-
-  const handleLoanApply = async (e) => {
-
-    e.preventDefault();
-
-    if (!loanAmount) {
-      return alert("Enter loan amount");
-    }
-
-    if (!cibilScore) {
-      return alert("Enter CIBIL score");
-    }
-
-    try {
-
-      setLoading(true);
-
-      const res = await fetch(
-        `${BACKEND}/apply-loan`,
-        {
-          method: "POST",
-
-          headers: {
-            "Content-Type": "application/json",
-          },
-
-          body: JSON.stringify({
-
-            email: profile.email,
-
-            name: profile.name,
-
-            loan_type: loanType,
-
-            amount: loanAmount,
-
-            cibil_score: cibilScore,
-
-            docs: profile.docs || [],
-          }),
-        }
-      );
-
-      const data = await res.json();
-
-      alert(data.message);
-
-      setLoanAmount("");
-
-    } catch (error) {
-
-      console.error(error);
-
-      alert("Loan apply failed");
-
-    } finally {
-
-      setLoading(false);
-    }
-  };
-
-  // ================= PAYMENT =================
-
-  const handlePayment = async (e) => {
-
-    e.preventDefault();
-
-    if (!payAmount) {
-      return alert("Enter payment amount");
-    }
-
-    try {
-
-      setLoading(true);
-
-      const res = await fetch(
-        `${BACKEND}/loan/pay?email=${encodeURIComponent(
-          user.email
-        )}&amount=${payAmount}`,
-        {
-          method: "POST",
-        }
-      );
-
-      if (!res.ok) {
-
-        const errorText = await res.text();
-
-        throw new Error(errorText);
-      }
-
-      const data = await res.json();
-
-      alert(
-        `Paid ₹${data.paid}\nRemaining ₹${data.remaining}`
-      );
-
-      setPayAmount("");
-
-    } catch (error) {
-
-      console.error(error);
-
-      alert(error.message);
-
-    } finally {
-
-      setLoading(false);
-    }
-  };
 
   // ================= LOGOUT =================
 
@@ -355,54 +108,37 @@ function Profile() {
     localStorage.removeItem("user");
 
     navigate("/login");
+
   };
 
-  // ================= LOADING =================
-
-  if (loading) {
-
-    return (
-      <div className="min-h-screen bg-black flex items-center justify-center text-white text-4xl font-bold">
-        Loading...
-      </div>
-    );
-  }
-
-  if (!profile) {
-
-    return (
-      <div className="min-h-screen bg-black flex items-center justify-center text-red-500 text-3xl font-bold">
-        Profile Not Found
-      </div>
-    );
-  }
+  // ================= CIBIL =================
 
   const getCibilStatus = () => {
 
     if (cibilScore >= 350 && cibilScore < 550)
       return {
-        text: "Poor Score 😟",
+        text: "Poor Score",
         color: "text-red-400",
         bar: "bg-red-500",
       };
 
     if (cibilScore >= 550 && cibilScore < 700)
       return {
-        text: "Average Score 🙂",
+        text: "Average Score",
         color: "text-yellow-400",
         bar: "bg-yellow-500",
       };
 
     if (cibilScore >= 700 && cibilScore < 800)
       return {
-        text: "Good Score ✅",
+        text: "Good Score",
         color: "text-green-400",
         bar: "bg-green-500",
       };
 
     if (cibilScore >= 800)
       return {
-        text: "Excellent Score 🚀",
+        text: "Excellent Score",
         color: "text-emerald-400",
         bar: "bg-emerald-500",
       };
@@ -416,54 +152,92 @@ function Profile() {
 
   const cibil = getCibilStatus();
 
+  if (!profile) {
+
+    return (
+
+      <div className="flex min-h-screen items-center justify-center bg-[#020617] text-4xl font-black text-cyan-400">
+
+        Loading...
+
+      </div>
+    );
+  }
+
   return (
 
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-black text-white p-6">
+    <section className="relative min-h-screen w-full overflow-hidden bg-[#020617] px-6 py-20 text-white">
 
-      <div className="max-w-7xl mx-auto space-y-8">
+      {/* Background */}
+      <div className="absolute inset-0 overflow-hidden">
 
-        {/* HEADER */}
+        <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-cyan-500/20 blur-[120px] animate-pulse"></div>
 
-        <div className="flex justify-between items-center">
+        <div className="absolute bottom-0 right-0 h-[500px] w-[500px] rounded-full bg-purple-500/20 blur-[120px] animate-pulse"></div>
+
+      </div>
+
+      {/* Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
+
+      <div className="relative z-10 w-full">
+
+        {/* Header */}
+        <div className="mb-10 flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
 
           <div>
 
-            <h1 className="text-5xl font-extrabold">
-              Welcome {profile?.name}
+            <h1 className="text-5xl font-black">
+
+              Welcome
+              <span className="block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+
+                {profile?.name}
+
+              </span>
+
             </h1>
 
-            <p className="text-slate-400 mt-2">
-              Loan Dashboard
+            <p className="mt-3 text-slate-400">
+
+              AI Powered Loan Dashboard
+
             </p>
 
           </div>
 
           <button
             onClick={logout}
-            className="bg-red-600 hover:bg-red-700 px-6 py-3 rounded-2xl shadow-lg"
+            className="rounded-2xl bg-red-600 px-8 py-4 font-bold transition hover:bg-red-700"
           >
             Logout
           </button>
 
         </div>
 
-        {/* PROFILE */}
+        {/* Profile Card */}
+        <motion.div
 
-        <div className="bg-slate-900/80 border border-slate-800 rounded-3xl p-8 shadow-2xl">
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
 
-          <div className="flex flex-col lg:flex-row gap-10">
+          className="mb-10 overflow-hidden rounded-[40px] border border-white/10 bg-white/5 p-10 backdrop-blur-2xl shadow-[0_20px_120px_rgba(0,255,255,0.15)]"
+        >
 
-            {/* LEFT */}
+          <div className="grid gap-10 lg:grid-cols-2">
 
+            {/* Left */}
             <div className="flex flex-col items-center">
 
               <input
                 ref={photoInputRef}
-                type="file"
                 hidden
+                type="file"
                 accept="image/*"
                 onChange={(e) =>
-                  setPhotoFile(e.target.files[0])
+                  setPhotoFile(
+                    e.target.files[0]
+                  )
                 }
               />
 
@@ -471,7 +245,7 @@ function Profile() {
                 onClick={() =>
                   photoInputRef.current.click()
                 }
-                className="cursor-pointer"
+                className="group relative cursor-pointer"
               >
 
                 {profile?.photo ? (
@@ -479,12 +253,12 @@ function Profile() {
                   <img
                     src={`${BACKEND}/uploads/${profile.photo}`}
                     alt="profile"
-                    className="w-44 h-44 rounded-full object-cover border-4 border-blue-500"
+                    className="h-56 w-56 rounded-full border-4 border-cyan-400 object-cover"
                   />
 
                 ) : (
 
-                  <div className="w-44 h-44 rounded-full bg-blue-600 flex items-center justify-center text-6xl font-bold">
+                  <div className="flex h-56 w-56 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 text-7xl font-black">
 
                     {profile?.name?.charAt(0)}
 
@@ -492,38 +266,31 @@ function Profile() {
 
                 )}
 
+                <div className="absolute inset-0 rounded-full bg-black/40 opacity-0 transition group-hover:opacity-100"></div>
+
               </div>
 
-              <button
-                onClick={handlePhotoUpload}
-                className="mt-5 bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-2xl"
-              >
+              <button className="mt-6 rounded-2xl bg-cyan-400 px-8 py-4 font-bold text-slate-950 transition hover:scale-105">
                 Upload Photo
               </button>
 
             </div>
 
-            {/* RIGHT */}
+            {/* Right */}
+            <div>
 
-            <div className="flex-1 space-y-8">
+              <h2 className="text-4xl font-black">
+                Profile Overview
+              </h2>
 
-              <div>
-
-                <h2 className="text-4xl font-bold">
-                  {profile?.name}
-                </h2>
-
-                <p className="text-slate-400 mt-2">
-                  {profile?.email}
-                </p>
-
-              </div>
+              <p className="mt-3 text-slate-400">
+                {profile?.email}
+              </p>
 
               {/* CIBIL */}
+              <div className="mt-10 rounded-[30px] border border-white/10 bg-white/5 p-8">
 
-              <div className="bg-slate-800/50 rounded-3xl p-6 border border-slate-700">
-
-                <h2 className="text-3xl font-bold mb-5">
+                <h2 className="mb-6 text-3xl font-bold">
                   CIBIL Score
                 </h2>
 
@@ -536,14 +303,14 @@ function Profile() {
                     )
                   }
                   placeholder="Enter CIBIL Score"
-                  className="w-full bg-slate-900 border border-slate-700 rounded-2xl px-5 py-4"
+                  className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 outline-none focus:border-cyan-400"
                 />
 
                 {cibilScore > 0 && (
 
-                  <div className="mt-5">
+                  <div className="mt-6">
 
-                    <div className="w-full bg-slate-700 rounded-full h-4 overflow-hidden">
+                    <div className="h-4 w-full overflow-hidden rounded-full bg-slate-700">
 
                       <div
                         style={{
@@ -557,11 +324,13 @@ function Profile() {
 
                     </div>
 
-                    <p className="mt-3 text-lg">
+                    <p className="mt-4 text-lg">
                       Score: {cibilScore}
                     </p>
 
-                    <p className={`mt-2 font-bold ${cibil.color}`}>
+                    <p
+                      className={`mt-2 font-bold ${cibil.color}`}
+                    >
                       {cibil.text}
                     </p>
 
@@ -575,36 +344,37 @@ function Profile() {
 
           </div>
 
-        </div>
+        </motion.div>
 
-        {/* DOCUMENTS */}
+        {/* Upload Docs */}
+        <div className="mb-10 rounded-[40px] border border-white/10 bg-white/5 p-10 backdrop-blur-2xl">
 
-        <div className="bg-slate-900/80 border border-slate-800 rounded-3xl p-8 shadow-2xl">
-
-          <h2 className="text-3xl font-bold mb-8">
+          <h2 className="mb-8 text-4xl font-black">
             Upload Documents
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid gap-8 lg:grid-cols-2">
 
             <div>
 
-              <label className="block mb-3 text-slate-400">
+              <h3 className="mb-5 text-xl font-bold">
                 Required Documents
-              </label>
+              </h3>
 
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-4">
 
-                {(docRequirements[loanType] || []).map(
-                  (doc) => (
-                    <span
-                      key={doc}
-                      className="bg-blue-600/20 border border-blue-500 px-4 py-2 rounded-full"
-                    >
-                      {doc}
-                    </span>
-                  )
-                )}
+                {(docRequirements[
+                  loanType
+                ] || []).map((doc) => (
+
+                  <span
+                    key={doc}
+                    className="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-5 py-3 text-cyan-300"
+                  >
+                    {doc}
+                  </span>
+
+                ))}
 
               </div>
 
@@ -612,25 +382,23 @@ function Profile() {
 
             <div>
 
-              <label className="block mb-3 text-slate-400">
-                Select Document Type
-              </label>
-
               <select
                 value={selectedDocType}
                 onChange={(e) =>
-                  setSelectedDocType(e.target.value)
+                  setSelectedDocType(
+                    e.target.value
+                  )
                 }
-                className="w-full bg-slate-800 border border-slate-700 rounded-2xl px-4 py-4"
+                className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 outline-none"
               >
 
-                {(docRequirements[loanType] || []).map(
-                  (doc) => (
-                    <option key={doc}>
-                      {doc}
-                    </option>
-                  )
-                )}
+                {(docRequirements[
+                  loanType
+                ] || []).map((doc) => (
+                  <option key={doc}>
+                    {doc}
+                  </option>
+                ))}
 
               </select>
 
@@ -638,23 +406,22 @@ function Profile() {
 
           </div>
 
-          <div className="mt-8 flex flex-col md:flex-row gap-4">
+          <div className="mt-8 flex flex-col gap-4 md:flex-row">
 
             <input
               type="file"
               multiple
               onChange={(e) =>
                 setDocFiles(
-                  Array.from(e.target.files)
+                  Array.from(
+                    e.target.files
+                  )
                 )
               }
-              className="w-full bg-slate-800 border border-slate-700 rounded-2xl p-4"
+              className="rounded-2xl border border-white/10 bg-white/5 p-4"
             />
 
-            <button
-              onClick={handleDocsUpload}
-              className="bg-green-600 hover:bg-green-700 px-8 py-4 rounded-2xl"
-            >
+            <button className="rounded-2xl bg-green-500 px-10 py-4 font-bold transition hover:bg-green-600">
               Upload Docs
             </button>
 
@@ -662,51 +429,48 @@ function Profile() {
 
         </div>
 
-        {/* APPLY LOAN */}
+        {/* Apply Loan */}
+        <div className="rounded-[40px] border border-white/10 bg-white/5 p-10 backdrop-blur-2xl">
 
-        <div className="bg-slate-900/80 border border-slate-800 rounded-3xl p-8 shadow-2xl">
-
-          <h2 className="text-3xl font-bold mb-8">
+          <h2 className="mb-8 text-4xl font-black">
             Apply Loan
           </h2>
 
-          <form
-            onSubmit={handleLoanApply}
-            className="grid md:grid-cols-3 gap-5"
-          >
+          <form className="grid gap-5 lg:grid-cols-3">
 
             <select
               value={loanType}
               onChange={(e) =>
-                setLoanType(e.target.value)
+                setLoanType(
+                  e.target.value
+                )
               }
-              className="bg-slate-800 border border-slate-700 rounded-2xl px-5 py-4"
+              className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 outline-none"
             >
 
-              {Object.keys(docRequirements).map(
-                (loan) => (
-                  <option key={loan}>
-                    {loan}
-                  </option>
-                )
-              )}
+              {Object.keys(
+                docRequirements
+              ).map((loan) => (
+                <option key={loan}>
+                  {loan}
+                </option>
+              ))}
 
             </select>
 
             <input
               type="number"
+              placeholder="Loan Amount"
               value={loanAmount}
               onChange={(e) =>
-                setLoanAmount(e.target.value)
+                setLoanAmount(
+                  e.target.value
+                )
               }
-              placeholder="Enter Loan Amount"
-              className="bg-slate-800 border border-slate-700 rounded-2xl px-5 py-4"
+              className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 outline-none"
             />
 
-            <button
-              type="submit"
-              className="bg-blue-600 hover:bg-blue-700 rounded-2xl px-6 py-4"
-            >
+            <button className="rounded-2xl bg-cyan-400 px-8 py-4 font-bold text-slate-950 transition hover:scale-105">
               Apply Loan
             </button>
 
@@ -716,7 +480,7 @@ function Profile() {
 
       </div>
 
-    </div>
+    </section>
   );
 }
 

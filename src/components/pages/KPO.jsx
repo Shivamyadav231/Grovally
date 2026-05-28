@@ -1,58 +1,229 @@
-export default function KPO() {
+import React from "react";
+
+import {
+  motion,
+} from "framer-motion";
+
+import {
+  FaChartLine,
+  FaBrain,
+  FaFileAlt,
+} from "react-icons/fa";
+
+function KPO() {
+
   const services = [
+
     {
-      title: "Market research & competitor mapping",
-      description: "Comprehensive analysis of market trends and competitor strategies.",
-      tools: ["Google Analytics", "SEMrush", "SurveyMonkey"],
+      icon: <FaChartLine />,
+      title:
+        "Market Research & Analytics",
+
+      description:
+        "Comprehensive market analysis, competitor mapping, and business intelligence solutions.",
+
+      tools: [
+        "Google Analytics",
+        "SEMrush",
+        "Power BI",
+      ],
+
+      color:
+        "from-violet-500 to-fuchsia-500",
     },
+
     {
-      title: "Data analytics & business intelligence",
-      description: "Transform raw data into actionable business insights.",
-      tools: ["Tableau", "Power BI", "Python", "SQL"],
+      icon: <FaBrain />,
+      title:
+        "AI Driven Insights",
+
+      description:
+        "Predictive analytics, financial forecasting, and smart AI-powered reporting systems.",
+
+      tools: [
+        "Machine Learning",
+        "Python",
+        "NLP",
+      ],
+
+      color:
+        "from-cyan-500 to-blue-500",
     },
+
     {
-      title: "Financial modeling & forecasting",
-      description: "Accurate financial projections and risk assessments.",
-      tools: ["Excel", "R", "Financial Software", "Monte Carlo Simulation"],
-    },
-    {
-      title: "AI-driven insights",
-      description: "Leverage AI for predictive analytics and pattern recognition.",
-      tools: ["Machine Learning Models", "NLP", "Computer Vision"],
-    },
-    {
-      title: "Document processing & research",
-      description: "Efficient handling of large volumes of documents and research data.",
-      tools: ["OCR Technology", "Document Management Systems", "Research Databases"],
-    },
-    {
-      title: "Strategic reporting",
-      description: "Clear, concise reports to support strategic decision-making.",
-      tools: ["Data Visualization Tools", "Presentation Software", "Custom Dashboards"],
+      icon: <FaFileAlt />,
+      title:
+        "Strategic Reporting",
+
+      description:
+        "Professional reports, research documentation, and data-driven strategic planning.",
+
+      tools: [
+        "Tableau",
+        "Excel",
+        "Dashboards",
+      ],
+
+      color:
+        "from-pink-500 to-rose-500",
     },
   ];
 
   return (
-    <section className="space-y-10">
-      <div className="rounded-[2rem] border border-slate-800 bg-slate-900/90 p-10 shadow-2xl shadow-violet-500/10">
-        <h1 className="text-4xl font-extrabold text-white">KPO Services</h1>
-        <p className="mt-4 max-w-3xl text-slate-300">
-          Get actionable intelligence and research-driven insights to improve decision-making across every stage of your business.
-        </p>
+
+    <section className="relative min-h-screen overflow-hidden bg-[#050816] px-6 py-24 text-white">
+
+      {/* Background Glow */}
+      <div className="absolute inset-0">
+
+        <div className="absolute left-0 top-0 h-[450px] w-[450px] rounded-full bg-violet-500/20 blur-[140px]"></div>
+
+        <div className="absolute bottom-0 right-0 h-[450px] w-[450px] rounded-full bg-fuchsia-500/20 blur-[140px]"></div>
+
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2">
-        {services.map((service) => (
-          <div key={service.title} className="rounded-[1.75rem] border border-slate-800 bg-slate-950/80 p-6 shadow-xl transition hover:-translate-y-1 hover:border-violet-400/40 hover:shadow-violet-500/20">
-            <div className="text-2xl mb-3">📊</div>
-            <h3 className="text-lg font-semibold text-white mb-2">{service.title}</h3>
-            <p className="text-slate-300 mb-3">{service.description}</p>
-            <div className="text-sm text-slate-400">
-              <strong>Tools:</strong> {service.tools.join(", ")}
-            </div>
+      {/* Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:70px_70px]"></div>
+
+      <div className="relative z-10 mx-auto max-w-7xl">
+
+        {/* Hero */}
+        <motion.div
+
+          initial={{
+            opacity: 0,
+            y: 50,
+          }}
+
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+
+          transition={{
+            duration: 0.8,
+          }}
+
+          className="mb-20 text-center"
+        >
+
+          <div className="inline-flex rounded-full border border-violet-500/30 bg-violet-500/10 px-6 py-2 text-sm tracking-[0.3em] text-violet-300">
+
+            KPO SERVICES
+
           </div>
-        ))}
+
+          <h1 className="mt-8 text-6xl font-black leading-tight lg:text-7xl">
+
+            Knowledge
+            <br />
+
+            Process Outsourcing
+
+          </h1>
+
+          <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-slate-400">
+
+            Smart research, AI-driven analytics,
+            financial forecasting, and strategic
+            intelligence solutions for modern businesses.
+
+          </p>
+
+        </motion.div>
+
+        {/* Cards */}
+        <div className="grid gap-10 md:grid-cols-3">
+
+          {services.map(
+            (service, index) => (
+
+              <motion.div
+
+                key={service.title}
+
+                initial={{
+                  opacity: 0,
+                  y: 50,
+                }}
+
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+
+                transition={{
+                  duration: 0.5,
+                  delay:
+                    index * 0.1,
+                }}
+
+                whileHover={{
+                  y: -12,
+                  scale: 1.03,
+                }}
+
+                className="group relative overflow-hidden rounded-[35px] border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-2xl"
+              >
+
+                {/* Glow */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 blur-3xl transition duration-500 group-hover:opacity-25`}></div>
+
+                {/* Icon */}
+                <div className={`relative z-10 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br ${service.color} text-3xl shadow-[0_10px_40px_rgba(255,255,255,0.15)]`}>
+
+                  {service.icon}
+
+                </div>
+
+                {/* Content */}
+                <div className="relative z-10">
+
+                  <h2 className="mt-8 text-3xl font-black">
+
+                    {service.title}
+
+                  </h2>
+
+                  <p className="mt-5 leading-8 text-slate-400">
+
+                    {service.description}
+
+                  </p>
+
+                  {/* Tools */}
+                  <div className="mt-8 flex flex-wrap gap-3">
+
+                    {service.tools.map(
+                      (tool) => (
+
+                        <span
+                          key={tool}
+                          className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300 backdrop-blur-xl"
+                        >
+
+                          {tool}
+
+                        </span>
+
+                      )
+                    )}
+
+                  </div>
+
+                </div>
+
+              </motion.div>
+
+            )
+          )}
+
+        </div>
+
       </div>
+
     </section>
   );
 }
+
+export default KPO;
