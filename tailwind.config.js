@@ -10,4 +10,8 @@ export default {
     extend: {},
   },
   plugins: [],
+  
+  animation: {
+  "slow-spin": "slowSpin 4s linear infinite",
+},
 };

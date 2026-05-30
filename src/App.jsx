@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import './App.css'
 
 import Navbar from "./components/Navbar";
 
@@ -19,6 +20,8 @@ import SignUp from "./components/SignUp";
 import Profile from "./components/Profile";
 
 import Grovall from "./components/Grovall";
+import Shivam from "./components/pages/Shivam"
+import Testimonial from "./components/pages/Testimonial";
 
 export default function App() {
   return (
@@ -33,6 +36,7 @@ export default function App() {
 
           <Routes>
             <Route path="/" element={<Home />} />
+           
 
             <Route path="/services" element={<Services />} />
 
@@ -59,6 +63,8 @@ export default function App() {
           </Routes>
 
         </main>
+        <Testimonial/>
+        <Shivam/>
 
         <Footer />
 

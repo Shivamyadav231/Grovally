@@ -2,12 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    @apply bg-slate-700 text-slate-100 antialiased;
-  }
-
-  * {
-    @apply scroll-smooth;
-  }
-}

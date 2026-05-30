@@ -22,7 +22,7 @@ export default function Navbar() {
 
   return (
 
-    <nav className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#020617]/80 text-white backdrop-blur-2xl">
+    <nav className="sticky top-0 z-50 w-full border-b bg-[#C90102] text-white backdrop-blur-2xl">
 
       {/* Glow */}
       <div className="absolute inset-0 overflow-hidden">
@@ -56,7 +56,7 @@ export default function Navbar() {
 
           <div>
 
-            <h1 className="text-2xl font-black tracking-wide">
+            <h1 className="text-2xl  text-blackfont-black tracking-wide">
 
               Grovally
 
@@ -73,7 +73,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Menu */}
-        <ul className="hidden items-center gap-10 lg:flex">
+        <ul className="hidden text-black items-center gap-10 lg:flex">
 
           {[
             {
@@ -106,129 +106,31 @@ export default function Navbar() {
           ))}
 
           {/* Mega Menu */}
-          <li className="group relative">
+          <Link to="/services" className="group relative">
 
             <button className="flex items-center gap-2 text-sm font-semibold text-slate-300 transition hover:text-cyan-300">
 
               Services
 
-              <span className="transition group-hover:rotate-180">
-                ▾
-              </span>
+             
 
             </button>
 
-            {/* Dropdown */}
-            <div className="invisible absolute left-1/2 top-14 z-50 w-[850px] -translate-x-1/2 rounded-[35px] border border-white/10 bg-[#0f172a]/95 p-8 opacity-0 shadow-[0_20px_100px_rgba(0,255,255,0.15)] backdrop-blur-2xl transition-all duration-300 group-hover:visible group-hover:opacity-100">
+            
+                  
+                  
 
-              <div className="grid grid-cols-4 gap-8">
+                 
+                
 
-                {[
-                  {
-                    title: "IT",
-                    color:
-                      "from-cyan-400 to-blue-500",
-                    path: "/it",
-                    items: [
-                      "AI Solutions",
-                      "Cloud & DevOps",
-                      "Cybersecurity",
-                    ],
-                  },
-
-                  {
-                    title: "BPO",
-                    color:
-                      "from-pink-400 to-fuchsia-500",
-                    path: "/bpo",
-                    items: [
-                      "Customer Support",
-                      "Data Processing",
-                      "Helpdesk",
-                    ],
-                  },
-
-                  {
-                    title: "KPO",
-                    color:
-                      "from-violet-400 to-purple-500",
-                    path: "/kpo",
-                    items: [
-                      "Research",
-                      "Analytics",
-                      "Intelligence",
-                    ],
-                  },
-
-                  {
-                    title: "Finance",
-                    color:
-                      "from-green-400 to-emerald-500",
-                    path: "/finance",
-                    items: [
-                      "EMI Calculator",
-                      "Loan Advisory",
-                      "Credit Analysis",
-                    ],
-                  },
-                ].map((service) => (
-
-                  <div
-                    key={service.title}
-                    className="group/card relative overflow-hidden rounded-[30px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl"
-                  >
-
-                    {/* Glow */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 blur-2xl transition duration-500 group-hover/card:opacity-20`}></div>
-
-                    <div className="relative z-10">
-
-                      <Link
-                        to={service.path}
-                        className="text-2xl font-black"
-                      >
-
-                        {service.title}
-
-                      </Link>
-
-                      <div className={`mt-4 h-1 w-16 rounded-full bg-gradient-to-r ${service.color}`}></div>
-
-                      <ul className="mt-6 space-y-4">
-
-                        {service.items.map(
-                          (item) => (
-
-                            <li
-                              key={item}
-                              className="text-sm text-slate-400 transition hover:text-white"
-                            >
-                              {item}
-                            </li>
-
-                          )
-                        )}
-
-                      </ul>
-
-                    </div>
-
-                  </div>
-
-                ))}
-
-              </div>
-
-            </div>
-
-          </li>
+          </Link>
 
           {/* AI */}
           <li>
 
             <Link
               to="/grovallyAI"
-              className="flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-5 py-3 text-sm font-semibold text-cyan-300 transition hover:scale-105"
+              className="flex items-center gap-2 rounded-full border bg-black px-5 py-3 text-sm font-semibold text-cyan-300 transition hover:scale-105"
             >
 
               <FaRobot />

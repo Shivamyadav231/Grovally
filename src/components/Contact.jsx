@@ -48,7 +48,7 @@ export default function Contact() {
 
   return (
 
-    <section className="relative min-h-screen overflow-hidden bg-[#020617] px-6 py-24 text-white">
+    <section className="relative min-h-screen overflow-hidden bg-white px-6 py-24 text-black">
 
       {/* Background Glow */}
       <div className="absolute inset-0 overflow-hidden">

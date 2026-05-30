@@ -13,7 +13,7 @@ export default function Footer() {
 
   return (
 
-    <footer className="relative overflow-hidden border-t border-white/10 bg-[#020617] text-white">
+    <footer className="relative overflow-hidden border-t bg-black text-white">
 
       {/* Background Glow */}
       <div className="absolute inset-0 overflow-hidden">

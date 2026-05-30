@@ -172,7 +172,7 @@ function IT() {
 
   return (
 
-    <section className="relative min-h-screen overflow-hidden bg-[#020617] px-6 py-24 text-white">
+    <section className="relative min-h-screen overflow-hidden bg-white px-6 py-24 text-black">
 
       {/* Background Glow */}
       <div className="absolute inset-0 overflow-hidden">
@@ -208,13 +208,13 @@ function IT() {
           className="mb-20 text-center"
         >
 
-          <div className="inline-flex rounded-full border border-cyan-500/30 bg-cyan-500/10 px-6 py-2 text-sm tracking-[0.3em] text-cyan-300">
+          <div className="inline-flex rounded-full border border-red-500/30 bg-red-500/10 px-6 py-2 text-sm tracking-[0.3em] text-red-300">
 
             FUTURE IT SOLUTIONS
 
           </div>
 
-          <h1 className="mt-8 text-6xl font-black leading-tight lg:text-7xl">
+          <h1 className="mt-8 text-6xl  text-red-600 font-black leading-tight lg:text-7xl">
 
             Advanced
             <br />
@@ -223,7 +223,7 @@ function IT() {
 
           </h1>
 
-          <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-slate-400">
+          <p className="mx-auto mt-8 text-black max-w-3xl text-lg leading-9">
 
             Powerful digital solutions,
             AI automation, cloud
