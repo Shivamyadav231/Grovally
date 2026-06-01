@@ -3,7 +3,7 @@ import './App.css'
 
 import Navbar from "./components/Navbar";
 
-import Home from "./components/pages/Home";
+import Home from "./components/Home";
 import IT from "./components/pages/IT";
 import BPO from "./components/pages/BPO";
 import KPO from "./components/pages/KPO";
@@ -20,8 +20,9 @@ import SignUp from "./components/SignUp";
 import Profile from "./components/Profile";
 
 import Grovall from "./components/Grovall";
-import Shivam from "./components/pages/Shivam"
+import Shivam from "./components/Shivam"
 import Testimonial from "./components/pages/Testimonial";
+import Wow from "./components/Wow"
 
 export default function App() {
   return (
@@ -63,6 +64,7 @@ export default function App() {
           </Routes>
 
         </main>
+        <Wow/>
         <Testimonial/>
         <Shivam/>
 

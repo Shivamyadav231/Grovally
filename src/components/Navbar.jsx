@@ -16,13 +16,27 @@ import { useState } from "react";
 import ss from "../assets/ss.png";
 
 export default function Navbar() {
+  const [serach ,SetSerach] = useState(" ")
+  const [search, setSearch] = useState("");
+
+const services = [
+  "Website Development",
+  "Mobile Application",
+  "AI Chatbot",
+  "WordPress",
+  "Cloud",
+];
+
+const filteredServices = services.filter((service) =>
+  service.toLowerCase().includes(search.toLowerCase())
+);
 
   const [menuOpen, setMenuOpen] =
     useState(false);
 
   return (
 
-    <nav className="sticky top-0 z-50 w-full border-b bg-[#C90102] text-white backdrop-blur-2xl">
+    <nav className="sticky top-5 z-50 w-auto rounded-full border-b bg-[#C90102] text-white backdrop-blur-2xl">
 
       {/* Glow */}
       <div className="absolute inset-0 overflow-hidden">
@@ -283,7 +297,20 @@ export default function Navbar() {
         )}
 
       </AnimatePresence>
+     
+
+ 
+ 
+
+   
+   
+   
+
+      
 
     </nav>
   );
+   
+
+  
 }

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
-const BACKEND = "http://localhost:8000";
+const BACKEND = "https://grovally-backend.vercel.app";
 
 function Login() {
 

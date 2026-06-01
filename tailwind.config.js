@@ -13,5 +13,6 @@ export default {
   
   animation: {
   "slow-spin": "slowSpin 4s linear infinite",
+  
 },
 };
