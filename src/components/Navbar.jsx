@@ -1,4 +1,5 @@
 ﻿import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import {
   motion,
@@ -11,12 +12,13 @@ import {
   FaRobot,
 } from "react-icons/fa";
 
-import { useState } from "react";
+
 
 import ss from "../assets/ss.png";
 
 export default function Navbar() {
    const [menuOpen, setMenuOpen] = useState(false);
+     const [scrolled, setScrolled] = useState(false);
 
 
   const services = [
@@ -26,9 +28,26 @@ export default function Navbar() {
     "Tools",
     "Tender",
   ];
+   useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="sticky top-4 z-50 mx-auto max-w-7xl rounded-md border border-white/10 bg-[#C90102]/95 backdrop-blur-2xl shadow-2xl">
+    <nav 
+  className={`z-50 transition-all duration-500 ease-in-out
+  ${
+    scrolled
+      ? "fixed top-0 left-0 w-full rounded-none"
+      : "relative mx-auto mt-4 max-w-7xl rounded-full"
+  }
+  border border-white/10 bg-[#C90102]/95 backdrop-blur-2xl shadow-2xl`}
+>
 
       <div className="absolute inset-0 overflow-hidden rounded-full">
         <div className="absolute left-0 top-0 h-[250px] w-[250px] rounded-full bg-cyan-500/10 blur-[120px]" />

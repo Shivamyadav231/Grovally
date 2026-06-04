@@ -12,7 +12,7 @@ export default {
   plugins: [],
   
   animation: {
-  "slow-spin": "slowSpin 4s linear infinite",
+  "slow-spin": "slowSpin 0s linear infinite",
   
 },
 };
