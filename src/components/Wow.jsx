@@ -12,7 +12,7 @@ import Q from "../assets/Q.png";
 import V from "../assets/V.png";
 import W from "../assets/W.png";
 import X from "../assets/X.png";
-import BB from "../assets/BB.png"
+
 import CC from "../assets/CC.png"
 import DD from "../assets/DD.png"
 
@@ -27,7 +27,7 @@ import NN from "../assets/NN.png"
 import PP from "../assets/PP.png"
 
 function Wow() {
-  const logos = [ F, I, J, M, N, P,BB, Q, V, W, X,,CC,DD,GG,HH,II,JJ,KK,LL,MM,NN,PP];
+  const logos = [ F, I, J, M, N, P, Q, V, W, X,,CC,DD,GG,HH,II,JJ,KK,LL,MM,NN,PP];
 
   return (
     <section className="py-20 bg-white ">
