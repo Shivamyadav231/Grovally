@@ -2,7 +2,7 @@ import React from "react";
 
 function Testimonial() {
   return (
-    <div className="py-16 bg-black">
+    <div className="py-16 bg-white">
       <h1 className="text-4xl text-center font-bold text-red-800 mb-10">
         What Our Clients Say
       </h1>

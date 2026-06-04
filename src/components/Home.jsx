@@ -1,33 +1,40 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import Hi from "../assets/Hi.png";
-import G from "../assets/G.png";
-import K from "../assets/K.png";
-import H from "../assets/H.png";
+import Aaa from "../assets/Aaa.png";
+import BBB from "../assets/BBB.png"
+import KKK from "../assets/KKK.png"
+import Sss from "../assets/Sss.png"
+
+
 
 const cards = [
   {
     title: "Grovally Business Solution",
     description:
       "Custom applications, AI models, and cloud systems built for growth.",
-    Image: Hi,
+    Image : Aaa
+   
   },
   {
     title: "Grovally Finance Solution",
     description:
       "Smart support, automation, and multilingual customer care.",
-    Image: H,
+    Image : BBB
+   
+    
   },
   {
     title: "Grovally Pro tools",
     description: "Research, analytics, and strategic intelligence.",
-    Image: G,
+    Image: KKK
+    
   },
   {
     title: "Grovally Business Education",
     description: "Loan support, credit insights, and finance automation.",
-    Image: K,
+    Image: Sss
+    
   },
 ];
 
@@ -139,7 +146,7 @@ export default function Home() {
                   <img
                     src={card.Image}
                     alt={card.title}
-                    className="w-24 h-24 mx-auto mb-4 rounded-full shadow-md"
+                    className="w-44 h-44 mx-auto mb-4 rounded-full shadow-md"
                   />
                   <h2 className="text-2xl font-bold text-black">
                     {card.title}
@@ -150,9 +157,7 @@ export default function Home() {
                   </p>
                   <div className="mt-6">
                     <Link
-                      to={`/services/${card.title
-                        .toLowerCase()
-                        .replace(/\s+/g, "-")}`}
+                      to={`/business`}
                       className="rounded-full border border-red-500 px-5 py-2 text-sm font-medium text-red-500 transition hover:bg-red-500 hover:text-white"
                     >
                       Learn More →

@@ -3,30 +3,30 @@ import { FaReact, FaNodeJs, FaAws, FaHtml5, FaCss3Alt, FaPhp, FaJava, } from "re
 import { SiMongodb, SiMysql, SiLaravel, SiJavascript, SiShopify, SiWordpress,  } from "react-icons/si";
 import { motion } from "framer-motion";
 import { FaPhone } from "react-icons/fa";
-import a from "../assets/a.png";
+import logo from "../assets/logo.png"
 
 
 
 export default function TechSection() {
   const techs = [
-    { icon: <FaHtml5 size={40} />, name: "HTML" },
-    { icon: <FaCss3Alt size={40} />, name: "CSS" },
-    { icon: <SiJavascript size={40} />, name: "JavaScript" },
-    { icon: <FaReact size={40} />, name: "React" },
-    { icon: <FaNodeJs size={40} />, name: "Node.js" },
-    { icon: <SiMongodb size={40} />, name: "MongoDB" },
-    { icon: <SiMysql size={40} />, name: "MySQL" },
-    { icon: <FaAws size={40} />, name: "AWS" },
-    { icon: <SiLaravel size={40} />, name: "Laravel" },
-    { icon: <FaPhp size={40} />, name: "PHP" },
-    { icon: <FaJava size={40} />, name: "Java" },
-    { icon: <SiShopify size={40} />, name: "Shopify" },
-    { icon: <SiWordpress size={40} />, name: "WordPress" },
+    { icon: <FaHtml5 size={40} color="#e34c26" />, name: "HTML" },
+{ icon: <FaCss3Alt size={40} color="#264de4" />, name: "CSS" },
+{ icon: <SiJavascript size={40} color="#f7df1e" />, name: "JavaScript" },
+{ icon: <FaReact size={40} color="#61DBFB" />, name: "React" },
+{ icon: <FaNodeJs size={40} color="#3C873A" />, name: "Node.js" },
+{ icon: <SiMongodb size={40} color="#4DB33D" />, name: "MongoDB" },
+{ icon: <SiMysql size={40} color="#00758F" />, name: "MySQL" },
+{ icon: <FaAws size={40} color="#FF9900" />, name: "AWS" },
+{ icon: <SiLaravel size={40} color="#FF2D20" />, name: "Laravel" },
+{ icon: <FaPhp size={40} color="#777BB4" />, name: "PHP" },
+{ icon: <FaJava size={40} color="#f89820" />, name: "Java" },
+{ icon: <SiShopify size={40} color="#96bf48" />, name: "Shopify" },
+{ icon: <SiWordpress size={40} color="#21759b" />, name: "WordPress" }
 
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-slate-50 to-black">
+    <section className="py-20 bg-gradient-to-b from-slate-50">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-4xl text-red-800 font-bold text-center mb-16">
           Technologies We Master To build Your Future-Ready Solutions
@@ -36,7 +36,7 @@ export default function TechSection() {
           {techs.slice(0, 4).map((tech, index) => (
             <div
               key={index}
-              className="w-24 h-24 bg-black rounded-2xl shadow-lg flex flex-col items-center justify-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
+              className="w-24 h-24  rounded-2xl shadow-lg flex flex-col items-center justify-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
             >
               {tech.icon}
             </div>
@@ -72,7 +72,7 @@ export default function TechSection() {
   {/* Center Static G */}
   <div className="w-36 h-36 rounded-full bg-red-600 flex items-center justify-center shadow-xl z-10">
     
-    <img src={a} alt="" className="text-6xl " />
+    <img src={logo} alt="" className="text-6xl " />
     
   </div>
 
@@ -81,14 +81,14 @@ export default function TechSection() {
           {techs.slice(4).map((tech, index) => (
             <div
               key={index}
-              className="w-24 h-24 bg-black rounded-2xl shadow-lg flex flex-col items-center justify-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
+              className="w-24 h-24  rounded-2xl shadow-lg flex flex-col items-center justify-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
             >
               {tech.icon}
             </div>
             
           ))}
         </div>
-       <span href="tel:+918920817608"  className="flex items-center justify-center mt-10 text-lg text-neutral-100">Let's Discuss Your Project</span>
+       <span href="tel:+918920817608"  className="flex items-center text-black justify-center mt-10 text-lg">Let's Discuss Your Project</span>
       </div>
     </section>
   );

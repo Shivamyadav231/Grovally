@@ -23,12 +23,15 @@ import Grovall from "./components/Grovall";
 import Shivam from "./components/Shivam"
 import Testimonial from "./components/pages/Testimonial";
 import Wow from "./components/Wow"
+import Business from "./components/Business";
+import Tender from "./components/Tender.jsx";
+
 
 export default function App() {
   return (
     <BrowserRouter>
 
-      <div className="min-h-screen w-full overflow-x-hidden bg-[#020617] text-white">
+      <div className="min-h-screen w-full overflow-x-hidden bg-white text-black">
 
         <Navbar />
 
@@ -60,6 +63,8 @@ export default function App() {
             <Route path="/profile" element={<Profile />} />
 
             <Route path="/grovallyAI" element={<Grovall />} />
+            <Route path ='/business' element={<Business/>}/>
+            <Route path="tender" element={<Tender/>}/>
 
           </Routes>
 
