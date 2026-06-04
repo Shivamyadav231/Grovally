@@ -10,14 +10,14 @@ import Sss from "../assets/Sss.png"
 
 const cards = [
   {
-    title: "Grovally Business Solution",
+    title: " ",
     description:
       "Custom applications, AI models, and cloud systems built for growth.",
     Image : Aaa
    
   },
   {
-    title: "Grovally Finance Solution",
+    title: " ",
     description:
       "Smart support, automation, and multilingual customer care.",
     Image : BBB
@@ -25,13 +25,13 @@ const cards = [
     
   },
   {
-    title: "Grovally Pro tools",
+    title: " ",
     description: "Research, analytics, and strategic intelligence.",
     Image: KKK
     
   },
   {
-    title: "Grovally Business Education",
+    title: " ",
     description: "Loan support, credit insights, and finance automation.",
     Image: Sss
     
@@ -145,8 +145,8 @@ export default function Home() {
                 <div className="relative z-10 text-center">
                   <img
                     src={card.Image}
-                    alt={card.title}
-                    className="w-44 h-44 mx-auto mb-4 rounded-full shadow-md"
+                   
+                    className=" mx-auto mb-4 "
                   />
                   <h2 className="text-2xl font-bold text-black">
                     {card.title}

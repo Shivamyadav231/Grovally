@@ -1,5 +1,6 @@
 ﻿import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+// import logoo from "../assets/logoo.png"
 
 import {
   motion,
@@ -39,14 +40,12 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav 
-  className={`z-50 transition-all duration-500 ease-in-out
-  ${
+    <nav className={`z-50 transition-all duration-500 ease-in-out
+      ${
     scrolled
       ? "fixed top-0 left-0 w-full rounded-none"
-      : "relative mx-auto mt-4 max-w-7xl rounded-full"
-  }
-  border border-white/10 bg-[#C90102]/95 backdrop-blur-2xl shadow-2xl`}
+      : "relative mx-auto mt-4 max-w-7xl "
+  } border border-white/10 bg-[#C90102]/95 backdrop-blur-2xl shadow-2xl`}
 >
 
       <div className="absolute inset-0 overflow-hidden rounded-full">
@@ -62,9 +61,9 @@ export default function Navbar() {
           <div className="group relative [perspective:1200px]">
 
             <Link to="/" className="group">
-            <h1 className="relative text-3xl font-black tracking-widest text-white">
-              <span className="absolute top-1 left-1 text-cyan-500/30">GROVALLY</span>
-              <span className="relative group-hover:-translate-y-1 transition-all duration-500 block">GROVALLY</span></h1></Link>
+            {/* <img src={logoo} alt=" logo" className="max"/> */}
+            
+              </Link>
 
           </div>
 

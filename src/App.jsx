@@ -21,7 +21,8 @@ import Profile from "./components/Profile";
 
 import Grovall from "./components/Grovall";
 import Shivam from "./components/Shivam"
-import Testimonial from "./components/pages/Testimonial";
+import Testimonial from "./components/Testimonial.jsx";
+
 import Wow from "./components/Wow"
 import Business from "./components/Business";
 import Tender from "./components/Tender.jsx";
