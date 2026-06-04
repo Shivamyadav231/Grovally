@@ -21,13 +21,13 @@ import HH from "../assets/HH.png"
 import II from "../assets/II.png"
 import JJ from "../assets/JJ.png"
 import KK from "../assets/KK.png"
-import LL from "../assets/LL.png"
+
 import MM from "../assets/MM.png"
 import NN from "../assets/NN.png"
 import PP from "../assets/PP.png"
 
 function Wow() {
-  const logos = [ F, I, J, M, N, P, Q, V, W, X,,CC,DD,GG,HH,II,JJ,KK,LL,MM,NN,PP];
+  const logos = [ F, I, J, M, N, P, Q, V, W, X,CC,DD,GG,HH,II,JJ,KK,MM,NN,PP];
 
   return (
     <section className="py-20 bg-white ">
