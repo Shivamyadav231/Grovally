@@ -1,94 +1,92 @@
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-import { FaReact, FaNodeJs, FaAws, FaHtml5, FaCss3Alt, FaPhp, FaJava, } from "react-icons/fa";
-import { SiMongodb, SiMysql, SiLaravel, SiJavascript, SiShopify, SiWordpress,  } from "react-icons/si";
-import { motion } from "framer-motion";
-import { FaPhone } from "react-icons/fa";
-import logo from "../assets/logo.png"
+const testimonials = [
+  {
+    image: "/images/client1.jpg",
+    name: "Rahul Sharma",
+    role: "CEO, Tech Solutions",
+    text: "Grovally transformed our business with AI-powered automation and outstanding support.",
+  },
+  {
+    image: "/images/client2.jpg",
+    name: "Anjali Verma",
+    role: "Finance Manager",
+    text: "Their finance and IT solutions helped us save time and improve productivity.",
+  },
+  {
+    image: "/images/client3.jpg",
+    name: "Mohit Yadav",
+    role: "Startup Founder",
+    text: "Professional team, excellent service, and innovative technology solutions.",
+  },
+];
 
+export default function Testimonial() {
+  const [current, setCurrent] = useState(0);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % testimonials.length);
+    }, 4000);
 
-export default function TechSection() {
-  const techs = [
-    { icon: <FaHtml5 size={40} color="#e34c26" />, name: "HTML" },
-{ icon: <FaCss3Alt size={40} color="#264de4" />, name: "CSS" },
-{ icon: <SiJavascript size={40} color="#f7df1e" />, name: "JavaScript" },
-{ icon: <FaReact size={40} color="#61DBFB" />, name: "React" },
-{ icon: <FaNodeJs size={40} color="#3C873A" />, name: "Node.js" },
-{ icon: <SiMongodb size={40} color="#4DB33D" />, name: "MongoDB" },
-{ icon: <SiMysql size={40} color="#00758F" />, name: "MySQL" },
-{ icon: <FaAws size={40} color="#FF9900" />, name: "AWS" },
-{ icon: <SiLaravel size={40} color="#FF2D20" />, name: "Laravel" },
-{ icon: <FaPhp size={40} color="#777BB4" />, name: "PHP" },
-{ icon: <FaJava size={40} color="#f89820" />, name: "Java" },
-{ icon: <SiShopify size={40} color="#96bf48" />, name: "Shopify" },
-{ icon: <SiWordpress size={40} color="#21759b" />, name: "WordPress" }
-
-  ];
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <section className="py-20 bg-gradient-to-b from-slate-50">
-      <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-4xl text-red-800 font-bold text-center mb-16">
-          Technologies We Master To build Your Future-Ready Solutions
-        </h2>
+    <section className="py-20 bg-white">
+      <h2 className="text-4xl font-bold text-center text-red-600 mb-12">
+        What Our Clients Say
+      </h2>
 
-        <div className="flex flex-wrap items-center justify-center gap-6">
-          {techs.slice(0, 4).map((tech, index) => (
-            <div
-              key={index}
-              className="w-24 h-24  rounded-2xl shadow-lg flex flex-col items-center justify-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
-            >
-              {tech.icon}
+      <div className="max-w-6xl mx-auto px-6">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current}
+            initial={{ opacity: 0, x: 80 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -80 }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col md:flex-row items-center gap-12 bg-white rounded-3xl shadow-xl p-8"
+          >
+            {/* Left Side Image */}
+            <div className="md:w-1/2">
+              <img
+                src={testimonials[current].image}
+                alt={testimonials[current].name}
+                className="w-full h-[350px] object-cover rounded-3xl"
+              />
             </div>
-          ))}
 
-          {/* Center Logo */}
-          <div className="relative w-52 h-52 flex items-center justify-center">
+            {/* Right Side Text */}
+            <div className="md:w-1/2">
+              <p className="text-xl text-gray-700 leading-9">
+                "{testimonials[current].text}"
+              </p>
 
-  {/* Rotating Circular Text */}
-  <svg
-    className="absolute w-52 h-52 slow-spin"
-    viewBox="0 0 200 200"
-  >
-    <defs>
-      <path
-        id="circlePath"
-        d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"
-      />
-    </defs>
+              <h3 className="mt-6 text-2xl font-bold text-black">
+                {testimonials[current].name}
+              </h3>
 
-    <text
-      fill="#ef4444"
-      fontSize="14"
-      fontWeight="bold"
-      letterSpacing="2"
-    >
-      <textPath href="#circlePath" startOffset="0%">
-        • 10+ YEARS EXPERIENCE • 10+ YEARS EXPERIENCE •
-      </textPath>
-    </text>
-  </svg>
-
-  {/* Center Static G */}
-  <div className="w-36 h-36 rounded-full bg-red-600 flex items-center justify-center shadow-xl z-10">
-    
-    <img src={logo} alt="" className="text-6xl " />
-    
-  </div>
-
-</div>
-
-          {techs.slice(4).map((tech, index) => (
-            <div
-              key={index}
-              className="w-24 h-24  rounded-2xl shadow-lg flex flex-col items-center justify-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300"
-            >
-              {tech.icon}
+              <p className="text-red-500 font-medium">
+                {testimonials[current].role}
+              </p>
             </div>
-            
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Dots */}
+        <div className="flex justify-center gap-3 mt-8">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrent(index)}
+              className={`h-3 w-3 rounded-full transition ${
+                current === index ? "bg-red-600" : "bg-gray-300"
+              }`}
+            />
           ))}
         </div>
-       <span href="tel:+918920817608"  className="flex items-center text-black justify-center mt-10 text-lg">Let's Discuss Your Project</span>
       </div>
     </section>
   );
