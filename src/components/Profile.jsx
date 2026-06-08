@@ -7,7 +7,6 @@ import React, {
 import { useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
-import a from "../assets/a.png"
 
 const BACKEND = "http://localhost:8000";
 
@@ -429,7 +428,6 @@ function Profile() {
           </div>
 
         </div>
-        <img src={a} alt=""/>
 
         {/* Apply Loan */}
         <div className="rounded-[40px] border border-white/10 bg-white/5 p-10 backdrop-blur-2xl">

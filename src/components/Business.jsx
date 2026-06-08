@@ -223,8 +223,8 @@ function Business() {
                       key={i}
                       className="flex items-start gap-3 text-gray-600"
                     >
-                      <span className="text-green-500 font-bold text-lg">
-                        ✓
+                      <span className="text-red-800 font-bold text-lg">
+                        •
                       </span>
                       <span>{item.trim()}</span>
                     </li>

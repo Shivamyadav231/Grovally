@@ -70,7 +70,7 @@ function SignUp() {
   const socialAuth = async (user, provider) => {
     try {
       const res = await fetch(
-        "http://localhost:8000/social-auth",
+        "https://grovally-backend-8.onrender.com/social-auth",
         {
           method: "POST",
           headers: {
@@ -129,7 +129,7 @@ function SignUp() {
   };
 
   return (
-    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#020617] px-6 py-20 text-white">
+    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-white px-6 py-20 text-black">
 
       {/* Background Glow */}
       <div className="absolute inset-0 overflow-hidden">

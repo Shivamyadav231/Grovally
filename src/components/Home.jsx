@@ -9,21 +9,22 @@ import Sss from "../assets/Sss.png";
 
 const cards = [
   {
+    
     description:
-      "Custom applications, AI models, and cloud systems built for growth.",
+      "IT Services & Digital Transformation, Custom Software Development,Website & E-Commerce Solutions,AI & Automation Services,Digital Marketing Services",
     Image: Aaa,
   },
   {
     description:
-      "Smart support, automation, and multilingual customer care.",
+      "Government Tender Assistance,Private Tender Consultancy,Tender Identificatio,GeM Portal Registration & Support,E-Tender Submission Services",
     Image: BBB,
   },
   {
-    description: "Research, analytics, and strategic intelligence.",
+    description: "Research,analytics,Startup Growth ,Scaling Strategies,AI & Business Automation Learning",
     Image: KKK,
   },
   {
-    description: "Loan support, credit insights, and finance automation.",
+    description: "Business Loan Solutions, MSME Funding Assistance, Working Capital Finance , Loan Against Property (LAP),Machinery & Equipment Finance",
     Image: Sss,
   },
 ];
@@ -64,15 +65,16 @@ export default function Home() {
 
           <h1 className="text-6xl md:text-8xl font-extrabold leading-tight">
             <span className="bg-gradient-to-r from-red-600 via-red-500 to-orange-500 bg-clip-text text-transparent">
-              Grovally
+              Your  True Friends in Business
             </span>
             <span className="block mt-2 bg-gradient-to-r from-black via-gray-700 to-red-600 bg-clip-text text-transparent">
-              Future Of Innovation
+              
             </span>
           </h1>
 
           <p className="mt-8 max-w-4xl text-lg leading-9 text-gray-700 md:text-xl">
-            At Grovally, we believe that client success is our greatest achievement. Here's what our valued partners have to say about their experience with our innovative IT, BPO, KPO, and AI-powered solutions."
+            Grovally is your trusted partner for digital growth. We provide website development, software solutions, digital marketing, branding, AI services, business registration, trademark support, and business consulting under one roof. Our goal is to help startups, businesses, and organizations grow faster with reliable, affordable, and result-driven solutions.
+  
           </p>
 
           <div className="mt-10 flex flex-col gap-5 sm:flex-row">
@@ -126,21 +128,21 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-orange-500/10 to-red-600/10 opacity-0 transition duration-300 group-hover:opacity-100"></div>
 
-                <div className="relative z-20 text-center">
+                <div className="relative z-10 text-center">
                   <img
                     src={card.Image}
                     alt="service"
-                    className="mx-auto mb-2 h-80 object-contain"
+                    className="max-h-48 mb-2 h-auto place-items-center scale-150 object-contain"
                   />
 
-                  <p className="mt-2 text-lg leading-6 text-gray-700">
-                    {card.description}
-                  </p>
+                  <ul className="mt-4 space-y-2">
+                    {card.description.split(",").map((item, i) => (
+                      <li key={i} className="flex items-start grid-flow-row-dense gap-1 text-black"><span className="text-red-800 font-bold text-lg">•</span><span>{item.trim()}</span></li>))}</ul>
 
                   <div className="mt-4">
                     <Link
                       to="/business"
-                      className="rounded-full border border-red-500 px-6 py-2 text-lg font-medium text-red-500 transition hover:bg-red-500 hover:text-white"
+                      className="rounded-full border gap-10 border-red-500 px-6 py-2 text-lg font-medium text-red-500 transition hover:bg-red-500 hover:text-white"
                     >
                       Learn More →
                     </Link>

@@ -1,149 +1,177 @@
 import { motion } from "framer-motion";
+import {
+  FaRocket,
+  FaBrain,
+  FaChartLine,
+  FaGlobe,
+  FaLaptopCode,
+  FaUsers,
+} from "react-icons/fa";
 
 export default function About() {
-  const cards = [
-    {
-      title: "Our Mission",
-      description:
-        "Help businesses grow faster through smart technology, efficient operations, and trusted financial support.",
-      icon: "🚀",
-    },
-    {
-      title: "Our Vision",
-      description:
-        "Create a seamless service experience where teams, processes, and customers connect with clarity and speed.",
-      icon: "🌍",
-    },
-    {
-      title: "Our Values",
-      description:
-        "Quality, transparency, responsiveness, and innovation guide every engagement.",
-      icon: "💎",
-    },
-    {
-      title: "Why Choose Us",
-      description:
-        "We combine specialist expertise with modern tools to deliver better outcomes and a smoother customer journey.",
-      icon: "⚡",
-    },
+  const services = [
+    "IT Solutions",
+    "AI Automation",
+    "Web Development",
+    "Mobile Apps",
+    "Digital Marketing",
+    "BPO Services",
+    "KPO Services",
+    "Financial Consulting",
+    "Funding Assistance",
+    "Business Strategy",
+    "Import & Export Services",
+    "Traditional Marketing",
+    "Logistics & Supply Chain Solutions"
+
+
   ];
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-white px-6 py-20">
+    <section className="relative overflow-hidden bg-white text-gray-900">
 
-      {/* Flying Rocket */}
-      <motion.div
-        animate={{
-          x: [-200, 1800],
-          y: [100, -50, 100],
-          rotate: [0, 15, 0],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-        className="absolute top-10 left-0 z-50 text-7xl"
-      >
-        🚀
-      </motion.div>
-
-      {/* Background Glow */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-20 -left-20 h-96 w-96 rounded-full bg-red-500/20 blur-[120px] animate-pulse"></div>
-
-        <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-red-400/20 blur-[120px] animate-pulse"></div>
+      {/* Soft Background Blobs */}
+      <div className="absolute inset-0">
+        <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-red-100 blur-[120px]" />
+        <div className="absolute bottom-0 right-0 h-[500px] w-[500px] rounded-full bg-gray-100 blur-[120px]" />
       </div>
 
-      {/* Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24">
 
-      {/* Hero */}
-      <motion.div
-        initial={{ opacity: 0, y: 80 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="relative mx-auto max-w-7xl rounded-[40px] bg-[#C90102] p-10 md:p-16 shadow-[0_20px_100px_rgba(201,1,2,0.35)]"
-      >
-        <div className="relative z-10">
-
-          <div className="mb-6 inline-block rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm tracking-widest text-white">
+        {/* HERO */}
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center"
+        >
+          <span className="px-6 py-2 rounded-full bg-red-50 border border-red-100 text-red-600 text-sm tracking-[3px]">
             ABOUT GROVALLY
-          </div>
+          </span>
 
-          <h1 className="text-5xl font-black leading-tight text-white md:text-7xl">
-            The Future Of
-            <span className="block text-black">
-              Digital Innovation
+          <h1 className="mt-8 text-5xl md:text-7xl font-black leading-tight">
+            Empowering Businesses Through
+            <span className="block text-red-600">
+              Technology & Innovation
             </span>
           </h1>
 
-          <p className="mt-8 max-w-4xl text-lg leading-9 text-white/90">
-            Grovally brings together IT, BPO, KPO and Finance capabilities
-            into one intelligent ecosystem. We create premium digital
-            experiences powered by automation, AI-driven workflows and
-            modern enterprise technology.
+          <p className="max-w-4xl mx-auto mt-8 text-lg leading-9 text-gray-600">
+            Grovally is a business solutions company helping startups,
+            SMEs and enterprises scale through IT solutions, AI automation,
+            finance consulting, BPO & digital transformation.
           </p>
-        </div>
-      </motion.div>
+        </motion.div>
 
-      {/* Cards */}
-      <div className="relative mx-auto mt-20 grid max-w-7xl gap-10 md:grid-cols-2">
+        {/* CARDS */}
+        <div className="mt-24 grid lg:grid-cols-2 gap-10">
 
-        {cards.map((item, index) => (
+          {/* WHO WE ARE */}
           <motion.div
-            key={item.title}
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.8,
-              delay: index * 0.2,
-            }}
-            whileHover={{
-              rotateX: -10,
-              rotateY: 10,
-              scale: 1.05,
-              y: -10,
-            }}
-            className="group relative overflow-hidden rounded-[35px] p-8"
-            style={{
-              transformStyle: "preserve-3d",
-              perspective: 1000,
-            }}
+            whileHover={{ y: -6 }}
+            className="rounded-[30px] p-10 border border-gray-100 shadow-sm bg-white"
           >
-            {/* Card BG */}
-            <div className="absolute inset-0 rounded-[35px] bg-gradient-to-br from-[#C90102] to-[#a50000]"></div>
+            <FaUsers className="text-5xl mb-6 text-red-500" />
 
-            {/* Shine Effect */}
-            <div className="absolute -left-32 top-0 h-full w-24 rotate-12 bg-white/20 blur-2xl transition-all duration-700 group-hover:left-[120%]"></div>
+            <h2 className="text-3xl font-bold mb-4">
+              Who We Are
+            </h2>
 
-            <div className="relative z-10">
+            <p className="text-gray-600 leading-8">
+              We are a modern technology-driven company helping businesses
+              grow using smart digital systems, automation, and strategic consulting.
+            </p>
 
-              <motion.div
-                whileHover={{
-                  rotate: 360,
-                  scale: 1.2,
-                }}
-                transition={{
-                  duration: 0.8,
-                }}
-                className="mb-6 text-6xl"
-              >
-                {item.icon}
-              </motion.div>
-
-              <h2 className="text-3xl font-bold text-white">
-                {item.title}
-              </h2>
-
-              <div className="mt-4 h-1 w-20 rounded-full bg-white"></div>
-
-              <p className="mt-6 text-lg leading-8 text-white/80">
-                {item.description}
-              </p>
-            </div>
+            <p className="text-gray-600 leading-8 mt-5">
+              Our focus is simple — build scalable systems that improve efficiency,
+              reduce cost and increase revenue.
+            </p>
           </motion.div>
-        ))}
+
+          {/* MISSION */}
+          <motion.div
+            whileHover={{ y: -6 }}
+            className="rounded-[30px] p-10 border border-gray-100 shadow-sm bg-white"
+          >
+            <FaRocket className="text-5xl mb-6 text-red-500" />
+
+            <h2 className="text-3xl font-bold mb-4">
+              Our Mission
+            </h2>
+
+            <p className="text-gray-600 leading-8">
+              To empower businesses with modern technology, AI systems,
+              and financial consulting that creates real-world impact.
+            </p>
+
+            <p className="text-gray-600 leading-8 mt-5">
+              We aim to build long-term partnerships, not just projects.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* SERVICES */}
+        <div className="mt-24">
+          <h2 className="text-center text-4xl font-black mb-12">
+            What We Do
+          </h2>
+
+          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-5">
+            {services.map((service, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.05 }}
+                className="rounded-2xl border border-gray-100 bg-white shadow-sm p-5 text-center text-gray-700 hover:border-red-200 hover:text-red-600 transition"
+              >
+                {service}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* APPROACH */}
+        <div className="mt-24 grid lg:grid-cols-3 gap-8">
+
+          <div className="p-8 rounded-[25px] border bg-white shadow-sm">
+            <FaBrain className="text-4xl text-red-500 mb-4" />
+            <h3 className="text-2xl font-bold mb-3">Innovation</h3>
+            <p className="text-gray-600 leading-7">
+              AI-powered solutions and modern systems to solve real business problems.
+            </p>
+          </div>
+
+          <div className="p-8 rounded-[25px] border bg-white shadow-sm">
+            <FaLaptopCode className="text-4xl text-red-500 mb-4" />
+            <h3 className="text-2xl font-bold mb-3">Technology</h3>
+            <p className="text-gray-600 leading-7">
+              Scalable software, web apps, and enterprise systems.
+            </p>
+          </div>
+
+          <div className="p-8 rounded-[25px] border bg-white shadow-sm">
+            <FaChartLine className="text-4xl text-red-500 mb-4" />
+            <h3 className="text-2xl font-bold mb-3">Growth</h3>
+            <p className="text-gray-600 leading-7">
+              Business strategies focused on revenue, scaling and efficiency.
+            </p>
+          </div>
+        </div>
+
+        {/* VISION */}
+        <div className="mt-24 text-center p-12 rounded-[30px] border bg-gradient-to-b from-white to-red-50 shadow-sm">
+
+          <FaGlobe className="text-6xl text-red-500 mx-auto mb-6" />
+
+          <h2 className="text-4xl font-black">
+            Our Vision
+          </h2>
+
+          <p className="max-w-3xl mx-auto mt-6 text-gray-600 leading-8">
+            To become a global leader in digital transformation,
+            helping businesses grow through technology, finance and innovation.
+          </p>
+
+        </div>
 
       </div>
     </section>

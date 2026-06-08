@@ -35,10 +35,10 @@ export default function Navbar() {
             <img
               src={logoo}
               alt="logo"
-              className={`w-auto object-contain transition-all duration-500 hover:scale-110 ${
+              className={`w-auto object-contain transition-all duration-500 hover:scale-100 ${
                 scrolled
-                  ? "h-14 scale-110"
-                  : "h-20 md:h-24 scale-125"
+                  ? "h-52 scale-105"
+                  : "h-52 md:h-52 scale-125"
               }`}
             />
           </Link>
@@ -54,7 +54,7 @@ export default function Navbar() {
             <li>
               <Link
                 to="/grovallyAI"
-                className="flex items-center gap-2 bg-cyan-400 text-black px-4 py-2 rounded-full font-bold hover:scale-105 transition"
+                className="flex items-center gap-2 bg-white text-red-700 px-4 py-2 rounded-full font-bold hover:scale-105 transition"
               >
                 <FaRobot />
                 Grovally AI
@@ -64,13 +64,13 @@ export default function Navbar() {
 
           {/* LOGIN / SIGNUP */}
           <div className="hidden lg:flex items-center gap-4">
-            <Link to="/login" className="text-white hover:text-cyan-300">
+            <Link to="/login" className="bg-white text-red-800 px-4 py-2 rounded-full font-bold hover:scale-105 transition">
               Login
             </Link>
 
             <Link
               to="/signup"
-              className="bg-cyan-400 text-black px-4 py-2 rounded-full font-bold hover:scale-105 transition"
+              className="bg-white text-red-800 px-4 py-2 rounded-full font-bold hover:scale-105 transition"
             >
               Signup
             </Link>

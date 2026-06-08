@@ -75,19 +75,21 @@ function Testimonial() {
             transition={{ duration: 0.8 }}
             className="w-full lg:w-1/2 h-[550px]"
           >
-            <div className="relative h-full">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover rounded-3xl shadow-2xl border border-white/10"
-              >
-                <source src={shivam} type="video/mp4" />
-              </video>
+            <div className="relative w-[550px] h-[550px] overflow-hidden rounded-[28px] border border-gray-200 shadow-2xl bg-black">
 
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black/30 to-transparent"></div>
-            </div>
+  {/* Video */}
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    controls
+    className="w-full h-full object-contain bg-red-800"
+  >
+    <source src={shivam} type="video/mp4" />
+  </video>
+
+</div>
           </motion.div>
 
           {/* TECH PANEL */}
@@ -148,7 +150,7 @@ function Testimonial() {
                   repeat: Infinity,
                   duration: 3,
                 }}
-                className="w-28 h-28 rounded-3xl bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center shadow-[0_0_40px_rgba(255,0,0,0.4)] z-10"
+                className="w-28 h-28 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center shadow-[0_0_40px_rgba(255,0,0,0.4)] z-10"
               >
                 <img
                   src={logo}

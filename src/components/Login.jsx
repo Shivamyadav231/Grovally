@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
-const BACKEND = "http://localhost:5173/";
+const BACKEND = "https://grovally-backend-8.onrender.com/";
 
 function Login() {
 
@@ -72,7 +72,7 @@ function Login() {
 
   return (
 
-    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#020617] px-6 py-20 text-white">
+    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-white px-6 py-20 text-black">
 
       {/* Background Glow */}
       <div className="absolute inset-0 overflow-hidden">
