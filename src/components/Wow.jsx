@@ -22,6 +22,7 @@ import KK from "../assets/KK.png";
 
 import MM from "../assets/MM.png";
 import NN from "../assets/NN.png";
+import RO from "../assets/RO.png"
 
 function Wow() {
   const logos = [
@@ -58,9 +59,11 @@ function Wow() {
 
           <h2 className="mt-6 text-4xl md:text-6xl font-extrabold text-gray-900">
             Brands That Trust
-            <span className="block text-[#C90102]">
-              Grovally
-            </span>
+            <img
+  src={RO}
+  alt="logo"
+  className="w-40 md:w-48 bg-red-100 object-contain"
+/>
           </h2>
 
           <p className="max-w-3xl mx-auto mt-6 text-lg text-gray-600 leading-8">

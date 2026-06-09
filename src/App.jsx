@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
 
 import Navbar from "./components/Navbar";
+import WOf from "./components/WOf.jsx";
 
 import Home from "./components/Home";
 import IT from "./components/pages/IT";
@@ -35,13 +36,15 @@ export default function App() {
       <div className="min-h-screen w-full overflow-x-hidden bg-white text-black">
 
         <Navbar />
+        
 
         {/* FULL SCREEN */}
         <main className="w-full">
 
+
+
           <Routes>
-            <Route path="/" element={<Home />} />
-           
+            <Route path="/" element={ <><WOf /> <Home /> </> }/>
 
             <Route path="/services" element={<Services />} />
 

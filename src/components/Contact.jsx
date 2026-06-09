@@ -32,7 +32,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-white text-gray-900 py-24">
+    <section className="relative top-5 min-h-screen overflow-hidden bg-white text-gray-900 py-24">
 
       {/* SOFT BACKGROUND */}
       <div className="absolute inset-0">

@@ -36,8 +36,9 @@ export default function Chat() {
     setLoading(true);
 
     try {
+      const BACKEND = import.meta.env.VITE_BACKEND_URL || "https://grovally-backend-10.onrender.com";
       const res = await fetch(
-        "http://127.0.0.1:8000/get",
+        `${BACKEND}/get`,
         {
           method: "POST",
           headers: {

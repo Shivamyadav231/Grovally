@@ -28,7 +28,7 @@ export default function About() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-white text-gray-900">
+    <section className="relative top-5 overflow-hidden bg-white text-gray-900">
 
       {/* Soft Background Blobs */}
       <div className="absolute inset-0">
@@ -45,7 +45,7 @@ export default function About() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <span className="px-6 py-2 rounded-full bg-red-50 border border-red-100 text-red-600 text-sm tracking-[3px]">
+          <span className="px-6 py-2 rounded-full  bg-red-50 border border-red-100 text-red-700 text-sm tracking-[3px]">
             ABOUT GROVALLY
           </span>
 

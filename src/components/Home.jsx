@@ -6,7 +6,7 @@ import Aaa from "../assets/Aaa.png";
 import BBB from "../assets/BBB.png";
 import KKK from "../assets/KKK.png";
 import Sss from "../assets/Sss.png";
-
+import RO from "../assets/RO.png"
 const cards = [
   {
     
@@ -39,7 +39,7 @@ export default function Home() {
   );
 
   return (
-    <section className="relative top-20 min-h-screen overflow-hidden bg-white text-black">
+    <section className="relative  min-h-screen overflow-hidden bg-white text-black">
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-red-500/20 blur-[150px] animate-pulse"></div>
@@ -57,18 +57,18 @@ export default function Home() {
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="w-full max-w-7xl rounded-[40px] border border-white/20 bg-white/80 backdrop-blur-3xl p-10 md:p-20 shadow-[0_20px_120px_rgba(255,0,0,0.20)]"
+          className="w-full max-w-8xl rounded-[40px] border border-white/20 bg-white/80 backdrop-blur-3xl p-10 md:p-20 shadow-[0_20px_120px_rgba(255,0,0,0.20)]"
         >
           <div className="mb-6 inline-flex rounded-full border border-red-300 bg-red-100 px-5 py-2 text-sm font-medium tracking-[0.2em] text-red-700">
-            AI-POWERED BUSINESS SOLUTIONS
+            Building The Future Of Digital Business
           </div>
 
-          <h1 className="text-6xl md:text-8xl font-extrabold leading-tight">
-            <span className="bg-gradient-to-r from-red-600 via-red-500 to-orange-500 bg-clip-text text-transparent">
-              Your  True Friends in Business
-            </span>
-            <span className="block mt-2 bg-gradient-to-r from-black via-gray-700 to-red-600 bg-clip-text text-transparent">
-              
+         <h1 className="text-6xl  md:text-9xl font-extrabold leading-tight">
+          <img src={RO} alt="logo" className="w-40 md:w-48 object-contain"/>
+</h1>
+          <h1 className="text-xl md:text-7xl font-extrabold leading-tight">
+            <span className="block mt-2 bg-gradient-to-r from-black  via-red-800 to-gray-700 bg-clip-text text-transparent">
+              Your "True Friend" in Business
             </span>
           </h1>
 
@@ -124,15 +124,15 @@ export default function Home() {
                 whileHover={{
                   scale: 1.05,
                 }}
-                className="group relative overflow-hidden rounded-[22px] border border-white/20 bg-white/80 backdrop-blur-xl p-5 shadow-md transition-all duration-300"
+                className="group relative overflow-hidden rounded-[22px] border border-white/20 bg-white/80 backdrop-blur-xl p-4 shadow-md transition-all duration-300"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-orange-500/10 to-red-600/10 opacity-0 transition duration-300 group-hover:opacity-100"></div>
 
-                <div className="relative z-10 text-center">
+                <div className="relative z-20 text-center">
                   <img
                     src={card.Image}
                     alt="service"
-                    className="max-h-48 mb-2 h-auto place-items-center scale-150 object-contain"
+                    className="max-h-48 mb-1 h-auto  scale-150 object-contain"
                   />
 
                   <ul className="mt-4 space-y-2">

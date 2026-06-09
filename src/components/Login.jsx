@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
-
-const BACKEND = "https://grovally-backend-8.onrender.com/";
+import RO from "../assets/RO.png"
+const BACKEND = import.meta.env.VITE_BACKEND_URL || "https://grovally-backend-10.onrender.com";
 
 function Login() {
 
@@ -11,6 +11,9 @@ function Login() {
     email: "",
     password: "",
   });
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const [loading, setLoading] = useState(false);
 
@@ -28,6 +31,20 @@ function Login() {
   const handleSubmit = async (e) => {
 
     e.preventDefault();
+
+    // Basic client-side validation
+    const newErrors = {};
+    if (!form.email || !/^[\w-.]+@[\w-]+\.[a-zA-Z]{2,}$/.test(form.email)) {
+      newErrors.email = "Please enter a valid email.";
+    }
+    if (!form.password || form.password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters.";
+    }
+
+    if (Object.keys(newErrors).length) {
+      setErrors(newErrors);
+      return;
+    }
 
     setLoading(true);
 
@@ -72,21 +89,10 @@ function Login() {
 
   return (
 
-    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-white px-6 py-20 text-black">
+    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 to-white px-6 py-20 text-slate-900">
 
-      {/* Background Glow */}
-      <div className="absolute inset-0 overflow-hidden">
-
-        <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-cyan-500/20 blur-[120px] animate-pulse"></div>
-
-        <div className="absolute bottom-0 right-0 h-[500px] w-[500px] rounded-full bg-purple-500/20 blur-[120px] animate-pulse"></div>
-
-        <div className="absolute left-1/2 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/10 blur-[120px]"></div>
-
-      </div>
-
-      {/* Grid Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
+      {/* Subtle Background */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-white to-slate-50"></div>
 
       {/* Login Card */}
       <motion.div
@@ -95,42 +101,31 @@ function Login() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
 
-        className="relative z-10 w-full max-w-md overflow-hidden rounded-[35px] border border-white/10 bg-white/5 p-8 backdrop-blur-2xl shadow-[0_20px_120px_rgba(0,255,255,0.15)]"
+        className="relative z-10 w-full max-w-md overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-lg"
       >
-
-        {/* Border Glow */}
-        <div className="absolute inset-0 rounded-[35px] border border-cyan-500/20"></div>
-
         {/* Header */}
-        <div className="relative z-10 text-center">
+        <div className="relative z-10 mb-6 text-center">
 
-          <div className="mb-4 inline-flex rounded-full border border-cyan-500/30 bg-cyan-500/10 px-5 py-2 text-sm tracking-[0.2em] text-cyan-300">
-            WELCOME BACK
+          <div className="mb-3 inline-flex items-center gap-3 rounded-full border border-slate-100 bg-slate-50 px-4 py-2 text-sm font-semibold text-cyan-600 tracking-wide">
+            <span>WELCOME</span>
           </div>
 
-          <h1 className="text-4xl font-black">
-            Login To
-            <span className="block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
-              Grovally
-            </span>
-          </h1>
+          <div className="flex items-center justify-center gap-4">
+            <h1 className="text-3xl font-extrabold text-slate-900">Sign in to</h1>
+            <img src={RO} alt="logo" className="h-12 w-auto object-contain" />
+          </div>
 
-          <p className="mt-3 text-slate-400">
-            Access your futuristic dashboard.
-          </p>
+          <p className="mt-2 text-sm text-slate-500">Access your dashboard and manage your account</p>
 
         </div>
 
         {/* Form */}
-        <form
-          onSubmit={handleSubmit}
-          className="relative z-10 mt-10"
-        >
+        <form onSubmit={handleSubmit} className="relative z-10 mt-6">
 
           {/* Email */}
-          <div className="mb-5">
+          <div className="mb-4">
 
-            <label className="mb-2 block text-sm text-slate-300">
+            <label className="mb-2 block text-sm text-slate-700">
               Email
             </label>
 
@@ -138,64 +133,81 @@ function Login() {
               type="email"
               name="email"
               value={form.email}
-              onChange={handleChange}
-              placeholder="Enter your email"
+              onChange={(e) => { handleChange(e); setErrors({ ...errors, email: null }); }}
+              placeholder="you@company.com"
               required
-              className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white outline-none backdrop-blur-xl transition focus:border-cyan-400"
+              className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-100"
             />
+
+            {errors.email && (
+              <p className="mt-2 text-sm text-red-600">{errors.email}</p>
+            )}
 
           </div>
 
           {/* Password */}
-          <div className="mb-6">
+          <div className="mb-4">
 
-            <label className="mb-2 block text-sm text-slate-300">
+            <label className="mb-2 block text-sm text-slate-700">
               Password
             </label>
 
-            <input
-              type="password"
-              name="password"
-              value={form.password}
-              onChange={handleChange}
-              placeholder="Enter your password"
-              required
-              className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white outline-none backdrop-blur-xl transition focus:border-cyan-400"
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={form.password}
+                onChange={(e) => { handleChange(e); setErrors({ ...errors, password: null }); }}
+                placeholder="••••••••"
+                required
+                className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 pr-12 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-100"
+              />
+
+              <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-slate-500 hover:text-slate-700" aria-label={showPassword ? "Hide password" : "Show password"}>
+                {showPassword ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-5.523 0-10-4.477-10-10a9.958 9.958 0 012.07-5.706M3 3l18 18"/></svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                )}
+              </button>
+
+            </div>
+
+            {errors.password && (
+              <p className="mt-2 text-sm text-red-600">{errors.password}</p>
+            )}
 
           </div>
 
+          <div className="mb-6 flex items-center justify-between">
+            <label className="inline-flex items-center gap-2 text-sm text-slate-600">
+              <input type="checkbox" className="h-4 w-4 rounded border-slate-200 bg-white text-cyan-600" />
+              Remember me
+            </label>
+
+            <button type="button" onClick={() => navigate('/forgot')} className="text-sm text-cyan-600 hover:underline">Forgot?</button>
+          </div>
+
           {/* Button */}
-          <button
-            type="submit"
-            disabled={loading}
-            className="group relative w-full overflow-hidden rounded-2xl bg-cyan-400 py-4 font-bold text-slate-950 transition hover:scale-[1.02] disabled:opacity-50"
-          >
-
-            <span className="relative z-10">
-
-              {loading
-                ? "Logging in..."
-                : "Login"}
-
-            </span>
-
-            <div className="absolute inset-0 translate-y-full bg-white/20 transition duration-500 group-hover:translate-y-0"></div>
-
+          <button type="submit" disabled={loading} className="mb-4 w-full rounded-2xl bg-gradient-to-r from-cyan-600 to-blue-600 py-3 font-semibold text-white shadow-md hover:scale-[1.01] disabled:opacity-50">
+            {loading ? "Signing in..." : "Sign in"}
           </button>
 
+          <div className="mb-4 flex items-center gap-3">
+            <div className="h-px flex-1 bg-slate-100"></div>
+            <div className="text-sm text-slate-400">or continue with</div>
+            <div className="h-px flex-1 bg-slate-100"></div>
+          </div>
+
+          <div className="mb-6 flex gap-3">
+            <button type="button" className="flex-1 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">Google</button>
+            <button type="button" className="flex-1 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">GitHub</button>
+          </div>
+
           {/* Signup */}
-          <p className="mt-8 text-center text-sm text-slate-400">
-
-            Don’t have an account?{" "}
-
-            <span
-              onClick={() => navigate("/signup")}
-              className="cursor-pointer text-cyan-400 hover:underline"
-            >
-              Sign Up
-            </span>
-
+          <p className="mt-6 text-center text-sm text-slate-600">
+            Don’t have an account?{' '}
+            <span onClick={() => navigate('/signup')} className="cursor-pointer text-cyan-600 font-medium hover:underline">Sign Up</span>
           </p>
 
         </form>

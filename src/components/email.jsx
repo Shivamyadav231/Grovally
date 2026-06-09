@@ -1,4 +1,6 @@
-await fetch("http://127.0.0.1:8000/update-status",{
+const BACKEND = import.meta.env.VITE_BACKEND_URL || "https://grovally-backend-10.onrender.com";
+
+await fetch(`${BACKEND}/update-status`,{
     method: "POST",
     headers:{
         "Content-Type": "application/json"

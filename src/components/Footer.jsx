@@ -1,7 +1,7 @@
 import {
   FaInstagram,
   FaFacebook,
-  FaYoutube,
+  
   FaWhatsapp,
   FaPhone,
   FaArrowRight,
@@ -11,7 +11,8 @@ import {
 
 import { motion } from "framer-motion";
 import wowVideo from "../assets/wow.mp4";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
+import RO from "../assets/RO.png"
 
 export default function Footer() {
   const services = [
@@ -53,7 +54,7 @@ export default function Footer() {
             viewport={{ once: true }}
             className="rounded-[40px] border border-white/10 bg-white/10 backdrop-blur-xl p-10 md:p-14 text-center shadow-2xl"
           >
-            <h2 className="text-4xl md:text-6xl font-black">
+            <h2 className="text-4xl md:text-6xl  text-red-600 font-black">
               Ready To Grow Your Business?
             </h2>
 
@@ -62,67 +63,76 @@ export default function Footer() {
               BPO, KPO, Funding & Business Consulting Services.
             </p>
             <Link
-  to="/contact"
-  className="
-  mt-8 inline-flex items-center justify-center
-  rounded-full
-  bg-white
-  px-8 py-4
-  font-bold
-  text-red-600
-  shadow-lg
-  transition-all duration-300
-  hover:scale-105
-  hover:shadow-xl
-  hover:bg-red-50
-  "
->
-  Get Started
-</Link>
+              to="/contact"
+              className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-8 py-4 font-bold text-red-600 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-red-50"
+            >
+              Get Started
+            </Link>
 
             
           </motion.div>
         </div>
 
         {/* Footer Main */}
-        <div className="mx-auto max-w-7xl px-6 py-20">
-          <div className="grid gap-14 lg:grid-cols-4">
+        <div className="mx-auto max-w-7xl px-6 py-10">
+          <div className="grid gap-14 sm:grid-cols-2 lg:grid-cols-4 items-start">
             {/* Brand */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-5xl font-black bg-gradient-to-r from-red-500 via-white to-red-400 bg-clip-text text-transparent">
-                Grovally
-              </h2>
+            {/* Brand */}
+<motion.div
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  viewport={{ once: true }}
+>
+  <Link to="/" className="inline-block">
+    <img
+      src={RO}
+      alt="Grovally Logo"
+      className="w-40 md:w-48 object-contain"
+    />
+  </Link>
 
-              <p className="mt-6 leading-8 text-gray-300">
-                Empowering businesses with innovative IT solutions, AI
-                automation, BPO, KPO, digital marketing, funding, and global
-                business services.
-              </p>
+  <p className="mt-8 leading-8 text-gray-300">
+    Empowering businesses with innovative IT solutions, AI automation,
+    BPO, KPO, digital marketing, funding, and global business services.
+  </p>
 
-              {/* Social Icons */}
-              <div className="mt-8 flex flex-wrap gap-4">
-                {[
-                  { icon: <FaPhone />, color: "hover:text-cyan-400" },
-                  { icon: <FaWhatsapp />, color: "hover:text-green-400" },
-                  { icon: <FaInstagram />, color: "hover:text-pink-500" },
-                  { icon: <FaFacebook />, color: "hover:text-blue-500" },
-                  { icon: <FaYoutube />, color: "hover:text-red-500" },
-                ].map((item, index) => (
-                  <a
-                    key={index}
-                    href="/"
-                    className={`flex h-14 w-14 items-center justify-center rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl transition-all duration-300 hover:scale-110 ${item.color}`}
-                  >
-                    {item.icon}
-                  </a>
-                ))}
-              </div>
-            </motion.div>
+  <div className="mt-8 flex flex-wrap gap-4">
+    <a
+      href="tel:+918920817608"
+      className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:text-cyan-400"
+    >
+      <FaPhone />
+    </a>
+
+    <a
+      href="https://wa.me/918920817608"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:text-green-400"
+    >
+      <FaWhatsapp />
+    </a>
+
+    <a
+      href="https://instagram.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:text-pink-500"
+    >
+      <FaInstagram />
+    </a>
+
+    <a
+      href="https://facebook.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:text-blue-500"
+    >
+      <FaFacebook />
+    </a>
+  </div>
+</motion.div>
 
             {/* Explore */}
             <motion.div
@@ -205,7 +215,7 @@ export default function Footer() {
                 <div className="flex items-start gap-4">
                   <FaMapMarkerAlt className="mt-1 text-red-500 text-xl" />
                   <span className="text-gray-300">
-                    Noida, Uttar Pradesh, India
+                    TF-03 3RD FLOOR ,SUN TWILIGHT METRO STREET ,GTEATER NOIDA UTTTAR PREDESH-201310 INDIA
                   </span>
                 </div>
               </div>

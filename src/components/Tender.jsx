@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 function Tender() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-white px-6 py-20">
+    <section className="relative  top-10 min-h-screen overflow-hidden bg-white px-6 py-20">
 
       {/* Background Glow */}
       <div className="absolute inset-0">

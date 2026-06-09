@@ -1,5 +1,7 @@
-const sendMessage = async (msg) => {
-  const res = await fetch("http://127.0.0.1:5000/get", {
+﻿const BACKEND = (import.meta as any).env.VITE_BACKEND_URL || "https://grovally-backend-10.onrender.com";
+
+const sendMessage = async (msg: string) => {
+  const res = await fetch(`${BACKEND}/get`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
