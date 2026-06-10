@@ -50,44 +50,43 @@ export default function Home() {
       {/* Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.04)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
 
-      <div className="relative flex min-h-screen flex-col items-start justify-center px-6 py-20">
+      <div className="relative flex min-h-screen flex-col items-center justify-center px-4 py-14 sm:px-6 sm:py-20">
 
         {/* Hero */}
         <motion.div
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="w-full max-w-8xl rounded-[40px] border border-white/20 bg-white/80 backdrop-blur-3xl p-10 md:p-10 shadow-[0_20px_120px_rgba(255,0,0,0.20)]"
+          className="w-full max-w-6xl rounded-[32px] border border-white/20 bg-white/90 backdrop-blur-3xl p-6 sm:p-8 md:p-10 shadow-[0_20px_120px_rgba(255,0,0,0.20)]"
         >
-          <div className="mb-6 inline-flex rounded-full border border-red-300 bg-red-100 px-8 py-2 text-sm font-medium tracking-[0.2em] text-red-700">
+          <div className="mb-6 inline-flex rounded-full border border-red-300 bg-red-100  -mt-40 px-5 py-2 text-xs sm:text-sm font-medium tracking-[0.2em] text-red-700">
             Building The Future Of Digital Business
           </div>
 
-          <div className="flex flex-col items-start -mt-24  text-left">
-            <img loading="lazy" src={lolo} alt="logo" className="w-96 md:w-96 object-contain" />
-            <h1 className="text-4xl md:text-6xl -mt-32 font-extrabold leading-tight">
+          <div className="flex flex-col items-center -mt-32 sm:items-start text-center sm:text-left gap-6">
+            <img loading="lazy" src={lolo} alt="logo" className="w-full max-w-[22rem] object-contain" />
+            <h1 className="text-3xl sm:text-4xl -mt-36 md:text-5xl font-extrabold leading-tight">
               <span className="bg-gradient-to-r  from-black via-red-700 to-gray-700 bg-clip-text text-transparent">
                 Your "True Friend" in Business
               </span>
             </h1>
           </div>
 
-          <p className="mt-8 max-w-4xl text-lg leading-9 text-gray-700 md:text-xl">
+          <p className="mt-8 max-w-3xl text-base leading-8 text-gray-700 sm:text-lg">
             Grovally is your trusted partner for digital growth. We provide website development, software solutions, digital marketing, branding, AI services, business registration, trademark support, and business consulting under one roof. Our goal is to help startups, businesses, and organizations grow faster with reliable, affordable, and result-driven solutions.
-  
           </p>
 
-          <div className="mt-10 flex flex-col gap-5 sm:flex-row">
+          <div className="mt-10 flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-start">
             <Link
               to="/services"
-              className="rounded-full bg-gradient-to-r from-red-600 to-red-800 px-8 py-4 font-semibold text-white hover:scale-105 transition"
+              className="w-full rounded-full bg-gradient-to-r from-red-600 to-red-800 px-6 py-4 text-center text-base font-semibold text-white transition hover:scale-105 sm:w-auto"
             >
               Explore Services
             </Link>
 
             <Link
               to="/contact"
-              className="rounded-full border-2 border-red-600 px-8 py-4 font-semibold text-red-600 hover:bg-red-600 hover:text-white transition"
+              className="w-full rounded-full border-2 border-red-600 px-6 py-4 text-center text-base font-semibold text-red-600 transition hover:bg-red-600 hover:text-white sm:w-auto"
             >
               Contact Sales
             </Link>
@@ -95,18 +94,18 @@ export default function Home() {
         </motion.div>
 
         {/* Search */}
-        <div className="w-full max-w-3xl mx-auto mt-12 px-4">
+        <div className="w-full max-w-3xl mx-auto mt-10 px-2 sm:px-0">
           <input
             type="text"
             placeholder="Search services..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full rounded-full border-2 border-red-500 bg-white px-6 py-4 text-lg text-black outline-none shadow-lg"
+            className="w-full rounded-full border-2 border-red-500 bg-white px-5 py-4 text-base text-black outline-none shadow-lg"
           />
         </div>
 
         {/* Cards */}
-        <div className="mt-16 grid w-full max-w-7xl gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-14 grid w-full max-w-7xl gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {filteredCards.length === 0 ? (
             <p className="text-center text-gray-500 mt-10">
               No services found.
@@ -122,28 +121,33 @@ export default function Home() {
                   delay: index * 0.1,
                 }}
                 whileHover={{
-                  scale: 1.05,
+                  scale: 1.03,
                 }}
-                className="group relative overflow-hidden rounded-[22px] border border-white/20 bg-white/80 backdrop-blur-xl p-4 shadow-md transition-all duration-300"
+                className="group relative overflow-hidden rounded-[24px] border border-white/20 bg-white/90 backdrop-blur-xl p-5 shadow-md transition-all duration-300"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-orange-500/10 to-red-600/10 opacity-0 transition duration-300 group-hover:opacity-100"></div>
 
-                <div className="relative z-20 text-center -mt-14">
+                <div className="relative z-20 text-center px-3 pt-3">
                   <img
                     loading="lazy"
                     src={card.Image}
                     alt="service"
-                    className="max-h-48 mb-1 h-auto gap-10 scale-150 object-contain "
+                    className="mx-auto mb-4  -mt-10 h-auto max-w-[12rem] object-contain"
                   />
 
-                  <ul className=" space-y-4 -mt-8">
+                  <ul className="space-y-3 text-left  -mt-14 text-sm leading-6 text-black">
                     {card.description.split(",").map((item, i) => (
-                      <li key={i} className="flex items-start grid-flow-row-dense gap-1 text-black"><span className="text-red-800 font-bold text-lg">•</span><span>{item.trim()}</span></li>))}</ul>
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="mt-1 text-red-800 font-bold text-xl">•</span>
+                        <span>{item.trim()}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-                  <div className="mt-4">
+                  <div className="mt-6 flex justify-center">
                     <Link
                       to="/business"
-                      className="rounded-full border gap-10 border-red-500 px-6 py-2 text-lg font-medium text-red-500 transition hover:bg-red-500 hover:text-white"
+                      className="inline-flex rounded-full border border-red-500 px-5 py-2 text-sm font-medium text-red-500 transition hover:bg-red-500 hover:text-white"
                     >
                       Learn More →
                     </Link>

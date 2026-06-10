@@ -57,16 +57,16 @@ function Wow() {
             TRUSTED WORLDWIDE
           </span>
 
-          <h2 className="mt-6 text-4xl md:text-6xl font-extrabold text-gray-900">
+          <h2 className="mt-6 text-4xl md:text-6xl text-red-500 font-extrabold text-gray-900">
             Brands That Trust
             
           </h2>
-          <div className="bg-red-50 flex justify-center -mt-8 items-center">
+          <div className=" flex justify-center -mt-8 items-center">
   <img
     loading="lazy"
     src={lolo}
     alt="logo"
-    className="w-40 md:w-48 object-contain"
+    className="w-48 md:w-56 object-contain"
   />
 </div>
           
