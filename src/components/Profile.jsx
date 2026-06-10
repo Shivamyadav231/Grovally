@@ -251,6 +251,7 @@ function Profile() {
                 {profile?.photo ? (
 
                   <img
+                    loading="lazy"
                     src={`${BACKEND}/uploads/${profile.photo}`}
                     alt="profile"
                     className="h-56 w-56 rounded-full border-4 border-cyan-400 object-cover"

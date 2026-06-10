@@ -153,6 +153,7 @@ function Testimonial() {
                 className="w-28 h-28 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center shadow-[0_0_40px_rgba(255,0,0,0.4)] z-10"
               >
                 <img
+                  loading="lazy"
                   src={logo}
                   alt="Grovally Logo"
                   className="w-20 object-contain"

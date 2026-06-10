@@ -165,7 +165,7 @@ function SignUp() {
 
           <div className="flex items-center justify-center gap-4">
             <h1 className="text-2xl font-extrabold text-slate-900">Join</h1>
-            <img src={RO} alt="logo" className="h-10 w-auto object-contain" />
+            <img loading="lazy" src={RO} alt="logo" className="h-10 w-auto object-contain" />
           </div>
 
           <p className="mt-2 text-sm text-slate-500">Build your future with AI-powered services.</p>

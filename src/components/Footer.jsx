@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 
 import { motion } from "framer-motion";
-import wowVideo from "../assets/wow.mp4";
+import helo from "../assets/helo.webm";
 import { Link } from "react-router-dom";
 import RO from "../assets/RO.png"
 
@@ -34,14 +34,14 @@ export default function Footer() {
         playsInline
         className="absolute inset-0 h-full w-full object-cover"
       >
-        <source src={wowVideo} type="video/mp4" />
+        <source src={helo} type="video/webm" />
       </video>
 
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/40"></div>
 
       {/* Red Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-red-950/80 via-black/50 to-black/80"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-red-950/80 via-black/40 to-black/80"></div>
 
       {/* Content */}
       <div className="relative z-10">
@@ -84,15 +84,16 @@ export default function Footer() {
   transition={{ duration: 0.8 }}
   viewport={{ once: true }}
 >
-  <Link to="/" className="inline-block">
+  <Link to="/"  className="inline-block ">
     <img
+      loading="lazy"
       src={RO}
       alt="Grovally Logo"
-      className="w-40 md:w-48 object-contain"
+      className="w-40 md:w-48 object-contain -mt-16"
     />
   </Link>
 
-  <p className="mt-8 leading-8 text-gray-300">
+  <p className=" leading-8 text-gray-300 -mt-14">
     Empowering businesses with innovative IT solutions, AI automation,
     BPO, KPO, digital marketing, funding, and global business services.
   </p>

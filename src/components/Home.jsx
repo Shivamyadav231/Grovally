@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-
+import lolo from "../assets/lolo.png"
 import Aaa from "../assets/Aaa.png";
 import BBB from "../assets/BBB.png";
 import KKK from "../assets/KKK.png";
@@ -50,27 +50,27 @@ export default function Home() {
       {/* Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.04)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
 
-      <div className="relative flex min-h-screen flex-col items-center justify-center px-6 py-20">
+      <div className="relative flex min-h-screen flex-col items-start justify-center px-6 py-20">
 
         {/* Hero */}
         <motion.div
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="w-full max-w-8xl rounded-[40px] border border-white/20 bg-white/80 backdrop-blur-3xl p-10 md:p-20 shadow-[0_20px_120px_rgba(255,0,0,0.20)]"
+          className="w-full max-w-8xl rounded-[40px] border border-white/20 bg-white/80 backdrop-blur-3xl p-10 md:p-10 shadow-[0_20px_120px_rgba(255,0,0,0.20)]"
         >
-          <div className="mb-6 inline-flex rounded-full border border-red-300 bg-red-100 px-5 py-2 text-sm font-medium tracking-[0.2em] text-red-700">
+          <div className="mb-6 inline-flex rounded-full border border-red-300 bg-red-100 px-8 py-2 text-sm font-medium tracking-[0.2em] text-red-700">
             Building The Future Of Digital Business
           </div>
 
-         <h1 className="text-6xl  md:text-9xl font-extrabold leading-tight">
-          <img src={RO} alt="logo" className="w-40 md:w-48 object-contain"/>
-</h1>
-          <h1 className="text-xl md:text-7xl font-extrabold leading-tight">
-            <span className="block mt-2 bg-gradient-to-r from-black  via-red-800 to-gray-700 bg-clip-text text-transparent">
-              Your "True Friend" in Business
-            </span>
-          </h1>
+          <div className="flex flex-col items-start -mt-24  text-left">
+            <img loading="lazy" src={lolo} alt="logo" className="w-96 md:w-96 object-contain" />
+            <h1 className="text-4xl md:text-6xl -mt-32 font-extrabold leading-tight">
+              <span className="bg-gradient-to-r  from-black via-red-700 to-gray-700 bg-clip-text text-transparent">
+                Your "True Friend" in Business
+              </span>
+            </h1>
+          </div>
 
           <p className="mt-8 max-w-4xl text-lg leading-9 text-gray-700 md:text-xl">
             Grovally is your trusted partner for digital growth. We provide website development, software solutions, digital marketing, branding, AI services, business registration, trademark support, and business consulting under one roof. Our goal is to help startups, businesses, and organizations grow faster with reliable, affordable, and result-driven solutions.
@@ -128,14 +128,15 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-orange-500/10 to-red-600/10 opacity-0 transition duration-300 group-hover:opacity-100"></div>
 
-                <div className="relative z-20 text-center">
+                <div className="relative z-20 text-center -mt-14">
                   <img
+                    loading="lazy"
                     src={card.Image}
                     alt="service"
-                    className="max-h-48 mb-1 h-auto  scale-150 object-contain"
+                    className="max-h-48 mb-1 h-auto gap-10 scale-150 object-contain "
                   />
 
-                  <ul className="mt-4 space-y-2">
+                  <ul className=" space-y-4 -mt-8">
                     {card.description.split(",").map((item, i) => (
                       <li key={i} className="flex items-start grid-flow-row-dense gap-1 text-black"><span className="text-red-800 font-bold text-lg">•</span><span>{item.trim()}</span></li>))}</ul>
 

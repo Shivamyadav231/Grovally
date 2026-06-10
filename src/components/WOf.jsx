@@ -1,22 +1,19 @@
 import React from 'react'
-import ko from "../assets/ko.mp4"
+import ok from "../assets/ok.webm"
 
 function WOf() {
   return (
-    <div className='  bg-black'>
-       <video
-           autoPlay
-           muted
-           loop
-          
-           
-           className="w-auto h-auto object-contain bg-red-800"
-         >
-           <source src={ko} type="video/mp4" />
-         </video>
-
-     
-
+    <div className="bg-black overflow-hidden">
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        className="w-full h-auto object-cover"
+      >
+        <source src={ok} type="video/webm" />
+      </video>
     </div>
   )
 }

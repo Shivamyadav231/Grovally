@@ -33,6 +33,7 @@ export default function Navbar() {
           {/* LOGO */}
           <Link to="/" className="flex items-center h-full overflow-visible">
             <img
+              loading="lazy"
               src={logoo}
               alt="logo"
               className={`w-auto object-contain transition-all duration-500 hover:scale-100 ${
@@ -98,7 +99,7 @@ export default function Navbar() {
           >
             {/* HEADER */}
             <div className="flex justify-between items-center mb-10">
-              <img src={logoo} className="h-12 object-contain" />
+              <img loading="lazy" src={logoo} className="h-12 object-contain" />
               <button onClick={() => setMenuOpen(false)}>
                 <FaTimes className="text-white text-3xl" />
               </button>

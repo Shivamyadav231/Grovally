@@ -1,32 +1,32 @@
+import { lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
 
 import Navbar from "./components/Navbar";
-import WOf from "./components/WOf.jsx";
 
-import Home from "./components/Home";
-import IT from "./components/pages/IT";
-import BPO from "./components/pages/BPO";
-import KPO from "./components/pages/KPO";
-import Finance from "./components/pages/Finance";
+const WOf = lazy(() => import("./components/WOf.jsx"));
+const Home = lazy(() => import("./components/Home"));
+const IT = lazy(() => import("./components/pages/IT"));
+const BPO = lazy(() => import("./components/pages/BPO"));
+const KPO = lazy(() => import("./components/pages/KPO"));
+const Finance = lazy(() => import("./components/pages/Finance"));
 
-import Services from "./components/Services";
-import About from "./components/About";
-import Contact from "./components/Contact";
+const Services = lazy(() => import("./components/Services"));
+const About = lazy(() => import("./components/About"));
+const Contact = lazy(() => import("./components/Contact"));
 
-import Footer from "./components/Footer";
+const Login = lazy(() => import("./components/Login"));
+const SignUp = lazy(() => import("./components/SignUp"));
+const Profile = lazy(() => import("./components/Profile"));
 
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
-import Profile from "./components/Profile";
+const Grovall = lazy(() => import("./components/Grovall"));
+const Shivam = lazy(() => import("./components/Shivam"));
+const Testimonial = lazy(() => import("./components/Testimonial.jsx"));
 
-import Grovall from "./components/Grovall";
-import Shivam from "./components/Shivam"
-import Testimonial from "./components/Testimonial.jsx";
-
-import Wow from "./components/Wow"
-import Business from "./components/Business";
-import Tender from "./components/Tender.jsx";
+const Wow = lazy(() => import("./components/Wow"));
+const Business = lazy(() => import("./components/Business"));
+const Tender = lazy(() => import("./components/Tender.jsx"));
+const Footer = lazy(() => import("./components/Footer"));
 
 
 export default function App() {
@@ -37,11 +37,9 @@ export default function App() {
 
         <Navbar />
         
+        
 
-        {/* FULL SCREEN */}
         <main className="w-full">
-
-
 
           <Routes>
             <Route path="/" element={ <><WOf /> <Home /> </> }/>
@@ -78,6 +76,7 @@ export default function App() {
         <Shivam/>
 
         <Footer />
+       
 
       </div>
 

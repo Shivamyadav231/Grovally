@@ -18,43 +18,43 @@ const testimonials = [
     text: "Working with Grovally has been a good decision for our business. Their expertise in IT solutions, digital marketing, and international business strategy helped us strengthen our market presence and streamline operations. The team consistently delivers high-quality results with professionalism and commitment.",
   },
   {
-    image: Men,
+    image: Menf,
     name: "Hrithik Chhabra",
     role: "Founder, Property Sath",
     text: "Grovally transformed our digital presence through a modern website and result-driven marketing strategies. Their understanding of the real estate industry helped us generate quality leads, improve brand visibility, and build stronger customer trust.",
   },
   {
-    image: Mena,
+    image: Mene,
     name: "Milan",
     role: "Startup Founder",
     text: "From import-export consulting to technology solutions and brand positioning, Grovally provided end-to-end support for our business growth. Their strategic approach and execution capabilities have helped us expand confidently into new markets.",
   },
   {
     image: Menb,
-    name: "Milan",
-    role: "Founder, Prosper",
-    text: "From import-export consulting to technology solutions and brand positioning, Grovally provided end-to-end support for our business growth. Their strategic approach and execution capabilities have helped us expand confidently into new markets.",
+    name: "Sai Siddhant",
+    role: "Founder, Drink Fizzico",
+    text: "Grovally's expertise in IT development, branding, and digital marketing helped us establish a strong business identity in a competitive market. Their commitment to quality and attention to detail exceeded our expectations.",
   },
   {
-    image: Menc,
+    image: Mend,
     name: "Chhabra Properties",
     role: "Founder, Chhabra Properties",
     text: "Grovally delivered excellent support across project funding, HR consulting, and business advisory services. Their professional guidance and strategic insights helped us streamline operations and unlock new growth opportunities.",
   },
   {
-    image: Mend,
+    image: Menc,
     name: "Amit Sharma",
     role: "Founder, Financial Consultancy",
     text: "Grovally delivered excellent support across project funding, HR consulting, and business advisory services. Their professional guidance and strategic insights helped us streamline operations and unlock new growth opportunities.",
   },
   {
-    image: Mene,
+    image: Mena,
     name: "Prateek Gupta",
     role: "Founder, Revayu Energy",
     text: "Grovally provided a complete business growth ecosystem for us, including website development, funding assistance, and digital marketing. Their ability to combine technology with business strategy has contributed significantly to our expansion journey.",
   },
   {
-    image: Menf,
+    image: Men,
     name: "Dinesh Goel",
     role: "Founder, Sanjivan Anushandhan",
     text: "Grovally has been a valuable growth partner for our organization. From IT infrastructure and finance solutions to marketing and BPO services, their team delivered reliable, scalable, and business-focused solutions that created measurable results.",
@@ -111,6 +111,7 @@ export default function Testimonial() {
               className="relative overflow-hidden rounded-[30px]"
             >
               <img
+                loading="lazy"
                 src={testimonials[current].image}
                 alt={testimonials[current].name}
                 className="w-full h-[500px] object-cover rounded-[30px]"

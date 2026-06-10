@@ -22,7 +22,7 @@ import KK from "../assets/KK.png";
 
 import MM from "../assets/MM.png";
 import NN from "../assets/NN.png";
-import RO from "../assets/RO.png"
+import lolo from "../assets/lolo.png"
 
 function Wow() {
   const logos = [
@@ -59,12 +59,17 @@ function Wow() {
 
           <h2 className="mt-6 text-4xl md:text-6xl font-extrabold text-gray-900">
             Brands That Trust
-            <img
-  src={RO}
-  alt="logo"
-  className="w-40 md:w-48 bg-red-100 object-contain"
-/>
+            
           </h2>
+          <div className="bg-red-50 flex justify-center -mt-8 items-center">
+  <img
+    loading="lazy"
+    src={lolo}
+    alt="logo"
+    className="w-40 md:w-48 object-contain"
+  />
+</div>
+          
 
           <p className="max-w-3xl mx-auto mt-6 text-lg text-gray-600 leading-8">
             From startups to established enterprises, businesses trust
@@ -89,6 +94,7 @@ function Wow() {
                 className="group flex items-center justify-center min-w-[220px] h-32 bg-white rounded-3xl border border-gray-100 shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
               >
                 <img
+                  loading="lazy"
                   src={logo}
                   alt={`Logo ${index}`}
                   className="max-h-64 w-auto object-contain   transition duration-300"
