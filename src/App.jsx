@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
 
@@ -32,16 +32,14 @@ const Footer = lazy(() => import("./components/Footer"));
 export default function App() {
   return (
     <BrowserRouter>
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-white text-black">Loading...</div>}>
+        <div className="min-h-screen w-full overflow-x-hidden bg-white text-black">
 
-      <div className="min-h-screen w-full overflow-x-hidden bg-white text-black">
+          <Navbar />
 
-        <Navbar />
-        
-        
+          <main className="w-full">
 
-        <main className="w-full">
-
-          <Routes>
+            <Routes>
             <Route path="/" element={ <><WOf /> <Home /> </> }/>
 
             <Route path="/services" element={<Services />} />
@@ -70,16 +68,14 @@ export default function App() {
 
           </Routes>
 
-        </main>
-        <Wow/>
-        <Testimonial/>
-        <Shivam/>
+          </main>
+          <Wow />
+          <Testimonial />
+          <Shivam />
 
-        <Footer />
-       
-
-      </div>
-
+          <Footer />
+        </div>
+      </Suspense>
     </BrowserRouter>
   );
 }
