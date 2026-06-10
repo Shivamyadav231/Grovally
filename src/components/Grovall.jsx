@@ -4,7 +4,93 @@ import {
   FaPaperPlane,
   FaUserCircle,
 } from "react-icons/fa";
-import logo from "../assets/logo.png"
+
+const serviceResponses = [
+  {
+    title: "Website & E-commerce Development",
+    keywords: ["website", "web", "ecommerce", "e-commerce", "online store"],
+    reply:
+      "Grovally delivers powerful website and e-commerce solutions with responsive design, fast performance, SEO-ready structure, secure checkout, and conversion-focused features.",
+  },
+  {
+    title: "AI & Automation",
+    keywords: ["ai", "automation", "machine learning", "chatbot", "intelligence"],
+    reply:
+      "We build intelligent systems, automation workflows, chatbots, and analytics solutions that reduce manual work, boost response speed, and improve customer experience.",
+  },
+  {
+    title: "Digital Marketing & SEO",
+    keywords: ["digital marketing", "marketing", "seo", "social media", "branding"],
+    reply:
+      "Our digital marketing services include SEO, PPC ads, social campaigns, brand strategy, and performance tracking to drive traffic, leads, and measurable growth.",
+  },
+  {
+    title: "Tender & GeM Support",
+    keywords: ["tender", "gem", "e-tender", "tender assistance", "government tender"],
+    reply:
+      "Grovally supports tender consulting, GeM registration, bid preparation, and submission so your business can win government and private contracts.",
+  },
+  {
+    title: "Finance & Loan Assistance",
+    keywords: ["finance", "loan", "funding", "msme", "working capital", "lap"],
+    reply:
+      "We provide finance advisory, loan documentation, MSME funding guidance, working capital planning, and tailored finance support for growth.",
+  },
+  {
+    title: "BPO & KPO Services",
+    keywords: ["bpo", "kpo", "process outsourcing", "outsourcing", "call center"],
+    reply:
+      "Our BPO/KPO teams deliver back-office operations, customer service, data processing and business process outsourcing for higher efficiency.",
+  },
+  {
+    title: "Business Registration & Legal",
+    keywords: ["business registration", "trademark", "company registration", "legal", "gst"],
+    reply:
+      "Grovally helps with company registration, GST filing, trademark registration, compliance, and legal documentation for startups and companies.",
+  },
+  {
+    title: "Consulting & Strategy",
+    keywords: ["consulting", "business consulting", "strategy", "startup", "advisory"],
+    reply:
+      "We offer business consulting, growth strategy, technology roadmaps, market planning, and advisory support to help your business scale effectively.",
+  },
+];
+
+const getAllServicesReply = () => {
+  return (
+    "Grovally provides these services:\n\n" +
+    serviceResponses
+      .map((service, i) => `${i + 1}. ${service.title} - ${service.reply}`)
+      .join("\n\n") +
+    "\n\nClick one of the service buttons below or type a service name to learn more."
+  );
+};
+
+const getRuleResponse = (message) => {
+  const text = message.toLowerCase();
+
+  if (/all services|list services|show services|services list|what services|sab services|sari services|puri services/i.test(text)) {
+    return getAllServicesReply();
+  }
+
+  const rule = serviceResponses.find((item) =>
+    item.keywords.some((keyword) => text.includes(keyword)) ||
+    item.title.toLowerCase() === text ||
+    item.title.toLowerCase().includes(text)
+  );
+
+  if (rule) return rule.reply;
+
+  if (text.includes("service") || text.includes("services")) {
+    return (
+      "Grovally offers enterprise web, AI, marketing, tender, finance, BPO/KPO, registration, and consulting services. Please ask about one service or click a button below."
+    );
+  }
+
+  return (
+    "I can explain Grovally services in detail. Ask about a service like Website, AI, Digital Marketing, Tender, Finance, BPO, Registration, or Consulting."
+  );
+};
 
 export default function Chat() {
   const [msg, setMsg] = useState("");
@@ -16,88 +102,69 @@ export default function Chat() {
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({
       behavior: "smooth",
+      block: "end",
     });
   }, [chat, loading]);
 
-  const sendMessage = async () => {
-    if (!msg.trim()) return;
-
-    const currentMsg = msg;
-
+  const appendMessage = (text, role) => {
     setChat((prev) => [
       ...prev,
       {
-        role: "user",
-        text: currentMsg,
+        role,
+        text,
       },
     ]);
+  };
 
-    setMsg("");
-    setLoading(true);
-
-    try {
-      const BACKEND = import.meta.env.VITE_BACKEND_URL || "https://grovally-backend-10.onrender.com";
-      const res = await fetch(
-        `${BACKEND}/get`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type":
-              "application/json",
-          },
-          body: JSON.stringify({
-            msg: currentMsg,
-          }),
-        }
-      );
-
-      const data = await res.json();
-
-      setChat((prev) => [
-        ...prev,
-        {
-          role: "bot",
-          text: data.reply,
-        },
-      ]);
-    } catch (error) {
-      setChat((prev) => [
-        ...prev,
-        {
-          role: "bot",
-          text:
-            "⚠️ Server error. Please try again.",
-        },
-      ]);
-    }
-
+  const respondToMessage = async (message) => {
+    const reply = getRuleResponse(message);
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    appendMessage(reply, "bot");
     setLoading(false);
   };
 
+  const sendMessage = async () => {
+    if (!msg.trim() || loading) return;
+
+    const currentMsg = msg.trim();
+    appendMessage(currentMsg, "user");
+    setMsg("");
+    setLoading(true);
+    await respondToMessage(currentMsg);
+  };
+
+  const handleServiceClick = async (serviceTitle) => {
+    if (loading) return;
+    appendMessage(serviceTitle, "user");
+    setLoading(true);
+    await respondToMessage(serviceTitle);
+  };
+
   return (
-    <div className="mt-20 h-[calc(100vh-80px)] flex flex-col bg-[#f7f7f8]">
+    <div className="mt-16 min-h-screen flex flex-col bg-[#f7f7f8]">
 
       {/* Header */}
-      <div className="bg-white border-b px-6 py-4 flex items-center gap-3 shadow-sm">
-        <div className="w-11 h-11 rounded-full bg-red-600 flex items-center justify-center text-white">
-          <FaRobot />
-        </div>
+      <div className="sticky top-0 z-20 bg-white border-b px-4 py-4 shadow-sm sm:px-6">
+        <div className="flex items-center gap-3 max-w-6xl mx-auto">
+          <div className="w-11 h-11 rounded-full bg-red-600 flex items-center justify-center text-white">
+            <FaRobot />
+          </div>
 
-        <div>
-          <h1 className="font-bold text-lg">
-            Grovally AI
-          </h1>
+          <div>
+            <h1 className="font-bold text-lg">
+              Grovally AI
+            </h1>
 
-          <p className="text-sm text-green-600">
-            ● Online
-          </p>
+            <p className="text-sm text-green-600">
+              ● Online
+            </p>
+          </div>
         </div>
       </div>
 
       {/* Chat Messages */}
-      <div className="flex-1 overflow-y-auto px-4 md:px-10 py-8">
-
-        <div className="max-w-5xl mx-auto space-y-6">
+      <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+        <div className="max-w-4xl mx-auto space-y-6 pb-28">
 
           {chat.length === 0 && (
             <div className="text-center mt-24">
@@ -118,6 +185,19 @@ export default function Chat() {
             </div>
           )}
 
+          <div className="flex flex-wrap gap-2">
+            {serviceResponses.map((service) => (
+              <button
+                key={service.title}
+                type="button"
+                onClick={() => handleServiceClick(service.title)}
+                className="rounded-full border border-gray-300 bg-white px-4 py-2 text-sm text-gray-700 transition hover:border-red-600 hover:bg-red-50"
+              >
+                {service.title}
+              </button>
+            ))}
+          </div>
+
           {chat.map((c, i) => (
             <div
               key={i}
@@ -128,7 +208,7 @@ export default function Chat() {
               }`}
             >
               <div
-                className={`flex gap-3 max-w-3xl ${
+                className={`flex gap-3 max-w-full sm:max-w-3xl ${
                   c.role === "user"
                     ? "flex-row-reverse"
                     : ""
@@ -147,7 +227,7 @@ export default function Chat() {
                     c.role === "user"
                       ? "bg-red-600 text-white"
                       : "bg-white text-gray-800 border"
-                  }`}
+                  } max-w-[85%] break-words text-sm sm:text-base`}
                 >
                   {c.text}
                 </div>
@@ -174,10 +254,8 @@ export default function Chat() {
       </div>
 
       {/* Bottom Input */}
-      <div className="bg-white border-t p-4">
-
-        <div className="max-w-5xl mx-auto flex gap-3">
-
+      <div className="sticky bottom-0 z-20 bg-white border-t p-4 shadow-sm">
+        <div className="max-w-4xl mx-auto flex flex-col gap-3 md:flex-row">
           <input
             type="text"
             value={msg}
@@ -189,17 +267,16 @@ export default function Chat() {
               sendMessage()
             }
             placeholder="Message Grovally AI..."
-            className="flex-1 rounded-full border border-gray-300 px-6 py-4 outline-none focus:border-red-600"
+            className="flex-1 rounded-full border border-gray-300 px-5 py-4 outline-none focus:border-red-600 focus:ring-2 focus:ring-red-100"
           />
 
           <button
             onClick={sendMessage}
             disabled={loading}
-            className="w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center hover:bg-red-700 transition"
+            className="inline-flex h-14 w-full items-center justify-center rounded-full bg-red-600 text-white transition hover:bg-red-700 disabled:cursor-not-allowed disabled:bg-red-300 md:w-14"
           >
             <FaPaperPlane />
           </button>
-
         </div>
       </div>
 

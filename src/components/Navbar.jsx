@@ -1,7 +1,7 @@
 ﻿import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaBars, FaTimes, FaRobot } from "react-icons/fa";
+import { FaBars, FaRobot, FaTimes } from "react-icons/fa";
 import logoo from "../assets/logoo.png";
 
 export default function Navbar() {

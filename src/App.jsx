@@ -74,6 +74,7 @@ export default function App() {
           <Shivam />
 
           <Footer />
+          {/* Floating chatbot removed per request; use /grovallyAI page for chat */}
         </div>
       </Suspense>
     </BrowserRouter>
