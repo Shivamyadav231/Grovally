@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 
 import { motion } from "framer-motion";
-import helo from "../assets/helo.webm";
+
 import { Link } from "react-router-dom";
 import RO from "../assets/RO.png"
 
@@ -34,7 +34,7 @@ export default function Footer() {
         playsInline
         className="absolute inset-0 h-full w-full object-cover"
       >
-        <source src={helo} type="video/webm" />
+        
       </video>
 
       {/* Dark Overlay */}
