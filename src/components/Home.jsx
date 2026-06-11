@@ -13,19 +13,23 @@ const cards = [
     description:
       "IT Services & Digital Transformation, Custom Software Development,Website & E-Commerce Solutions,AI & Automation Services,Digital Marketing Services",
     Image: Aaa,
+    link :"/it"
   },
   {
     description:
       "Government Tender Assistance,Private Tender Consultancy,Tender Identificatio,GeM Portal Registration & Support,E-Tender Submission Services",
     Image: BBB,
+    link : "/tender"
   },
   {
     description: "Research,analytics,Startup Growth ,Scaling Strategies,AI & Business Automation Learning",
     Image: KKK,
+    link:"/bpo"
   },
   {
     description: "Business Loan Solutions, MSME Funding Assistance, Working Capital Finance , Loan Against Property (LAP),Machinery & Equipment Finance",
     Image: Sss,
+    link:"/business"
   },
 ];
 
@@ -138,7 +142,7 @@ export default function Home() {
                   <ul className="space-y-3 text-left  -mt-14 text-sm leading-6 text-black">
                     {card.description.split(",").map((item, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <span className="mt-1 text-red-800 font-bold text-xl">•</span>
+                        <span className="mt-1 text-red-800 font-bold text-md">•</span>
                         <span>{item.trim()}</span>
                       </li>
                     ))}
@@ -146,7 +150,7 @@ export default function Home() {
 
                   <div className="mt-6 flex justify-center">
                     <Link
-                      to="/business"
+                      to={card.link}
                       className="inline-flex rounded-full border border-red-500 px-5 py-2 text-sm font-medium text-red-500 transition hover:bg-red-500 hover:text-white"
                     >
                       Learn More →

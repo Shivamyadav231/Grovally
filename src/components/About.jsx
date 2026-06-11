@@ -22,7 +22,10 @@ export default function About() {
     "Business Strategy",
     "Import & Export Services",
     "Traditional Marketing",
-    "Logistics & Supply Chain Solutions"
+    "Logistics & Supply Chain Solutions",
+    "Training &  Corporate Learning",
+    "import & Export Services"
+
 
 
   ];

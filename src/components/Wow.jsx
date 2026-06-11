@@ -52,30 +52,26 @@ function Wow() {
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}
-        <div className="text-center mb-16">
+        <div className="text-center -mt-10 mb-16">
           <span className="inline-block px-5 py-2 rounded-full bg-red-100 text-red-600 font-semibold text-sm tracking-wider">
             TRUSTED WORLDWIDE
           </span>
 
-          <h2 className="mt-6 text-4xl md:text-6xl text-red-500 font-extrabold text-gray-900">
+          <h2 className="mt-6 text-4xl md:text-6xl text-red-500 font-extrabold ">
             Brands That Trust
             
           </h2>
-          <div className=" flex justify-center -mt-8 items-center">
-  <img
-    loading="lazy"
-    src={lolo}
-    alt="logo"
-    className="w-48 md:w-56 object-contain"
-  />
-</div>
+          <div className=" flex justify-center -mt-10 items-center">
+            <img loading="lazy" src={lolo} alt="logo" className="w-48 md:w-56 object-contain"/></div>
           
 
-          <p className="max-w-3xl mx-auto mt-6 text-lg text-gray-600 leading-8">
+          <div className=" -mt-10">
+            <p className="max-w-3xl mx-auto  text-lg text-gray-600 leading-8">
             From startups to established enterprises, businesses trust
             Grovally for innovative IT solutions, AI automation,
             BPO, KPO, financial services, and digital transformation.
           </p>
+          </div>
         </div>
 
         {/* Logo Slider */}
@@ -91,7 +87,7 @@ function Wow() {
             {[...logos, ...logos].map((logo, index) => (
               <div
                 key={index}
-                className="group flex items-center justify-center min-w-[220px] h-32 bg-white rounded-3xl border border-gray-100 shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+                className="group flex items-center  justify-center min-w-[220px] h-32 bg-white rounded-3xl border border-gray-100 shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
               >
                 <img
                   loading="lazy"

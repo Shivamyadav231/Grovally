@@ -205,7 +205,7 @@ function Business() {
              
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-pink-50 via-white to-red-50 transition duration-500"></div>
 
-              <div className="relative z-10">
+              <div className="relative z-10 ">
                
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-pink-500 to-red-500 flex items-center justify-center text-3xl text-white mb-6 shadow-lg">
                   {card.icon}

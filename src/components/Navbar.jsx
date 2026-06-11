@@ -47,10 +47,13 @@ export default function Navbar() {
           {/* DESKTOP MENU */}
           <ul className="hidden lg:flex items-center gap-8 text-white font-medium">
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
-            <li><Link to="/tender">Tender</Link></li>
             <li><Link to="/services">Services</Link></li>
+            
+            <li><Link to="/tender">Tender</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
+          
+            <li><Link to="/about">About</Link></li>
+            <li><Link to ="/blog">Blog</Link></li>
 
             <li>
               <Link
@@ -112,13 +115,14 @@ export default function Navbar() {
               <Link onClick={() => setMenuOpen(false)} to="/contact">Contact</Link>
               <Link onClick={() => setMenuOpen(false)} to="/services">Services</Link>
               <Link onClick={() => setMenuOpen(false)} to="/tender">Tender</Link>
+              <Link onClick={()=>setMenuOpen(false)} to="/blog" >Blog</Link>
 
               <Link
                 to="/grovallyAI"
                 onClick={() => setMenuOpen(false)}
                 className="mt-4 bg-cyan-400 text-black font-bold py-3 rounded-xl text-center"
               >
-                🤖 Grovally AI
+                 Grovally AI
               </Link>
 
               <div className="mt-10 grid grid-cols-2 gap-4">
