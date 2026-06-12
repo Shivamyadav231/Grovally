@@ -1,175 +1,268 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { signInWithPopup } from "firebase/auth";
+import lolo from "../assets/lolo.png"
+
+import {
+  auth,
+  googleProvider,
+  facebookProvider,
+} from "../firebaseConfig";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { faGoogle } from "@fortawesome/free-brands-svg-icons/faGoogle";
+import { faFacebook } from "@fortawesome/free-brands-svg-icons/faFacebook";
+
 import { motion } from "framer-motion";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "../firebaseConfig";
-import lolo from "../assets/lolo.png";
 
-export default function SignUp() {
+const BACKEND = import.meta.env.VITE_BACKEND_URL || "https://grovally-backend-10.onrender.com";
+
+function SignUp() {
   const navigate = useNavigate();
-  const [form, setForm] = useState({ name: "", email: "", password: "" });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
-  const handleChange = (event) => {
-    setForm({ ...form, [event.target.name]: event.target.value });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  // Input Change
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
-  const handleSubmit = async (event) => {
-  event.preventDefault();
-  setError("");
-  setLoading(true);
 
-  try {
-    // 1. Firebase create user
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      form.email,
-      form.password
-    );
+  // Normal Signup
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Basic client-side validation
+    const newErrors = {};
+    if (!formData.name || formData.name.length < 2) newErrors.name = "Enter your full name.";
+    if (!formData.email || !/^[\w-.]+@[\w-]+\.[a-zA-Z]{2,}$/.test(formData.email)) newErrors.email = "Enter a valid email.";
+    if (!formData.password || formData.password.length < 6) newErrors.password = "Password should be at least 6 characters.";
 
-    const user = userCredential.user;
-
-    // 2. Name update
-    if (form.name) {
-      await updateProfile(user, {
-        displayName: form.name,
-      });
+    if (Object.keys(newErrors).length) {
+      setErrors(newErrors);
+      return;
     }
 
-    // 3. Token generate
-    const token = await user.getIdToken();
+    try {
+      const res = await fetch(
+        `${BACKEND}/signup`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
-    // 4. 🔥 API CALL (backend connect)
-    await fetch("https://grovally-backend-14.onrender.com/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        email: form.email,
-        name: form.name,
-      }),
-    });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.detail || "Signup failed");
+      }
 
-    // 5. redirect
-    navigate("/login");
+      const user = await res.json();
 
-  } catch (err) {
-    setError(err.message || "Signup failed");
-  } finally {
-    setLoading(false);
-  }
-};
+      localStorage.setItem(
+        "user",
+        JSON.stringify(user)
+      );
 
+      navigate("/profile");
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  // Social Auth
+  const socialAuth = async (user, provider) => {
+    try {
+      const res = await fetch(
+        `${BACKEND}/social-auth`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: user.email,
+            name:
+              user.displayName ||
+              user.email.split("@")[0],
+            provider,
+            photo: user.photoURL || null,
+          }),
+        }
+      );
+
+      const socialUser = await res.json();
+
+      localStorage.setItem(
+        "user",
+        JSON.stringify(socialUser)
+      );
+
+      navigate("/profile");
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  // Google Login
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(
+        auth,
+        googleProvider
+      );
+
+      await socialAuth(result.user, "google");
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  // Facebook Login
+  const handleFacebookLogin = async () => {
+    try {
+      const result = await signInWithPopup(
+        auth,
+        facebookProvider
+      );
+
+      await socialAuth(result.user, "facebook");
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-white text-black">
-      {/* Background Gradients */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-red-500/20 blur-[150px] animate-pulse"></div>
-        <div className="absolute bottom-0 right-0 h-[500px] w-[500px] rounded-full bg-orange-500/20 blur-[150px] animate-pulse"></div>
-        <div className="absolute left-1/2 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-400/10 blur-[120px]"></div>
-      </div>
+    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 to-white px-6 py-20 text-slate-900">
 
-      {/* Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.04)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-white to-slate-50"></div>
 
-      <div className="relative flex min-h-screen flex-col items-center justify-center px-4 py-14 sm:px-6 sm:py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="w-full max-w-2xl rounded-[32px] border border-white/20 bg-white/90 backdrop-blur-3xl p-6 sm:p-8 md:p-10 shadow-[0_20px_120px_rgba(255,0,0,0.20)]"
-        >
-          <div className="mb-8 flex flex-col gap-4 text-center">
-            <div className="mx-auto inline-flex rounded-full border border-red-300 bg-red-100 px-5 py-2 text-xs sm:text-sm font-medium tracking-[0.2em] text-red-700">
-              Create Account
-            </div>
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="relative z-10 w-full max-w-md overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-lg"
+      >
 
-            <div className="flex flex-col -mt-10 items-center gap-6 text-center">
-              <div className="mx-auto flex h-40 w-40 items-center justify-center  ">
-                <img src={lolo} alt="Grovally" className="h-40 w-auto object-contain" />
-              </div>
+        {/* Title */}
+        <div className="relative z-10 mb-6 text-center">
 
-              <div className="space-y-4">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl -mt-14 font-extrabold leading-tight">
-                  <span className="bg-gradient-to-r from-black via-red-700 to-gray-700 bg-clip-text text-transparent">
-                    Create Your Account
-                  </span>
-                </h1>
-                <p className="mx-auto max-w-3xl text-base leading-8 text-gray-700 sm:text-lg">
-                  Get instant access to Grovally's service dashboard, chatbot and lead management.
-                </p>
-              </div>
-            </div>
+          <div className="mb-3 inline-flex items-center gap-3 rounded-full border border-slate-100 bg-slate-50 px-4 py-2 text-sm font-semibold text-cyan-600 tracking-wide">
+            CREATE ACCOUNT
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div>
-              <label className="mb-2 block text-sm font-semibold text-gray-700">Full name</label>
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                required
-                className="w-full rounded-full border-2 border-red-500 bg-white px-5 py-4 text-base text-black outline-none shadow-lg focus:border-red-600 focus:ring-1 focus:ring-red-500/20 placeholder:text-gray-400"
-                placeholder="Your full name"
-              />
-            </div>
+          <div className="flex items-center  justify-center gap-4">
+            <h1 className="text-5xl font-extrabold text-slate-900">Join to</h1>
+           
+          </div>
+          <div className="flex items-center -my-12 justify-center ">
+            <img loading="lazy" src={lolo} alt="logo" className="  h-48 w-auto object-contain" />
 
-            <div>
-              <label className="mb-2 block text-sm font-semibold text-gray-700">Email</label>
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                required
-                className="w-full rounded-full border-2 border-red-500 bg-white px-5 py-4 text-base text-black outline-none shadow-lg focus:border-red-600 focus:ring-1 focus:ring-red-500/20 placeholder:text-gray-400"
-                placeholder="you@enterprise.com"
-              />
-            </div>
+          </div>
+           
+          <p className="-mt-2 text-sm text-slate-500">Build your future with AI-powered services.</p>
+        </div>
 
-            <div>
-              <label className="mb-2 block text-sm font-semibold text-gray-700">Password</label>
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="relative z-10 mt-4">
+
+          {/* Name */}
+          <div className="mb-4">
+            <label className="mb-2 block text-sm text-slate-700">Full Name</label>
+
+            <input
+              type="text"
+              name="name"
+              placeholder="Your full name"
+              value={formData.name}
+              onChange={(e) => { handleChange(e); setErrors({ ...errors, name: null }); }}
+              className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-100"
+            />
+
+            {errors.name && <p className="mt-2 text-sm text-red-600">{errors.name}</p>}
+          </div>
+
+          {/* Email */}
+          <div className="mb-4">
+            <label className="mb-2 block text-sm text-slate-700">Email</label>
+
+            <input
+              type="email"
+              name="email"
+              placeholder="you@company.com"
+              value={formData.email}
+              onChange={(e) => { handleChange(e); setErrors({ ...errors, email: null }); }}
+              className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-100"
+            />
+
+            {errors.email && <p className="mt-2 text-sm text-red-600">{errors.email}</p>}
+          </div>
+
+          {/* Password */}
+          <div className="mb-4">
+            <label className="mb-2 block text-sm text-slate-700">Password</label>
+
+            <div className="relative">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
-                value={form.password}
-                onChange={handleChange}
-                required
-                className="w-full rounded-full border-2 border-red-500 bg-white px-5 py-4 text-base text-black outline-none shadow-lg focus:border-red-600 focus:ring-1 focus:ring-red-500/20 placeholder:text-gray-400"
-                placeholder="Create a secure password"
+                placeholder="••••••••"
+                value={formData.password}
+                onChange={(e) => { handleChange(e); setErrors({ ...errors, password: null }); }}
+                className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 pr-12 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-100"
               />
+
+              <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-slate-500 hover:text-slate-700" aria-label={showPassword ? "Hide password" : "Show password"}>
+                {showPassword ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-5.523 0-10-4.477-10-10a9.958 9.958 0 012.07-5.706M3 3l18 18"/></svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                )}
+              </button>
             </div>
 
-            {error && (
-              <p className="rounded-full border border-red-500/20 bg-red-50 px-5 py-3 text-sm text-red-700 text-center">
-                {error}
-              </p>
-            )}
+            {errors.password && <p className="mt-2 text-sm text-red-600">{errors.password}</p>}
+          </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full rounded-full bg-gradient-to-r from-red-600 to-red-800 px-6 py-4 text-center text-base font-semibold text-white transition hover:scale-105 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              {loading ? "Creating account..." : "Create account"}
+          {/* Signup Button */}
+          <button type="submit" className="mb-4 w-full rounded-2xl bg-gradient-to-r from-cyan-600 to-blue-600 py-3 font-semibold text-white shadow-md hover:scale-[1.01]">
+            Create account
+          </button>
+
+          {/* Divider */}
+          <div className="my-6 flex items-center">
+            <div className="h-px flex-1 bg-slate-100"></div>
+            <div className="px-4 text-sm text-slate-400">or continue with</div>
+            <div className="h-px flex-1 bg-slate-100"></div>
+          </div>
+
+          {/* Social Buttons */}
+          <div className="flex gap-3">
+            <button type="button" onClick={handleGoogleLogin} className="flex-1 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">
+              <FontAwesomeIcon icon={faGoogle} className="mr-2 text-lg text-red-500" /> Google
             </button>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-center text-sm">
-              <button type="button" onClick={() => navigate("/login")} className="text-red-600 font-medium transition hover:text-red-800">
-                Already have an account ?
-              </button>
-              <button type="button" onClick={() => navigate("/")} className="text-red-600 font-medium transition hover:text-red-800">
-                Back to home
-              </button>
-            </div>
-          </form>
-        </motion.div>
-      </div>
+            <button type="button" onClick={handleFacebookLogin} className="flex-1 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">
+              <FontAwesomeIcon icon={faFacebook} className="mr-2 text-lg text-blue-600" /> Facebook
+            </button>
+          </div>
+          <p className="mt-6 text-center text-sm text-slate-600">Already have an account?{' '}<span onClick={() => navigate('/login')} className="cursor-pointer text-cyan-600 font-medium hover:underline">Sign in</span></p>
+        </form>
+      </motion.div>
     </section>
   );
 }
+
+export default SignUp;

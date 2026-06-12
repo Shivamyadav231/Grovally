@@ -1,5 +1,5 @@
 import React from "react";
-import shivam from "../assets/shivam.mp4";
+import shivam from "../assets/shivam.webm";
 import logo from "../assets/logo.png";
 
 import { motion } from "framer-motion";
@@ -67,30 +67,27 @@ function Testimonial() {
         </motion.div>
 
         <div className="flex flex-col lg:flex-row gap-8 items-stretch">
+          {/* VIDEO */}<motion.div
+  initial={{ opacity: 0, x: -80 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8 }}
+  className="w-full lg:w-1/2"
+>
+  <div className="relative w-full h-[280px] sm:h-[400px] md:h-[500px] lg:h-[550px] overflow-hidden rounded-[28px] border border-gray-200 shadow-2xl bg-black">
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      className="w-full h-full object-cover"
+    >
+      <source src={shivam} type="video/webm" />
+    </video>
+  </div>
+</motion.div>
 
-          {/* VIDEO */}
-          <motion.div
-            initial={{ opacity: 0, x: -80 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="w-full lg:w-1/2 h-[550px]"
-          >
-            <div className="relative w-[550px] h-[550px] overflow-hidden rounded-[28px] border border-gray-200 shadow-2xl bg-black">
-
-  {/* Video */}
-  <video
-    autoPlay
-    muted
-    loop
-    playsInline
-    controls
-    className="w-full h-full object-contain bg-red-800"
-  >
-    <source src={shivam} type="video/mp4" />
-  </video>
-
-</div>
-          </motion.div>
+         
 
           {/* TECH PANEL */}
           <motion.div

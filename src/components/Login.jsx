@@ -1,145 +1,224 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { motion } from "framer-motion";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebaseConfig";
-import lolo from "../assets/lolo.png";
+import lolo from "../assets/lolo.png"
+const BACKEND = import.meta.env.VITE_BACKEND_URL || "https://grovally-backend-10.onrender.com";
 
-export default function Login() {
-  const navigate = useNavigate();
-  const [form, setForm] = useState({ email: "", password: "" });
+function Login() {
+
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [errors, setErrors] = useState({});
+
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
-  const handleChange = (event) => {
-    setForm({ ...form, [event.target.name]: event.target.value });
-  };
-  const handleSubmit = async (event) => {
-  event.preventDefault();
+  const navigate = useNavigate();
 
-  try {
-    // 1. Firebase login
-    const userCred = await signInWithEmailAndPassword(
-      auth,
-      form.email,
-      form.password
-    );
-
-    // 2. TOKEN
-    const token = await userCred.user.getIdToken();
-
-    // 3. 🔥 API CALL (yahi add hota hai)
-    await fetch("https://grovally-backend-14.onrender.com/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
+  // Input Change
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
     });
+  };
 
-    // 4. redirect
-    navigate("/");
+  // Login Submit
+  const handleSubmit = async (e) => {
 
-  } catch (err) {
-    console.log(err.message);
-  }
-};
+    e.preventDefault();
 
-  
+    // Basic client-side validation
+    const newErrors = {};
+    if (!form.email || !/^[\w-.]+@[\w-]+\.[a-zA-Z]{2,}$/.test(form.email)) {
+      newErrors.email = "Please enter a valid email.";
+    }
+    if (!form.password || form.password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters.";
+    }
+
+    if (Object.keys(newErrors).length) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+
+      const res = await fetch(`${BACKEND}/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) {
+
+        const err = await res.json();
+
+        throw new Error(
+          err.detail || "Login failed"
+        );
+      }
+
+      const user = await res.json();
+
+      localStorage.setItem(
+        "user",
+        JSON.stringify(user)
+      );
+
+      navigate("/profile");
+
+    } catch (error) {
+
+      alert(error.message);
+
+    } finally {
+
+      setLoading(false);
+
+    }
+  };
+
   return (
-    <section className="relative min-h-screen overflow-hidden bg-white text-black">
-      {/* Background Gradients */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-red-500/20 blur-[150px] animate-pulse"></div>
-        <div className="absolute bottom-0 right-0 h-[500px] w-[500px] rounded-full bg-orange-500/20 blur-[150px] animate-pulse"></div>
-        <div className="absolute left-1/2 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-400/10 blur-[120px]"></div>
-      </div>
 
-      {/* Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.04)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
+    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 to-white px-6 py-20 text-slate-900">
 
-      <div className="relative flex min-h-screen flex-col items-center justify-center px-4 py-14 sm:px-6 sm:py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="w-full max-w-2xl rounded-[32px] border border-white/20 bg-white/90 backdrop-blur-3xl p-6 sm:p-8 md:p-10 shadow-[0_20px_120px_rgba(255,0,0,0.20)]"
-        >
-          <div className="mb-8 flex flex-col gap-4 text-center">
-            <div className="mx-auto inline-flex rounded-full border border-red-300 bg-red-100 px-5 py-2 text-xs sm:text-sm font-medium tracking-[0.2em] text-red-700">
-              Secure Login
-            </div>
+      {/* Subtle Background */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-white to-slate-50"></div>
 
-            <div className="flex flex-col items-center gap-6 text-center">
-              <div className="mx-auto flex h-40 w-36 -mt-12 items-center justify-center">
-                <img src={lolo} alt="Grovally" className="h-40 w-auto object-contain" />
-              </div>
+      {/* Login Card */}
+      <motion.div
 
-              <div className="space-y-4">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl -mt-14 font-extrabold leading-tight">
-                  <span className="bg-gradient-to-r from-black via-red-700 to-gray-700 bg-clip-text text-transparent">
-                     Login
-                  </span>
-                </h1>
-                <p className="mx-auto max-w-3xl text-base leading-8 text-gray-700 sm:text-lg">
-                  Secure access to the Grovally dashboard, chatbot, and lead operations.
-                </p>
-              </div>
-            </div>
+        initial={{ opacity: 0, y: 80 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+
+        className="relative z-10 w-full max-w-md overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-lg"
+      >
+        {/* Header */}
+        <div className="relative z-10 mb-6 text-center">
+
+          <div className="mb-3 inline-flex items-center gap-3 rounded-full border border-slate-100 bg-slate-50 px-4 py-2 text-sm font-semibold text-cyan-600 tracking-wide">
+            <span>WELCOME</span>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div>
-              <label className="mb-2 block text-sm font-semibold text-gray-700">Email</label>
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                required
-                className="w-full rounded-full border-2 border-red-500 bg-white px-5 py-4 text-base text-black outline-none shadow-lg focus:border-red-600 focus:ring-1 focus:ring-red-500/20 placeholder:text-gray-400"
-                placeholder="you@enterprise.com"
-              />
-            </div>
+          <div className="flex items-center justify-center gap-4">
+            <h1 className="text-3xl font-extrabold text-slate-900">Login in to</h1>
+            
+          </div>
+          <div className="flex items-center -mt-12 justify-center ">
+            <img loading="lazy" src={lolo} alt="logo" className="h-48 w-auto object-contain" />
+          </div>
 
-            <div>
-              <label className="mb-2 block text-sm font-semibold text-gray-700">Password</label>
-              <input
-                type="password"
-                name="password"
-                value={form.password}
-                onChange={handleChange}
-                required
-                className="w-full rounded-full border-2 border-red-500 bg-white px-5 py-4 text-base text-black outline-none shadow-lg focus:border-red-600 focus:ring-1 focus:ring-red-500/20 placeholder:text-gray-400"
-                placeholder="Enter your password"
-              />
-            </div>
+          <p className=" text-sm -mt-12 text-slate-500">Access your dashboard and manage your account</p>
 
-            {error && (
-              <p className="rounded-full border border-red-500/20 bg-red-50 px-5 py-3 text-sm text-red-700 text-center">
-                {error}
-              </p>
+        </div>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="relative z-10 mt-6">
+
+          {/* Email */}
+          <div className="mb-4">
+
+            <label className="mb-2 block text-sm text-slate-700">
+              Email
+            </label>
+
+            <input
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={(e) => { handleChange(e); setErrors({ ...errors, email: null }); }}
+              placeholder="you@company.com"
+              required
+              className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-100"
+            />
+
+            {errors.email && (
+              <p className="mt-2 text-sm text-red-600">{errors.email}</p>
             )}
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full rounded-full bg-gradient-to-r from-red-600 to-red-800 px-6 py-4 text-center text-base font-semibold text-white transition hover:scale-105 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              {loading ? "Signing in..." : "Sign in"}
-            </button>
+          </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-center text-sm">
-              <button type="button" onClick={() => navigate("/forgot")} className="text-red-600 font-medium transition hover:text-red-800">
-                Forgot password?
+          {/* Password */}
+          <div className="mb-4">
+
+            <label className="mb-2 block text-sm text-slate-700">
+              Password
+            </label>
+
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={form.password}
+                onChange={(e) => { handleChange(e); setErrors({ ...errors, password: null }); }}
+                placeholder="••••••••"
+                required
+                className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 pr-12 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-100"
+              />
+
+              <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-slate-500 hover:text-slate-700" aria-label={showPassword ? "Hide password" : "Show password"}>
+                {showPassword ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-5.523 0-10-4.477-10-10a9.958 9.958 0 012.07-5.706M3 3l18 18"/></svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                )}
               </button>
-              <button type="button" onClick={() => navigate("/signup")} className="text-red-600 font-medium transition hover:text-red-800">
-                Create account
-              </button>
+
             </div>
-          </form>
-        </motion.div>
-      </div>
+
+            {errors.password && (
+              <p className="mt-2 text-sm text-red-600">{errors.password}</p>
+            )}
+
+          </div>
+
+          <div className="mb-6 flex items-center justify-between">
+            <label className="inline-flex items-center gap-2 text-sm text-slate-600">
+              <input type="checkbox" className="h-4 w-4 rounded border-slate-200 bg-white text-cyan-600" />
+              Remember me
+            </label>
+
+            <button type="button" onClick={() => navigate('/forgot')} className="text-sm text-cyan-600 hover:underline">Forgot?</button>
+          </div>
+
+          {/* Button */}
+          <button type="submit" disabled={loading} className="mb-4 w-full rounded-2xl bg-gradient-to-r from-cyan-600 to-blue-600 py-3 font-semibold text-white shadow-md hover:scale-[1.01] disabled:opacity-50">
+            {loading ? "Signing in..." : "Sign in"}
+          </button>
+
+          <div className="mb-4 flex items-center gap-3">
+            <div className="h-px flex-1 bg-slate-100"></div>
+            <div className="text-sm text-slate-400">or continue with</div>
+            <div className="h-px flex-1 bg-slate-100"></div>
+          </div>
+
+          <div className="mb-6 flex gap-3">
+            <button type="button" className="flex-1 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">Google</button>
+            <button type="button" className="flex-1 rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 hover:bg-slate-50">GitHub</button>
+          </div>
+
+          {/* Signup */}
+          <p className="mt-6 text-center text-sm text-slate-600">
+            Don’t have an account?{' '}
+            <span onClick={() => navigate('/signup')} className="cursor-pointer text-cyan-600 font-medium hover:underline">Sign Up</span>
+          </p>
+
+        </form>
+
+      </motion.div>
+
     </section>
   );
 }
+
+export default Login;

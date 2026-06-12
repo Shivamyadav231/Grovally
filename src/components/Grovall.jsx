@@ -267,7 +267,7 @@ export default function Chat() {
               sendMessage()
             }
             placeholder="Message Grovally AI..."
-            className="flex-1 rounded-full border border-gray-300 px-5 py-4 outline-none focus:border-red-600 focus:ring-2 focus:ring-red-100"
+            className="flex-1 rounded-full border text-black border-gray-300 px-5 py-4 outline-none focus:border-red-600 focus:ring-2 focus:ring-red-100"
           />
 
           <button

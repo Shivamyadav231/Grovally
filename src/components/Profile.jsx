@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
-const BACKEND = import.meta.env.VITE_BACKEND_URL || "https://grovally-backend-10.onrender.com";
+const BACKEND = import.meta.env.VITE_BACKEND_URL || "https://grovally-backend-14.onrender.com/";
 
 const docRequirements = {
   "Loan Against Property": [

@@ -129,7 +129,7 @@ export default function Testimonial() {
               </p>
 
               <div className="mt-8 border-l-4 border-red-700 pl-5">
-                <h3 className="text-3xl font-bold ">
+                <h3 className="text-3xl text-red-600 font-bold ">
                   {testimonials[current].name}
                 </h3>
 
