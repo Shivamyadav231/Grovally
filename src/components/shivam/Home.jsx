@@ -66,11 +66,11 @@ export default function Home() {
             Building The Future Of Digital Business
           </div>
 
-          <div className="flex flex-col items-center -mt-32 sm:items-start text-center sm:text-left gap-6">
-            <img loading="lazy" src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770397/lolo_t6dwpa.png"   decoding="async" alt="logo" className="w-full max-w-[22rem] object-contain" />
+          <div className="flex flex-col items-center -mt-28 sm:items-start text-center sm:text-left gap-6">
+            <img loading="lazy" src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_600/v1781770397/lolo_t6dwpa.png"   decoding="async" alt="logo" className="w-full max-w-[22rem] object-contain" />
             <h1 className="text-3xl sm:text-4xl -mt-36 md:text-5xl font-extrabold leading-tight">
               <span className="bg-gradient-to-r  from-black via-red-700 to-gray-700 bg-clip-text text-transparent">
-                Your "True Friend" in Business
+                Your "Best Friend" in Business
               </span>
             </h1>
           </div>

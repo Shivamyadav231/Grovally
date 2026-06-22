@@ -172,7 +172,7 @@ function IT() {
 
   return (
 
-    <section className="relative min-h-screen overflow-hidden bg-white px-6 py-24 text-black">
+    <section className="relative min-h-screen top-4 overflow-hidden bg-white px-6 py-24 text-black">
 
       {/* Background Glow */}
       <div className="absolute inset-0 overflow-hidden">

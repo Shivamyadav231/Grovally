@@ -162,7 +162,7 @@ export default function BPO() {
 
   return (
 
-    <section className="relative min-h-screen overflow-hidden bg-white px-6 py-24 text-black">
+    <section className="relative min-h-screen top-8 overflow-hidden bg-white px-6 py-24 text-black">
 
       {/* Glow */}
       <div className="absolute inset-0 overflow-hidden">

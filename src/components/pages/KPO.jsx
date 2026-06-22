@@ -71,7 +71,7 @@ function KPO() {
 
   return (
 
-    <section className="relative min-h-screen  top-6 overflow-hidden bg-white px-6 py-24 text-black">
+    <section className="relative min-h-screen  top-10 overflow-hidden bg-white px-6 py-24 text-black">
 
       {/* Background Glow */}
       <div className="absolute inset-0">

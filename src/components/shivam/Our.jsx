@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const services = [
   {
@@ -64,6 +65,8 @@ const services = [
 ];
 
 function Our() {
+   const navigate = useNavigate();
+
   return (
     <div className="bg-slate-50  top-10 py-20 px-6 md:px-20">
       {/* Hero Section */}
@@ -141,7 +144,7 @@ function Our() {
           exactly what you need, what it costs, and in what order.
         </h5>
 
-        <button className="mt-6 bg-black text-white px-6 py-3 rounded-lg">
+        <button  className="mt-6 bg-black text-white px-6 py-3 rounded-lg">
           TELL US ABOUT YOUR BUSINESS
         </button>
       </div>
@@ -155,7 +158,7 @@ function Our() {
           WhatsApp us and get the exact pricing for your service in one reply.
         </h5>
 
-        <button className="mt-6 bg-red-600 text-white px-6 py-3 rounded-lg">
+        <button onClick={() => navigate("/contact")} className="mt-6 bg-red-600 text-white px-6 py-3 rounded-lg">
           GET EXACT PRICING NOW
         </button>
       </div>

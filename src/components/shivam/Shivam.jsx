@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const testimonials = [
   {
-    image: "https://res.cloudinary.com/dzu9qjxqa/image/f_auto,q_auto,w_800/upload/v1781770389/Abdul_vdgfmu.jpg",
+    image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770389/Abdul_vdgfmu.jpg",
     name: "Abdulla Al-Hammadi",
     role: "Founder, QSolar & QSoft (Qatar)",
     text: "Working with Grovally has been a good decision for our business. Their expertise in IT solutions, digital marketing, and international business strategy helped us strengthen our market presence and streamline operations. The team consistently delivers high-quality results with professionalism and commitment.",

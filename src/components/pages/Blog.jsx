@@ -162,12 +162,12 @@ The organizations that embrace change today will become the leaders of tomorrow.
   ];
 
   return (
-    <section className="min-h-screen bg-slate-50 py-20 px-4">
+    <section className="min-h-screen bg-slate-50  top-10 py-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 rounded-full bg-red-100 text-red-600 font-semibold text-sm">
-            Grovally Insights
-          </span>
+        <div className="text-center top-10 mb-16">
+         <span className="inline-block mt-10 px-4 py-2 rounded-full bg-red-100 text-red-600 font-semibold text-sm">
+  Grovally Insights
+</span>
 
           <h1 className="mt-5 text-5xl font-extrabold text-red-700">
             Latest Blogs & Articles
@@ -236,7 +236,7 @@ The organizations that embrace change today will become the leaders of tomorrow.
               <img
                 src={
                   selectedBlog.image ||
-                  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781947737/future-of-ai-in-business1_whq889.jpg"
+                  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_600/v1781947737/future-of-ai-in-business1_whq889.jpg"
                 }
                 alt={selectedBlog.title}
                 className="w-full h-30 object-contain rounded-2xl mb-8"

@@ -83,12 +83,12 @@ export default function ChatBot() {
       {/* Floating Button */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 right-6 z-50"
+        className="fixed bottom-6 right-6  z-50"
       >
         <img
           src={chat}
           alt="Chat"
-          className="w-20 h-20 object-contain animate-bounce hover:scale-110 transition-all duration-300"
+          className="w-20 h-20 object-contain rounded-full animate-bounce hover:scale-110 transition-all duration-300"
         />
       </button>
 

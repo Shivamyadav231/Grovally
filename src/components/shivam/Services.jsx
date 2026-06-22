@@ -17,7 +17,7 @@ export default function Services() {
       image:
         "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781851589/role-ai-digital-banking-online-600nw-2761269275_pz4pkc.webp",
       color: "from-red-500 to-red-700",
-      path: "/finance",
+      path: "/business",
       desc:
         "Loans, Financial Consulting, Investment Support, Credit Solutions, and Business Finance Services designed to help organizations achieve financial stability and growth.",
     },
@@ -47,6 +47,15 @@ export default function Services() {
       path: "/kpo",
       desc:
         "Research, Analytics, Business Intelligence, Data Processing, and Knowledge Management solutions that empower organizations to make informed decisions.",
+    },
+    {
+      title: "Tool Services",
+      image:
+        "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1782107797/tool_anj7le.jpg",
+      color: "from-red-500 to-red-700",
+      path: "/finance",
+      desc:
+        "AI-powered CRM for banks and NBFCs featuring lead management, customer onboarding, loan application tracking, EMI reminders, document verification, and analytics solutions.",
     },
   ];
 
