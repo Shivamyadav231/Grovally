@@ -3,49 +3,49 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const testimonials = [
   {
-    image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770389/Abdul_vdgfmu.jpg",
+    image: "https://res.cloudinary.com/dzu9qjxqa/image/f_auto,q_auto,w_800/upload/v1781770389/Abdul_vdgfmu.jpg",
     name: "Abdulla Al-Hammadi",
     role: "Founder, QSolar & QSoft (Qatar)",
     text: "Working with Grovally has been a good decision for our business. Their expertise in IT solutions, digital marketing, and international business strategy helped us strengthen our market presence and streamline operations. The team consistently delivers high-quality results with professionalism and commitment.",
   },
   {
-    image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770399/Menf_webu0j.jpg",
+    image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770399/Menf_webu0j.jpg",
     name: "Hrithik Chhabra",
     role: "Founder, Property Sath",
     text: "Grovally transformed our digital presence through a modern website and result-driven marketing strategies. Their understanding of the real estate industry helped us generate quality leads, improve brand visibility, and build stronger customer trust.",
   },
   {
-    image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770399/Mene_uijjq6.jpg",
+    image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770399/Mene_uijjq6.jpg",
     name: "Milan",
     role: "Startup Founder",
     text: "From import-export consulting to technology solutions and brand positioning, Grovally provided end-to-end support for our business growth. Their strategic approach and execution capabilities have helped us expand confidently into new markets.",
   },
   {
-    image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770399/Menb_yh22rl.jpg",
+    image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770399/Menb_yh22rl.jpg",
     name: "Sai Siddhant",
     role: "Founder, Drink Fizzico",
     text: "Grovally's expertise in IT development, branding, and digital marketing helped us establish a strong business identity in a competitive market. Their commitment to quality and attention to detail exceeded our expectations.",
   },
   {
-    image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770386/cha_uwsasy.jpg",
+    image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770386/cha_uwsasy.jpg",
     name: "Chhabra Properties",
     role: "Founder, Chhabra Properties",
     text: "Grovally delivered excellent support across project funding, HR consulting, and business advisory services. Their professional guidance and strategic insights helped us streamline operations and unlock new growth opportunities.",
   },
   {
-    image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770399/Menc_jucvvt.jpg",
+    image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770399/Menc_jucvvt.jpg",
     name: "Amit Sharma",
     role: "Founder, Financial Consultancy",
     text: "Grovally delivered excellent support across project funding, HR consulting, and business advisory services. Their professional guidance and strategic insights helped us streamline operations and unlock new growth opportunities.",
   },
   {
-    image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770398/Mena_bfwsl1.jpg",
+    image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770398/Mena_bfwsl1.jpg",
     name: "Prateek Gupta",
     role: "Founder, Revayu Energy",
     text: "Grovally provided a complete business growth ecosystem for us, including website development, funding assistance, and digital marketing. Their ability to combine technology with business strategy has contributed significantly to our expansion journey.",
   },
   {
-    image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770398/Men_nvh0sj.jpg",
+    image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770398/Men_nvh0sj.jpg",
     name: "Dinesh Goel",
     role: "Founder, Sanjivan Anushandhan",
     text: "Grovally has been a valuable growth partner for our organization. From IT infrastructure and finance solutions to marketing and BPO services, their team delivered reliable, scalable, and business-focused solutions that created measurable results.",

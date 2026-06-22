@@ -68,7 +68,7 @@ const getAllServicesReply = () => {
 const respondToMessage = async (message) => {
   try {
     const res = await fetch(
-      "https://grovally-backend-10.onrender.com/chat",
+      "https://grovally-backend-14.onrender.com/chat",
       {
         method: "POST",
         headers: {

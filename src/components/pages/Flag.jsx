@@ -22,7 +22,7 @@ export default function IndiaMap() {
   {/* First Image */}
   <div className="w-full md:w-1/2">
     <img
-      src="https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781843903/Untitled_design_31_ag7hv9.png"
+      src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781843903/Untitled_design_31_ag7hv9.png"
       alt="World Map 1"
       className="w-full h-auto object-contain"
       loading="lazy"
@@ -32,7 +32,7 @@ export default function IndiaMap() {
   {/* Second Image */}
   <div className="w-full md:w-1/2">
     <img
-      src="https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781843904/Untitled_design_32_wwv0cr.png"
+      src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781843904/Untitled_design_32_wwv0cr.png"
       alt="World Map 2"
       className="w-full h-auto object-contain"
       loading="lazy"

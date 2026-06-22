@@ -1,4 +1,4 @@
-const BACKEND = import.meta.env.VITE_BACKEND_URL || "https://grovally-backend-10.onrender.com";
+const BACKEND = import.meta.env.VITE_BACKEND_URL || "https://grovally-backend-14.onrender.com";
 
 await fetch(`${BACKEND}/update-status`,{
     method: "POST",

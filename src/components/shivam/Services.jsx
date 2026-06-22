@@ -6,7 +6,7 @@ export default function Services() {
     {
       title: "IT Solutions",
       image:
-        "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781853059/AI-Powered-Solutions-1024x768_mb7msq.jpg",
+        "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781853059/AI-Powered-Solutions-1024x768_mb7msq.jpg",
       color: "from-red-500 to-red-700",
       path: "/it",
       desc:
@@ -15,7 +15,7 @@ export default function Services() {
     {
       title: "Finance Services",
       image:
-        "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781851589/role-ai-digital-banking-online-600nw-2761269275_pz4pkc.webp",
+        "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781851589/role-ai-digital-banking-online-600nw-2761269275_pz4pkc.webp",
       color: "from-red-500 to-red-700",
       path: "/finance",
       desc:
@@ -24,7 +24,7 @@ export default function Services() {
     {
       title: "LPO Services",
       image:
-        "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781853030/NewPhotonicsLPOopticalconnectivityinnovationblog_ldn6kb.webp",
+        "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781853030/NewPhotonicsLPOopticalconnectivityinnovationblog_ldn6kb.webp",
       color: "from-red-500 to-red-700",
       path: "/ourservices",
       desc:
@@ -33,7 +33,7 @@ export default function Services() {
     {
       title: "BPO Services",
       image:
-        "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781851010/Untitled-1-3_mhhzme.webp",
+        "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781851010/Untitled-1-3_mhhzme.webp",
       color: "from-red-500 to-red-700",
       path: "/bpo",
       desc:
@@ -42,7 +42,7 @@ export default function Services() {
     {
       title: "KPO Services",
       image:
-        "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781851650/360_F_1768058516_bLXo6SSvp6cZGKLicCewjPCT6z1KxrRH_ijziqq.jpg",
+        "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781851650/360_F_1768058516_bLXo6SSvp6cZGKLicCewjPCT6z1KxrRH_ijziqq.jpg",
       color: "from-red-500 to-red-700",
       path: "/kpo",
       desc:

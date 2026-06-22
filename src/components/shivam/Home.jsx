@@ -9,23 +9,23 @@ const cards = [
     
     description:
       "IT Services & Digital Transformation, Custom Software Development,Website & E-Commerce Solutions,AI & Automation Services,Digital Marketing Services",
-    Image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770387/Aaa_k7fq9t.png",
+    Image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770387/Aaa_k7fq9t.png",
     link :"/it"
   },
   {
     description: "Business Loan Solutions, MSME Funding Assistance, Working Capital Finance , Loan Against Property (LAP),Machinery & Equipment Finance",
-    Image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770410/Sss_sduj87.png",
+    Image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770410/Sss_sduj87.png",
     link:"/business"
   },
   {
     description:
       "Government Tender Assistance,Private Tender Consultancy,Tender Identificatio,GeM Portal Registration & Support,E-Tender Submission Services",
-    Image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770387/BBB_ddpa51.png",
+    Image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770387/BBB_ddpa51.png",
     link : "/tender"
   },
   {
     description: "Research,analytics,Startup Growth ,Scaling Strategies,AI & Business Automation Learning",
-    Image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770395/KKK_ltrp7q.png",
+    Image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770395/KKK_ltrp7q.png",
     link:"/bpo"
   },
   
@@ -67,7 +67,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center -mt-32 sm:items-start text-center sm:text-left gap-6">
-            <img loading="lazy" src="https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770397/lolo_t6dwpa.png"   decoding="async" alt="logo" className="w-full max-w-[22rem] object-contain" />
+            <img loading="lazy" src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770397/lolo_t6dwpa.png"   decoding="async" alt="logo" className="w-full max-w-[22rem] object-contain" />
             <h1 className="text-3xl sm:text-4xl -mt-36 md:text-5xl font-extrabold leading-tight">
               <span className="bg-gradient-to-r  from-black via-red-700 to-gray-700 bg-clip-text text-transparent">
                 Your "True Friend" in Business

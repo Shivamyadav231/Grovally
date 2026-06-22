@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
-const BACKEND = import.meta.env.VITE_BACKEND_URL || "https://grovally-backend-10.onrender.com";
+const BACKEND = import.meta.env.VITE_BACKEND_URL || "https://grovally-backend-14.onrender.com";
 
 function Login() {
 
@@ -115,7 +115,7 @@ function Login() {
             
           </div>
           <div className="flex items-center -mt-12 justify-center ">
-            <img loading="lazy" src="https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770397/lolo_t6dwpa.png" alt="logo" className="h-48 w-auto object-contain" />
+            <img loading="lazy" src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770397/lolo_t6dwpa.png" alt="logo" className="h-48 w-auto object-contain" />
           </div>
 
           <p className=" text-sm -mt-12 text-black">Access your dashboard and manage your account</p>

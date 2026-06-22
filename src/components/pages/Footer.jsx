@@ -86,7 +86,7 @@ export default function Footer() {
   <Link to="/"  className="inline-block ">
     <img
       loading="lazy"
-      src="https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770397/lolo_t6dwpa.png"
+      src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770397/lolo_t6dwpa.png"
       alt="Grovally Logo"
       className="w-32 sm:w-40 md:w-48 object-contain mt-0 md:-mt-16"
     />

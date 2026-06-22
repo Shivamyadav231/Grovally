@@ -20,7 +20,7 @@ export default function About() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-gray-50 py-20">
+    <section className="relative overflow-hidden top-5 bg-gray-50 py-20">
       {/* Background Blobs */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-red-100 blur-3xl opacity-40" />
@@ -63,7 +63,7 @@ export default function About() {
             className="rounded-[30px] overflow-hidden border border-gray-100 shadow-lg bg-white"
           >
             <img
-              src="https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781854330/360_F_532812571_2Fzs20otX5pbSCqZG4jXEROYEiBExPQA_oyxtci.jpg"
+              src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781854330/360_F_532812571_2Fzs20otX5pbSCqZG4jXEROYEiBExPQA_oyxtci.jpg"
               alt="Who We Are"
               className="w-full h-64 object-cover"
             />
@@ -97,7 +97,7 @@ export default function About() {
             className="rounded-[30px] overflow-hidden border border-gray-100 shadow-lg bg-white"
           >
             <img
-              src="https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781870835/360_F_523633866_Hm1H8jiHUuvHEwEvZKsC9jZwLEYdM3Bz_enhu24.jpg"
+              src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781870835/360_F_523633866_Hm1H8jiHUuvHEwEvZKsC9jZwLEYdM3Bz_enhu24.jpg"
               alt="Our Mission"
               className="w-full h-64 object-cover"
             />
@@ -148,7 +148,7 @@ export default function About() {
         <div className="mt-24 grid lg:grid-cols-3 gap-8">
           <div className="p-8 rounded-[25px] border bg-white shadow-sm">
             <img
-              src="https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781869668/Techtalk-ai-laptop-hero_bacgnh.jpg"
+              src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781869668/Techtalk-ai-laptop-hero_bacgnh.jpg"
               alt="Innovation"
               className="w-full h-52 object-cover rounded-2xl mb-5"
             />
@@ -169,7 +169,7 @@ export default function About() {
 
           <div className="p-8 rounded-[25px] border bg-white shadow-sm">
             <img
-              src="https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781869609/stock-photo-futuristic-robot-artificial-intelligence-huminoid-programming-coding-technology-development-machine_a5llgr.webp"
+              src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781869609/stock-photo-futuristic-robot-artificial-intelligence-huminoid-programming-coding-technology-development-machine_a5llgr.webp"
               alt="Technology"
               className="w-full h-52 object-cover rounded-2xl mb-5"
             />
@@ -189,7 +189,7 @@ export default function About() {
 
           <div className="p-8 rounded-[25px] border bg-white shadow-sm">
             <img
-              src="https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781870555/business-goal-growth-strategy-focuses-business-goal-growth-roadmap-development-team-driven-achievement-439082173_lc9dby.webp"
+              src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781870555/business-goal-growth-strategy-focuses-business-goal-growth-roadmap-development-team-driven-achievement-439082173_lc9dby.webp"
               alt="Growth"
               className="w-full h-52 object-cover rounded-2xl mb-5"
             />

@@ -15,6 +15,10 @@ export default function ChatBot() {
 
   const messagesEndRef = useRef(null);
 
+  const BACKEND =
+    import.meta.env.VITE_BACKEND_URL ||
+    "https://grovally-backend-14.onrender.com";
+
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({
       behavior: "smooth",
@@ -24,7 +28,7 @@ export default function ChatBot() {
   const sendMessage = async () => {
     if (!message.trim() || loading) return;
 
-    const userText = message;
+    const userText = message.trim();
     setMessage("");
 
     setMessages((prev) => [
@@ -38,18 +42,19 @@ export default function ChatBot() {
     setLoading(true);
 
     try {
-      const res = await fetch(
-        "https://grovally-backend-14.onrender.com/chat",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            message: userText,
-          }),
-        }
-      );
+      const res = await fetch(`${BACKEND}/chat`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: userText,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Server Error");
+      }
 
       const data = await res.json();
 
@@ -57,7 +62,7 @@ export default function ChatBot() {
         ...prev,
         {
           sender: "bot",
-          text: data.reply,
+          text: data.reply || "No response received.",
         },
       ]);
     } catch (error) {
@@ -65,42 +70,36 @@ export default function ChatBot() {
         ...prev,
         {
           sender: "bot",
-          text: "❌ Something went wrong. Please try again.",
+          text: "❌ Server is waking up. Please try again in a few seconds.",
         },
       ]);
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (
     <>
       {/* Floating Button */}
       <button
-  onClick={() => setOpen(!open)}
-  className="fixed bottom-6 right-6 z-50"
->
-  <img
-    src={chat}
-    alt="Chat"
-    className="w-20 h-20 object-contain animate-bounce hover:scale-110 transition-all duration-300"
-  />
-</button>
-   
+        onClick={() => setOpen(!open)}
+        className="fixed bottom-6 right-6 z-50"
+      >
+        <img
+          src={chat}
+          alt="Chat"
+          className="w-20 h-20 object-contain animate-bounce hover:scale-110 transition-all duration-300"
+        />
+      </button>
 
       {/* Chat Window */}
       {open && (
         <div className="fixed bottom-24 right-6 w-[350px] h-[550px] bg-white rounded-3xl shadow-2xl overflow-hidden border z-50 flex flex-col">
-
           {/* Header */}
           <div className="bg-red-600 text-white p-4 flex justify-between items-center">
             <div>
-              <h3 className="font-bold">
-                Grovally AI Assistant
-              </h3>
-              <p className="text-xs text-red-100">
-                Online Now
-              </p>
+              <h3 className="font-bold">Grovally AI Assistant</h3>
+              <p className="text-xs text-red-100">Online Now</p>
             </div>
 
             <button
@@ -161,7 +160,7 @@ export default function ChatBot() {
               disabled={loading}
               className="bg-red-600 text-white px-5 rounded-xl hover:bg-red-700 disabled:opacity-50"
             >
-              Send
+              {loading ? "..." : "Send"}
             </button>
           </div>
         </div>

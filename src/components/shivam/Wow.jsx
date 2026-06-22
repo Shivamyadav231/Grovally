@@ -5,26 +5,26 @@ import React from "react";
 
 function Wow() {
   const logos = [
-    "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770400/N_vxdsax.png",
-    "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770401/NN_ckjhny.png",
-    "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770401/MM_vfnwfn.png",
-    "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770401/P_rjtqlz.png",
-    "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770405/S_jowhyx.png",
-    "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770405/PP_uuonbr.png",
-    "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770403/Q_o8ek2g.png",
-    "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770423/V_do0jxd.png",
-    "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770419/W_wkpnpn.png",
-    "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770421/X_bparwg.png",
-    "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770398/ll_kfuwb5.png",
-    "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770397/M_j81xlb.png",
-    "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770396/II_voaruk.png",
-    "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770395/KK_r2fllv.png",
-    "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770394/B_oayrxp.png",
-    "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770394/I_syzp47.png",
-    "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770393/JJ_gxwt15.png",
-    "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770393/F_vchylj.png",
-    "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770388/CC_yysiej.png",
-  ];
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770400/N_vxdsax.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770401/NN_ckjhny.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770401/MM_vfnwfn.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770401/P_rjtqlz.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770405/S_jowhyx.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770405/PP_uuonbr.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770403/Q_o8ek2g.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770423/V_do0jxd.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770419/W_wkpnpn.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770421/X_bparwg.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770398/ll_kfuwb5.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770397/M_j81xlb.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770396/II_voaruk.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770395/KK_r2fllv.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770394/B_oayrxp.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770394/I_syzp47.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770393/JJ_gxwt15.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770393/F_vchylj.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770388/CC_yysiej.png",
+];
 
   return (
     <section className="py-24 bg-gradient-to-b from-white to-red-50 overflow-hidden">
@@ -41,7 +41,7 @@ function Wow() {
             
           </h2>
           <div className=" flex justify-center -mt-10 items-center">
-            <img loading="lazy" src="https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770397/lolo_t6dwpa.png" alt="logo" className="w-48 md:w-56 object-contain"/>
+            <img loading="lazy" src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770397/lolo_t6dwpa.png" alt="logo" className="w-48 md:w-56 object-contain"/>
             </div>
           
 

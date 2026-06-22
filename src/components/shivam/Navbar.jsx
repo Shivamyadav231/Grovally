@@ -35,7 +35,7 @@ export default function Navbar() {
             <img
               loading="lazy"
                 decoding="async"
-              src="https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770425/logoo_u4zkyt.png"
+              src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770425/logoo_u4zkyt.png"
               alt="logo"
               className={`w-auto object-contain transition-all duration-500 hover:scale-100 ${
                 scrolled
@@ -104,7 +104,7 @@ export default function Navbar() {
           >
             {/* HEADER */}
             <div className="flex justify-between items-center mb-10">
-              <img loading="lazy" src="https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781770397/lolo_t6dwpa.png" className="h-12 bg-red-600 object-contain" />
+              <img loading="lazy" src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770397/lolo_t6dwpa.png" className="h-12 bg-red-600 object-contain" />
               <button onClick={() => setMenuOpen(false)}>
                 <FaTimes className="text-white text-3xl" />
               </button>

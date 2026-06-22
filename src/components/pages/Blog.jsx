@@ -8,7 +8,7 @@ function Blog() {
     {
       id: 1,
       title: "The Future of Artificial Intelligence and Innovation in Business | Grovally",
-      image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781947737/future-of-ai-in-business1_whq889.jpg",
+      image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781947737/future-of-ai-in-business1_whq889.jpg",
       shortDesc:
         "Explore how Artificial Intelligence, automation, and innovation are transforming businesses and creating new opportunities across industries.",
       content: `
@@ -189,7 +189,7 @@ The organizations that embrace change today will become the leaders of tomorrow.
               <img
                 src={
                   blog.image ||
-                  "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781947737/future-of-ai-in-business1_whq889.jpg"
+                  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781947737/future-of-ai-in-business1_whq889.jpg"
                 }
                 alt={blog.title}
                 className="h-45 w-full  object-contain"
@@ -236,7 +236,7 @@ The organizations that embrace change today will become the leaders of tomorrow.
               <img
                 src={
                   selectedBlog.image ||
-                  "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781947737/future-of-ai-in-business1_whq889.jpg"
+                  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781947737/future-of-ai-in-business1_whq889.jpg"
                 }
                 alt={selectedBlog.title}
                 className="w-full h-30 object-contain rounded-2xl mb-8"

@@ -115,7 +115,7 @@ const innerRadius = isMobile ? 90 : 125;
       shadow-full
     "
   >
-    <source   decoding="async" src="https://res.cloudinary.com/dzu9qjxqa/video/upload/v1781770426/shivam_tednht.webm?_s=public-apps" type="video/webm" />
+    <source   decoding="async" src="https://res.cloudinary.com/dzu9qjxqa/video/upload/f_auto,q_auto,w_800/v1781770426/shivam_tednht.webm?_s=public-apps" type="video/webm" />
   </video>
 </div>
       
@@ -178,7 +178,7 @@ const innerRadius = isMobile ? 90 : 125;
         {/* CENTER LOGO */}
         <div className="absolute z-10 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full bg-red-600 border-4 border-white flex items-center justify-center shadow-xl">
           <img
-            src="https://res.cloudinary.com/dzu9qjxqa/image/upload/v1781778101/logo_yt1y29.webp"
+            src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781778101/logo_yt1y29.webp"
             alt="logo"
             loading="lazy"
             decoding="async"
