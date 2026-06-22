@@ -166,7 +166,7 @@ function Profile() {
 
   return (
 
-    <section className="relative min-h-screen w-full overflow-hidden bg-[#020617] px-6 py-20 text-white">
+    <section className="relative min-h-screen w-full top-10 overflow-hidden bg-[#020617] px-6 py-20 text-white">
 
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden">
@@ -190,7 +190,7 @@ function Profile() {
             <h1 className="text-5xl font-black">
 
               Welcome
-              <span className="block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-cyan-400 via-red-500 to-purple-500 bg-clip-text text-transparent">
 
                 {profile?.name}
 
