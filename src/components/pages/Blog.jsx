@@ -159,6 +159,49 @@ Artificial Intelligence and innovation together are creating a smarter and more 
 The organizations that embrace change today will become the leaders of tomorrow.
       `,
     },
+    {
+      id:2,
+      title :" ",
+      image :"https://t4.ftcdn.net/jpg/08/21/74/71/360_F_821747166_R8ub40Xh7tE0yruP7nLtNIWQtSXXPtXM.jpg",
+      shortDesc: "",
+      content:``
+
+    },
+     {
+      id:3,
+      title :" ",
+      image :"https://img.freepik.com/premium-photo/vector-digital-technology-face-artificial-intelligence_575980-36811.jpg",
+      shortDesc: "",
+      content:``
+
+    }
+    ,
+     {
+      id:4,
+      title :" ",
+      image :"https://c8.alamy.com/comp/DH139P/tender-word-on-digital-screen-global-communication-concept-DH139P.jpg",
+      shortDesc: "",
+      content:``
+
+    }
+    ,
+     {
+      id:5,
+      title :" ",
+      image :"https://digi-texx.com/wp-content/uploads/2024/02/05.-How-does-BPO-work.jpg",
+      shortDesc: "",
+      content:``
+
+    }
+    ,
+     {
+      id:6,
+      title :" ",
+      image :"https://ranjitdisha.com/wp-content/uploads/2025/09/AI-in-Education-Transforming-Classrooms.jpg",
+      shortDesc: "",
+      content:``
+
+    }
   ];
 
   return (

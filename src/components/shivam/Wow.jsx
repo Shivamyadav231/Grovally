@@ -63,7 +63,7 @@ function Wow() {
           {/* Right Fade */}
           <div className="absolute right-0 top-0 z-10 h-full w-32 bg-gradient-to-l from-white to-transparent"></div>
 
-          <div className="flex animate-scroll gap-8 w-max">
+          <div className="flex animate-scroll  gap-8 w-max">
             {[...logos, ...logos].map((logo, index) => (
               <div
                 key={index}
@@ -74,7 +74,7 @@ function Wow() {
                   decoding="async"
                   src={logo}
                   alt={`Logo ${index}`}
-                  className="max-h-64 w-auto object-contain   transition duration-300"
+                  className="max-h-64 w-auto object-cover   transition duration-300"
                 />
               </div>
             ))}

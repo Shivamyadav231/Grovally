@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 function Tender() {
   return (
-    <section className="relative  top-10 min-h-screen overflow-hidden bg-white px-6 py-20">
+    <section className="relative min-h-screen overflow-hidden bg-white px-6 py-20">
 
       {/* Background Glow */}
       <div className="absolute inset-0">
@@ -21,7 +21,7 @@ function Tender() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <span className="inline-flex rounded-full border border-red-200 bg-red-50 px-5 py-2 text-sm font-semibold text-red-600">
+          <span className="inline-flex rounded-full  mt-11 border border-red-200 bg-red-50 px-5 py-2 text-sm font-semibold text-red-600">
             Government & Private Tender Services
           </span>
 

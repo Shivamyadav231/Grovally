@@ -10,7 +10,7 @@ function WOf() {
         loop
         playsInline
         preload="metadata"
-        className="block w-full h-[250px] sm:h-[400px] md:h-auto object-cover"
+        className="block w-full h-[250px] sm:h-[400px] md:h-auto  object-contain"
       >
         <source  decoding="async" src="https://res.cloudinary.com/dzu9qjxqa/video/upload/f_auto,q_auto,w_1600/v1781770425/ok_prnduy.webm" type="video/webm" />
       </video>

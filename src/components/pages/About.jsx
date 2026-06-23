@@ -20,7 +20,7 @@ export default function About() {
   ];
 
   return (
-    <section className="relative overflow-hidden top-5 bg-gray-50 py-20">
+    <section className="relative overflow-hidden  bg-gray-50 py-20">
       {/* Background Blobs */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-red-100 blur-3xl opacity-40" />
@@ -36,7 +36,7 @@ export default function About() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <span className="inline-block px-6 py-2 rounded-full bg-red-100 border border-red-200 text-red-700 text-sm font-semibold tracking-[3px]">
+          <span className="inline-block px-6 py-2  mt-9 rounded-full bg-red-100 border border-red-200 text-red-700 text-sm font-semibold tracking-[3px]">
             ABOUT GROVALLY
           </span>
 

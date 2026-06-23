@@ -39,8 +39,8 @@ export default function Navbar() {
     alt="Grovally Business Solutions Logo"
     className={`w-auto object-contain transition-all duration-500 hover:scale-100 ${
       scrolled
-        ? "h-52 scale-105"
-        : "h-52 md:h-52 scale-125"
+        ? "h-52 scale-125"
+        : "h-48 md:h-48  left-0 scale-105"
     }`}
   />
 </Link>

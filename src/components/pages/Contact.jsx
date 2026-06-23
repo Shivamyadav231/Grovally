@@ -9,7 +9,7 @@ import {
 
 export default function Contact() {
   const [form, setForm] = useState({
-    name: "",
+    name: "shivam",
     email: "",
     message: "",
   });
@@ -32,7 +32,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="relative top-5 min-h-screen overflow-hidden bg-white text-gray-900 py-24">
+    <section className="relative  min-h-screen overflow-hidden bg-white text-gray-900 py-24">
 
       {/* SOFT BACKGROUND */}
       <div className="absolute inset-0">
@@ -43,7 +43,7 @@ export default function Contact() {
       {/* GRID */}
       <div className="absolute inset-0 opacity-30 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+      <div className="relative mt-12 z-10 max-w-7xl mx-auto px-6">
 
         {/* HEADER */}
         <motion.div
@@ -52,7 +52,7 @@ export default function Contact() {
           transition={{ duration: 0.7 }}
           className="text-center"
         >
-          <span className="px-6 py-2 rounded-full bg-red-50 border border-red-100 text-red-600 text-sm tracking-[3px]">
+          <span className="px-6 py-2  rounded-full bg-red-50 border border-red-100 text-red-600 text-sm tracking-[3px]">
             CONTACT GROVALLY
           </span>
 
