@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
 import Ok from "./Ok.jsx";
 import Bt from "./components/shivam/Bt.jsx"
+import OrganizationSchema from "./components/OrganizationSchema";
 
 import "./App.css";
 
@@ -33,6 +34,7 @@ const Tender = lazy(() => import("./components/shivam/Tender.jsx"));
 export default function App() {
   return (
     <BrowserRouter>
+      <OrganizationSchema />
       <Ok/>
 
       <Suspense

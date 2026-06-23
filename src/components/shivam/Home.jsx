@@ -43,6 +43,7 @@ export default function Home() {
 
   return (
     <section className="relative  min-h-screen overflow-hidden bg-white text-black">
+    
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-red-500/20 blur-[150px] animate-pulse"></div>

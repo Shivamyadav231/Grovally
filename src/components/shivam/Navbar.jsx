@@ -57,15 +57,15 @@ export default function Navbar() {
             <li><Link to="/about">About</Link></li>
             <li><Link to ="/blog">Blog</Link></li>
 
-            <li>
-              <Link
-                to="/grovallyAI"
-                className="flex items-center gap-2  text-white- px-4 py-2 rounded-full font-bold hover:scale-105 transition"
-              >
-                <FaRobot />
-                Grovally AI
-              </Link>
-            </li>
+           <li>
+  <Link
+    to="/grovallyAI"
+    className="flex items-center gap-2 px-4 py-2 rounded-full font-bold hover:scale-105 transition"
+  >
+    <FaRobot />
+    Grovally AI
+  </Link>
+</li>
           </ul>
 
           {/* LOGIN / SIGNUP */}
@@ -124,12 +124,12 @@ export default function Navbar() {
 
 
               <Link
-                to="/grovallyAI"
-                onClick={() => setMenuOpen(false)}
-                className="mt-4 bg-cyan-400 text-black font-bold py-3 rounded-xl text-center"
-              >
-                 Grovally AI
-              </Link>
+  to="/grovallyAI"
+  onClick={() => setMenuOpen(false)}
+  className="mt-4 bg-cyan-400 text-black font-bold py-3 rounded-xl text-center"
+>
+  Grovally AI
+</Link>
 
               <div className="mt-10 grid grid-cols-2 gap-4">
                 <Link

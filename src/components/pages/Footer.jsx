@@ -115,7 +115,7 @@ export default function Footer() {
     </a>
 
     <a
-      href="https://instagram.com/"
+      href="https://www.instagram.com/grovallygroup?igsh=ZDVqa2ZxNG9wdHJh/"
       target="_blank"
       rel="noopener noreferrer"
       className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:text-pink-500"
@@ -124,7 +124,7 @@ export default function Footer() {
     </a>
 
     <a
-      href="https://facebook.com/"
+      href="https://www.facebook.com/profile.php?id=61580907737242"
       target="_blank"
       rel="noopener noreferrer"
       className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:text-blue-500"
