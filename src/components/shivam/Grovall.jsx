@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 
 export default function ChatBot() {
@@ -109,7 +111,7 @@ export default function ChatBot() {
     }
   };
   return (
-  <div className="h-screen max-w-8xl bg-gray-50 flex flex-col pt-20">
+  <div className="h-screen  bg-gray-50 flex flex-col pt-20">
     {/* Header */}
     <div className="bg-red-600  text-white p-3 text-center mt-8 shadow-2xl rounded-sm">
       <h3 className="font-bold text-lg">
@@ -139,7 +141,11 @@ export default function ChatBot() {
                 : "bg-white text-gray-800 shadow"
             }`}
           >
-            {msg.text}
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                      {msg.text}
+        
+      </ReactMarkdown>
+            
           </div>
         </div>
       ))}

@@ -73,7 +73,7 @@ function Our() {
       <div className="text-center max-w-4xl mx-auto">
         
 
-        <h1 className="text-4xl md:text-5xl  text-red-600 font-bold mt-3">
+        <h1 className="text-4xl md:text-5xl mt-10  text-red-600 font-bold ">
           Register Your Company in 7 Days
         </h1>
 

@@ -88,7 +88,7 @@ export default function FinanceTools() {
     <section className="min-h-screen  bg-white text-black p-6">
       <div className="max-w-7xl top-10 mx-auto">
 
-        <h1 className="text-center mt-20 text-red-600 text-5xl font-black mb-12">
+        <h1 className="text-center mt-24 text-red-600 text-5xl font-black mb-12">
           Financial Tools
         </h1>
 

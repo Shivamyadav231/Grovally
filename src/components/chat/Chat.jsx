@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import chatIcon from "../../assets/chat.avif";
+
 import {
   FaRobot,
   FaPaperPlane,
@@ -110,16 +110,28 @@ export default function Chat() {
     <>
       {/* Floating Button */}
       <button
-        onClick={() => setOpen(!open)}
-        className="fixed bottom-5 right-5 z-50"
-      >
-        <img
-          src={chatIcon}
-          alt="Chat"
-          className="w-16 h-16 md:w-20 md:h-20 rounded-full hover:scale-110 transition"
-        />
-      </button>
+  onClick={() => setOpen(!open)}
+  className="
+    fixed bottom-5 right-5 z-50
+    flex items-center gap-3
+    bg-red-600 hover:bg-red-700
+    text-white
+    px-5 py-3
+    rounded-full
+    shadow-lg
+    transition-all duration-300
+    hover:scale-105
+  "
+>
+  <span className="font-semibold text-sm">
+    Help Desk
+  </span>
 
+  <FaRobot className="text-3xl animate-bounce" />
+</button><picture>
+  <source media="(min-width: )" srcset="" />
+  
+</picture>
       {/* Chat Popup */}
       {open && (
         <div className="fixed bottom-28 right-4 z-50 w-[95%] sm:w-[420px] h-[80vh] bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col">
@@ -127,7 +139,7 @@ export default function Chat() {
           {/* Header */}
           <div className="bg-red-600 text-white px-5 py-4 flex justify-between items-center">
             <div className="flex items-center gap-3">
-              <FaRobot className="text-2xl" />
+              
               <div>
                 <h2 className="font-bold">
                   Grovally Help
@@ -137,10 +149,9 @@ export default function Chat() {
                 </p>
               </div>
             </div>
+            
 
-            <button onClick={() => setOpen(false)}>
-              <FaTimes />
-            </button>
+           
           </div>
 
           {/* Messages */}
@@ -159,7 +170,7 @@ export default function Chat() {
               </div>
             )}
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap te gap-2">
               {serviceResponses.map((service) => (
                 <button
                   key={service.title}
@@ -186,7 +197,7 @@ export default function Chat() {
                   className={`flex gap-2 ${
                     item.role === "user"
                       ? "flex-row-reverse"
-                      : ""
+                      : " text-black"
                   }`}
                 >
                   <div className="text-2xl">

@@ -91,7 +91,7 @@ function Bt() {
   return (
     <div className="space-y-12 bg-white top-10">
      <div className="max-w-6xl mx-auto text-center py-12 px-6">
-  <span className="inline-block px-4 py-2 rounded-full bg-red-100 text-red-600 font-semibold text-sm mb-4">
+  <span className="inline-block px-4 py-2 mt-24 rounded-full bg-red-100 text-red-600 font-semibold text-sm mb-4">
     🏦 Banking Partners
   </span>
 

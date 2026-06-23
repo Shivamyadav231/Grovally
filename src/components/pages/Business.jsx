@@ -216,7 +216,7 @@ function Business() {
         <div className="absolute inset-0 bg-black/10"></div>
 
         <div className="relative max-w-6xl mx-auto text-center">
-          <div className="inline-block px-5 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6 text-sm font-semibold">
+          <div className="inline-block px-5 py-2 mt-5 bg-white/20 backdrop-blur-sm rounded-full mb-6 text-sm font-semibold">
             Trusted Business Finance Partner
           </div>
 

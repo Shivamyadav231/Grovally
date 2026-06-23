@@ -69,7 +69,7 @@ export default function Services() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* Heading */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-20 mt-10">
           <span className="inline-block px-5 py-2 rounded-full bg-red-100 text-red-600 font-semibold">
             🚀 Premium Business Solutions
           </span>

@@ -31,16 +31,16 @@ export default function Navbar() {
           }`}
         >
           {/* LOGO */}
-          <Link to="/" className="flex items-center h-full">
+          <Link to="/" className="flex items-center h-full overflow-visible">
   <img
     loading="lazy"
     decoding="async"
     src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770425/logoo_u4zkyt.png"
     alt="Grovally Business Solutions Logo"
-    className={`w-auto object-contain transition-all duration-500 ${
+    className={`w-auto object-contain transition-all duration-500 hover:scale-100 ${
       scrolled
-        ? "h-16 md:h-20"
-        : "h-20 md:h-24"
+        ? "h-52 scale-105"
+        : "h-52 md:h-52 scale-125"
     }`}
   />
 </Link>
@@ -60,9 +60,9 @@ export default function Navbar() {
            <li>
   <Link
     to="/grovallyAI"
-    className="flex items-center gap-2 px-4 py-2 rounded-full font-bold hover:scale-105 transition"
+    className="flex items-center text-red-600 bg-white gap-2 px-4 py-2 rounded-full font-bold hover:scale-105 transition"
   >
-    <FaRobot />
+    
     Grovally AI
   </Link>
 </li>

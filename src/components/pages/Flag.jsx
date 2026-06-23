@@ -4,22 +4,34 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 export default function IndiaMap() {
   const locations = [
     // India States
-    { name: "Delhi", top: "26%", left: "17%" },
-    { name: "Uttar Pradesh", top: "30%", left: "20%" },
-    { name: "Maharashtra", top: "26%", left: "15%" },
-    { name: "Gujarat", top: "42%", left: "8%" },
-    { name: "Rajasthan", top: "33%", left: "10%" },
-    { name: "Punjab", top: "33%", left: "15%" },
-    { name: "Haryana", top: "36%", left: "15%" },
-    { name: "Bihar", top: "42%", left: "25%" },
-    
-    
-    { name: "Kerala", top: "85%", left: "15%" },
+   
+  { name: "Delhi", top: "26%", left: "17%" },
+  { name: "Uttar Pradesh", top: "30%", left: "20%" },
+  { name: "Maharashtra", top: "54%", left: "15%" },
+  { name: "Gujarat", top: "42%", left: "8%" },
+  { name: "Rajasthan", top: "33%", left: "10%" },
+  { name: "Punjab", top: "25%", left: "15%" },
+  { name: "Haryana", top: "28%", left: "15%" },
+  { name: "Bihar", top: "42%", left: "25%" },
+  { name: "Kerala", top: "85%", left: "15%" },
+
+  // ➕ Added states
+  { name: "Madhya Pradesh", top: "38%", left: "18%" },
+  { name: "Tamil Nadu", top: "78%", left: "18%" },
+  { name: "Karnataka", top: "70%", left: "14%" },
+  { name: "Andhra Pradesh", top: "63%", left: "20%" },
+  
+  { name: "Odisha", top: "52%", left: "25%" },
+  { name: "Jharkhand", top: "42%", left: "27%" },
+  { name: "Chhattisgarh", top: "45%", left: "22%" },
+  { name: "Assam", top: "35%", left: "34%" },
+  { name: "Himachal Pradesh", top: "22%", left: "16%" },
+
    
 
     // International Locations
     { name: "China", top: "40%", left: "70%" },
-    { name: "Saudi Arabia", top: "49%", left: "53%" },
+    { name: "Qatar", top: "49%", left: "53%" },
     { name: "Russia", top: "20%", left: "69%" },
   ];
 
@@ -35,14 +47,14 @@ export default function IndiaMap() {
             Trusted By 100+ Clients Worldwide
           </h2>
           <p className="mt-5 text-black text-center text-lg">
-          Serving clients across 15+ Indian States along with China,
-          Saudi Arabia and Russia.
+          Serving clients across 25+ Indian States along with China,
+          Qatar and Russia.
         </p>
 
           <div className="relative w-full">
             {/* World Map */}
             <img
-              src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770397/Komo_mobaci.png"
+              src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_1600/v1781770397/Komo_mobaci.png"
               alt="World Map"
               className="w-full h-auto object-contain"
               loading="lazy"
