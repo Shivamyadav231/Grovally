@@ -31,19 +31,19 @@ export default function Navbar() {
           }`}
         >
           {/* LOGO */}
-          <Link to="/" className="flex items-center h-full overflow-visible">
-            <img
-              loading="lazy"
-                decoding="async"
-              src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770425/logoo_u4zkyt.png"
-              alt="logo"
-              className={`w-auto object-contain transition-all duration-500 hover:scale-100 ${
-                scrolled
-                  ? "h-52 scale-105"
-                  : "h-52 md:h-52 scale-125"
-              }`}
-            ></img>
-          </Link>
+          <Link to="/" className="flex items-center h-full">
+  <img
+    loading="lazy"
+    decoding="async"
+    src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770425/logoo_u4zkyt.png"
+    alt="Grovally Business Solutions Logo"
+    className={`w-auto object-contain transition-all duration-500 ${
+      scrolled
+        ? "h-16 md:h-20"
+        : "h-20 md:h-24"
+    }`}
+  />
+</Link>
 
           {/* DESKTOP MENU */}
           <ul className="hidden lg:flex items-center gap-8 text-white font-medium">

@@ -24,9 +24,11 @@ const Profile = lazy(() => import("./components/shivam/Profile.jsx"));
 const Blog = lazy(() => import("./components/pages/Blog.jsx"));
 const Grovall = lazy(() => import("./components/shivam/Grovall.jsx"));
 const Business = lazy(() => import("./components/pages/Business.jsx"));
+const  School =lazy(()=>import("./components/chat/School.jsx"));
 
 const WOf = lazy(() => import("./components/shivam/WOf.jsx"));
 const Tender = lazy(() => import("./components/shivam/Tender.jsx"));
+
 
 
 
@@ -67,6 +69,7 @@ export default function App() {
             <Route path="tender" element={<Tender />} />
             <Route path="ourservices" element={<Our />} />
             <Route path="bank" element={<Bt/>}/>
+            <Route path ="education" element={<School/>}/>
           </Route>
         </Routes>
       </Suspense>

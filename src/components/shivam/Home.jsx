@@ -26,7 +26,7 @@ const cards = [
   {
     description: "Research,analytics,Startup Growth ,Scaling Strategies,AI & Business Automation Learning",
     Image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770395/KKK_ltrp7q.png",
-    link:"/bpo"
+    link:"/education"
   },
   
   
