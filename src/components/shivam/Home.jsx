@@ -7,18 +7,18 @@ import { motion } from "framer-motion";
 const cards = [
   {
     
-    description:"it services",
+    description:"IT & Custom Software Services,AI & Automation Services ,360° Marketing/Branding Services ,LPO & KPO & BPO Services ,Business Support Services,Import / Export Services",
     Image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770387/Aaa_k7fq9t.png",
     link :"/it"
   },
   {
-    description: "Business Loan Solutions, MSME Funding Assistance, Working Capital Finance , Loan Against Property (LAP),Machinery & Equipment Finance",
+    description: "Bank Loan Services,Goverment Subsidy Services,Scheme Funding Services, Project Funding Services ,Investor Funding Services,Private Funding Services",
     Image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770410/Sss_sduj87.png",
     link:"/business"
   },
   {
     description:
-      "Government Tender Assistance,Private Tender Consultancy,Tender Identificatio,GeM Portal Registration & Support,E-Tender Submission Services",
+      "Government Tender Assistance,Private Tender Consultancy,Tender Identification,GeM Portal Registration & Support,E-Tender Submission Services",
     Image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770387/BBB_ddpa51.png",
     link : "/tender"
   },
