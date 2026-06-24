@@ -8,7 +8,6 @@ import Fql from "./components/shivam/Fql";
 import Komo from "./components/pages/Flag";
 import Chat from "./components/chat/Chat.jsx";
 
-
 export default function Layout() {
   const location = useLocation();
 
@@ -23,7 +22,6 @@ export default function Layout() {
           <>
             <Wow />
             <Testimonial />
-            
             <Fql />
             <Komo />
             <Shivam />
@@ -32,7 +30,11 @@ export default function Layout() {
       </main>
 
       <Footer />
-      <Chat />
+
+      {location.pathname !== "/grovallyAI" && (
+        <Chat />
+      )}
+
     </div>
   );
 }
