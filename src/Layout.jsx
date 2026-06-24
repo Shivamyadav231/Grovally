@@ -8,6 +8,10 @@ import Fql from "./components/shivam/Fql";
 import Komo from "./components/pages/Flag";
 import Chat from "./components/chat/Chat.jsx";
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 46ee3ee07e1e5c5578bb4cab215821a6c33939f9
 export default function Layout() {
   const location = useLocation();
 
@@ -22,6 +26,10 @@ export default function Layout() {
           <>
             <Wow />
             <Testimonial />
+<<<<<<< HEAD
+=======
+            
+>>>>>>> 46ee3ee07e1e5c5578bb4cab215821a6c33939f9
             <Fql />
             <Komo />
             <Shivam />
@@ -30,11 +38,15 @@ export default function Layout() {
       </main>
 
       <Footer />
+<<<<<<< HEAD
 
       {location.pathname !== "/grovallyAI" && (
         <Chat />
       )}
 
+=======
+      <Chat />
+>>>>>>> 46ee3ee07e1e5c5578bb4cab215821a6c33939f9
     </div>
   );
 }

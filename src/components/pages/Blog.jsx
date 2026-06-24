@@ -8,7 +8,11 @@ function Blog() {
     {
       id: 1,
       title: "The Future of Artificial Intelligence and Innovation in Business | Grovally",
+<<<<<<< HEAD
       image: "https://img.freepik.com/premium-photo/vector-digital-technology-face-artificial-intelligence_575980-36811.jpg",
+=======
+      image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781947737/future-of-ai-in-business1_whq889.jpg",
+>>>>>>> 46ee3ee07e1e5c5578bb4cab215821a6c33939f9
       shortDesc:
         "Explore how Artificial Intelligence, automation, and innovation are transforming businesses and creating new opportunities across industries.",
       content: `
@@ -161,6 +165,7 @@ The organizations that embrace change today will become the leaders of tomorrow.
     },
     {
       id:2,
+<<<<<<< HEAD
       title :" Choosing the Right Loan: Factors Every Borrower Should Consider",
       image :"https://t4.ftcdn.net/jpg/08/21/74/71/360_F_821747166_R8ub40Xh7tE0yruP7nLtNIWQtSXXPtXM.jpg",
       shortDesc: "Borrowing means taking money from a bank or lender and agreeing to repay it later, usually with interest. Financial support includes any monetary help, such as loans, grants, subsidies, ",
@@ -230,6 +235,47 @@ AI will not replace teachers but will work as a powerful assistant to create bet
 Conclusion
 
 Artificial Intelligence is becoming an important part of modern education. By using AI responsibly, students can improve their knowledge, develop new skills, and prepare themselves for future opportunities. AI-powered education is creating a smarter and more accessible learning environment for everyone.`
+=======
+      title :" ",
+      image :"https://t4.ftcdn.net/jpg/08/21/74/71/360_F_821747166_R8ub40Xh7tE0yruP7nLtNIWQtSXXPtXM.jpg",
+      shortDesc: "",
+      content:``
+
+    },
+     {
+      id:3,
+      title :" ",
+      image :"https://img.freepik.com/premium-photo/vector-digital-technology-face-artificial-intelligence_575980-36811.jpg",
+      shortDesc: "",
+      content:``
+
+    }
+    ,
+     {
+      id:4,
+      title :" ",
+      image :"https://c8.alamy.com/comp/DH139P/tender-word-on-digital-screen-global-communication-concept-DH139P.jpg",
+      shortDesc: "",
+      content:``
+
+    }
+    ,
+     {
+      id:5,
+      title :" ",
+      image :"https://digi-texx.com/wp-content/uploads/2024/02/05.-How-does-BPO-work.jpg",
+      shortDesc: "",
+      content:``
+
+    }
+    ,
+     {
+      id:6,
+      title :" ",
+      image :"https://ranjitdisha.com/wp-content/uploads/2025/09/AI-in-Education-Transforming-Classrooms.jpg",
+      shortDesc: "",
+      content:``
+>>>>>>> 46ee3ee07e1e5c5578bb4cab215821a6c33939f9
 
     }
   ];
