@@ -162,7 +162,7 @@ export default function Education() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center">
-          <span className="inline-block px-5 py-2 rounded-full bg-red-100 text-red-600 font-semibold">
+          <span className="inline-block mt-5 px-5 py-2 rounded-full bg-red-100 text-red-600 font-semibold">
             🎓 Professional Training & Certification
           </span>
 

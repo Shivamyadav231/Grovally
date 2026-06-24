@@ -11,7 +11,7 @@ function Blog() {
 
       
 
-      image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781947737/future-of-ai-in-business1_whq889.jpg",
+      image: "https://concept360web.com/wp-content/uploads/2026/06/Why-Businesses-Need-Both-AI-and-Human-Expertise-in-Financial-Planning.webp",
 
       shortDesc:
         "Explore how Artificial Intelligence, automation, and innovation are transforming businesses and creating new opportunities across industries.",
@@ -168,7 +168,7 @@ The organizations that embrace change today will become the leaders of tomorrow.
 
       title :" Choosing the Right Loan: Factors Every Borrower Should Consider",
       image :"https://t4.ftcdn.net/jpg/08/21/74/71/360_F_821747166_R8ub40Xh7tE0yruP7nLtNIWQtSXXPtXM.jpg",
-      shortDesc: "Borrowing means taking money from a bank or lender and agreeing to repay it later, usually with interest. Financial support includes any monetary help, such as loans, grants, subsidies, ",
+      shortDesc: "Borrowing means taking money from a bank or lender and agreeing to repay it later, usually with interest, ",
       content:`A loan is a financial service that helps individuals and businesses manage their financial needs. It allows people to borrow money from banks or financial institutions and repay it over a fixed period with interest.
 
 Loans play an important role in achieving major goals such as buying a home, starting a business, funding education, or handling emergency expenses.

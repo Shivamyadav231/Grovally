@@ -81,7 +81,7 @@ const innerRadius = isMobile ? 90 : 125;
     <div className="text-center mb-12">
       <h1
   className="text-3xl sm:text-5xl font-serif text-red-600"
-  style={{ WebkitTextStroke: "2px white" }}
+  
 >
   We Are Masters of Modern Technology Stacks
 </h1>

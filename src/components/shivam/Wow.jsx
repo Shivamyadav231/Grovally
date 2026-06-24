@@ -24,6 +24,17 @@ function Wow() {
   "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770393/JJ_gxwt15.png",
   "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770393/F_vchylj.png",
   "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1781770388/CC_yysiej.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1782277901/41_mjo3ce.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1782277900/37_dyxse6.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1782277899/40_dqaphv.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1782277895/39_us2v0u.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1782277895/34_jpqcwl.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1782277894/33_bhkxbs.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1782277892/36_v09isk.png",
+  
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1782277890/35_usdhg4.png",
+  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_300/v1782277890/38_ov4z6j.png"
+
 ];
 
   return (

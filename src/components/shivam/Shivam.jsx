@@ -106,7 +106,7 @@ export default function Testimonial() {
                 decoding="async"
                 src={testimonials[current].image}
                 alt={testimonials[current].name}
-                className="w-full h-[500px]  object-cover rounded-[30px]"
+                className="w-[400px] h-[400px]  object-cover rounded-[30px]"
               />
 
               <div className="absolute inset-0  rounded-[30px]" />
@@ -116,7 +116,7 @@ export default function Testimonial() {
             <div>
               
 
-              <p className="text-lg md:text-xl text-gray-700 leading-9 mt-2">
+              <p className="text-lg md:text-xl text-gray-700 leading-9 ">
                 {testimonials[current].text}
               </p>
 

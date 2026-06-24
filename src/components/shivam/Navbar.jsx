@@ -20,15 +20,16 @@ export default function Navbar() {
       <motion.nav
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="fixed top-0 left-0 w-full z-50"
+        transition={{ duration: 0.5 }} 
+        className="fixed top-0  w-full z-50"
       >
         <div
           className={`mx-auto flex items-center justify-between px-6 transition-all duration-500 ${
             scrolled
               ? "max-w-full bg-black/55 backdrop-blur-xl shadow-xl h-16"
-              : "max-w-7xl mt-4 bg-[#C90102] rounded-2xl h-20"
+              : " w-[95%] max-w-7xl mt-4 bg-[#C90102] rounded-2xl h-20"
           }`}
+          
         >
           {/* LOGO */}
           <Link to="/" className="flex items-center h-full overflow-visible">

@@ -9,58 +9,85 @@ import {
 
 export default function Contact() {
   const [form, setForm] = useState({
-    name: "shivam",
+    name: "",
     email: "",
     message: "",
   });
 
   const [status, setStatus] = useState("idle");
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!form.name || !form.email || !form.message) {
+      alert("Please fill all fields");
+      return;
+    }
+
     setStatus("sending");
 
-    setTimeout(() => {
-      console.log(form);
-      setStatus("sent");
+    try {
+      const response = await fetch(
+        "https://grovally-backend-14.onrender.com/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        }
+      );
 
-      setForm({
-        name: "",
-        email: "",
-        message: "",
-      });
-    }, 1600);
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus("sent");
+
+        setForm({
+          name: "",
+          email: "",
+          message: "",
+        });
+
+        setTimeout(() => {
+          setStatus("idle");
+        }, 3000);
+      } else {
+        alert(data.message || "Failed to send message");
+        setStatus("idle");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Server error. Please try again.");
+      setStatus("idle");
+    }
   };
 
   return (
-    <section className="relative  min-h-screen overflow-hidden bg-white text-gray-900 py-24">
-
-      {/* SOFT BACKGROUND */}
+    <section className="relative min-h-screen overflow-hidden bg-white text-gray-900 py-24">
+      {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute top-[-200px] left-[-200px] w-[500px] h-[500px] bg-red-100 blur-[150px] rounded-full" />
         <div className="absolute bottom-[-200px] right-[-200px] w-[500px] h-[500px] bg-gray-100 blur-[180px] rounded-full" />
       </div>
 
-      {/* GRID */}
       <div className="absolute inset-0 opacity-30 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
       <div className="relative mt-12 z-10 max-w-7xl mx-auto px-6">
-
-        {/* HEADER */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           className="text-center"
         >
-          <span className="px-6 py-2  rounded-full bg-red-50 border border-red-100 text-red-600 text-sm tracking-[3px]">
+          <span className="px-6 py-2 rounded-full bg-red-50 border border-red-100 text-red-600 text-sm tracking-[3px]">
             CONTACT GROVALLY
           </span>
 
           <h1 className="mt-8 text-5xl md:text-7xl font-black leading-tight">
             LET’S BUILD
-            <span className="block text-red-600">
-              THE FUTURE
-            </span>
+            <span className="block text-red-600">THE FUTURE</span>
           </h1>
 
           <p className="max-w-3xl mx-auto mt-6 text-gray-600 text-lg leading-8">
@@ -68,17 +95,15 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        {/* MAIN GRID */}
+        {/* Main Grid */}
         <div className="mt-20 grid lg:grid-cols-2 gap-10">
-
-          {/* LEFT INFO */}
+          {/* Left Side */}
           <div className="space-y-6">
-
             {[
               {
                 icon: <FaEnvelope />,
                 title: "Email",
-                value: "grovallybusinesssolutions@gmail.com",
+                value: "info@grovally.com",
               },
               {
                 icon: <FaPhoneAlt />,
@@ -96,39 +121,30 @@ export default function Contact() {
                 whileHover={{ y: -5, scale: 1.02 }}
                 className="flex items-center gap-5 bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition"
               >
-
-                <div className="text-2xl text-red-500">
-                  {item.icon}
-                </div>
+                <div className="text-2xl text-red-500">{item.icon}</div>
 
                 <div>
-                  <h3 className="text-lg font-bold">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {item.value}
-                  </p>
+                  <h3 className="text-lg font-bold">{item.title}</h3>
+                  <p className="text-gray-600">{item.value}</p>
                 </div>
-
               </motion.div>
             ))}
-
           </div>
 
-          {/* RIGHT FORM */}
+          {/* Right Side Form */}
           <div className="bg-white border border-gray-100 rounded-3xl p-10 shadow-lg">
-
-            <h2 className="text-3xl font-black">
-              Send Message
-            </h2>
+            <h2 className="text-3xl font-black">Send Message</h2>
 
             <p className="text-gray-500 mt-2">
               We usually respond within 24 hours
             </p>
 
-            <div className="mt-8 space-y-5">
-
+            <form
+              onSubmit={handleSubmit}
+              className="mt-8 space-y-5"
+            >
               <input
+                required
                 type="text"
                 placeholder="Your Name"
                 value={form.name}
@@ -139,6 +155,7 @@ export default function Contact() {
               />
 
               <input
+                required
                 type="email"
                 placeholder="Email Address"
                 value={form.email}
@@ -149,6 +166,7 @@ export default function Contact() {
               />
 
               <textarea
+                required
                 placeholder="Tell us about your project..."
                 value={form.message}
                 onChange={(e) =>
@@ -158,10 +176,10 @@ export default function Contact() {
               />
 
               <motion.button
+                type="submit"
                 whileTap={{ scale: 0.95 }}
-                onClick={handleSubmit}
-                disabled={status !== "idle"}
-                className="w-full flex items-center justify-center gap-3 py-4 rounded-xl bg-red-600 text-white font-bold hover:bg-red-700 transition"
+                disabled={status === "sending"}
+                className="w-full flex items-center justify-center gap-3 py-4 rounded-xl bg-red-600 text-white font-bold hover:bg-red-700 transition disabled:opacity-70"
               >
                 <FaPaperPlane />
 
@@ -171,10 +189,8 @@ export default function Contact() {
                   ? "Message Sent ✓"
                   : "Send Message"}
               </motion.button>
-
-            </div>
+            </form>
           </div>
-
         </div>
       </div>
     </section>
