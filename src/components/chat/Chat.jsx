@@ -108,8 +108,8 @@ export default function Chat() {
 
   return (
     <>
-      {/* Floating Button */}
-      <button
+    {/* Floating Button */}
+<button
   onClick={() => setOpen(!open)}
   className="
     fixed bottom-5 right-5 z-50
@@ -123,15 +123,14 @@ export default function Chat() {
     hover:scale-105
   "
 >
-  <span className="font-semibold text-sm">
-    Help Desk
-  </span>
-
-  <FaRobot className="text-3xl animate-bounce" />
-</button><picture>
-  <source media="(min-width: )" srcset="" />
   
-</picture>
+  <span w-24 h-10  scale-150 object-cover> Help Desk</span>
+   <FaRobot/>
+
+  
+</button>
+      
+
       {/* Chat Popup */}
       {open && (
         <div className="fixed bottom-28 right-4 z-50 w-[95%] sm:w-[420px] h-[80vh] bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col">

@@ -7,8 +7,7 @@ import { motion } from "framer-motion";
 const cards = [
   {
     
-    description:
-      "IT Services, BPO Services,KPO Services,AI & Automation Services, Marketing Services",
+    description:"it services",
     Image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770387/Aaa_k7fq9t.png",
     link :"/it"
   },
@@ -140,27 +139,37 @@ export default function Home() {
                     className="mx-auto mb-4 mt-0 lg:-mt-16 h-auto max-w-[12rem] object-contain"
                   />
                   <ul className="space-y-3 -mt-16 text-sm leading-6 text-black max-w-xs mx-auto">
-  {card.description.split(",").map((item, i) => (
+                    {card.description.split(",").map((item, i) => (
   <li key={i} className="flex items-center gap-2">
     <span className="text-red-800 font-bold text-xl flex-shrink-0">
       •
     </span>
 
-    <span className="text-left flex-1 relative inline-block cursor-pointer
-      after:content-['']
-      after:absolute
-      after:left-0
-      after:-bottom-1
-      after:h-[2px]
-      after:w-0
-      after:bg-red-600
-      after:transition-all
-      after:duration-300
-      hover:after:w-full">
+    <span
+      className="
+        text-left flex-1 cursor-pointer
+        transition-all duration-300
+        hover:font-bold
+        hover:text-red-600
+      "
+    >
+       <Link
+        to={item.link}
+        className="
+          text-left flex-1
+          transition-all duration-300
+          hover:text-red-600
+          hover:font-bold
+        "
+      >
+        {item.text}
+      </Link>
       {item.trim()}
     </span>
   </li>
 ))}
+ 
+
 </ul>
 
                   

@@ -27,7 +27,7 @@ export default function Navbar() {
           className={`mx-auto flex items-center justify-between px-6 transition-all duration-500 ${
             scrolled
               ? "max-w-full bg-black/55 backdrop-blur-xl shadow-xl h-16"
-              : " w-[95%] max-w-7xl mt-4 bg-[#C90102] rounded-2xl h-20"
+              : " max-w-7xl w-[95%] mt-6 bg-[#C90102] rounded-2xl h-20"
           }`}
           
         >
@@ -63,7 +63,7 @@ export default function Navbar() {
     to="/grovallyAI"
     className="flex items-center text-red-600 bg-white gap-2 px-4 py-2 rounded-full font-bold hover:scale-105 transition"
   >
-    
+    <FaRobot/>
     Grovally AI
   </Link>
 </li>

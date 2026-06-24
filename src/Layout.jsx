@@ -7,6 +7,7 @@ import Shivam from "./components/shivam/Shivam";
 import Fql from "./components/shivam/Fql";
 import Komo from "./components/pages/Flag";
 import Chat from "./components/chat/Chat.jsx";
+import Blog from "./components/pages/Blog.jsx";
 
 
 
@@ -26,6 +27,7 @@ export default function Layout() {
           <>
             <Wow />
             <Testimonial />
+            <Blog/>
 
 
             

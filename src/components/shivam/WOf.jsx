@@ -3,7 +3,7 @@ import React from "react";
 
 function WOf() {
   return (
-    <div className="bg-black overflow-hidden pt-20 md:pt-0">
+    <div className="bg-black overflow-hidden pt-10 md:pt-0">
       <video
         autoPlay
         muted
