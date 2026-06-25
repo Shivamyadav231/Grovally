@@ -113,10 +113,10 @@ export default function Testimonial() {
             </motion.div>
 
             {/* Content */}
-            <div>
+            <div className="text-bold  ">
               
 
-              <p className="text-lg md:text-xl text-gray-700 leading-9 ">
+              <p className="text-lg md:text-xl  text-gray-700 leading-9 ">
                 {testimonials[current].text}
               </p>
 
@@ -134,12 +134,12 @@ export default function Testimonial() {
         </AnimatePresence>
 
         {/* Dots */}
-        <div className="flex justify-center gap-4 mt-12">
+        <div className="flex justify-center gap-4">
           {testimonials.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrent(index)}
-              className={`rounded-full transition-all duration-500 ${
+              className={`rounded-full  transition-all duration-500 ${
                 current === index
                   ? "w-10 h-3 bg-red-700"
                   : "w-3 h-3 bg-gray-300 hover:bg-red-400"

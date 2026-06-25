@@ -102,7 +102,7 @@ export default function Footer() {
       href="tel:+918920817608"
       className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:text-cyan-400"
     >
-      <FaPhone />
+      <FaPhone className="rotate-180"  />
     </a>
 
     <a

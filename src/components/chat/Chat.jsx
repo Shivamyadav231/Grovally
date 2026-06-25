@@ -5,6 +5,7 @@ import {
   FaPaperPlane,
   FaUserCircle,
   FaTimes,
+  FaWhatsapp,
 } from "react-icons/fa";
 
 const serviceResponses = [
@@ -112,7 +113,7 @@ export default function Chat() {
 <button
   onClick={() => setOpen(!open)}
   className="
-    fixed bottom-5 right-5 z-50
+    fixed bottom-8 right-5 z-50
     flex items-center gap-3
     bg-red-600 hover:bg-red-700
     text-white
@@ -128,6 +129,24 @@ export default function Chat() {
    <FaRobot/>
 
   
+</button>
+<button className="fixed bottom-24 right-5 z-50
+    flex items-center gap-3
+    bg-green-600
+    
+    px-5 py-3
+    rounded-full
+    shadow-lg
+    transition-all duration-300
+    hover:scale-105">
+   <a
+        href="https://wa.me/918920817608"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex h-8 w-24 items-center justify-center rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:text-green-400"
+      >
+        <FaWhatsapp />
+      </a>
 </button>
       
 
