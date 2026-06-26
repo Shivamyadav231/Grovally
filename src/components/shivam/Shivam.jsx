@@ -65,86 +65,79 @@ export default function Testimonial() {
 
   return (
     <section className="py-24 bg-gradient-to-br from-red-50 via-white to-red-100 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: -40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-extrabold">
-            <span className="bg-gradient-to-r from-red-800 to-red-500 bg-clip-text text-transparent">
-              What Our Clients Say
-            </span>
-          </h2>
+      
+      return (
+  <section className="py-24 bg-gradient-to-br from-red-50 via-white to-red-100">
+    <div className="max-w-7xl mx-auto px-6">
 
-          <p className="mt-4 text-gray-700 text-lg max-w-3xl mx-auto">
-            Trusted by startups, enterprises, and global businesses for
-            delivering impactful digital, technology, and business solutions.
-          </p>
-        </motion.div>
-        <AnimatePresence mode="wait">
-  <motion.div
-    key={current}
-    initial={{ opacity: 0, x: 100 }}
-    animate={{ opacity: 1, x: 0 }}
-    exit={{ opacity: 0, x: -100 }}
-    transition={{ duration: 0.6 }}
-    className="flex flex-col md:flex-row  items-center gap-6 bg-white/80 backdrop-blur-xl border border-red-100 rounded-[25px] md:rounded-[40px] p-5 sm:p-6 md:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.08)]"
-  >
-    {/* Image */}
-    <motion.div
-      whileHover={{ scale: 1.03 }}
-      transition={{ duration: 0.3 }}
-      className="flex justify-center flex-shrink-0"
-    >
-      <img
-        loading="lazy"
-        decoding="async"
-        src={testimonials[current].image}
-        alt={testimonials[current].name}
-        className="w-full max-w-[320px] h-[320px] object-cover rounded-[30px]"
-      />
-    </motion.div>
+      {/* Heading */}
+      <div className="text-center mb-16">
+        <h2 className="text-3xl sm:text-5xl font-extrabold text-red-700">
+          What Our Clients Say
+        </h2>
 
-    {/* Content */}
-    <div className="flex-1 text-left">
-      <p className="text-base md:text-lg text-center text-gray-700 leading-8">
-        {testimonials[current].text}
-      </p>
-
-      <div className="mt-8 border-l-4 border-red-700 pl-5">
-        <h3 className="text-2xl md:text-3xl text-red-600 font-bold">
-          {testimonials[current].name}
-        </h3>
-
-        <p className="text-red-600 font-semibold text-base md:text-lg mt-2">
-          {testimonials[current].role}
+        <p className="mt-4 text-gray-600 text-lg max-w-2xl mx-auto">
+          Trusted by startups and global businesses for delivering impactful solutions.
         </p>
       </div>
-    </div>
-  </motion.div>
-</AnimatePresence>
 
-       
+      {/* CARD */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={current}
+          initial={{ opacity: 0, x: 80 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -80 }}
+          transition={{ duration: 0.5 }}
+          className="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row items-center gap-8 p-6 md:p-10"
+        >
 
-        {/* Dots */}
-        <div className="flex justify-center gap-4">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrent(index)}
-              className={`rounded-full  transition-all duration-500 ${
-                current === index
-                  ? "w-10 h-3 bg-red-700"
-                  : "w-3 h-3 bg-gray-300 hover:bg-red-400"
-              }`}
+          {/* IMAGE */}
+          <div className="w-full md:w-1/3 flex justify-center">
+            <img
+              src={testimonials[current].image}
+              alt={testimonials[current].name}
+              className="w-64 h-64 object-cover rounded-2xl shadow-md"
             />
-          ))}
-        </div>
+          </div>
+
+          {/* CONTENT */}
+          <div className="flex-1 text-center md:text-left">
+            <p className="text-gray-700 text-base md:text-lg leading-7">
+              {testimonials[current].text}
+            </p>
+
+            <div className="mt-8 border-l-4 border-red-600 pl-4">
+              <h3 className="text-xl md:text-2xl font-bold text-red-600">
+                {testimonials[current].name}
+              </h3>
+
+              <p className="text-gray-500 mt-1">
+                {testimonials[current].role}
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+
+      {/* DOTS */}
+      <div className="flex justify-center mt-10 gap-3">
+        {testimonials.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrent(index)}
+            className={`transition-all duration-300 rounded-full ${
+              current === index
+                ? "w-10 h-3 bg-red-700"
+                : "w-3 h-3 bg-gray-300"
+            }`}
+          />
+        ))}
       </div>
+
+    </div>
+  </section>
+);
     </section>
   );
 }
