@@ -85,53 +85,50 @@ export default function Testimonial() {
             delivering impactful digital, technology, and business solutions.
           </p>
         </motion.div>
-
         <AnimatePresence mode="wait">
-          <motion.div
-            key={current}
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.6 }}
-            className="grid md:grid-cols-2 gap-3 md:gap-7 items-center bg-white/80 backdrop-blur-xl border border-red-100 rounded-[25px] md:rounded-[40px] p-5 sm:p-6 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.08)]"
-          >
-            {/* Image */}
-            <motion.div
-              whileHover={{ scale: 1.03 }}
-              transition={{ duration: 0.3 }}
-              className="relative overflow-hidden rounded-[30px]"
-            >
-              <img
-                loading="lazy"
-                decoding="async"
-                src={testimonials[current].image}
-                alt={testimonials[current].name}
-                className="w-[400px] h-[400px]  object-cover rounded-[30px]"
-              />
+  <motion.div
+    key={current}
+    initial={{ opacity: 0, x: 100 }}
+    animate={{ opacity: 1, x: 0 }}
+    exit={{ opacity: 0, x: -100 }}
+    transition={{ duration: 0.6 }}
+    className="flex flex-col md:flex-row  items-center gap-6 bg-white/80 backdrop-blur-xl border border-red-100 rounded-[25px] md:rounded-[40px] p-5 sm:p-6 md:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.08)]"
+  >
+    {/* Image */}
+    <motion.div
+      whileHover={{ scale: 1.03 }}
+      transition={{ duration: 0.3 }}
+      className="flex justify-center flex-shrink-0"
+    >
+      <img
+        loading="lazy"
+        decoding="async"
+        src={testimonials[current].image}
+        alt={testimonials[current].name}
+        className="w-full max-w-[320px] h-[320px] object-cover rounded-[30px]"
+      />
+    </motion.div>
 
-              <div className="absolute inset-0  rounded-[30px]" />
-            </motion.div>
+    {/* Content */}
+    <div className="flex-1 text-left">
+      <p className="text-base md:text-lg text-center text-gray-700 leading-8">
+        {testimonials[current].text}
+      </p>
 
-            {/* Content */}
-            <div className="text-bold  ">
-              
+      <div className="mt-8 border-l-4 border-red-700 pl-5">
+        <h3 className="text-2xl md:text-3xl text-red-600 font-bold">
+          {testimonials[current].name}
+        </h3>
 
-              <p className="text-lg md:text-xl  text-gray-700 leading-9 ">
-                {testimonials[current].text}
-              </p>
+        <p className="text-red-600 font-semibold text-base md:text-lg mt-2">
+          {testimonials[current].role}
+        </p>
+      </div>
+    </div>
+  </motion.div>
+</AnimatePresence>
 
-              <div className="mt-8 border-l-4 border-red-700 pl-5">
-                <h3 className="text-3xl text-red-600 font-bold ">
-                  {testimonials[current].name}
-                </h3>
-
-                <p className="text-red-600 font-semibold text-lg mt-2">
-                  {testimonials[current].role}
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+       
 
         {/* Dots */}
         <div className="flex justify-center gap-4">

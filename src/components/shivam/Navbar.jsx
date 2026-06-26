@@ -1,5 +1,5 @@
 ﻿import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaRobot, FaTimes } from "react-icons/fa";
 
@@ -10,17 +10,41 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const menuRef = useRef(null);
+  
   const [openMenu, setOpenMenu] = useState(null);
-
-const toggleServices = () => {
-  setOpenMenu(openMenu === "services" ? null : "services");
+  const toggleMenu = (menu) => {
+  setOpenMenu(menu);
 };
+
+
+
+
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (
+      menuRef.current &&
+      !menuRef.current.contains(event.target)
+    ) {
+      setOpenMenu(null);
+    }
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+
+  return () => {
+    document.removeEventListener(
+      "mousedown",
+      handleClickOutside
+    );
+  };
+}, []);
 
   return (
     <>
@@ -53,75 +77,81 @@ const toggleServices = () => {
     }`}
   />
   <div>
-  <ul className="hidden lg:flex items-center gap-8 text-white font-medium">
-    <li>
-      <Link to="/" className="hover:text-gray-200 transition">
-        Home
-      </Link>
-    </li>
+    <ul className="hidden lg:flex items-center gap-8 text-white font-medium">
+  <li>
+    <Link to="/" className="hover:text-gray-200 transition">
+      Home
+    </Link>
+  </li>
 
-    {/* SERVICES */}
-    <li className="relative">
-      <button
-        onClick={toggleServices}
-        className="hover:text-gray-200 transition font-semibold"
-      >
-        Services
-      </button>
-    </li>
+  {/* SERVICES */}
+  <li className="relative">
+    <button
+      onClick={() => toggleMenu("services")}
+      className="hover:text-gray-200 transition font-semibold"
+    >
+      Services
+    </button>
+  </li>
 
-    <li>
-      <Link to="/ourservices" className="hover:text-gray-200 transition">
-        Our Services
-      </Link>
-    </li>
+  {/* OUR SERVICES */}
+  <li className="relative">
+    <button
+      onClick={() => toggleMenu("ourservices")}
+      className="hover:text-gray-200 transition"
+    >
+      Our Services
+    </button>
+  </li>
 
-    <li>
-      <Link to="/tender" className="hover:text-gray-200 transition">
-        Tender
-      </Link>
-    </li>
+  <li>
+    <Link to="/tender" className="hover:text-gray-200 transition">
+      Tender
+    </Link>
+  </li>
 
-    <li>
-      <Link to="/blog" className="hover:text-gray-200 transition">
-        Blog
-      </Link>
-    </li>
+  <li>
+    <Link to="/blog" className="hover:text-gray-200 transition">
+      Blog
+    </Link>
+  </li>
 
-    <li>
-      <Link to="/about" className="hover:text-gray-200 transition">
-        About
-      </Link>
-    </li>
+  <li>
+    <Link to="/about" className="hover:text-gray-200 transition">
+      About
+    </Link>
+  </li>
 
-    <li>
-      <Link to="/contact" className="hover:text-gray-200 transition">
-        Contact
-      </Link>
-    </li>
+  <li>
+    <Link to="/contact" className="hover:text-gray-200 transition">
+      Contact
+    </Link>
+  </li>
 
-    <li>
-      <Link
-        to="/grovallyAI"
-        className="flex items-center gap-2 bg-white text-red-600 px-4 py-2 rounded-full font-bold hover:scale-105 transition"
-      >
-        <FaRobot />
-        Grovally AI
-      </Link>
-    </li>
-  </ul>
+  <li>
+    <Link
+      to="/grovallyAI"
+      className="flex items-center gap-2 bg-white text-red-600 px-4 py-2 rounded-full font-bold hover:scale-105 transition"
+    >
+      <FaRobot />
+      Grovally AI
+    </Link>
+  </li>
+</ul>
+  
 
   {/* MEGA MENU */}
   <AnimatePresence>
-    {openMenu && (
+     {openMenu === "services" && (
       <motion.div
+       ref={menuRef}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 20 }}
         transition={{ duration: 0.25 }}
         className="fixed left-0 top-[110px] w-full bg-white shadow-2xl z-50"
       >
-        <div className="max-w-7xl mx-auto py-12 px-8 grid grid-cols-5 gap-10">
+        <div className="max-w-7xl mx-auto py-12 px-8 grid grid-cols-6 gap-10">
           {/* IT Services */}
           <div>
             <h3 className="text-red-600 font-bold mb-5">
@@ -133,15 +163,24 @@ const toggleServices = () => {
                 <Link to="/web-development">Web Development</Link>
               </li>
               <li>
-                <Link to="/app-development">App Development</Link>
+                <Link to="/app-development">ERP software </Link>
               </li>
               <li>
                 <Link to="/software-development">
-                  Software Development
+                 Real Estate Software
                 </Link>
               </li>
               <li>
-                <Link to="/uiux">UI / UX Design</Link>
+                <Link to="/uiux">CRM Softwarw</Link>
+              </li>
+              <li>
+                <Link >Accounting Software</Link>
+              </li>
+              <li>
+                <Link >MicroFinance Software</Link>
+              </li>
+              <li>
+                <Link >Nidhi Software</Link>
               </li>
             </ul>
           </div>
@@ -149,14 +188,18 @@ const toggleServices = () => {
           {/* AI */}
           <div>
             <h3 className="text-red-600 font-bold mb-5">
-              AI Solutions
+              App Development
             </h3>
 
             <ul className="space-y-3 text-gray-700 font-semibold">
-              <li>AI Chatbot</li>
-              <li>Automation</li>
-              <li>Machine Learning</li>
-              <li>Data Analytics</li>
+              <li>Ngo App</li>
+              <li>E-Commerce App</li>
+              <li>Food Delivary App</li>
+              <li>Hotel Booking App</li>
+              <li>Real Estate App</li>
+              <li> Education App</li>
+              <li> Bike Taxi/Mobility</li>
+              <li></li>
             </ul>
           </div>
 
@@ -167,10 +210,14 @@ const toggleServices = () => {
             </h3>
 
             <ul className="space-y-3 text-gray-700 font-semibold">
-              <li>Customer Support</li>
-              <li>Call Center</li>
-              <li>Back Office</li>
-              <li>Email Support</li>
+              <li>Customer Support Services</li>
+              <li>Inbound Call Support</li>
+              <li>Outbound Call Support</li>
+              <li>Email & Chat Support</li>
+              <li>Telemarketing & Lead Generation</li>
+              <li>Market Research & Business Analysis</li>
+              <li>Data Analytics & Business Intelligence</li>
+              
             </ul>
           </div>
 
@@ -182,9 +229,14 @@ const toggleServices = () => {
 
             <ul className="space-y-3 text-gray-700 font-semibold">
               <li>SEO</li>
-              <li>Social Media</li>
-              <li>Content Marketing</li>
+              <li>SMO</li>
               <li>PPC Ads</li>
+              <li>Content Marketing</li>
+              
+              <li>Social Media Support</li>
+              <li>Influencer Marketing</li>
+              <li> Affiliate Marketing</li>
+              <li></li>
             </ul>
           </div>
 
@@ -201,12 +253,112 @@ const toggleServices = () => {
               <li>Project Funding Services</li>
             </ul>
           </div>
+          <div>
+             <h3 className="text-red-600 font-bold mb-5">Graphics Design</h3>
+            <ul className="space-y-3 text-gray-700 font-semibold">
+             
+              <li>Logo Design</li>
+              <li> Letter Head Design</li>
+              <li>Company Profile Design</li>
+              <li> Branding Material</li>
+              <li>Visiting Card </li>
+              <li> Icon Design</li>
+              <li> 2D Character Design</li>
+            </ul>
+          </div>
         </div>
+
       </motion.div>
     )}
   </AnimatePresence>
+
+   <AnimatePresence>
+    {openMenu === "ourservices" &&  (
+    <motion.div
+     ref={menuRef}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 20 }}
+      transition={{ duration: 0.25 }}
+      className="fixed left-0 top-[110px] w-full bg-white shadow-2xl z-50"
+    >
+      <div className="max-w-7xl mx-auto py-12 px-8 grid grid-cols-5 gap-10">
+
+        <div>
+          <h3 className="text-red-600 font-bold mb-5">
+            Education & Health
+          </h3>
+          <ul className="space-y-3 text-gray-700 font-semibold">
+            <li>School Management Software</li>
+            <li>College Management Software</li>
+            <li>Learning Management System</li>
+            <li>Hospital Management Software</li>
+            <li>Clinic Management Software</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-red-600 font-bold mb-5">
+            Business Software
+          </h3>
+          <ul className="space-y-3 text-gray-700 font-semibold">
+            <li>Real Estate Software</li>
+            <li>HRMS Software</li>
+            <li>NGO Portal Software</li>
+            <li>Inventory Management Software</li>
+            <li>E-Commerce Software</li>
+            <li>Quick-Commerce Software</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-red-600 font-bold mb-5">
+            AI Products
+          </h3>
+          <ul className="space-y-3 text-gray-700 font-semibold">
+            <li>AI Attendance System</li>
+            <li>AI Chatbot Software</li>
+            <li>AI Content Creator</li>
+            <li>AI Website Builder</li>
+            <li>AI ERP Assistant</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-red-600 font-bold mb-5">
+            Industry Solutions
+          </h3>
+          <ul className="space-y-3 text-gray-700 font-semibold">
+            <li>Hotel Management Software</li>
+            <li>Restaurant Software</li>
+            <li>Food Delivery Software</li>
+            <li>Tour & Travel Software</li>
+            <li>Logistics Software</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-red-600 font-bold mb-5">
+            Tendar Services
+          </h3>
+          <ul className="space-y-3 text-gray-700 font-semibold">
+            <li>Land Auction Tender</li>
+            <li>Commercial Plot Tender</li>
+            <li>Industrial Plot Tender</li>
+            <li>Government Land Lease Tender</li>
+            <li>Agricultural Land Tender</li>
+            <li>Residential Plot Tender</li>
+            <li>Property Development Tender</li>
+            <li>Land Acquisition Tender</li>
+          </ul>
+        </div>
+
+      </div>
+    </motion.div>
+  )}
+</AnimatePresence>
 </div>
-  
+
 
 
 

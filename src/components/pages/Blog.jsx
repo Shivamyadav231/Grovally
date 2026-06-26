@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState,useEffect,useRef } from "react";
 import { motion } from "framer-motion";
+function Blog({limit}) {
 
-function Blog() {
   const [selectedBlog, setSelectedBlog] = useState(null);
 
   const blogs = [
@@ -11,7 +12,7 @@ function Blog() {
 
       
 
-      image: "https://concept360web.com/wp-content/uploads/2026/06/Why-Businesses-Need-Both-AI-and-Human-Expertise-in-Financial-Planning.webp",
+      image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/v1782448630/Gemini_Generated_Image_4j70sc4j70sc4j70_paimp0.png",
 
       shortDesc:
         "Explore how Artificial Intelligence, automation, and innovation are transforming businesses and creating new opportunities across industries.",
@@ -167,7 +168,7 @@ The organizations that embrace change today will become the leaders of tomorrow.
       id:2,
 
       title :" Choosing the Right Loan: Factors Every Borrower Should Consider",
-      image :"https://t4.ftcdn.net/jpg/08/21/74/71/360_F_821747166_R8ub40Xh7tE0yruP7nLtNIWQtSXXPtXM.jpg",
+      image :"https://res.cloudinary.com/dzu9qjxqa/image/upload/v1782448629/Gemini_Generated_Image_59mz3a59mz3a59mz_goleto.png",
       shortDesc: "Borrowing means taking money from a bank or lender and agreeing to repay it later, usually with interest, ",
       content:`A loan is a financial service that helps individuals and businesses manage their financial needs. It allows people to borrow money from banks or financial institutions and repay it over a fixed period with interest.
 
@@ -192,7 +193,7 @@ Loans can be a powerful financial solution when used responsibly. Understanding 
      {
       id:6,
       title :" AI in Education: How Artificial Intelligence is Transforming Learning and Student Success",
-      image :"https://ranjitdisha.com/wp-content/uploads/2025/09/AI-in-Education-Transforming-Classrooms.jpg",
+      image :"https://res.cloudinary.com/dzu9qjxqa/image/upload/v1782448630/Gemini_Generated_Image_gj9pwbgj9pwbgj9p_cb9apm.png",
       shortDesc: "Artificial Intelligence (AI) is transforming education by making learning more personalized, interactive, and accessible for students.",
       content:`Artificial Intelligence (AI) is changing the way students learn and teachers deliver education. With the help of advanced technologies, AI is making education more personalized, accessible, and effective.
 
@@ -2494,13 +2495,30 @@ That subtle shift in thinking is one of the defining characteristics that separa
 
   ];
 
+  // Latest blog sabse upar
+  const latestBlogs = [...blogs]
+  .sort((a, b) => b.id - a.id)
+  .slice(0, 3);
+
+const [currentBlog, setCurrentBlog] = useState(0);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentBlog((prev) => (prev + 1) % latestBlogs.length);
+  }, 3000);
+
+  return () => clearInterval(interval);
+}, [latestBlogs.length]);
+  
+  
+
   return (
-    <section className="min-h-screen bg-slate-50  top-10 py-20 px-4">
+    <section className="min-h-screen bg-slate-50 py-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center top-10 mb-16">
-         <span className="inline-block mt-10 px-4 py-2 rounded-full bg-red-100 text-red-600 font-semibold text-sm">
-  Grovally Insights
-</span>
+        <div className="text-center mb-16">
+          <span className="inline-block mt-10 px-4 py-2 rounded-full bg-red-100 text-red-600 font-semibold text-sm">
+            Grovally Insights
+          </span>
 
           <h1 className="mt-5 text-5xl font-extrabold text-red-700">
             Latest Blogs & Articles
@@ -2511,77 +2529,47 @@ That subtle shift in thinking is one of the defining characteristics that separa
             digital marketing trends, and technology insights.
           </p>
         </div>
-
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogs.map((blog) => (
-            <motion.div
-              key={blog.id}
-              whileHover={{ y: -8 }}
-              className="overflow-hidden rounded-3xl  bg-white shadow-lg"
-            >
-              <img
-                src={
-                  blog.image ||
-                  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781947737/future-of-ai-in-business1_whq889.jpg"
-                }
-                alt={blog.title}
-                className="h-45 w-full  object-contain"
-              />
+  {latestBlogs
+    .slice(currentBlog)
+    .concat(latestBlogs.slice(0, currentBlog))
+    .map((blog) => (
+      <motion.div
+        key={blog.id}
+        whileHover={{ y: -8 }}
+        className="overflow-hidden rounded-3xl bg-white shadow-lg"
+      >
+        <img
+          src={blog.image}
+          alt={blog.title}
+          className="h-52 w-full object-cover"
+        />
 
-              <div className="p-6">
-                <span className="text-red-600 font-semibold text-sm">
-                  Technology & Innovation
-                </span>
+        <div className="p-6">
+          <span className="text-red-600 font-semibold text-sm">
+            Technology & Innovation
+          </span>
 
-                <h2 className="mt-3 text-2xl font-bold text-slate-900">
-                  {blog.title}
-                </h2>
+          <h2 className="mt-3 text-2xl font-bold text-slate-900">
+            {blog.title}
+          </h2>
 
-                <p className="mt-3 text-slate-600">
-                  {blog.shortDesc}
-                </p>
+          <p className="mt-3 text-slate-600">
+            {blog.shortDesc}
+          </p>
 
-                <button
-                  onClick={() => setSelectedBlog(blog)}
-                  className="mt-5 text-red-600 font-semibold hover:text-red-700"
-                >
-                  Read More →
-                </button>
-              </div>
-            </motion.div>
-          ))}
+          <button
+            onClick={() => setSelectedBlog(blog)}
+            className="mt-5 text-red-600 font-semibold hover:text-red-700"
+          >
+            Read More →
+          </button>
         </div>
+      </motion.div>
+    ))}
+</div>
 
-        {selectedBlog && (
-          <div className="fixed inset-0 z-50 bg-black/70 overflow-y-auto p-5">
-            <div className="max-w-5xl mx-auto bg-white rounded-3xl p-8 mt-10">
-              <button
-                onClick={() => setSelectedBlog(null)}
-                className="float-right text-2xl font-bold text-red-600"
-              >
-                ✕
-              </button>
-
-              <h2 className="text-4xl font-bold text-red-700 mb-6">
-                {selectedBlog.title}
-              </h2>
-
-              <img
-                src={
-                  selectedBlog.image ||
-                  "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_600/v1781947737/future-of-ai-in-business1_whq889.jpg"
-                }
-                alt={selectedBlog.title}
-                className="w-full h-30 object-contain rounded-2xl mb-8"
-              />
-
-              <div className="whitespace-pre-line text-gray-700 leading-8">
-                {selectedBlog.content}
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
+       </div>
     </section>
   );
 }

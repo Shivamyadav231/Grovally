@@ -33,6 +33,7 @@ const cards = [
 
 export default function Home() {
   const [search, setSearch] = useState("");
+  
 
   const filteredCards = cards.filter((card) =>
     (card.description || "")

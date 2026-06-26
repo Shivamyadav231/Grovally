@@ -27,7 +27,7 @@ export default function Layout() {
           <>
             <Wow />
             <Testimonial />
-            <Blog/>
+            <Blog limit={3} />
 
 
             
