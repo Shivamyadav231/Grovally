@@ -14,8 +14,10 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   
   const [openMenu, setOpenMenu] = useState(null);
   const toggleMenu = (menu) => {
-  setOpenMenu(menu);
+  setOpenMenu((prev) => (prev === menu ? null : menu));
 };
+
+
 
 
 
@@ -85,24 +87,25 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   </li>
 
   {/* SERVICES */}
-  <li className="relative">
-    <button
-      onClick={() => toggleMenu("services")}
-      className="hover:text-gray-200 transition font-semibold"
-    >
-      Services
-    </button>
-  </li>
+  <li
+  className="relative"
+  onMouseEnter={() => setOpenMenu("services")}
+>
+  <button className="hover:text-gray-200 transition">
+    Services
+  </button>
+</li>
 
-  {/* OUR SERVICES */}
-  <li className="relative">
-    <button
-      onClick={() => toggleMenu("ourservices")}
-      className="hover:text-gray-200 transition"
-    >
-      Our Services
-    </button>
-  </li>
+<li
+  className="relative"
+  onMouseEnter={() => setOpenMenu("ourservices")}
+>
+  <button className="hover:text-gray-200 transition">
+    Our Services
+  </button>
+</li>
+
+  
 
   <li>
     <Link to="/tender" className="hover:text-gray-200 transition">
@@ -145,6 +148,8 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
      {openMenu === "services" && (
       <motion.div
        ref={menuRef}
+        onMouseEnter={() => setOpenMenu("services")}
+        onMouseLeave={() => setOpenMenu(null)}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 20 }}
@@ -276,6 +281,8 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
     {openMenu === "ourservices" &&  (
     <motion.div
      ref={menuRef}
+      onMouseEnter={() => setOpenMenu("ourservices")}
+      onMouseLeave={() => setOpenMenu(null)}
     
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}

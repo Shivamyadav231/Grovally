@@ -204,16 +204,16 @@ export default function BPO() {
 
           </div>
 
-          <h1 className="mt-8 text-6xl font-black leading-tight lg:text-7xl">
+          <h1 className="mt-8 text-6xl text-red-600 leading-tight lg:text-7xl">
 
             Smart BPO
-            <br />
+            
 
             Solutions
 
           </h1>
 
-          <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-slate-400">
+          <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-black">
 
             We combine AI automation, intelligent
             workflows, and human expertise to

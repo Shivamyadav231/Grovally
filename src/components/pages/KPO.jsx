@@ -107,7 +107,7 @@ function KPO() {
           className="mb-20 text-center"
         >
 
-          <div className="inline-flex rounded-full border border-red-500 bg-violet-500/10 px-6 py-2 text-sm tracking-[0.3em] text-violet-300">
+          <div className="inline-flex rounded-full border border-red-500 bg-violet-500/10 px-6 py-2 text-sm tracking-[0.3em] text-red-300">
 
             KPO SERVICES
 
@@ -116,13 +116,13 @@ function KPO() {
           <h1 className="mt-8 text-6xl font-black text-red-700 leading-tight lg:text-7xl">
 
             Knowledge
-            <br />
+            
 
             Process Outsourcing
 
           </h1>
 
-          <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-slate-400">
+          <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-black">
 
             Smart research, AI-driven analytics,
             financial forecasting, and strategic
