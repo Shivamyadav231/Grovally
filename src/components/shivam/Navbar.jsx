@@ -104,10 +104,15 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   onMouseEnter={() => setOpenMenu("ourservices")}
 >
   <button className="hover:text-gray-200 transition">
-    Our Services
+    Our Product
   </button>
 </li>
 
+  <li>
+    <Link to="/news" className="hover:text-gray-200 transition">
+      News
+    </Link>
+  </li>
   
 
   
@@ -119,16 +124,33 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   </li>
 
   <li>
-    <Link to="/about" className="hover:text-gray-200 transition">
-      About
+    <Link to="/finance" className="hover:text-gray-200 transition">
+      Tools
     </Link>
   </li>
 
-  <li>
-    <Link to="/contact" className="hover:text-gray-200 transition">
-      Contact
-    </Link>
-  </li>
+
+  <li className="relative group">
+  <span className="cursor-pointer hover:text-gray-200">
+    About
+  </span>
+
+  <ul className="absolute hidden group-hover:block bg-white text-black rounded-lg shadow-lg p-2">
+    <li>
+      <Link to="/about" className="block px-4 py-2 hover:bg-gray-100">
+        Comapny OverView
+      </Link>
+    </li>
+    <li>
+      <Link to="/our-team" className="block px-4 py-2 hover:bg-gray-100">
+        Our Team
+      </Link>
+    </li>
+
+  </ul>
+</li>
+
+  
 
   <li>
     <Link
@@ -164,18 +186,18 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
             <ul className="space-y-3 text-gray-700 font-semibold">
               <li>
-                <Link to="/web-development">Web Development</Link>
+                Web Development
               </li>
               <li>
-                <Link to="/app-development">ERP software </Link>
+               ERP software
               </li>
               <li>
-                <Link to="/software-development">
-                 Real Estate Software
-                </Link>
+               
+                
+                Real Estate Software
               </li>
               <li>
-                <Link to="/uiux">CRM Softwarw</Link>
+                CRM Softwarw
               </li>
               <li>
                 <Link >Accounting Software</Link>
@@ -187,7 +209,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
                 <Link >Nidhi Software</Link>
               </li>
             </ul>
-             <button  onClick={() => navigate("/it")} className=" flex items-center gap-2 bg-black text-red-600 px-4 py-2 rounded-full font-bold hover:scale-105 transition  ">View More</button>
+             <button  onClick={() => navigate("/it")} className=" mt-6 flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition  ">View More</button>
           </div>
 
           {/* AI */}
@@ -206,7 +228,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
               <li> Bike Taxi/Mobility</li>
               
             </ul>
-             <button  onClick={() => navigate("/contact")} className="flex items-center gap-2 bg-black text-red-600 px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
+             <button  onClick={() => navigate("/app-services")} className=" mt-6 flex items-center gap-2  bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
           </div>
 
           {/* BPO */}
@@ -221,11 +243,11 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
               <li>Outbound Call Support</li>
               <li>Email & Chat Support</li>
               <li>Telemarketing & Lead Generation</li>
-              <li>Market Research & Business Analysis</li>
-              <li>Data Analytics & Business Intelligence</li>
+              <li>Market Research </li>
+            
               
             </ul>
-             <button  onClick={() => navigate("/bpo")} className="flex items-center gap-2 bg-black text-red-600 px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
+             <button  onClick={() => navigate("/bpo")} className=" mt-4 flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
           </div>
 
           {/* Marketing */}
@@ -244,7 +266,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
               <li>Influencer Marketing</li>
               <li> Affiliate Marketing</li>
               <li></li>
-               <button  onClick={() => navigate("/contact")} className=" flex items-center gap-2 bg-black text-red-600 px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
+               <button  onClick={() => navigate("/Marketing")} className=" mt-16 flex items-center gap-2  bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
             </ul>
           </div>
 
@@ -260,7 +282,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
               <li>Scheme Funding Services</li>
               <li>Project Funding Services</li>
             </ul>
-             <button  onClick={() => navigate("/finance")} className=" flex items-center gap-2 bg-black text-red-600 px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
+             <button  onClick={() => navigate("/finance")} className="  mt-12 flex items-center gap-2  bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
           </div>
           <div>
              <h3 className="text-red-600 font-bold mb-5">Graphics Design</h3>
@@ -272,9 +294,9 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
               <li> Branding Material</li>
               <li>Visiting Card </li>
               <li> Icon Design</li>
-              <li> 2D Character Design</li>
+              
             </ul>
-            <button  onClick={() => navigate("/contact")} className="flex items-center gap-2 bg-black text-red-600 px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
+            <button  onClick={() => navigate("/graphics")} className=" mt-4 flex items-center gap-2  bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
           </div>
         </div>
 
@@ -297,20 +319,25 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
     >
       <div className="max-w-7xl mx-auto py-12 px-8 grid grid-cols-5 gap-10">
 
-        <div>
-          <h3 className="text-red-600 font-bold mb-5">
-            Education & Health
-          </h3>
-          <ul className="space-y-3 text-gray-700 font-semibold">
-            <li>School Management Software</li>
-            <li>College Management Software</li>
-            <li>Learning Management System</li>
-            <li>Hospital Management Software</li>
-            <li>Clinic Management Software</li>
-          </ul>
-           <button  onClick={() => navigate("/contact")} className=" flex items-center gap-2 bg-black text-red-600 px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
-        </div>
+        <div className="flex flex-col">
+  <h3 className="text-red-600 font-bold mb-5">
+    Education & Health
+  </h3>
 
+  <ul className="space-y-3 text-gray-700 font-semibold">
+    <li>School Management Software</li>
+    <li>College Management Software</li>
+    <li>Learning Management System</li>
+    <li>Hospital Management Software</li>
+  </ul>
+
+  <button
+    onClick={() => navigate("/it")}
+    className="mt-6 flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition w-fit"
+  >
+    View More
+  </button>
+</div>
         <div>
           <h3 className="text-red-600 font-bold mb-5">
             Business Software
@@ -323,7 +350,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
             <li>E-Commerce Software</li>
             <li>Quick-Commerce Software</li>
           </ul>
-           <button  onClick={() => navigate("/contact")} className=" flex items-center gap-2 bg-black text-red-600 px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
+           <button  onClick={() => navigate("/networking")} className=" mt-6 flex items-center gap-2  bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
         </div>
 
         <div>
@@ -337,7 +364,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
             <li>AI Website Builder</li>
             <li>AI ERP Assistant</li>
           </ul>
-           <button  onClick={() => navigate("/contact")} className=" flex items-center gap-2 bg-black text-red-600 px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
+           <button  onClick={() => navigate("/ai-services")} className=" mt-20 flex items-center gap-2  bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
         </div>
 
         <div>
@@ -351,7 +378,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
             <li>Tour & Travel Software</li>
             <li>Logistics Software</li>
           </ul>
-           <button  onClick={() => navigate("/contact")} className=" flex items-center gap-2 bg-black text-red-600 px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
+           <button  onClick={() => navigate("/app-services")} className=" mt-20 flex items-center gap-2  bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
         </div>
 
         <div>
@@ -365,10 +392,9 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
             <li>Government Land Lease Tender</li>
             <li>Agricultural Land Tender</li>
             <li>Residential Plot Tender</li>
-            <li>Property Development Tender</li>
-            <li>Land Acquisition Tender</li>
+           
           </ul>
-           <button  onClick={() => navigate("/tender")} className=" flex items-center gap-2 bg-black text-red-600 px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
+           <button  onClick={() => navigate("/tender")} className="mt-6 flex items-center gap-2  bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
         </div>
 
       </div>

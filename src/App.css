@@ -14,7 +14,7 @@
 
 
 .slow-spin {
-  animation: slowSpin 12s linear infinite;
+  animation: slowSpin 5s linear infinite;
 }
 @keyframes orbitClockwise {
   from {
