@@ -88,6 +88,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
       Home
     </Link>
   </li>
+  
   <li className="relative group">
   {/* Menu Button */}
   <button className="py-7 text-white hover:text-gray-200 transition">
@@ -545,6 +546,9 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
     </div>
   </div>
 </li>
+<li>
+    <Link className="hover:text-red-500"> Tenders</Link>
+  </li>
 
   
 
@@ -784,7 +788,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
       to="/grovallyAI"
       className="flex items-center gap-2 bg-white text-red-600 px-4 py-2 rounded-full font-bold hover:scale-105 transition"
     >
-      <FaRobot />
+      
       Grovally AI
     </Link>
   </li>
@@ -805,9 +809,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
           {/* LOGIN / SIGNUP */}
           <div className="hidden lg:flex items-center gap-4">
-            <Link to="/login" className=" text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition">
-              Login
-            </Link>
+            
 
             <Link
               to="/signup"
@@ -867,21 +869,15 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 </Link>
 
               <div className="mt-10 grid grid-cols-2 gap-4">
+                
                 <Link
-                  to="/login"
-                  onClick={() => setMenuOpen(false)}
-                  className="py-4 rounded-xl border border-white/20 text-center"
-                >
-                  Login
-                </Link>
+              to="/signup"
+              className=" text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition"
+            >
+              Signup
+            </Link>
 
-                <Link
-                  to="/signup"
-                  onClick={() => setMenuOpen(false)}
-                  className="py-4 rounded-xl bg-cyan-400 text-black font-bold text-center"
-                >
-                  Signup
-                </Link>
+                
               </div>
             </div>
           </motion.div>
