@@ -88,65 +88,692 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
       Home
     </Link>
   </li>
-
-  {/* SERVICES */}
-  <li
-  className="relative"
-  onMouseEnter={() => setOpenMenu("services")}
->
-  <button className="hover:text-gray-200 transition">
-    Services
-  </button>
-</li>
-
-<li
-  className="relative"
-  onMouseEnter={() => setOpenMenu("ourservices")}
->
-  <button className="hover:text-gray-200 transition">
-    Our Product
-  </button>
-</li>
-
-  <li>
-    <Link to="/news" className="hover:text-gray-200 transition">
-      News
-    </Link>
-  </li>
-  
-
-  
-
-  <li>
-    <Link to="/blog" className="hover:text-gray-200 transition">
-      Blog
-    </Link>
-  </li>
-
-  <li>
-    <Link to="/finance" className="hover:text-gray-200 transition">
-      Tools
-    </Link>
-  </li>
-
-
   <li className="relative group">
+  {/* Menu Button */}
+  <button className="py-7 text-white hover:text-gray-200 transition">
+    Products
+  </button>
+
+  {/* Mega Menu */}
+  <div
+    className="
+      fixed
+      left-0
+      right-0
+      top-[105px]
+      z-50
+
+      opacity-0
+      invisible
+      group-hover:opacity-100
+      group-hover:visible
+
+      transition-all
+      duration-300
+    "
+  >
+    <div
+      className="
+        max-w-7xl
+        mx-auto
+        bg-white
+        rounded-2xl
+        shadow-2xl
+        p-10
+      "
+    >
+      <div className="grid grid-cols-4 gap-10">
+
+        {/* AI Products */}
+        <div>
+          <h3 className="text-red-600 font-bold mb-5 border-b pb-2">
+            AI Products
+          </h3>
+
+          <ul className="space-y-3 text-gray-700">
+            <li><Link to="/ai-services" className="hover:text-red-600">AI Chatbot</Link></li>
+            <li><Link to="/ai-services" className="hover:text-red-600">AI Attendance System</Link></li>
+            <li><Link to="/ai-services" className="hover:text-red-600">AI Website Builder</Link></li>
+            <li><Link to="/ai-services" className="hover:text-red-600">AI ERP Assistant</Link></li>
+            <li><Link to="/ai-services" className="hover:text-red-600">AI Content Creator</Link></li>
+            <li><Link to="/ai-services" className="hover:text-red-600">AI Business Automation</Link></li>
+            <li><Link to="/ai-services" className="hover:text-red-600">AI Voice Assistant</Link></li>
+          </ul>
+        </div>
+
+        {/* Business Software */}
+        <div>
+          <h3 className="text-red-600 font-bold mb-5 border-b pb-2">
+            Business Software
+          </h3>
+
+          <ul className="space-y-3 text-gray-700">
+            <li><Link to="/erp-software" className="hover:text-red-600">ERP Software</Link></li>
+            <li><Link to="/crm-software" className="hover:text-red-600">CRM Software</Link></li>
+            <li><Link to="/hrms-software" className="hover:text-red-600">HRMS Software</Link></li>
+            <li><Link to="/accounting-software" className="hover:text-red-600">Accounting Software</Link></li>
+            <li><Link to="/inventory-management-software" className="hover:text-red-600">Inventory Management Software</Link></li>
+            <li><Link to="/hotel-management-software" className="hover:text-red-600">Hotel Management Software</Link></li>
+            <li><Link to="/restaurant-software" className="hover:text-red-600">Restaurant Software</Link></li>
+            <li><Link to="/logistics-software" className="hover:text-red-600">Logistics Software</Link></li>
+            <li><Link to="/ngo-management-software" className="hover:text-red-600">NGO Management Software</Link></li>
+            <li><Link to="/real-estate-software" className="hover:text-red-600">Real Estate Software</Link></li>
+            <li><Link to="/microfinance-software" className="hover:text-red-600">Microfinance Software</Link></li>
+            <li><Link to="/food-delivery-software" className="hover:text-red-600">Food Delivery Software</Link></li>
+            <li><Link to="/quick-commerce-software" className="hover:text-red-600">Quick Commerce Software</Link></li>
+          </ul>
+        </div>
+
+        {/* Apps */}
+        <div>
+          <h3 className="text-red-600 font-bold mb-5 border-b pb-2">
+            Apps
+          </h3>
+
+          <ul className="space-y-3 text-gray-700">
+            <li><Link to="/app-services" className="hover:text-red-600">E-Commerce App</Link></li>
+            <li><Link to="/app-services" className="hover:text-red-600">Food Delivery App</Link></li>
+            <li><Link to="/app-services" className="hover:text-red-600">Hotel Booking App</Link></li>
+            <li><Link to="/app-services" className="hover:text-red-600">Education App</Link></li>
+            <li><Link to="/app-services" className="hover:text-red-600">Real Estate App</Link></li>
+            <li><Link to="/app-services" className="hover:text-red-600">NGO App</Link></li>
+            <li><Link to="/app-services" className="hover:text-red-600">Bike Taxi App</Link></li>
+            <li><Link to="/app-services" className="hover:text-red-600">Healthcare App</Link></li>
+          </ul>
+        </div>
+
+        {/* Websites */}
+        <div>
+          <h3 className="text-red-600 font-bold mb-5 border-b pb-2">
+            Websites & Portals
+          </h3>
+
+          <ul className="space-y-3 text-gray-700">
+            <li><Link to="/corporate-website" className="hover:text-red-600">Corporate Website</Link></li>
+            <li><Link to="/ecommerce-website" className="hover:text-red-600">E-Commerce Website</Link></li>
+            <li><Link to="/school-portal" className="hover:text-red-600">School Portal</Link></li>
+            <li><Link to="/hospital-portal" className="hover:text-red-600">Hospital Portal</Link></li>
+            <li><Link to="/ngo-portal" className="hover:text-red-600">NGO Portal</Link></li>
+            <li><Link to="/franchise-portal" className="hover:text-red-600">Franchise Portal</Link></li>
+            <li><Link to="/customer-portal" className="hover:text-red-600">Customer Portal</Link></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</li>
+  
+  
+<li className="relative group">
+  {/* Services Button */}
+  <button className="relative py-7 text-white hover:text-gray-200 transition">
+    Servicess
+
+    <span
+      className="
+        absolute left-0 bottom-5
+        h-[2px] w-0
+        bg-white
+        transition-all duration-300
+        group-hover:w-full
+      "
+    ></span>
+  </button>
+
+  {/* Mega Menu */}
+  <div
+    className="
+      fixed
+      left-0
+      right-0
+      top-[95px]
+      z-50
+
+      opacity-0
+      invisible
+      group-hover:opacity-100
+      group-hover:visible
+
+      transition-all
+      duration-300
+    "
+  >
+    <div
+      className="
+        max-w-9xl
+        mx-auto
+        bg-white
+        rounded-2xl
+        shadow-2xl
+        p-10
+      "
+    >
+      <div className="grid grid-cols-8 gap-10">
+
+        {/* IT Services */}
+        <div>
+          <h3 className="text-red-600 font-bold mb-5 border-b pb-2">
+            IT Services
+          </h3>
+
+          <ul className="space-y-3 text-gray-700">
+            <li><Link to="/website-development" className="hover:text-red-600">Website Development</Link></li>
+            <li><Link to="/software-development" className="hover:text-red-600">Software Development</Link></li>
+            <li><Link to="/mobile-app-development" className="hover:text-red-600">Mobile App Development</Link></li>
+            <li><Link to="/ui-ux-design" className="hover:text-red-600">UI / UX Design</Link></li>
+            <li><Link to="/cloud-services" className="hover:text-red-600">Cloud Services</Link></li>
+            <li><Link to="/api-integration" className="hover:text-red-600">API Integration</Link></li>
+            <li><Link to="/cyber-security" className="hover:text-red-600">Cyber Security</Link></li>
+            <li><Link to="/software-maintenance" className="hover:text-red-600">Software Maintenance</Link></li>
+          </ul>
+        </div>
+
+        {/* AI Services */}
+        <div>
+          <h3 className="text-red-600 font-bold mb-5 border-b pb-2">
+            AI Services
+          </h3>
+
+          <ul className="space-y-3 text-gray-700">
+            <li><Link to="/ai-automation" className="hover:text-red-600">AI Automation</Link></li>
+            <li><Link to="/ai-integration" className="hover:text-red-600">AI Integration</Link></li>
+            <li><Link to="/ai-consulting" className="hover:text-red-600">AI Consulting</Link></li>
+            <li><Link to="/ai-agent-development" className="hover:text-red-600">AI Agent Development</Link></li>
+            <li><Link to="/chatbot-development" className="hover:text-red-600">Chatbot Development</Link></li>
+          </ul>
+        </div>
+
+        {/* Marketing */}
+        <div>
+          <h3 className="text-red-600 font-bold mb-5 border-b pb-2">
+            Marketing Services
+          </h3>
+
+          <ul className="space-y-3 text-gray-700">
+            <li><Link to="/seo" className="hover:text-red-600">SEO</Link></li>
+            <li><Link to="/google-ads" className="hover:text-red-600">Google Ads</Link></li>
+            <li><Link to="/meta-ads" className="hover:text-red-600">Meta Ads</Link></li>
+            
+            <li><Link to="/social-media-marketing" className="hover:text-red-600">Social Media Marketing</Link></li>
+            <li><Link to="/content-marketing" className="hover:text-red-600">Content Marketing</Link></li>
+            <li><Link to="/influencer-marketing" className="hover:text-red-600">Influencer Marketing</Link></li>
+            <li><Link to="/affiliate-marketing" className="hover:text-red-600">Affiliate Marketing</Link></li>
+            <li><Link to="/podcast-marketing" className="hover:text-red-600">Podcast Marketing</Link></li>
+            <li><Link to="/branding" className="hover:text-red-600">Branding</Link></li>
+            <li><Link to="/pr-services" className="hover:text-red-600">PR Services</Link></li>
+
+            <li><Link className="hover:text-red-600"> Email Marketing</Link></li>
+            <li> <Link className="hover:text-red-600">WhatsApp MarKeting</Link></li>
+            <li><Link className="hover:text-red-600">Podacst Marketing</Link></li>
+            <li><Link className="hover:text-red-600"> Video Marketing</Link></li>
+            <li><Link className="hover:text-red-600">Performance Marketing</Link></li>
+            <li><Link className="hover:text-red-600">Branding</Link></li>
+            <li><Link className="hover:text-red-600">Online Reputation Management</Link></li>
+
+
+          </ul>
+        </div>
+
+        {/* BPO */}
+        <div>
+          <h3 className="text-red-600 font-bold mb-5 border-b pb-2">
+            BPO & KPO
+          </h3>
+
+          <ul className="space-y-3 text-gray-700">
+            <li><Link to="/customer-support" className="hover:text-red-600">Customer Support</Link></li>
+            <li><Link to="/call-center" className="hover:text-red-600">Call Center</Link></li>
+            <li><Link to="/technical-support" className="hover:text-red-600">Technical Support</Link></li>
+            <li><Link to="/lead-generation" className="hover:text-red-600">Lead Generation</Link></li>
+            <li><Link to="/market-research" className="hover:text-red-600">Market Research</Link></li>
+            <li><Link to="/data-analysis" className="hover:text-red-600">Data Analysis</Link></li>
+            <li><Link to="/business-intelligence" className="hover:text-red-600">Business Intelligence</Link></li>
+          </ul>
+        </div>
+
+        {/* Business Support */}
+        <div>
+          <h3 className="text-red-600 font-bold mb-5 border-b pb-2">
+            Business Support
+          </h3>
+
+          <ul className="space-y-3 text-gray-700">
+            <li><Link to="/company-registration" className="hover:text-red-600">Company Registration</Link></li>
+            <li><Link to="/trademark" className="hover:text-red-600">Trademark</Link></li>
+            <li><Link to="/copyright" className="hover:text-red-600">Copyright</Link></li>
+            <li><Link to="/patent" className="hover:text-red-600">Patent</Link></li>
+            <li><Link to="/iso-certification" className="hover:text-red-600">ISO Certification</Link></li>
+            <li><Link to="/gst-registration" className="hover:text-red-600">GST Registration</Link></li>
+            <li><Link to="/iec-registration" className="hover:text-red-600">IEC Registration</Link></li>
+            <li><Link to="/compliance-services" className="hover:text-red-600">Compliance Services</Link></li>
+          </ul>
+        </div>
+        <div>
+          <h3 className="text-red-600 font-bold mb-5 border-b pb-2"> Tender Services
+
+          </h3>Government Tenders
+
+          <ul className="space-y-3 text-gray-700">
+            <li> <Link className="hover:text-red-600">Goverment Tender</Link></li>
+            <li> <Link className="hover:text-red-600">private Tender</Link> </li>
+            <li> <Link className="hover:text-red-600">GEM Registration</Link> </li>
+            <li>  <Link className="hover:text-red-600">Bid management</Link></li>
+            <li> <Link className="hover:text-red-600">Tender Documentation</Link> </li>
+            <li> <Link className="hover:text-red-600">Tender Consultancy</Link> </li>
+            <li> <Link className="hover:text-red-600">Tender Filing </Link> </li>
+            
+
+          </ul>
+ 
+        </div>
+        <div>
+          <h3 className="text-red-600 font-bold mb-5 border-b pb-2"> Import Export Services
+
+          </h3>IEC Registration
+
+          <ul className="space-y-3 text-gray-700" >
+            <li> <Link className="hover:text-red-600" >IEC Registration</Link></li>
+            <li> <Link className="hover:text-red-600">DGFT Consultancy</Link></li>
+            <li> <Link className="hover:text-red-600">Customs Documentation </Link></li>
+            <li> <Link className="hover:text-red-600">Export Consultation</Link></li>
+            <li> <Link className="hover:text-red-600">Import Consultation</Link></li>
+            <li> <Link className="hover:text-red-600">Logistics Assistance</Link></li>
+           
+
+          </ul>
+ 
+        </div>
+        <div>
+          <h3 className="text-red-600 font-bold mb-5 border-b pb-2">Business Consultancy
+
+          </h3>
+          
+
+          <ul className="space-y-3 text-gray-700">
+            <li> <Link className="hover:text-red-600">Startup Consultancy</Link></li>
+            <li > <Link className="hover:text-red-600">Business Strategy</Link></li>
+            <li> <Link className="hover:text-red-600">Process Optimization</Link></li>
+            <li> <Link className="hover:text-red-600">Franchise Consultancy</Link></li>
+            <li> <Link className="hover:text-red-600"> Growth Consultancy</Link></li>
+            <li> <Link className="hover:text-red-600">Market Expansion</Link></li>
+            <li> <Link className="hover:text-red-600">Digital Transformation</Link></li>
+             
+  
+          </ul>
+ 
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</li>
+
+
+ <li className="relative group">
+  <span className="cursor-pointer hover:text-gray-200 transition">
+    Solutions
+  </span>
+
+  <div
+    className="
+      absolute left-1/2 -translate-x-1/2 top-full mt-4
+      w-[900px] bg-white rounded-2xl shadow-2xl
+      p-8 z-50
+      opacity-0 invisible
+      group-hover:opacity-100 group-hover:visible
+      transition-all duration-300
+    "
+  >
+    <div className="grid grid-cols-2 gap-10">
+
+      {/* Column 1 */}
+      <div>
+        <h3 className="text-red-600 font-bold mb-5">
+          Business Solutions
+        </h3>
+
+        <ul className="space-y-3 text-gray-700 font-semibold">
+          <li><Link to="/startup-solutions" className="hover:text-red-600">Startup Solutions</Link></li>
+          <li><Link to="/launch" className="hover:text-red-600">Launch</Link></li>
+          <li><Link to="/growth" className="hover:text-red-600">Growth</Link></li>
+          <li><Link to="/scale" className="hover:text-red-600">Scale</Link></li>
+          <li><Link to="/msme-solutions" className="hover:text-red-600">MSME Solutions</Link></li>
+          <li><Link to="/enterprise-solutions" className="hover:text-red-600">Enterprise Solutions</Link></li>
+          <li><Link to="/custom-business-solution" className="hover:text-red-600">Custom Business Solution</Link></li>
+        </ul>
+      </div>
+
+      {/* Column 2 */}
+      <div>
+        <h3 className="text-red-600 font-bold mb-5">
+          Industry Solutions
+        </h3>
+
+        <ul className="space-y-3 text-gray-700 font-semibold">
+          <li><Link to="/healthcare-solutions" className="hover:text-red-600">Healthcare Solutions</Link></li>
+          <li><Link to="/education-solutions" className="hover:text-red-600">Education Solutions</Link></li>
+          <li><Link to="/real-estate-solutions" className="hover:text-red-600">Real Estate Solutions</Link></li>
+          <li><Link to="/hospitality-solutions" className="hover:text-red-600">Hospitality Solutions</Link></li>
+          <li><Link to="/restaurant-solutions" className="hover:text-red-600">Restaurant Solutions</Link></li>
+          <li><Link to="/retail-ecommerce-solutions" className="hover:text-red-600">Retail & E-Commerce Solutions</Link></li>
+          <li><Link to="/manufacturing-solutions" className="hover:text-red-600">Manufacturing Solutions</Link></li>
+          <li><Link to="/logistics-solutions" className="hover:text-red-600">Logistics Solutions</Link></li>
+          <li><Link to="/ngo-solutions" className="hover:text-red-600">NGO Solutions</Link></li>
+          <li><Link to="/finance-solutions" className="hover:text-red-600">Finance Solutions</Link></li>
+          <li><Link to="/travel-solutions" className="hover:text-red-600">Travel Solutions</Link></li>
+          <li><Link to="/government-solutions" className="hover:text-red-600">Government Solutions</Link></li>
+          <li><Link to="/import-export-solutions" className="hover:text-red-600">Import Export Solutions</Link></li>
+          <li><Link to="/franchise-solutions" className="hover:text-red-600">Franchise Solutions</Link></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</li>
+<li className="relative group">
+  <span className="cursor-pointer py-7 block hover:text-gray-200 transition">
+    Funding
+  </span>
+
+  <div
+    className="
+      absolute left-1/2 -translate-x-1/2 top-full
+      pt-3
+      opacity-0 invisible
+      group-hover:opacity-100
+      group-hover:visible
+      transition-all duration-300
+      z-50
+    "
+  >
+    <div className="w-[1000px] bg-white rounded-xl shadow-2xl p-10">
+
+      <div className="grid grid-cols-3 gap-8">
+
+        {/* Column 1 */}
+        <div>
+          <h3 className="text-red-600 font-bold mb-4 border-b pb-2">
+            Business Loans
+          </h3>
+
+          <ul className="space-y-3 text-gray-700 font-medium">
+            <li><Link to="/business-loans" className="hover:text-red-600">Business Loans</Link></li>
+            <li><Link to="/msme-loan" className="hover:text-red-600">MSME Loan</Link></li>
+            <li><Link to="/working-capital-loan" className="hover:text-red-600">Working Capital Loan</Link></li>
+            <li><Link to="/lap" className="hover:text-red-600">Loan Against Property</Link></li>
+            <li><Link className="hover:text-red-600">Machinery Loan</Link></li>
+             <li><Link className="hover:text-red-600"></Link>OD/CC</li>
+              <li><Link className="hover:text-red-600"></Link>Project Finance</li>
+               <li><Link className="hover:text-red-600"></Link>Business Expansion Finance</li>
+               <li><Link className="hover:text-red-600">Financial Advisory</Link></li>
+               <li><Link className="hover:text-red-600">Private Investors</Link></li>
+          </ul>
+        </div>
+
+        {/* Column 2 */}
+        <div>
+          <h3 className="text-red-600 font-bold mb-4 border-b pb-2">
+            Startup Funding
+          </h3>
+
+          <ul className="space-y-3 text-gray-700 font-medium">
+            <li><Link to="/startup-funding" className="hover:text-red-600">Startup Funding</Link></li>
+            <li><Link to="/seed-funding" className="hover:text-red-600">Seed Funding</Link></li>
+            <li><Link to="/angel-investors" className="hover:text-red-600">Angel Investors</Link></li>
+            <li><Link to="/venture-capital" className="hover:text-red-600">Venture Capital</Link></li>
+          </ul>
+        </div>
+
+        {/* Column 3 */}
+        <div>
+          <h3 className="text-red-600 font-bold mb-4 border-b pb-2">
+            Government & Support
+          </h3>
+
+          <ul className="space-y-3 text-gray-700 font-medium">
+            <li><Link to="/government-funding" className="hover:text-red-600">Government Funding</Link></li>
+            <li><Link to="/subsidies" className="hover:text-red-600">Subsidies</Link></li>
+            <li><Link to="/government-schemes" className="hover:text-red-600">Government Schemes</Link></li>
+            <li><Link to="/grants" className="hover:text-red-600">Grants</Link></li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</li>
+
+  
+
+  
+
+ 
+  
+ <li className="relative group">
+  <span className="cursor-pointer hover:text-gray-200">
+    Academy
+  </span>
+
+  <ul className="absolute left-0 top-full hidden group-hover:block bg-white text-black rounded-lg shadow-lg py-2 min-w-[260px] z-50">
+    <li>
+      <Link to="/entrepreneurship" className="block px-4 py-2 hover:text-red-600">
+        Entrepreneurship
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/ai-for-business" className="block px-4 py-2 hover:text-red-600 ">
+        AI for Business
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/digital-marketing" className="block px-4 py-2 hover:text-red-600">
+        Digital Marketing
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/sales" className="block px-4 py-2 hover:text-red-600">
+        Sales
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/finance" className="block px-4 py-2 hover:text-red-600">
+        Finance
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/business-operations" className="block px-4 py-2 hover:text-red-600">
+        Business Operations
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/startup-masterclass" className="block px-4 py-2 hover:text-red-600">
+        Startup Masterclass
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/live-workshops" className="block px-4 py-2 hover:text-red-600">
+        Live Workshops
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/mentorship-programs" className="block px-4 py-2 hover:text-red-600">
+        Mentorship Programs
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/certifications" className="block px-4 py-2 hover:text-red-600">
+        Certifications
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/internship" className="block px-4 py-2 hover:text-red-600">
+        Internship
+      </Link>
+    </li>
+  </ul>
+</li>
+
+
+  
+ <li className="relative group">
+  <span className="cursor-pointer ">
+    Resourcess
+  </span>
+
+  <ul className="absolute left-0 top-full hidden group-hover:block bg-white text-black rounded-lg shadow-lg py-2 min-w-[260px] z-50">
+    <li>
+      <Link to="/blogs" className="block px-4 py-2 hover:text-red-600">
+        Blogs
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/business-news" className="block px-4 py-2 hover:text-red-600">
+        Business News
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/ai-news" className="block px-4 py-2 hover:text-red-600">
+        AI News
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/startup-stories" className="block px-4 py-2 hover:text-red-600">
+        Startup Stories
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/case-studies" className="block px-4 py-2 hover:text-red-600">
+        Case Studies
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/business-templates" className="block px-4 py-2 hover:text-red-600">
+        Business Templates
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/calculators" className="block px-4 py-2 hover:text-red-600">
+        Calculators
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/quotes" className="block px-4 py-2 hover:text-red-600">
+        Quotes
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/downloads" className="block px-4 py-2 hover:text-red-600">
+        Downloads
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/webinars" className="block px-4 py-2 hover:text-red-600">
+        Webinars
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/podcasts" className="block px-4 py-2 hover:text-red-600">
+        Podcasts
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/industry-reports" className="block px-4 py-2 hover:text-red-600">
+        Industry Reports
+      </Link>
+    </li>
+  </ul>
+</li>
+
+
+<li className="relative group">
   <span className="cursor-pointer hover:text-gray-200">
     About
   </span>
 
-  <ul className="absolute hidden group-hover:block bg-white text-black rounded-lg shadow-lg p-2">
+  <ul className="absolute left-0 top-full hidden group-hover:block bg-white text-black rounded-lg shadow-lg py-2 min-w-[220px] z-50">
     <li>
-      <Link to="/about" className="block px-4 py-2 hover:bg-gray-100">
-        Comapny OverView
-      </Link>
-    </li>
-    <li>
-      <Link to="/our-team" className="block px-4 py-2 hover:bg-gray-100">
-        Our Team
+      <Link to="/about" className="block px-4 py-2 hover:text-red-600">
+        Company Overview
       </Link>
     </li>
 
+    <li>
+      <Link to="/vision" className="block px-4 py-2 hover:text-red-600">
+        Our Vision
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/mission" className="block px-4 py-2 hover:text-red-600">
+        Our Mission
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/why-grovally" className="block px-4 py-2 hover:text-red-600">
+        Why GROVALLY
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/leadership-team" className="block px-4 py-2 hover:text-red-600">
+        Leadership Team
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/our-journey" className="block px-4 py-2 hover:text-red-600">
+        Our Journey
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/careers" className="block px-4 py-2 hover:text-red-600">
+        Careers
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/partners" className="block px-4 py-2 hover:text-red-600">
+        Partners
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/media" className="block px-4 py-2 hover:text-red-600">
+        Media
+      </Link>
+    </li>
+
+    <li>
+      <Link to="/contact" className="block px-4 py-2 hover:text-red-600 ">
+        Contact Us
+      </Link>
+    </li>
   </ul>
 </li>
 
@@ -164,243 +791,9 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 </ul>
   
 
-  {/* MEGA MENU */}
-  <AnimatePresence>
-     {openMenu === "services" && (
-      <motion.div
-       ref={menuRef}
-        onMouseEnter={() => setOpenMenu("services")}
-        onMouseLeave={() => setOpenMenu(null)}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 20 }}
-        transition={{ duration: 0.25 }}
-        className="fixed left-0 top-[110px] w-full bg-white shadow-2xl z-50"
-      >
-        <div className="max-w-7xl mx-auto py-12 px-8 grid grid-cols-6 gap-10">
-          {/* IT Services */}
-          <div>
-            <h3 className="text-red-600 font-bold mb-5">
-              IT Services
-            </h3>
+ 
 
-            <ul className="space-y-3 text-gray-700 font-semibold">
-              <li>
-                Web Development
-              </li>
-              <li>
-               ERP software
-              </li>
-              <li>
-               
-                
-                Real Estate Software
-              </li>
-              <li>
-                CRM Softwarw
-              </li>
-              <li>
-                <Link >Accounting Software</Link>
-              </li>
-              <li>
-                <Link >MicroFinance Software</Link>
-              </li>
-              <li>
-                <Link >Nidhi Software</Link>
-              </li>
-            </ul>
-             <button  onClick={() => navigate("/it")} className=" mt-6 flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition  ">View More</button>
-          </div>
-
-          {/* AI */}
-          <div>
-            <h3 className="text-red-600 font-bold mb-5">
-              App Development
-            </h3>
-
-            <ul className="space-y-3 text-gray-700 font-semibold">
-              <li>Ngo App</li>
-              <li>E-Commerce App</li>
-              <li>Food Delivary App</li>
-              <li>Hotel Booking App</li>
-              <li>Real Estate App</li>
-              <li> Education App</li>
-              <li> Bike Taxi/Mobility</li>
-              
-            </ul>
-             <button  onClick={() => navigate("/app-services")} className=" mt-6 flex items-center gap-2  bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
-          </div>
-
-          {/* BPO */}
-          <div>
-            <h3 className="text-red-600 font-bold mb-5">
-              BPO Services
-            </h3>
-
-            <ul className="space-y-3 text-gray-700 font-semibold">
-              <li>Customer Support Services</li>
-              <li>Inbound Call Support</li>
-              <li>Outbound Call Support</li>
-              <li>Email & Chat Support</li>
-              <li>Telemarketing & Lead Generation</li>
-              <li>Market Research </li>
-            
-              
-            </ul>
-             <button  onClick={() => navigate("/bpo")} className=" mt-4 flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
-          </div>
-
-          {/* Marketing */}
-          <div>
-            <h3 className="text-red-600 font-bold mb-5">
-              Marketing
-            </h3>
-
-            <ul className="space-y-3 text-gray-700 font-semibold">
-              <li>SEO</li>
-              <li>SMO</li>
-              <li>PPC Ads</li>
-              <li>Content Marketing</li>
-              
-              <li>Social Media Support</li>
-              <li>Influencer Marketing</li>
-              <li> Affiliate Marketing</li>
-              <li></li>
-               <button  onClick={() => navigate("/Marketing")} className=" mt-16 flex items-center gap-2  bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
-            </ul>
-          </div>
-
-          {/* Finance */}
-          <div>
-            <h3 className="text-red-600 font-bold mb-5">
-              Finance Services
-            </h3>
-
-            <ul className="space-y-3 text-gray-700 font-semibold">
-              <li>Bank Loan Services</li>
-              <li>Government Subsidy Services</li>
-              <li>Scheme Funding Services</li>
-              <li>Project Funding Services</li>
-            </ul>
-             <button  onClick={() => navigate("/finance")} className="  mt-12 flex items-center gap-2  bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
-          </div>
-          <div>
-             <h3 className="text-red-600 font-bold mb-5">Graphics Design</h3>
-            <ul className="space-y-3 text-gray-700 font-semibold">
-             
-              <li>Logo Design</li>
-              <li> Letter Head Design</li>
-              <li>Company Profile Design</li>
-              <li> Branding Material</li>
-              <li>Visiting Card </li>
-              <li> Icon Design</li>
-              
-            </ul>
-            <button  onClick={() => navigate("/graphics")} className=" mt-4 flex items-center gap-2  bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
-          </div>
-        </div>
-
-      </motion.div>
-    )}
-  </AnimatePresence>
-
-   <AnimatePresence>
-    {openMenu === "ourservices" &&  (
-    <motion.div
-     ref={menuRef}
-      onMouseEnter={() => setOpenMenu("ourservices")}
-      onMouseLeave={() => setOpenMenu(null)}
-    
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 20 }}
-      transition={{ duration: 0.25 }}
-      className="fixed left-0 top-[110px] w-full bg-white shadow-2xl z-50"
-    >
-      <div className="max-w-7xl mx-auto py-12 px-8 grid grid-cols-5 gap-10">
-
-        <div className="flex flex-col">
-  <h3 className="text-red-600 font-bold mb-5">
-    Education & Health
-  </h3>
-
-  <ul className="space-y-3 text-gray-700 font-semibold">
-    <li>School Management Software</li>
-    <li>College Management Software</li>
-    <li>Learning Management System</li>
-    <li>Hospital Management Software</li>
-  </ul>
-
-  <button
-    onClick={() => navigate("/it")}
-    className="mt-6 flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition w-fit"
-  >
-    View More
-  </button>
-</div>
-        <div>
-          <h3 className="text-red-600 font-bold mb-5">
-            Business Software
-          </h3>
-          <ul className="space-y-3 text-gray-700 font-semibold">
-            <li>Real Estate Software</li>
-            <li>HRMS Software</li>
-            <li>NGO Portal Software</li>
-            <li>Inventory Management Software</li>
-            <li>E-Commerce Software</li>
-            <li>Quick-Commerce Software</li>
-          </ul>
-           <button  onClick={() => navigate("/networking")} className=" mt-6 flex items-center gap-2  bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
-        </div>
-
-        <div>
-          <h3 className="text-red-600 font-bold mb-5">
-            AI Products
-          </h3>
-          <ul className="space-y-3 text-gray-700 font-semibold">
-            <li>AI Attendance System</li>
-            <li>AI Chatbot Software</li>
-            <li>AI Content Creator</li>
-            <li>AI Website Builder</li>
-            <li>AI ERP Assistant</li>
-          </ul>
-           <button  onClick={() => navigate("/ai-services")} className=" mt-20 flex items-center gap-2  bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
-        </div>
-
-        <div>
-          <h3 className="text-red-600 font-bold mb-5">
-            Industry Solutions
-          </h3>
-          <ul className="space-y-3 text-gray-700 font-semibold">
-            <li>Hotel Management Software</li>
-            <li>Restaurant Software</li>
-            <li>Food Delivery Software</li>
-            <li>Tour & Travel Software</li>
-            <li>Logistics Software</li>
-          </ul>
-           <button  onClick={() => navigate("/app-services")} className=" mt-20 flex items-center gap-2  bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
-        </div>
-
-        <div>
-          <h3 className="text-red-600 font-bold mb-5">
-            Tendar Services
-          </h3>
-          <ul className="space-y-3 text-gray-700 font-semibold">
-            <li>Land Auction Tender</li>
-            <li>Commercial Plot Tender</li>
-            <li>Industrial Plot Tender</li>
-            <li>Government Land Lease Tender</li>
-            <li>Agricultural Land Tender</li>
-            <li>Residential Plot Tender</li>
-           
-          </ul>
-           <button  onClick={() => navigate("/tender")} className="mt-6 flex items-center gap-2  bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition">View More</button>
-        </div>
-
-      </div>
-    </motion.div>
-  )}
-</AnimatePresence>
+   
 </div>
 
 
