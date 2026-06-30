@@ -1,7 +1,16 @@
-import { useState } from "react";
+
+
+
+
+import { useState, useEffect } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
-const faqs = [
+export default function FAQSection() {
+  const [step, setStep] = useState(1);
+  const [open, setOpen] = useState(null);
+
+  // 🔥 FIX: keep data inside component OR move outside cleanly
+  const faqs = [
   {
     question: "What is GROVALLY ?",
     answer:
@@ -449,34 +458,43 @@ Every organization has unique goals and operational requirements. GROVALLY devel
 
 ];
 
+ 
 
-// AEO FAQ Schema
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqs.map((faq) => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer,
-    },
-  })),
-};
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
+      },
+    })),
+  };
 
+  useEffect(() => {
+    setOpen(null);
+  }, [step]);
 
-export default function FAQ() {
+  // ✅ FIXED STEP LOGIC
+  let visibleFaqs = [];
 
-  const [open, setOpen] = useState(null);
-  const [showAll, setShowAll] = useState(false);
+  if (step === 1) {
+    visibleFaqs = faqs.slice(0, 6);
+  } else if (step === 2) {
+    visibleFaqs = faqs.slice(6, 15); // FIXED (no duplicate overlap)
+  } else {
+    visibleFaqs = faqs;
+  }
 
-  const visibleFaqs = showAll ? faqs : faqs.slice(0, 4);
-
+  const handleToggle = (index) => {
+    setOpen(open === index ? null : index);
+  };
 
   return (
     <>
-
-      {/* AEO Schema */}
+      {/* SEO Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -484,87 +502,65 @@ export default function FAQ() {
         }}
       />
 
-
       <section className="py-16 bg-white">
-
         <div className="max-w-5xl mx-auto px-4">
 
           <h2 className="text-4xl font-bold text-center text-red-600 mb-4">
             Frequently Asked Questions
           </h2>
 
-
           <p className="text-center text-black mb-10">
-            Find answers to common questions about Grovally services.
+            Find answers to common questions about GROVALLY services.
           </p>
 
+          {/* STEP BUTTONS */}
+          <div className="flex justify-center gap-3 mb-10">
+            {[1, 2, 3].map((s) => (
+              <button
+                key={s}
+                onClick={() => setStep(s)}
+                className={`px-5 py-2 rounded-full font-semibold transition ${
+                  step === s ? "bg-red-600 text-white" : "bg-gray-200"
+                }`}
+              >
+                {s === 1 ? "1–6" : s === 2 ? "6–15" : "All"}
+              </button>
+            ))}
+          </div>
 
+          {/* FAQ LIST */}
           <div className="space-y-4">
-
             {visibleFaqs.map((faq, index) => (
-
               <div
                 key={index}
-                className="border border-red-100 rounded-2xl overflow-hidden shadow-sm"
+                className="border border-red-100 rounded-2xl shadow-sm overflow-hidden"
               >
-
                 <button
-                  onClick={() =>
-                    setOpen(open === index ? null : index)
-                  }
+                  onClick={() => handleToggle(index)}
                   className="w-full flex justify-between items-center p-5 text-left hover:bg-red-50"
                 >
-
                   <span className="font-semibold text-black">
                     {faq.question}
                   </span>
-
 
                   {open === index ? (
                     <FaMinus className="text-red-600" />
                   ) : (
                     <FaPlus className="text-red-600" />
                   )}
-
                 </button>
 
-
                 {open === index && (
-
-                  <div className="px-5 pb-5 text-black">
+                  <div className="px-5 pb-5 text-gray-700">
                     {faq.answer}
                   </div>
-
                 )}
-
               </div>
-
             ))}
-
           </div>
 
-
-
-          {!showAll && (
-
-            <div className="flex justify-center mt-8">
-
-              <button
-                onClick={() => setShowAll(true)}
-                className="bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700 transition"
-              >
-                Learn More →
-              </button>
-
-            </div>
-
-          )}
-
-
         </div>
-
       </section>
-
     </>
   );
 }

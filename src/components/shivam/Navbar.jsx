@@ -491,7 +491,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   >
     <div className="w-[1000px] bg-white rounded-xl shadow-2xl p-10">
 
-      <div className="grid grid-cols-3 gap-8">
+      <div className="grid grid-cols-4 gap-8">
 
         {/* Column 1 */}
         <div>
@@ -540,6 +540,44 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
             <li><Link to="/grants" className="hover:text-red-600">Grants</Link></li>
           </ul>
         </div>
+        <div>
+          <h3 className="text-red-600 font-bold mb-4 border-b pb-2"> Private Funding</h3>
+          <ul className="space-y-3 text-gray-700 font-medium">
+            <li>
+            
+            <Link className="hover:text-red-600"> Unsecured business Funding</Link></li>
+            <li>
+            <Link className="hover:text-red-600"> Secured Private Funding</Link></li>
+            <li>
+            <Link className="hover:text-red-600"> Startup  Private Funding</Link></li>
+            <li>
+            <Link className="hover:text-red-600"> Working Capital Funding</Link></li>
+            <li>
+            <Link className="hover:text-red-600"> Expansion Funding</Link></li>
+            <li>
+            <Link className="hover:text-red-600"> Project Funding</Link></li>
+            <li>
+            <Link className="hover:text-red-600"> Bridge Funding</Link></li>
+            <li>
+            <Link className="hover:text-red-600"> Corporate Funding</Link></li>
+            <li>
+            <Link className="hover:text-red-600"> Invertor Funding</Link></li>
+            <li>
+            <Link className="hover:text-red-600"> Joint Venture Funding</Link></li>
+            <li>
+            <Link className="hover:text-red-600"> Acquisition Funding </Link></li>
+            <li>
+            <Link className="hover:text-red-600"> Debt Funding </Link></li>
+            <li>
+            <Link className="hover:text-red-600"> Equity Funding </Link></li>
+            <li>
+            <Link className="hover:text-red-600" > Mezzanine Funding </Link></li>
+            <li>
+            <Link className="hover:text-red-600">  Structured Finance</Link></li>
+
+          </ul>
+        </div>
+
 
       </div>
 
