@@ -4,7 +4,7 @@ export default function OrganizationSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
 
-    "name": "Grovally Group Private Limited",
+    "name": "Grovally Group ",
 
     "url": "https://grovally.com",
 

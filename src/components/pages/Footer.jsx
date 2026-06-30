@@ -20,12 +20,12 @@ export default function Footer() {
   const navigate = useNavigate();
 
   const services = [
-    "IT Solutions",
-    "BPO Services",
-    "KPO Services",
-    "AI Automation",
-    "Web Development",
-    "App Development",
+    "Grovally Business Solutions",
+    "Grovally finance Solution",
+    "Grovally Tender Solution",
+    "Grovally Pro_Tools Solution",
+    "Grovally Network Solution",
+    "Grovally Education Solution",
   ];
 
   return (
@@ -149,7 +149,7 @@ export default function Footer() {
               <div className="mt-4 h-1 w-20 rounded-full bg-red-600"></div>
 
               <ul className="mt-8 space-y-4">
-                {["Home", "About", "Services", "Contact"].map((item) => (
+                {["Home", "Product", "Servicess", "Solutions","Funding","Tenders","Academy","Resourecess","About"].map((item) => (
                   <li key={item}>
                     <a
                       href={item === "Home" ? "/" : `/${item.toLowerCase()}`}

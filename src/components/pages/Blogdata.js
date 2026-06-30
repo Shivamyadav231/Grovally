@@ -1904,7 +1904,7 @@ The journey to entrepreneurial success does not begin with a million-dollar idea
 It begins with the daily habits that shape who you become and what you achieve.`
     },
     {
-      id:10,
+      id:12,
       title :"Former Infosys CEO Vishal Sikka's AI Startup Hang Ten Systems Raises $32 Million in Seed Funding",
       image:"https://res.cloudinary.com/dzu9qjxqa/image/upload/v1782383276/ChatGPT_Image_Jun_25_2026_10_58_22_AM_ytjgqp.png",
       shortDesc:"Former Infosys CEO Vishal Sikka has launched a new enterprise AI startup, Hang Ten Systems, and secured $32 million in seed funding in one of the notable AI funding announcements of 2026.",
@@ -2202,7 +2202,7 @@ Bottom Line
 China's future-industry initiative has triggered a powerful venture capital boom centered on AI, commercial space, fusion energy, quantum computing, and other frontier technologies. By combining state support with private investment, the country is building one of the world's largest deep-tech startup ecosystems. If successful, the strategy could reshape global competition in some of the most important technologies of the 21st century.`
     },
     {
-      id:10,
+      id:11,
       title :"How Billionaires Think About Risk: A Research-Based Analysis Introduction",
       image:"https://res.cloudinary.com/dzu9qjxqa/image/upload/v1782383271/ChatGPT_Image_Jun_25_2026_11_25_50_AM_s4xlpl.png",
       shortDesc:"Most people assume billionaires become wealthy because they take enormous risks. Research into entrepreneurship, behavioral economics, investment psychology, and the decision-making processes of ultra-successful individuals suggests something different",

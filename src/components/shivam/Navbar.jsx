@@ -548,7 +548,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 </li>
 <li className="relative group">
 
-  <Link className="hover:text-red-500 cursor-pointer">
+  <Link className=" cursor-pointer">
     Tenders
   </Link>
 
