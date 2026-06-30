@@ -168,7 +168,7 @@ function SignUp() {
 
           </div>
            
-          <p className="-mt-2 text-sm text-red-500">Build your future with AI-powered services.</p>
+          <p className="-mt-2 text-sm text-black">Build your future with AI-powered services.</p>
         </div>
 
         {/* Form */}
@@ -254,7 +254,7 @@ function SignUp() {
               <FontAwesomeIcon icon={faFacebook} className="mr-2 text-lg text-blue-600" /> Facebook
             </button>
           </div>
-          <p className="mt-6 text-center text-sm text-slate-600">Already have an account?{' '}<span onClick={() => navigate('/login')} className="cursor-pointer text-red-600 font-medium hover:underline">Sign in</span></p>
+          <p className="mt-6 text-center text-sm text-slate-600">Already have an account?{' '}<span onClick={() => navigate('/login')} className="cursor-pointer text-red-600 font-medium hover:underline">Login in</span></p>
         </form>
       </motion.div>
     </section>

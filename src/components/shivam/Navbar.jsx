@@ -546,9 +546,234 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
     </div>
   </div>
 </li>
-<li>
-    <Link className="hover:text-red-500"> Tenders</Link>
-  </li>
+<li className="relative group">
+
+  <Link className="hover:text-red-500 cursor-pointer">
+    Tenders
+  </Link>
+
+  {/* Dropdown */}
+  <div className="absolute left-1/2 top-full hidden group-hover:block -translate-x-1/2 bg-white shadow-xl w-[1200px] p-6 z-50">
+
+    <div className="grid grid-cols-4 gap-6 text-sm">
+
+      {/* 1 TYPES */}
+      <div>
+        <h3 className="font-bold text-red-600 mb-2">Types of Tenders</h3>
+        <ul className="space-y-1">
+          {[
+            "Government Tenders",
+            "PSU Tenders",
+            "Private Tenders",
+            "International Tenders",
+            "Live Tenders",
+            "GeM Bids",
+            "E-Tenders",
+            "Reverse Auctions",
+            "Corrigendum & Amendments",
+            "Tender Results & Awarded Contracts",
+            "Smart Tender Search"
+          ].map((item, i) => (
+            <li key={i}>
+              <a className=" text-black hover:text-red-600 transition" href="#">
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* 2 SEARCH */}
+      <div>
+        <h3 className="font-bold text-red-600 mb-2">Find Tenders</h3>
+        <ul className="space-y-1">
+          {[
+            "Product Name",
+            "Service Category",
+            "Department",
+            "State",
+            "City",
+            "Organization",
+            "Tender ID",
+            "Keywords",
+            "CPV Code",
+            "Ministry",
+            "Closing Date"
+          ].map((item, i) => (
+            <li key={i}>
+              <a className=" text-black hover:text-red-600 transition" href="#">
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* 3 DOCUMENTATION */}
+      <div>
+        <h3 className="font-bold text-red-600 mb-2">Tender Documentation</h3>
+        <ul className="space-y-1">
+          {[
+            "Technical Bid",
+            "Financial Bid",
+            "BOQ Preparation",
+            "Compliance Documents",
+            "Affidavits",
+            "Declarations",
+            "Experience Certificates",
+            "OEM Authorization",
+            "EMD Documentation",
+            "Bank Guarantee Documentation"
+          ].map((item, i) => (
+            <li key={i}>
+              <a className=" text-black hover:text-red-600 transition" href="#">
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* 4 INDUSTRY */}
+      <div>
+        <h3 className="font-bold text-red-600 mb-2">Business & Industry</h3>
+        <ul className="space-y-1">
+          {[
+            "MSMEs",
+            "Startups",
+            "Manufacturers",
+            "Contractors",
+            "Suppliers",
+            "Service Providers",
+            "EPC Companies",
+            "IT Companies",
+            "Consultants",
+            "Exporters",
+            "Importers",
+            "Healthcare Companies",
+            "Educational Institutions"
+          ].map((item, i) => (
+            <li key={i}>
+              <a className=" text-black hover:text-red-600 transition" href="#">
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* 5 SECTORS */}
+      <div>
+        <h3 className="font-bold text-red-600 mb-2">Sectors</h3>
+        <ul className="space-y-1">
+          {[
+            "Construction",
+            "Civil Engineering",
+            "Electrical",
+            "Mechanical",
+            "Information Technology",
+            "Healthcare",
+            "Pharmaceuticals",
+            "Railways",
+            "Defence",
+            "Smart City Projects",
+            "Energy",
+            "Solar",
+            "Telecom",
+            "Manufacturing",
+            "Water Supply",
+            "Mining",
+            "Education",
+            "Food & Catering",
+            "Security Services",
+            "Facility Management"
+          ].map((item, i) => (
+            <li key={i}>
+              <a className=" text-black hover:text-red-600 transition" href="#">
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* 6 BID SERVICES */}
+      <div>
+        <h3 className="font-bold text-red-600 mb-2">Bid Services</h3>
+        <ul className="space-y-1">
+          {[
+            "Bid Consultancy",
+            "Tender Eligibility Analysis",
+            "Bid Strategy & Planning",
+            "Document Verification",
+            "Technical Compliance",
+            "Financial Bid Review",
+            "Bid Submission Assistance",
+            "Post-Bid Support",
+            "Tender Clarification Assistance"
+          ].map((item, i) => (
+            <li key={i}>
+              <a className=" text-black hover:text-red-600 transition" href="#">
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* 7 TENDER MANAGEMENT */}
+      <div>
+        <h3 className="font-bold text-red-600 mb-2">Tender Management</h3>
+        <ul className="space-y-1">
+          {[
+            "Daily Tender Alerts",
+            "Email & WhatsApp Notifications",
+            "Deadline Reminders",
+            "Bid Tracking Dashboard",
+            "Tender Status Monitoring",
+            "Team Collaboration",
+            "Multi-User Access",
+            "Document Management",
+            "Tender Calendar",
+            "Award Tracking"
+          ].map((item, i) => (
+            <li key={i}>
+              <a className=" text-black hover:text-red-600 transition" href="#">
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* 8 GEM & PROCUREMENT */}
+      <div>
+        <h3 className="font-bold text-red-600 mb-2">GeM & Procurement</h3>
+        <ul className="space-y-1">
+          {[
+            "GeM Registration",
+            "Product Listing",
+            "Vendor Registration",
+            "Organization Registration",
+            "Profile Management",
+            "Catalogue Creation",
+            "Bid Participation Support",
+            "Order Management",
+            "Vendor Empanelment",
+            "Procurement Consultancy"
+          ].map((item, i) => (
+            <li key={i}>
+              <a className= " text-black hover:text-red-600 transition" href="#">
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</li>
 
   
 
