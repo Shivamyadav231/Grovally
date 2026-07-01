@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { signInWithPopup } from "firebase/auth";
 
 
@@ -16,6 +16,8 @@ const BACKEND = import.meta.env.VITE_BACKEND_URL || "https://grovally-backend-14
 
 function SignUp() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const redirect = new URLSearchParams(location.search).get("redirect");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -72,7 +74,7 @@ function SignUp() {
         JSON.stringify(user)
       );
 
-      navigate("/profile");
+      navigate(redirect || "/profile");
     } catch (error) {
       alert(error.message);
     }
@@ -106,7 +108,7 @@ function SignUp() {
         JSON.stringify(socialUser)
       );
 
-      navigate("/profile");
+      navigate(redirect || "/profile");
     } catch (error) {
       alert(error.message);
     }
@@ -254,7 +256,7 @@ function SignUp() {
               <FontAwesomeIcon icon={faFacebook} className="mr-2 text-lg text-blue-600" /> Facebook
             </button>
           </div>
-          <p className="mt-6 text-center text-sm text-slate-600">Already have an account?{' '}<span onClick={() => navigate('/login')} className="cursor-pointer text-red-600 font-medium hover:underline">Login in</span></p>
+          <p className="mt-6 text-center text-sm text-slate-600">Already have an account?{' '}<span onClick={() => navigate(`/login${redirect ? `?redirect=${redirect}` : ""}`)} className="cursor-pointer text-red-600 font-medium hover:underline">Login in</span></p>
         </form>
       </motion.div>
     </section>

@@ -4,7 +4,7 @@ import React, {
   useRef,
 } from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
@@ -54,6 +54,16 @@ function Profile() {
   const [docFiles, setDocFiles] =
     useState([]);
 
+  const location = useLocation();
+  const selectedCourseId = new URLSearchParams(location.search).get("course") || "";
+  const redirect = new URLSearchParams(location.search).get("redirect") || "";
+  const courseNames = {
+    "ai-product": "AI Product Development",
+    "digital-marketing": "Digital Marketing & Growth",
+    "startup-ops": "Startup Operations & Strategy",
+  };
+  const selectedCourseName = courseNames[selectedCourseId];
+
   const [loanType, setLoanType] =
     useState("Home Loan");
 
@@ -65,6 +75,39 @@ function Profile() {
 
   const [cibilScore, setCibilScore] =
     useState("");
+
+  const [application, setApplication] = useState({
+    course: selectedCourseName || "AI Product Development",
+    phone: "",
+    motivation: "",
+    resume: null,
+  });
+  const [applicationStatus, setApplicationStatus] =
+    useState("");
+
+  const handleApplicationChange = (e) => {
+    const { name, value, files } = e.target;
+
+    if (name === "resume") {
+      setApplication({
+        ...application,
+        resume: files?.[0] || null,
+      });
+      return;
+    }
+
+    setApplication({
+      ...application,
+      [name]: value,
+    });
+  };
+
+  const handleApplicationSubmit = (e) => {
+    e.preventDefault();
+    setApplicationStatus(
+      "Your internship application has been submitted. We’ll review it and get back to you soon."
+    );
+  };
 
   // ================= FETCH PROFILE =================
 
@@ -203,6 +246,92 @@ function Profile() {
               AI Powered Loan Dashboard
 
             </p>
+
+            {selectedCourseName && (
+              <div className="mt-6 rounded-[32px] border border-cyan-500/20 bg-cyan-500/10 p-5 text-slate-100">
+                <p className="text-sm uppercase tracking-[0.18em] text-cyan-300">Selected course</p>
+                <h2 className="mt-2 text-2xl font-semibold text-white">{selectedCourseName}</h2>
+                <p className="mt-2 text-sm text-slate-300">
+                  You selected this course from the internship page. Continue here to manage attendance, session access, and profile details.
+                </p>
+              </div>
+            )}
+
+            {redirect === "apply" && (
+              <div className="mb-10 rounded-[40px] border border-white/10 bg-white/5 p-10 backdrop-blur-2xl">
+                <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+                  <div>
+                    <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">Internship Application</p>
+                    <h2 className="mt-3 text-3xl font-black text-white">Submit your application</h2>
+                    <p className="mt-2 max-w-2xl text-slate-400">
+                      Complete the internship application form below to start your journey.
+                    </p>
+                  </div>
+                  <div className="rounded-3xl bg-cyan-500/10 px-4 py-3 text-cyan-200">
+                    Application mode enabled
+                  </div>
+                </div>
+
+                <form onSubmit={handleApplicationSubmit} className="mt-10 grid gap-6 lg:grid-cols-2">
+                  <div className="space-y-4">
+                    <label className="block text-sm font-semibold text-slate-200">Selected Course</label>
+                    <input
+                      type="text"
+                      name="course"
+                      value={application.course}
+                      readOnly
+                      className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white outline-none"
+                    />
+
+                    <label className="block text-sm font-semibold text-slate-200">Phone Number</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={application.phone}
+                      onChange={handleApplicationChange}
+                      placeholder="+91 98765 43210"
+                      className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white outline-none"
+                    />
+
+                    <label className="block text-sm font-semibold text-slate-200">Resume</label>
+                    <input
+                      type="file"
+                      name="resume"
+                      accept=".pdf,.doc,.docx"
+                      onChange={handleApplicationChange}
+                      className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white outline-none"
+                    />
+
+                    {application.resume && (
+                      <p className="text-sm text-slate-300">Uploaded: {application.resume.name}</p>
+                    )}
+                  </div>
+
+                  <div className="space-y-4">
+                    <label className="block text-sm font-semibold text-slate-200">Motivation</label>
+                    <textarea
+                      name="motivation"
+                      value={application.motivation}
+                      onChange={handleApplicationChange}
+                      placeholder="Tell us why you want this internship"
+                      rows="7"
+                      className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white outline-none"
+                    />
+
+                    <button
+                      type="submit"
+                      className="w-full rounded-2xl bg-cyan-400 px-6 py-4 text-lg font-semibold text-slate-950 transition hover:bg-cyan-300"
+                    >
+                      Submit Application
+                    </button>
+
+                    {applicationStatus && (
+                      <p className="mt-2 text-sm text-emerald-300">{applicationStatus}</p>
+                    )}
+                  </div>
+                </form>
+              </div>
+            )}
 
           </div>
 

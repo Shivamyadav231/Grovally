@@ -50,6 +50,12 @@ const testimonials = [
     role: "Founder, Sanjivan Anushandhan",
     text: "Grovally has been a valuable growth partner for our organization. From IT infrastructure and finance solutions to marketing and BPO services, their team delivered reliable, scalable, and business-focused solutions that created measurable results.",
   },
+  {
+    image:"https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1782817169/INDIA_56_pqi4me.webp",
+    name:" Krishna Sharma",
+    role:"Founder, Luxelume",
+    text:"Partnering with Grovally for our brand setup was one of the best decisions for Luxelume. Their team handled everything professionally, from building our brand identity to creating a strong market presence. They understood our vision as a solar products company and delivered solutions that perfectly matched our goals. Their dedication, creativity, and timely execution made the entire process smooth and hassle-free. I highly recommend Grovally to any business looking for reliable branding and business growth solutions."
+  }
 ];
 
 export default function Testimonial() {

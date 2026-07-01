@@ -64,7 +64,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
           className={`mx-auto flex items-center justify-between px-6 transition-all duration-500 ${
             scrolled
               ? "max-w-full bg-black/55 backdrop-blur-xl shadow-xl h-16"
-              : " max-w-7xl w-[95%] mt-6 bg-[#C90102] rounded-2xl h-20"
+              : "  left-0 max-w-7xl w-[95%] mt-6 bg-[#C90102] rounded-2xl h-20"
           }`}
           
         >
@@ -213,7 +213,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
     <span
       className="
-        absolute left-0 bottom-5
+        absolute left-0 bottom-5 mt-5
         h-[2px] w-0
         bg-white
         transition-all duration-300
@@ -419,7 +419,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   <div
     className="
-      absolute left-1/2 -translate-x-1/2 top-full mt-4
+      absolute left-1/2 -translate-x-1/2 top-full mt-6
       w-[900px] bg-white rounded-2xl shadow-2xl
       p-8 z-50
       opacity-0 invisible
@@ -591,7 +591,8 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   </Link>
 
   {/* Dropdown */}
-  <div className="absolute left-1/2 top-full hidden group-hover:block -translate-x-1/2 bg-white shadow-xl w-[1200px] p-6 z-50">
+  <div className="absolute left-1/2 top-full hidden  mt-8
+  group-hover:block -translate-x-1/2 bg-white shadow-xl w-[1200px] p-6 z-50">
 
     <div className="grid grid-cols-4 gap-6 text-sm">
 
@@ -824,7 +825,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
     Academy
   </span>
 
-  <ul className="absolute left-0 top-full hidden group-hover:block bg-white text-black rounded-lg shadow-lg py-2 min-w-[260px] z-50">
+  <ul className="absolute  mt-8 left-0 top-full hidden group-hover:block bg-white text-black rounded-lg shadow-lg py-2 min-w-[260px] z-50">
     <li>
       <Link to="/entrepreneurship" className="block px-4 py-2 hover:text-red-600">
         Entrepreneurship
@@ -900,7 +901,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
     Resourcess
   </span>
 
-  <ul className="absolute left-0 top-full hidden group-hover:block bg-white text-black rounded-lg shadow-lg py-2 min-w-[260px] z-50">
+  <ul className="absolute  mt-8 left-0 top-full hidden group-hover:block bg-white text-black rounded-lg shadow-lg py-2 min-w-[260px] z-50">
     <li>
       <Link to="/blogs" className="block px-4 py-2 hover:text-red-600">
         Blogs
@@ -981,7 +982,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
     About
   </span>
 
-  <ul className="absolute left-0 top-full hidden group-hover:block bg-white text-black rounded-lg shadow-lg py-2 min-w-[220px] z-50">
+  <ul className="absolute left-0 mt-8 top-full hidden group-hover:block bg-white text-black rounded-lg shadow-lg py-2 min-w-[220px] z-50">
     <li>
       <Link to="/about" className="block px-4 py-2 hover:text-red-600">
         Company Overview

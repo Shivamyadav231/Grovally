@@ -17,6 +17,9 @@ const Finance = lazy(() => import("./components/pages/Finance"));
 const Services = lazy(() => import("./components/shivam/Services.jsx"));
 const About = lazy(() => import("./components/pages/About.jsx"));
 const Contact = lazy(() => import("./components/pages/Contact.jsx"));
+const Media = lazy(() => import("./components/Abouts/Media.jsx"));
+const Intern = lazy(() => import("./components/Academy/Intern.jsx"));
+const Careers = lazy(() => import("./components/Abouts/Cereers.jsx"));
 const Login = lazy(() => import("./components/shivam/Login.jsx"));
 const SignUp = lazy(() => import("./components/shivam/SignUp.jsx"));
 const Profile = lazy(() => import("./components/shivam/Profile.jsx"));
@@ -60,6 +63,9 @@ export default function App() {
             <Route path="kpo" element={<KPO />} />
             <Route path="finance" element={<Finance />} />
             <Route path="about" element={<About />} />
+            <Route path="media" element={<Media />} />
+            <Route path="internship" element={<Intern />} />
+            <Route path="careers" element={<Careers />} />
             <Route path="contact" element={<Contact />} />
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<SignUp />} />

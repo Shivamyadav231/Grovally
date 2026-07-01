@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
@@ -18,6 +18,8 @@ function Login() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const redirect = new URLSearchParams(location.search).get("redirect");
 
   // Input Change
   const handleChange = (e) => {
@@ -74,7 +76,7 @@ function Login() {
         JSON.stringify(user)
       );
 
-      navigate("/profile");
+      navigate(redirect || "/profile");
 
     } catch (error) {
 
@@ -210,7 +212,7 @@ function Login() {
           {/* Signup */}
           <p className="mt-6 text-center text-sm text-slate-600">
             Don’t have an account?{' '}
-            <span onClick={() => navigate('/signup')} className="cursor-pointer text-red-600 ">Sign Up</span>
+            <span onClick={() => navigate(`/signup${redirect ? `?redirect=${redirect}` : ""}`)} className="cursor-pointer text-red-600 ">Sign Up</span>
           </p>
 
         </form>

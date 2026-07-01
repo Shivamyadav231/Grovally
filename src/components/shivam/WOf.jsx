@@ -8,11 +8,13 @@ function WOf() {
         muted
         loop
         playsInline
+        controls={true}
         preload="metadata"
-        className="block w-full h-[250px] sm:h-[400px] md:h-auto object-cover"
+        className="block w-full h-[250px] sm:h-[400px] md:h-auto object-contain"
+   
       >
         <source
-          src="https://res.cloudinary.com/dzu9qjxqa/video/upload/f_auto,q_auto,w_1600/v1782805718/India_s_comprehensive_business_powerhouse_3_lmu77p.mp4"
+          src="https://res.cloudinary.com/dzu9qjxqa/video/upload/f_auto,q_auto,w_1600/v1782889648/India_s_comprehensive_business_powerhouse_10_il7t3o.mp4"
           type="video/mp4"
         />
       </video>
