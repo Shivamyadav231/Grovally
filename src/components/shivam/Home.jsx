@@ -7,23 +7,88 @@ import { motion } from "framer-motion";
 const cards = [
   {
     
-    description:"IT & Custom Software Services,AI & Automation Services ,360° Marketing/Branding Services ,LPO & KPO & BPO Services ,Business Support Services,Import / Export Services",
+    description:`* IT & Custom Software Development,
+
+ AI & Business Automation Solutions ,
+
+ Website App & ERP Development ,
+
+ Branding, Marketing & Growth Solutions ,
+
+ BPO KPO & LPO Services ,
+
+ Business Consultancy & Strategy ,
+ Business Support & Compliance 
+
+
+`,
+subheading:"Build. Automate. Scale. Grow.",
+  buttonText: "Explore Business Solutions ",
     Image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770387/Aaa_k7fq9t.png",
     link :"/it"
   },
   {
-    description: "Bank Loan Services,Goverment Subsidy Services,Scheme Funding Services, Project Funding Services ,Investor Funding Services,Private Funding Services",
+    description: `* Business & MSME Loans ,
+
+ Government Subsidies & Incentives ,
+
+ Startup & Scheme Funding ,
+
+ Project Finance Solutions ,
+
+ Angel & Investor Funding ,
+
+ Private Funding & Venture Capital ,
+
+Financial Consultancy & Planning,
+
+Business Valuation & Investment Advisory`,
+subheading:" Funding Every Stage of Your Business Journey",
+    buttonText: "Explore Finance Solutions ",
     Image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770410/Sss_sduj87.png",
     link:"/business"
   },
   {
     description:
-      "Government Tender Assistance,Private Tender Consultancy,Tender Identification,GeM Portal Registration & Support,E-Tender Submission Services",
+      ` Government Tender Consultancy,
+
+Private Tender Assistance,
+
+ Tender Identification & Alerts,
+
+ GeM Registration & Management ,
+
+ E-Tender Submission Support ,
+
+ Documentation & Bid Preparation ,
+
+ Technical & Financial Bid Assistance ,
+
+ Tender Compliance & Contract Support`,
+  buttonText: "Explore Tender Solutions ",
+ subheading:"Win More Government & Private Contracts",
     Image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770387/BBB_ddpa51.png",
     link : "/tender"
   },
   {
-    description: "Research,analytics,Startup Growth ,Scaling Strategies,AI & Business Automation Learning",
+    description: ` Startup Masterclasses,
+
+ Business Strategy & Scaling ,
+
+  AI & Business Automation ,
+
+ Sales & Marketing Training ,
+
+Finance & Fundraising Programs ,
+
+ Business Analytics & Research ,
+
+ Leadership & Management Skills ,
+
+Premium Courses, Workshops & Certifications
+`,
+subheading:"Learn. Build. Lead. Succeed.",
+    buttonText: "Explore Learning Solutions ",
     Image: "https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770395/KKK_ltrp7q.png",
     link:"/bank"
   },
@@ -107,87 +172,87 @@ export default function Home() {
             className="w-full rounded-full border-2 border-red-500 bg-white px-5 py-4 text-base text-black outline-none shadow-lg"
           />
         </div>
-
         {/* Cards */}
-        <div className="mt-14 grid w-full max-w-7xl gap-5 sm:grid-cols-2 xl:grid-cols-4">
-          {filteredCards.length === 0 ? (
-            <p className="text-center text-gray-500 mt-10">
-              No services found.
-            </p>
-          ) : (
-            filteredCards.map((card, index) => (
-              <motion.article
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1,
-                }}
-                whileHover={{
-                  scale: 1.03,
-                }}
-                className="group relative overflow-hidden rounded-[24px] border border-white/20 bg-white/90 backdrop-blur-xl p-5 shadow-md transition-all duration-300"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-orange-500/10 to-red-600/10 opacity-0 transition duration-300 group-hover:opacity-100"></div>
-
-                <div className="relative z-20 text-center px-3 pt-3">
-                  <img
-                    loading="lazy"
-                      decoding="async"
-                    src={card.Image}
-                    alt="service"
-                    className="mx-auto mb-4 mt-0 lg:-mt-16 h-auto max-w-[12rem] object-contain"
-                  />
-                  <ul className="space-y-3 -mt-16 text-sm leading-6 text-black max-w-xs mx-auto">
-                    {card.description.split(",").map((item, i) => (
-  <li key={i} className="flex items-center gap-2">
-    <span className="text-red-800 font-bold text-xl flex-shrink-0">
-      •
-    </span>
-
-    <span
-      className="
-        text-left flex-1 cursor-pointer
-        transition-all duration-300
-        hover:font-bold
-        hover:text-red-600
-      "
-    >
-       <Link
-        to={item.link}
-        className="
-          text-left flex-1
-          transition-all duration-300
-          hover:text-red-600
-          hover:font-bold
-        "
+<div className="mt-14 grid w-full max-w-7xl gap-5 sm:grid-cols-2 xl:grid-cols-4">
+  {filteredCards.length === 0 ? (
+    <p className="col-span-full text-center text-gray-500 mt-10">
+      No services found.
+    </p>
+  ) : (
+    filteredCards.map((card, index) => (
+      <motion.article
+        key={index}
+        initial={{ opacity: 0, y: 60 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.5,
+          delay: index * 0.1,
+        }}
+        whileHover={{ scale: 1.03 }}
+        className="group relative overflow-hidden rounded-[24px] border border-white/20 bg-white/90 backdrop-blur-xl p-5 shadow-md transition-all duration-300"
       >
-        {item.text}
-      </Link>
-      {item.trim()}
-    </span>
-  </li>
-))}
- 
+        <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-orange-500/10 to-red-600/10 opacity-0 transition duration-300 group-hover:opacity-100"></div>
 
-</ul>
+        <div className="relative z-20 text-center px-3 pt-3">
+          {/* Image */}
+          <img
+            loading="lazy"
+            decoding="async"
+            src={card.Image}
+            alt={card.subheading}
+            className="mx-auto mb-4 lg:-mt-16 h-auto max-w-[12rem] object-contain"
+          />
+
+          {/* Subheading */}
+          <h3 className="text-lg font-bold text-red-700 -mt-14 mb-5 leading-snug">
+            {card.subheading}
+          </h3>
+
+          {/* Services */}
+          <ul className="space-y-3 text-sm leading-6 text-black max-w-xs mx-auto">
+            {card.description
+              .split(",")
+              .filter((item) => item.trim() !== "")
+              .map((item, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <span className="text-red-700 font-bold text-lg">•</span>
+
+                  <Link
+                    to={card.link}
+                    className="flex-1  text-left transition-all duration-300 hover:text-red-600 hover:font-semibold"
+                  >
+                    {item.replace("*", "").trim()}
+                  </Link>
+                </li>
+              ))}
+          </ul>
+
+          {/* Button */}
+          <div className="mt-auto pt-6 flex justify-center">
+  <Link
+    to={card.link}
+    className="inline-flex items-center rounded-full bg-gradient-to-r from-red-600 to-red-700 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
+  >
+    {card.buttonText} →
+  </Link>
+</div>
+        </div>
+      </motion.article>
+    ))
+  )}
+</div>
+
+        
+        
+
+
 
                   
 
-                  <div className="mt-6 flex justify-center">
-                    <Link
-                      to={card.link}
-                      className="inline-flex rounded-full border border-red-500 px-5 py-2 text-sm font-medium text-red-500 transition hover:bg-red-500 hover:text-white"
-                    >
-                      Learn More →
-                    </Link>
-                  </div>
-                </div>
-              </motion.article>
-            ))
-          )}
-        </div>
+                 
+           
+          
+        
       </div>
     </section>
   );
