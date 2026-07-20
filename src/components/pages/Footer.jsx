@@ -176,16 +176,25 @@ export default function Footer() {
       </div>
 
       <div className="flex gap-2 items-start">
-        <FaPhone className="text-red-500 mt-1" />
+        <FaPhone className="text-red-500 rotate-180 mt-1" />
         <span>+91 8920817608</span>
       </div>
 
-      <div className="flex gap-2 items-start">
-        <FaMapMarkerAlt className="text-red-500 mt-1" />
-        <span>Greater Noida, India</span>
-      </div>
+     <div className="flex items-start gap-3">
+  <FaMapMarkerAlt className=" text-7xl text-red-500" />
 
-      <div className="text-gray-400 text-xs pt-2 border-t border-white/10">
+  <a
+    href="https://maps.google.com/?q=TF-03+Suntwinlight+Delta-1+Greater+Noida+UP+201310"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-300 transition hover:text-red-500"
+  >
+    TF-03, Suntwinlight, Delta-1, Greater Noida,
+    Uttar Pradesh - 201310
+  </a>
+</div>
+
+      <div className="text-gray-400 text-3xl font-bold pt-2 border-t border-white/10">
         Business Growth Ecosystem for Modern India
       </div>
 
@@ -220,12 +229,35 @@ export default function Footer() {
       
 
       {/* SOCIAL ICONS */}
-      <div className="flex justify-center gap-4 mt-8">
-        <Social icon={<FaWhatsapp />} />
-        <Social icon={<FaInstagram />} />
-        <Social icon={<FaFacebook />} />
-        <Social icon={<FaPhone />} />
-      </div>
+      <div className="mt-8 flex justify-center gap-4">
+  <a
+    href="https://wa.me/919876543210"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Social icon={<FaWhatsapp />} />
+  </a>
+
+  <a
+    href="https://www.instagram.com/yourusername"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Social icon={<FaInstagram />} />
+  </a>
+
+  <a
+    href="https://www.facebook.com/yourpage"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <Social icon={<FaFacebook />} />
+  </a>
+
+  <a href="tel:+919876543210">
+    <Social icon={<FaPhone />} />
+  </a>
+</div>
 
       {/* COPYRIGHT */}
       <div className="border-t border-white/10 mt-6 py-6 text-center text-gray-400 text-xs px-4">

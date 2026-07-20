@@ -64,23 +64,25 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
           className={`mx-auto flex items-center justify-between px-6 transition-all duration-500 ${
             scrolled
               ? "max-w-full bg-black/55 backdrop-blur-xl shadow-xl h-16"
-              : "  left-0 max-w-7xl w-[95%] mt-6 bg-[#C90102] rounded-2xl h-20"
+              : "  left-0 max-w-9xl w-[95%] mt-6 bg-[#C90102] rounded-2xl h-20"
           }`}
           
         >
           {/* LOGO */}
-          <Link to="/" className="flex items-center h-full overflow-visible"></Link>
-  <img
+          <Link to="/">
+            <img
     loading="lazy"
     decoding="async"
     src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770425/logoo_u4zkyt.png"
     alt="Grovally Business Solutions Logo"
-    className={`w-auto object-contain transition-all duration-500 hover:scale-100 ${
+    className={`w-auto object-contain transition-all duration-500 hover:scale-150 ${
       scrolled
         ? "h-52 scale-125"
-        : "h-48 md:h-48  left-0 scale-105"
+        : "h-48 md:h-48  scale-105"
     }`}
   />
+          </Link>
+ 
   <div>
     <ul className="hidden lg:flex items-center gap-8 text-white font-medium">
   <li>
@@ -89,138 +91,259 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
     </Link>
   </li>
   
-  <li className="relative group">
-  {/* Menu Button */}
-  <button className="py-7 text-white hover:text-gray-200 transition">
-    Products
+  
+<li className="relative group">
+  {/* Button */}
+  <button className="group flex items-center gap-1 py-7 text-white transition hover:text-red-400">
+      Products
+
+    <svg
+      className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M19 9l-7 7-7-7"
+      />
+    </svg>
   </button>
 
   {/* Mega Menu */}
   <div
-    className="
-      fixed
-      left-0
-      right-0
-      top-[105px]
-      z-50
-
-      opacity-0
-      invisible
-      group-hover:opacity-100
-      group-hover:visible
-
-      transition-all
-      duration-300
-    "
+       className="
+    fixed
+    left-1/2
+    top-[100px]
+    -translate-x-1/2
+    w-[1280px]
+    max-w-[95vw]
+    max-h-[80vh]
+    overflow-y-auto
+    rounded-2xl
+    bg-white
+    p-8
+    shadow-2xl
+    z-[9999]
+    opacity-0
+    invisible
+    transition-all
+    duration-300
+    group-hover:opacity-100
+    group-hover:visible
+  "
+  
   >
-    <div
-      className="
-        max-w-7xl
-        mx-auto
-        bg-white
-        rounded-2xl
-        shadow-2xl
-        p-10
-      "
-    >
-      <div className="grid grid-cols-4 gap-10">
+    <div className="grid grid-cols-4 gap-10">
 
-        {/* AI Products */}
-        <div>
-          <h3 className="text-red-600 font-bold mb-5 border-b pb-2">
-            AI Products
-          </h3>
+      {/* ================= Business Solutions ================= */}
+      <div>
+        <h3 className="text-red-600 font-bold text-lg mb-8">
+          AI Solutions
+        </h3>
 
-          <ul className="space-y-3 text-gray-700">
-            <li><Link to="/ai-services" className="hover:text-red-600">AI Chatbot</Link></li>
-            <li><Link to="/ai-services" className="hover:text-red-600">AI Attendance System</Link></li>
-            <li><Link to="/ai-services" className="hover:text-red-600">AI Website Builder</Link></li>
-            <li><Link to="/ai-services" className="hover:text-red-600">AI ERP Assistant</Link></li>
-            <li><Link to="/ai-services" className="hover:text-red-600">AI Content Creator</Link></li>
-            <li><Link to="/ai-services" className="hover:text-red-600">AI Business Automation</Link></li>
-            <li><Link to="/ai-services" className="hover:text-red-600">AI Voice Assistant</Link></li>
-          </ul>
-        </div>
+        <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-6">
+          {[
+          
+            ["AIchatbot", "/ai-services"],
+            ["AI Attendance System", "/ai-services"],
+            ["AI ERP Assistant", "/ai-services"],
+            ["AI Content Creator", "/ai-services"],
+            ["AI Business Automation", "/ai-services"],
+            ["AI Voice Assistant", "/ai-services"],
+          ].map(([title, link], index, arr) => (
+            <li
+              key={title}
+              className={`relative pl-6 ${
+                index === arr.length - 1
+                  ? "after:absolute after:left-0 after:top-1/2 after:bottom-0 after:w-[2px] after:bg-white"
+                  : ""
+              }`}
+            >
+              {/* Horizontal Branch */}
+              <span className="absolute left-0 top-1/2 h-[2px] w-4 bg-gray-300"></span>
 
-        {/* Business Software */}
-        <div>
-          <h3 className="text-red-600 font-bold mb-5 border-b pb-2">
-            Business Software
-          </h3>
+              {/* Dot */}
+              <span className="absolute -left-[5px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-red-600 border-2 border-white"></span>
 
-          <ul className="space-y-3 text-gray-700">
-            <li><Link to="/erp-software" className="hover:text-red-600">ERP Software</Link></li>
-            <li><Link to="/crm-software" className="hover:text-red-600">CRM Software</Link></li>
-            <li><Link to="/hrms-software" className="hover:text-red-600">HRMS Software</Link></li>
-            <li><Link to="/accounting-software" className="hover:text-red-600">Accounting Software</Link></li>
-            <li><Link to="/inventory-management-software" className="hover:text-red-600">Inventory Management Software</Link></li>
-            <li><Link to="/hotel-management-software" className="hover:text-red-600">Hotel Management Software</Link></li>
-            <li><Link to="/restaurant-software" className="hover:text-red-600">Restaurant Software</Link></li>
-            <li><Link to="/logistics-software" className="hover:text-red-600">Logistics Software</Link></li>
-            <li><Link to="/ngo-management-software" className="hover:text-red-600">NGO Management Software</Link></li>
-            <li><Link to="/real-estate-software" className="hover:text-red-600">Real Estate Software</Link></li>
-            <li><Link to="/microfinance-software" className="hover:text-red-600">Microfinance Software</Link></li>
-            <li><Link to="/food-delivery-software" className="hover:text-red-600">Food Delivery Software</Link></li>
-            <li><Link to="/quick-commerce-software" className="hover:text-red-600">Quick Commerce Software</Link></li>
-          </ul>
-        </div>
-
-        {/* Apps */}
-        <div>
-          <h3 className="text-red-600 font-bold mb-5 border-b pb-2">
-            Apps
-          </h3>
-
-          <ul className="space-y-3 text-gray-700">
-            <li><Link to="/app-services" className="hover:text-red-600">E-Commerce App</Link></li>
-            <li><Link to="/app-services" className="hover:text-red-600">Food Delivery App</Link></li>
-            <li><Link to="/app-services" className="hover:text-red-600">Hotel Booking App</Link></li>
-            <li><Link to="/app-services" className="hover:text-red-600">Education App</Link></li>
-            <li><Link to="/app-services" className="hover:text-red-600">Real Estate App</Link></li>
-            <li><Link to="/app-services" className="hover:text-red-600">NGO App</Link></li>
-            <li><Link to="/app-services" className="hover:text-red-600">Bike Taxi App</Link></li>
-            <li><Link to="/app-services" className="hover:text-red-600">Healthcare App</Link></li>
-          </ul>
-        </div>
-
-        {/* Websites */}
-        <div>
-          <h3 className="text-red-600 font-bold mb-5 border-b pb-2">
-            Websites & Portals
-          </h3>
-
-          <ul className="space-y-3 text-gray-700">
-            <li><Link to="/corporate-website" className="hover:text-red-600">Corporate Website</Link></li>
-            <li><Link to="/ecommerce-website" className="hover:text-red-600">E-Commerce Website</Link></li>
-            <li><Link to="/school-portal" className="hover:text-red-600">School Portal</Link></li>
-            <li><Link to="/hospital-portal" className="hover:text-red-600">Hospital Portal</Link></li>
-            <li><Link to="/ngo-portal" className="hover:text-red-600">NGO Portal</Link></li>
-            <li><Link to="/franchise-portal" className="hover:text-red-600">Franchise Portal</Link></li>
-            <li><Link to="/customer-portal" className="hover:text-red-600">Customer Portal</Link></li>
-          </ul>
-        </div>
-
+              <Link
+                to={link}
+                className="block font-medium text-gray-700 transition-all duration-300 hover:text-red-600 hover:translate-x-2"
+              >
+                {title}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
+
+      {/* ================= Industry Solutions ================= */}
+      <div>
+        <h3 className="text-red-600 font-bold text-lg mb-6">
+            Business Software
+        </h3>
+
+        <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
+          {[
+             ["ERP Software", "/erp-software"],
+  ["CRM Software", "/crm-software"],
+  ["HRMS Software", "/hrms-software"],
+  ["Accounting Software", "/accounting-software"],
+  ["Inventory Management Software", "/inventory-management-software"],
+  ["Payroll Software", "/payroll-software"],
+  ["School Management Software", "/school-management-software"],
+  ["Hospital Management Software", "/hospital-management-software"],
+  ["Hotel Management Software", "/hotel-management-software"],
+  ["Restaurant Software", "/restaurant-software"],
+  ["Real Estate Software", "/real-estate-software"],
+  ["Microfinance Software", "/microfinance-software"],
+  ["NGO Management Software", "/ngo-management-software"],
+  ["Logistics Software", "/logistics-software"],
+  ["Manufacturing Software", "/manufacturing-software"],
+
+           
+          ].map(([title, link], index, arr) => (
+            <li
+              key={title}
+              className={`relative pl-6 ${
+                index === arr.length - 1
+                  ? "after:absolute after:left-0 after:top-1/2 after:bottom-0 after:w-[2px] after:bg-white"
+                  : ""
+              }`}
+            >
+              {/* Horizontal Branch */}
+              <span className="absolute left-0 top-1/2 h-[2px] w-4 bg-gray-300"></span>
+
+              {/* Dot */}
+              <span className="absolute -left-[5px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-red-600 border-2 border-white"></span>
+
+              <Link
+                to={link}
+                className="block font-medium text-gray-700 transition-all duration-300 hover:text-red-600 hover:translate-x-2"
+              >
+                {title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+       <div>
+        <h3 className="text-red-600 font-bold text-lg mb-6">
+           Mobile Apps
+        </h3>
+
+        <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
+          {[
+             ["E-Commerce App", "/ecommerce-app"],
+  ["Food Delivery App", "/food-delivery-app"],
+  ["Hotel Booking App", "/hotel-booking-app"],
+  ["Education App", "/education-app"],
+  ["Healthcare App", "/healthcare-app"],
+  ["Real Estate App", "/real-estate-app"],
+  ["Grocery Delivery App", "/grocery-delivery-app"],
+  ["Quick Commerce App", "/quick-commerce-app"],
+  ["Bike Taxi App", "/bike-taxi-app"],
+  ["Cab Booking App", "/cab-booking-app"],
+  ["Travel App", "/travel-app"],
+  ["Doctor Appointment App", "/doctor-appointment-app"],
+  ["NGO App", "/ngo-app"],
+          ].map(([title, link], index, arr) => (
+            <li
+              key={title}
+              className={`relative pl-6 ${
+                index === arr.length - 1
+                  ? "after:absolute after:left-0 after:top-1/2 after:bottom-0 after:w-[2px] after:bg-white"
+                  : ""
+              }`}
+            >
+              {/* Horizontal Branch */}
+              <span className="absolute left-0 top-1/2 h-[2px] w-4 bg-gray-300"></span>
+
+              {/* Dot */}
+              <span className="absolute -left-[5px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-red-600 border-2 border-white"></span>
+
+              <Link
+                to={link}
+                className="block font-medium text-gray-700 transition-all duration-300 hover:text-red-600 hover:translate-x-2"
+              >
+                {title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3 className="text-red-600 font-bold text-lg mb-6">
+          Websites & Portals
+        </h3>
+
+        <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
+          {[
+              ["Corporate Website", "/corporate-website"],
+  ["Business Website", "/business-website"],
+  ["E-Commerce Website", "/ecommerce-website"],
+  ["School Portal", "/school-portal"],
+  ["Hospital Portal", "/hospital-portal"],
+  ["College Portal", "/college-portal"],
+  ["Customer Portal", "/customer-portal"],
+  ["Vendor Portal", "/vendor-portal"],
+  ["Employee Portal", "/employee-portal"],
+  ["Franchise Portal", "/franchise-portal"],
+  ["NGO Portal", "/ngo-portal"],
+  ["B2B Marketplace", "/b2b-marketplace"],
+  ["Job Portal", "/job-portal"],
+  ["Government Portal", "/government-portal"],
+          ].map(([title, link], index, arr) => (
+            <li
+              key={title}
+              className={`relative pl-6 ${
+                index === arr.length - 1
+                  ? "after:absolute after:left-0 after:top-1/2 after:bottom-0 after:w-[2px] after:bg-white"
+                  : ""
+              }`}
+            >
+              {/* Horizontal Branch */}
+              <span className="absolute left-0 top-1/2 h-[2px] w-4 bg-gray-300"></span>
+
+              {/* Dot */}
+              <span className="absolute -left-[5px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-red-600 border-2 border-white"></span>
+
+              <Link
+                to={link}
+                className="block font-medium text-gray-700 transition-all duration-300 hover:text-red-600 hover:translate-x-2"
+              >
+                {title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
     </div>
   </div>
 </li>
+
+
   
   
 <li className="relative group">
   {/* Services Button */}
-  <button className="relative py-7 text-white hover:text-gray-200 transition">
-    Servicess
+ <button className="group flex items-center gap-1 py-7 text-white transition hover:text-red-400">
+  Services
 
-    <span
-      className="
-        absolute left-0 bottom-5 mt-5
-        h-[2px] w-0
-        bg-white
-        transition-all duration-300
-        group-hover:w-full
-      "
-    ></span>
-  </button>
+  <svg
+    className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    viewBox="0 0 24 24"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+  </svg>
+</button>
 
   {/* Mega Menu */}
   <div
@@ -410,16 +533,30 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
     </div>
   </div>
 </li>
-
-
- <li className="relative group">
-  <span className="cursor-pointer hover:text-gray-200 transition">
+<li className="relative group">
+  {/* Button */}
+  <button className="group flex items-center gap-1 py-7 text-white transition hover:text-red-400">
     Solutions
-  </span>
 
+    <svg
+      className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M19 9l-7 7-7-7"
+      />
+    </svg>
+  </button>
+
+  {/* Mega Menu */}
   <div
     className="
-      absolute left-1/2 -translate-x-1/2 top-full mt-6
+      absolute left-1/2 -translate-x-1/2 top-full mt-2
       w-[900px] bg-white rounded-2xl shadow-2xl
       p-8 z-50
       opacity-0 invisible
@@ -427,46 +564,329 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
       transition-all duration-300
     "
   >
-    <div className="grid grid-cols-2 gap-10">
+    <div className="grid grid-cols-2 gap-5">
 
-      {/* Column 1 */}
+      {/* ================= Business Solutions ================= */}
       <div>
-        <h3 className="text-red-600 font-bold mb-5">
+        <h3 className="text-red-600 font-bold text-lg mb-6">
           Business Solutions
         </h3>
 
-        <ul className="space-y-3 text-gray-700 font-semibold">
-          <li><Link to="/startup-solutions" className="hover:text-red-600">Startup Solutions</Link></li>
-          <li><Link to="/launch" className="hover:text-red-600">Launch</Link></li>
-          <li><Link to="/growth" className="hover:text-red-600">Growth</Link></li>
-          <li><Link to="/scale" className="hover:text-red-600">Scale</Link></li>
-          <li><Link to="/msme-solutions" className="hover:text-red-600">MSME Solutions</Link></li>
-          <li><Link to="/enterprise-solutions" className="hover:text-red-600">Enterprise Solutions</Link></li>
-          <li><Link to="/custom-business-solution" className="hover:text-red-600">Custom Business Solution</Link></li>
+        <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
+          {[
+            ["Startup Solutions", "/startup-solutions"],
+            ["Launch", "/launch"],
+            ["Growth", "/growth"],
+            ["Scale", "/scale"],
+            ["MSME Solutions", "/msme-solutions"],
+            ["Enterprise Solutions", "/enterprise-solutions"],
+            ["Custom Business Solution", "/custom-business-solution"],
+          ].map(([title, link], index, arr) => (
+            <li
+              key={title}
+              className={`relative pl-6 ${
+                index === arr.length - 1
+                  ? "after:absolute after:left-0 after:top-1/2 after:bottom-0 after:w-[2px] after:bg-white"
+                  : ""
+              }`}
+            >
+              {/* Horizontal Branch */}
+              <span className="absolute left-0 top-1/2 h-[2px] w-4 bg-gray-300"></span>
+
+              {/* Dot */}
+              <span className="absolute -left-[5px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-red-600 border-2 border-white"></span>
+
+              <Link
+                to={link}
+                className="block font-medium text-gray-700 transition-all duration-300 hover:text-red-600 hover:translate-x-2"
+              >
+                {title}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
 
-      {/* Column 2 */}
+      {/* ================= Industry Solutions ================= */}
       <div>
-        <h3 className="text-red-600 font-bold mb-5">
+        <h3 className="text-red-600 font-bold text-lg mb-6">
           Industry Solutions
         </h3>
 
-        <ul className="space-y-3 text-gray-700 font-semibold">
-          <li><Link to="/healthcare-solutions" className="hover:text-red-600">Healthcare Solutions</Link></li>
-          <li><Link to="/education-solutions" className="hover:text-red-600">Education Solutions</Link></li>
-          <li><Link to="/real-estate-solutions" className="hover:text-red-600">Real Estate Solutions</Link></li>
-          <li><Link to="/hospitality-solutions" className="hover:text-red-600">Hospitality Solutions</Link></li>
-          <li><Link to="/restaurant-solutions" className="hover:text-red-600">Restaurant Solutions</Link></li>
-          <li><Link to="/retail-ecommerce-solutions" className="hover:text-red-600">Retail & E-Commerce Solutions</Link></li>
-          <li><Link to="/manufacturing-solutions" className="hover:text-red-600">Manufacturing Solutions</Link></li>
-          <li><Link to="/logistics-solutions" className="hover:text-red-600">Logistics Solutions</Link></li>
-          <li><Link to="/ngo-solutions" className="hover:text-red-600">NGO Solutions</Link></li>
-          <li><Link to="/finance-solutions" className="hover:text-red-600">Finance Solutions</Link></li>
-          <li><Link to="/travel-solutions" className="hover:text-red-600">Travel Solutions</Link></li>
-          <li><Link to="/government-solutions" className="hover:text-red-600">Government Solutions</Link></li>
-          <li><Link to="/import-export-solutions" className="hover:text-red-600">Import Export Solutions</Link></li>
-          <li><Link to="/franchise-solutions" className="hover:text-red-600">Franchise Solutions</Link></li>
+        <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
+          {[
+            ["Healthcare Solutions", "/healthcare-solutions"],
+            ["Education Solutions", "/education-solutions"],
+            ["Real Estate Solutions", "/real-estate-solutions"],
+            ["Hospitality Solutions", "/hospitality-solutions"],
+            ["Restaurant Solutions", "/restaurant-solutions"],
+            ["Retail & E-Commerce Solutions", "/retail-ecommerce-solutions"],
+            ["Manufacturing Solutions", "/manufacturing-solutions"],
+            ["Logistics Solutions", "/logistics-solutions"],
+            ["NGO Solutions", "/ngo-solutions"],
+            ["Finance Solutions", "/finance-solutions"],
+            ["Travel Solutions", "/travel-solutions"],
+            ["Government Solutions", "/government-solutions"],
+            ["Import Export Solutions", "/import-export-solutions"],
+           
+          ].map(([title, link], index, arr) => (
+            <li
+              key={title}
+              className={`relative pl-6 ${
+                index === arr.length - 1
+                  ? "after:absolute after:left-0 after:top-1/2 after:bottom-0 after:w-[2px] after:bg-white"
+                  : ""
+              }`}
+            >
+              {/* Horizontal Branch */}
+              <span className="absolute left-0 top-1/2 h-[2px] w-4 bg-gray-300"></span>
+
+              {/* Dot */}
+              <span className="absolute -left-[5px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-red-600 border-2 border-white"></span>
+
+              <Link
+                to={link}
+                className="block font-medium text-gray-700 transition-all duration-300 hover:text-red-600 hover:translate-x-2"
+              >
+                {title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</li>
+
+
+
+
+<li className="relative group">
+  {/* Button */}
+  <button className="group flex items-center gap-1 py-7 text-white transition hover:text-red-400">
+      Fundings
+
+    <svg
+      className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M19 9l-7 7-7-7"
+      />
+    </svg>
+  </button>
+
+  {/* Mega Menu */}
+  <div
+       className="
+    fixed
+    left-1/2
+    top-[100px]
+    -translate-x-1/2
+    w-[1280px]
+    max-w-[95vw]
+    max-h-[80vh]
+    overflow-y-auto
+    rounded-2xl
+    bg-white
+    p-8
+    shadow-2xl
+    z-[9999]
+    opacity-0
+    invisible
+    transition-all
+    duration-300
+    group-hover:opacity-100
+    group-hover:visible
+  "
+  
+  >
+    <div className="grid grid-cols-4 gap-10">
+
+      {/* ================= Business Solutions ================= */}
+      <div>
+        <h3 className="text-red-600 font-bold text-lg mb-8">
+          AI Solutions
+        </h3>
+
+        <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-6">
+          {[
+          
+           ["Business Loans", "/business-loans"],
+    ["MSME Loan", "/msme-loan"],
+    ["Working Capital Loan", "/working-capital-loan"],
+    ["Loan Against Property", "/lap"],
+    ["Machinery Loan", "/machinery-loan"],
+    ["OD / CC", "/od-cc"],
+    ["Project Finance", "/project-finance"],
+    ["Business Expansion Finance", "/business-expansion-finance"],
+    ["Financial Advisory", "/financial-advisory"],
+    ["Private Investors", "/private-investors"],
+          ].map(([title, link], index, arr) => (
+            <li
+              key={title}
+              className={`relative pl-6 ${
+                index === arr.length - 1
+                  ? "after:absolute after:left-0 after:top-1/2 after:bottom-0 after:w-[2px] after:bg-white"
+                  : ""
+              }`}
+            >
+              {/* Horizontal Branch */}
+              <span className="absolute left-0 top-1/2 h-[2px] w-4 bg-gray-300"></span>
+
+              {/* Dot */}
+              <span className="absolute -left-[5px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-red-600 border-2 border-white"></span>
+
+              <Link
+                to={link}
+                className="block font-medium text-gray-700 transition-all duration-300 hover:text-red-600 hover:translate-x-2"
+              >
+                {title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* ================= Industry Solutions ================= */}
+      <div>
+        <h3 className="text-red-600 font-bold text-lg mb-6">
+            Business Software
+        </h3>
+
+        <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
+          {[
+               ["Export Finance", "/export-finance"],
+    ["Import Finance", "/import-finance"],
+    ["Trade Finance", "/trade-finance"],
+    ["Letter of Credit (LC)", "/letter-of-credit"],
+    ["Bank Guarantee (BG)", "/bank-guarantee"],
+    ["Overseas Business Funding", "/overseas-business-funding"],
+    ["Foreign Investment", "/foreign-investment"],
+    ["Cross Border Funding", "/cross-border-funding"],
+    ["Supply Chain Finance", "/supply-chain-finance"],
+    ["Invoice Discounting", "/invoice-discounting"],
+      
+
+           
+          ].map(([title, link], index, arr) => (
+            <li
+              key={title}
+              className={`relative pl-6 ${
+                index === arr.length - 1
+                  ? "after:absolute after:left-0 after:top-1/2 after:bottom-0 after:w-[2px] after:bg-white"
+                  : ""
+              }`}
+            >
+              {/* Horizontal Branch */}
+              <span className="absolute left-0 top-1/2 h-[2px] w-4 bg-gray-300"></span>
+
+              {/* Dot */}
+              <span className="absolute -left-[5px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-red-600 border-2 border-white"></span>
+
+              <Link
+                to={link}
+                className="block font-medium text-gray-700 transition-all duration-300 hover:text-red-600 hover:translate-x-2"
+              >
+                {title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+       <div>
+        <h3 className="text-red-600 font-bold text-lg mb-6">
+           Mobile Apps
+        </h3>
+
+        <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
+          {[
+              ["Business Valuation", "/business-valuation"],
+    ["Investor Connect", "/investor-connect"],
+    ["Angel Investors", "/angel-investors"],
+    ["Venture Capital", "/venture-capital"],
+    ["Private Equity", "/private-equity"],
+    ["Financial Planning", "/financial-planning"],
+    ["Fund Raising", "/fund-raising"],
+    ["Mergers & Acquisitions", "/mergers-acquisitions"],
+    ["Due Diligence", "/due-diligence"],
+    ["IPO Advisory", "/ipo-advisory"],
+  
+          ].map(([title, link], index, arr) => (
+            <li
+              key={title}
+              className={`relative pl-6 ${
+                index === arr.length - 1
+                  ? "after:absolute after:left-0 after:top-1/2 after:bottom-0 after:w-[2px] after:bg-white"
+                  : ""
+              }`}
+            >
+              {/* Horizontal Branch */}
+              <span className="absolute left-0 top-1/2 h-[2px] w-4 bg-gray-300"></span>
+
+              {/* Dot */}
+              <span className="absolute -left-[5px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-red-600 border-2 border-white"></span>
+
+              <Link
+                to={link}
+                className="block font-medium text-gray-700 transition-all duration-300 hover:text-red-600 hover:translate-x-2"
+              >
+                {title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3 className="text-red-600 font-bold text-lg mb-6">
+          Websites & Portals
+        </h3>
+
+        <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
+          {[
+              ["Corporate Website", "/corporate-website"],
+  ["Business Website", "/business-website"],
+  ["E-Commerce Website", "/ecommerce-website"],
+  ["School Portal", "/school-portal"],
+  ["Hospital Portal", "/hospital-portal"],
+  ["College Portal", "/college-portal"],
+  ["Customer Portal", "/customer-portal"],
+  ["Vendor Portal", "/vendor-portal"],
+  ["Employee Portal", "/employee-portal"],
+  ["Franchise Portal", "/franchise-portal"],
+  ["NGO Portal", "/ngo-portal"],
+  ["B2B Marketplace", "/b2b-marketplace"],
+  ["Job Portal", "/job-portal"],
+  ["Government Portal", "/government-portal"],
+          ].map(([title, link], index, arr) => (
+            <li
+              key={title}
+              className={`relative pl-6 ${
+                index === arr.length - 1
+                  ? "after:absolute after:left-0 after:top-1/2 after:bottom-0 after:w-[2px] after:bg-white"
+                  : ""
+              }`}
+            >
+              {/* Horizontal Branch */}
+              <span className="absolute left-0 top-1/2 h-[2px] w-4 bg-gray-300"></span>
+
+              {/* Dot */}
+              <span className="absolute -left-[5px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-red-600 border-2 border-white"></span>
+
+              <Link
+                to={link}
+                className="block font-medium text-gray-700 transition-all duration-300 hover:text-red-600 hover:translate-x-2"
+              >
+                {title}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
 
@@ -474,125 +894,37 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   </div>
 </li>
 <li className="relative group">
-  <span className="cursor-pointer py-7 block hover:text-gray-200 transition">
-    Funding
-  </span>
 
-  <div
-    className="
-      absolute left-1/2 -translate-x-1/2 top-full
-      pt-3
-      opacity-0 invisible
-      group-hover:opacity-100
-      group-hover:visible
-      transition-all duration-300
-      z-50
-    "
+  <button className="group flex items-center gap-1 py-7 text-white transition hover:text-red-400">
+  Tenders
+
+  <svg
+    className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    viewBox="0 0 24 24"
   >
-    <div className="w-[1000px] bg-white rounded-xl shadow-2xl p-10">
-
-      <div className="grid grid-cols-4 gap-8">
-
-        {/* Column 1 */}
-        <div>
-          <h3 className="text-red-600 font-bold mb-4 border-b pb-2">
-            Business Loans
-          </h3>
-
-          <ul className="space-y-3 text-gray-700 font-medium">
-            <li><Link to="/business-loans" className="hover:text-red-600">Business Loans</Link></li>
-            <li><Link to="/msme-loan" className="hover:text-red-600">MSME Loan</Link></li>
-            <li><Link to="/working-capital-loan" className="hover:text-red-600">Working Capital Loan</Link></li>
-            <li><Link to="/lap" className="hover:text-red-600">Loan Against Property</Link></li>
-            <li><Link className="hover:text-red-600">Machinery Loan</Link></li>
-             <li><Link className="hover:text-red-600"></Link>OD/CC</li>
-              <li><Link className="hover:text-red-600"></Link>Project Finance</li>
-               <li><Link className="hover:text-red-600"></Link>Business Expansion Finance</li>
-               <li><Link className="hover:text-red-600">Financial Advisory</Link></li>
-               <li><Link className="hover:text-red-600">Private Investors</Link></li>
-          </ul>
-        </div>
-
-        {/* Column 2 */}
-        <div>
-          <h3 className="text-red-600 font-bold mb-4 border-b pb-2">
-            Startup Funding
-          </h3>
-
-          <ul className="space-y-3 text-gray-700 font-medium">
-            <li><Link to="/startup-funding" className="hover:text-red-600">Startup Funding</Link></li>
-            <li><Link to="/seed-funding" className="hover:text-red-600">Seed Funding</Link></li>
-            <li><Link to="/angel-investors" className="hover:text-red-600">Angel Investors</Link></li>
-            <li><Link to="/venture-capital" className="hover:text-red-600">Venture Capital</Link></li>
-          </ul>
-        </div>
-
-        {/* Column 3 */}
-        <div>
-          <h3 className="text-red-600 font-bold mb-4 border-b pb-2">
-            Government & Support
-          </h3>
-
-          <ul className="space-y-3 text-gray-700 font-medium">
-            <li><Link to="/government-funding" className="hover:text-red-600">Government Funding</Link></li>
-            <li><Link to="/subsidies" className="hover:text-red-600">Subsidies</Link></li>
-            <li><Link to="/government-schemes" className="hover:text-red-600">Government Schemes</Link></li>
-            <li><Link to="/grants" className="hover:text-red-600">Grants</Link></li>
-          </ul>
-        </div>
-        <div>
-          <h3 className="text-red-600 font-bold mb-4 border-b pb-2"> Private Funding</h3>
-          <ul className="space-y-3 text-gray-700 font-medium">
-            <li>
-            
-            <Link className="hover:text-red-600"> Unsecured business Funding</Link></li>
-            <li>
-            <Link className="hover:text-red-600"> Secured Private Funding</Link></li>
-            <li>
-            <Link className="hover:text-red-600"> Startup  Private Funding</Link></li>
-            <li>
-            <Link className="hover:text-red-600"> Working Capital Funding</Link></li>
-            <li>
-            <Link className="hover:text-red-600"> Expansion Funding</Link></li>
-            <li>
-            <Link className="hover:text-red-600"> Project Funding</Link></li>
-            <li>
-            <Link className="hover:text-red-600"> Bridge Funding</Link></li>
-            <li>
-            <Link className="hover:text-red-600"> Corporate Funding</Link></li>
-            <li>
-            <Link className="hover:text-red-600"> Invertor Funding</Link></li>
-            <li>
-            <Link className="hover:text-red-600"> Joint Venture Funding</Link></li>
-            <li>
-            <Link className="hover:text-red-600"> Acquisition Funding </Link></li>
-            <li>
-            <Link className="hover:text-red-600"> Debt Funding </Link></li>
-            <li>
-            <Link className="hover:text-red-600"> Equity Funding </Link></li>
-            <li>
-            <Link className="hover:text-red-600" > Mezzanine Funding </Link></li>
-            <li>
-            <Link className="hover:text-red-600">  Structured Finance</Link></li>
-
-          </ul>
-        </div>
-
-
-      </div>
-
-    </div>
-  </div>
-</li>
-<li className="relative group">
-
-  <Link className=" cursor-pointer">
-    Tenders
-  </Link>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+  </svg>
+</button>
 
   {/* Dropdown */}
-  <div className="absolute left-1/2 top-full hidden  mt-8
-  group-hover:block -translate-x-1/2 bg-white shadow-xl w-[1200px] p-6 z-50">
+  <div   
+      className="
+    absolute left-1/2 -translate-x-1/2 top-full mt-2
+    w-[1280px]
+    max-h-[80vh]
+    overflow-y-auto
+    rounded-2xl
+    bg-white
+    p-8
+    shadow-2xl
+    z-50
+    opacity-0 invisible
+    group-hover:opacity-100 group-hover:visible
+    transition-all duration-300
+  ">
 
     <div className="grid grid-cols-4 gap-6 text-sm">
 
@@ -813,6 +1145,91 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
     </div>
   </div>
 </li>
+<li className="relative group">
+  <span className="flex cursor-pointer items-center gap-1 py-7 text-white transition hover:text-red-400">
+    Academy
+
+    <svg
+      className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  </span>
+
+  <div
+    className="
+      absolute left-1/2 top-full z-50
+      w-72 -translate-x-1/2
+      rounded-2xl border border-white/10
+      bg-[#0B0B0F]/95 backdrop-blur-2xl
+      shadow-2xl overflow-hidden
+      opacity-0 invisible translate-y-5
+      transition-all duration-300
+      group-hover:opacity-100
+      group-hover:visible
+      group-hover:translate-y-0
+    "
+  >
+    <Link to="/entrepreneurship" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">Entrepreneurship</Link>
+    <Link to="/ai-for-business" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">AI for Business</Link>
+    <Link to="/digital-marketing" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">Digital Marketing</Link>
+    <Link to="/sales" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">Sales</Link>
+    <Link to="/finance" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">Finance</Link>
+    <Link to="/business-operations" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">Business Operations</Link>
+    <Link to="/startup-masterclass" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">Startup Masterclass</Link>
+    <Link to="/live-workshops" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">Live Workshops</Link>
+    <Link to="/mentorship-programs" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">Mentorship Programs</Link>
+    <Link to="/certifications" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">Certifications</Link>
+    <Link to="/internship" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">Internship</Link>
+  </div>
+</li>
+<li className="relative group">
+  <span className="flex cursor-pointer items-center gap-1 py-7 text-white transition hover:text-red-400">
+    Resources
+
+    <svg
+      className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  </span>
+
+  <div
+    className="
+      absolute left-1/2 top-full z-50
+      w-72 -translate-x-1/2
+      rounded-2xl border border-white/10
+      bg-white backdrop-blur-2xl
+      shadow-2xl overflow-hidden
+      opacity-0 invisible translate-y-5
+      transition-all duration-300
+      group-hover:opacity-100
+      group-hover:visible
+      group-hover:translate-y-0
+    "
+  >
+    <Link to="/blogs" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Blogs</Link>
+    <Link to="/business-news" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Business News</Link>
+    <Link to="/ai-news" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">AI News</Link>
+    <Link to="/startup-stories" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Startup Stories</Link>
+    <Link to="/case-studies" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Case Studies</Link>
+    <Link to="/business-templates" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Business Templates</Link>
+    <Link to="/calculators" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Calculators</Link>
+    <Link to="/quotes" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Quotes</Link>
+    <Link to="/downloads" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Downloads</Link>
+    <Link to="/webinars" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Webinars</Link>
+    <Link to="/podcasts" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Podcasts</Link>
+    <Link to="/industry-reports" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Industry Reports</Link>
+  </div>
+</li>
 
   
 
@@ -820,229 +1237,82 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
  
   
- <li className="relative group">
-  <span className="cursor-pointer hover:text-gray-200">
-    Academy
-  </span>
-
-  <ul className="absolute  mt-8 left-0 top-full hidden group-hover:block bg-white text-black rounded-lg shadow-lg py-2 min-w-[260px] z-50">
-    <li>
-      <Link to="/entrepreneurship" className="block px-4 py-2 hover:text-red-600">
-        Entrepreneurship
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/ai-for-business" className="block px-4 py-2 hover:text-red-600 ">
-        AI for Business
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/digital-marketing" className="block px-4 py-2 hover:text-red-600">
-        Digital Marketing
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/sales" className="block px-4 py-2 hover:text-red-600">
-        Sales
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/finance" className="block px-4 py-2 hover:text-red-600">
-        Finance
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/business-operations" className="block px-4 py-2 hover:text-red-600">
-        Business Operations
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/startup-masterclass" className="block px-4 py-2 hover:text-red-600">
-        Startup Masterclass
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/live-workshops" className="block px-4 py-2 hover:text-red-600">
-        Live Workshops
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/mentorship-programs" className="block px-4 py-2 hover:text-red-600">
-        Mentorship Programs
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/certifications" className="block px-4 py-2 hover:text-red-600">
-        Certifications
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/internship" className="block px-4 py-2 hover:text-red-600">
-        Internship
-      </Link>
-    </li>
-  </ul>
-</li>
-
-
-  
- <li className="relative group">
-  <span className="cursor-pointer ">
-    Resourcess
-  </span>
-
-  <ul className="absolute  mt-8 left-0 top-full hidden group-hover:block bg-white text-black rounded-lg shadow-lg py-2 min-w-[260px] z-50">
-    <li>
-      <Link to="/blogs" className="block px-4 py-2 hover:text-red-600">
-        Blogs
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/business-news" className="block px-4 py-2 hover:text-red-600">
-        Business News
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/ai-news" className="block px-4 py-2 hover:text-red-600">
-        AI News
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/startup-stories" className="block px-4 py-2 hover:text-red-600">
-        Startup Stories
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/case-studies" className="block px-4 py-2 hover:text-red-600">
-        Case Studies
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/business-templates" className="block px-4 py-2 hover:text-red-600">
-        Business Templates
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/calculators" className="block px-4 py-2 hover:text-red-600">
-        Calculators
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/quotes" className="block px-4 py-2 hover:text-red-600">
-        Quotes
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/downloads" className="block px-4 py-2 hover:text-red-600">
-        Downloads
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/webinars" className="block px-4 py-2 hover:text-red-600">
-        Webinars
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/podcasts" className="block px-4 py-2 hover:text-red-600">
-        Podcasts
-      </Link>
-    </li>
-
-    <li>
-      <Link to="/industry-reports" className="block px-4 py-2 hover:text-red-600">
-        Industry Reports
-      </Link>
-    </li>
-  </ul>
-</li>
-
+ 
 
 <li className="relative group">
-  <span className="cursor-pointer hover:text-gray-200">
+  {/* Menu Button */}
+  <span className="flex cursor-pointer items-center gap-1 py-7 text-white transition hover:text-red-400">
     About
+
+    <svg
+      className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
   </span>
 
-  <ul className="absolute left-0 mt-8 top-full hidden group-hover:block bg-white text-black rounded-lg shadow-lg py-2 min-w-[220px] z-50">
-    <li>
-      <Link to="/about" className="block px-4 py-2 hover:text-red-600">
-        Company Overview
-      </Link>
-    </li>
+  {/* Dropdown */}
+  <div
+    className="
+      absolute left-1/2 top-full z-50
+      w-64 -translate-x-1/2
+      rounded-2xl border border-white/10
+      bg-white
+      backdrop-blur-2xl
+      shadow-2xl
+      opacity-0 invisible
+      translate-y-5
+      transition-all duration-300
+      group-hover:opacity-100
+      group-hover:visible
+      group-hover:translate-y-0
+      overflow-hidden
+    "
+  >
+    <Link to="/about" className="block px-5 py-3 text-sm text-black transition hover:bg-red-600/10 hover:text-red-600">
+      Company Overview
+    </Link>
 
-    <li>
-      <Link to="/vision" className="block px-4 py-2 hover:text-red-600">
-        Our Vision
-      </Link>
-    </li>
+    <Link to="/vision" className="block px-5 py-3 text-sm text-black transition hover:bg-red-600/10 hover:text-red-600">
+      Our Vision
+    </Link>
 
-    <li>
-      <Link to="/mission" className="block px-4 py-2 hover:text-red-600">
-        Our Mission
-      </Link>
-    </li>
+    <Link to="/mission" className="block px-5 py-3 text-sm text-black transition hover:bg-red-600/10 hover:text-red-600">
+      Our Mission
+    </Link>
 
-    <li>
-      <Link to="/why-grovally" className="block px-4 py-2 hover:text-red-600">
-        Why GROVALLY
-      </Link>
-    </li>
+    <Link to="/why-grovally" className="block px-5 py-3 text-sm text-black transition hover:bg-red-600/10 hover:text-red-600">
+      Why GROVALLY
+    </Link>
 
-    <li>
-      <Link to="/leadership-team" className="block px-4 py-2 hover:text-red-600">
-        Leadership Team
-      </Link>
-    </li>
+    <Link to="/leadership-team" className="block px-5 py-3 text-sm text-black transition hover:bg-red-600/10 hover:text-red-600">
+      Leadership Team
+    </Link>
 
-    <li>
-      <Link to="/our-journey" className="block px-4 py-2 hover:text-red-600">
-        Our Journey
-      </Link>
-    </li>
+    <Link to="/our-journey" className="block px-5 py-3 text-sm text-black transition hover:bg-red-600/10 hover:text-red-600">
+      Our Journey
+    </Link>
 
-    <li>
-      <Link to="/careers" className="block px-4 py-2 hover:text-red-600">
-        Careers
-      </Link>
-    </li>
+    <Link to="/careers" className="block px-5 py-3 text-sm text-black transition hover:bg-red-600/10 hover:text-red-600">
+      Careers
+    </Link>
 
-    <li>
-      <Link to="/partners" className="block px-4 py-2 hover:text-red-600">
-        Partners
-      </Link>
-    </li>
+    <Link to="/partners" className="block px-5 py-3 text-sm text-black transition hover:bg-red-600/10 hover:text-red-600">
+      Partners
+    </Link>
 
-    <li>
-      <Link to="/media" className="block px-4 py-2 hover:text-red-600">
-        Media
-      </Link>
-    </li>
+    <Link to="/media" className="block px-5 py-3 text-sm text-black transition hover:bg-red-600/10 hover:text-red-600">
+      Media
+    </Link>
 
-    <li>
-      <Link to="/contact" className="block px-4 py-2 hover:text-red-600 ">
-        Contact Us
-      </Link>
-    </li>
-  </ul>
+    <Link to="/contact" className="block px-5 py-3 text-sm text-black transition hover:bg-red-600/10 hover:text-red-600">
+      Contact Us
+    </Link>
+  </div>
 </li>
 
   
@@ -1050,7 +1320,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   <li>
     <Link
       to="/grovallyAI"
-      className="flex items-center gap-2 bg-white text-red-600 px-4 py-2 rounded-full font-bold hover:scale-105 transition"
+      className="flex items-center  bg-white text-red-600 px-4 py-2 rounded-full font-bold hover:scale-105 transition"
     >
       
       Grovally AI
@@ -1075,12 +1345,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
           <div className="hidden lg:flex items-center gap-4">
             
 
-            <Link
-              to="/signup"
-              className=" text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition"
-            >
-              Signup
-            </Link>
+           
           </div>
 
           {/* MOBILE BUTTON */}

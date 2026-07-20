@@ -113,7 +113,7 @@ export default function Contact() {
               {
                 icon: <FaMapMarkerAlt />,
                 title: "Location",
-                value: "Greater Noida, India",
+                value: "  TF-03, Suntwinlight, Delta-1, Greater Noida,Uttar Pradesh - 201310",
               },
             ].map((item, i) => (
               <motion.div

@@ -163,17 +163,40 @@ export default function Home() {
         </motion.div>
 
         {/* Search */}
-        <div className="w-full max-w-3xl mx-auto mt-10 px-2 sm:px-0">
-          <input
-            type="text"
-            placeholder="Search services..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full rounded-full border-2 border-red-500 bg-white px-5 py-4 text-base text-black outline-none shadow-lg"
-          />
-        </div>
-        {/* Cards */}
-<div className="mt-14 grid w-full max-w-7xl gap-5 sm:grid-cols-2 xl:grid-cols-4">
+       
+<motion.div
+  initial={{ opacity: 0, y: -40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.7 }}
+  className="w-full max-w-5xl mx-auto mt-10 px-2 sm:px-0"
+>
+  <motion.div
+    animate={{
+      boxShadow: [
+        "0 0 0px rgba(239,68,68,.2)",
+        "0 0 30px rgba(239,68,68,.35)",
+        "0 0 0px rgba(239,68,68,.2)",
+      ],
+    }}
+    transition={{
+      repeat: Infinity,
+      duration: 3,
+    }}
+    className="relative"
+  >
+    <input
+      type="text"
+      placeholder="🔍 Search services..."
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      className="w-full rounded-full border-2 border-red-500 bg-white px-6 py-4 text-base text-black outline-none transition-all duration-300 focus:scale-[1.02] focus:border-red-600"
+    />
+  </motion.div>
+</motion.div>
+
+{/* Cards */}
+<div className="mt-14 grid w-full max-w-9xl gap-6 sm:grid-cols-2 xl:grid-cols-4">
   {filteredCards.length === 0 ? (
     <p className="col-span-full text-center text-gray-500 mt-10">
       No services found.
@@ -182,60 +205,126 @@ export default function Home() {
     filteredCards.map((card, index) => (
       <motion.article
         key={index}
-        initial={{ opacity: 0, y: 60 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 80, scale: 0.9 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true }}
         transition={{
-          duration: 0.5,
+          duration: 0.6,
           delay: index * 0.1,
         }}
-        whileHover={{ scale: 1.03 }}
-        className="group relative overflow-hidden rounded-[24px] border border-white/20 bg-white/90 backdrop-blur-xl p-5 shadow-md transition-all duration-300"
+        animate={{
+          y: [0, -5, 0],
+        }}
+        whileHover={{
+          y: -15,
+          scale: 1.04,
+          rotateX: 4,
+          rotateY: -4,
+        }}
+        className="group relative overflow-hidden rounded-[28px] border border-white/20 bg-white/90 p-6 shadow-xl backdrop-blur-xl transition-all duration-500 hover:shadow-red-500/30"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-orange-500/10 to-red-600/10 opacity-0 transition duration-300 group-hover:opacity-100"></div>
+      
 
-        <div className="relative z-20 text-center px-3 pt-3">
+        <div className="relative object-cover z-20 text-center">
+
           {/* Image */}
-          <img
-            loading="lazy"
-            decoding="async"
-            src={card.Image}
-            alt={card.subheading}
-            className="mx-auto mb-4 lg:-mt-16 h-auto max-w-[12rem] object-contain"
-          />
+          <motion.img
+  src={card.Image}
+  alt={card.subheading}
+  loading="lazy"
+  decoding="async"
+  animate={{
+    y: [0, -12, 0],
+  }}
+  transition={{
+    repeat: Infinity,
+    duration: 3,
+    ease: "easeInOut",
+  }}
+  whileHover={{
+    scale: 1.2,
+    rotate: -5,
+  }}
+  className="mx-auto w-48 h-40 object-contain scale-150 -mt-10"
+/>
 
-          {/* Subheading */}
-          <h3 className="text-lg font-bold text-red-700 -mt-14 mb-5 leading-snug">
+          {/* Heading */}
+          <motion.h3
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="mb-5 -mt-7 text-sm font-bold leading-snug text-black"
+          >
             {card.subheading}
-          </h3>
+          </motion.h3>
 
           {/* Services */}
-          <ul className="space-y-3 text-sm leading-6 text-black max-w-xs mx-auto">
+          <ul className="space-y-3 text-sm text-black">
             {card.description
               .split(",")
               .filter((item) => item.trim() !== "")
               .map((item, i) => (
-                <li key={i} className="flex items-start gap-2">
-                  <span className="text-red-700 font-bold text-lg">•</span>
+                <motion.li
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{
+                    delay: i * 0.05,
+                  }}
+                  whileHover={{ x: 6 }}
+                  className="flex items-start gap-2"
+                >
+                  <motion.span
+                    animate={{
+                      scale: [1, 1.4, 1],
+                    }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 2,
+                    }}
+                    className="text-red-600"
+                  >
+                    ●
+                  </motion.span>
 
                   <Link
                     to={card.link}
-                    className="flex-1  text-left transition-all duration-300 hover:text-red-600 hover:font-semibold"
+                    className="flex-1 text-left transition-all duration-300 hover:text-red-600 hover:font-semibold"
                   >
                     {item.replace("*", "").trim()}
                   </Link>
-                </li>
+                </motion.li>
               ))}
           </ul>
 
           {/* Button */}
-          <div className="mt-auto pt-6 flex justify-center">
-  <Link
-    to={card.link}
-    className="inline-flex items-center rounded-full bg-gradient-to-r from-red-600 to-red-700 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
-  >
-    {card.buttonText} →
-  </Link>
-</div>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="mt-8 flex justify-center"
+          >
+            <Link
+              to={card.link}
+              className="group relative inline-flex items-center overflow-hidden rounded-full bg-gradient-to-r from-red-600 via-red-500 to-red-700 px-6 py-3 text-sm font-semibold text-white shadow-xl"
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                {card.buttonText}
+
+                <motion.span
+                  animate={{ x: [0, 6, 0] }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 1,
+                  }}
+                >
+                  →
+                </motion.span>
+              </span>
+
+         
+            </Link>
+          </motion.div>
+
         </div>
       </motion.article>
     ))

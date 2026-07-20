@@ -119,35 +119,43 @@ export default function Chat() {
     text-white
     px-5 py-3
     rounded-full
-    shadow-lg
+    shadow-2xl
     transition-all duration-300
-    hover:scale-105
+    hover:scale-110
+    
+    animate-bounce
   "
 >
+   <FaRobot className="text-3xl"/>
+  <span className="font-semibold hidden sm:block"> Help Desk</span>
   
-  <span w-24 h-10  scale-150 object-cover> Help Desk</span>
-   <FaRobot/>
 
   
 </button>
-<button className="fixed bottom-24 right-5 z-50
+
+
+<a
+  href="https://wa.me/918920817608"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    fixed bottom-24 right-5 z-50
     flex items-center gap-3
-    bg-green-600
-    
-    px-5 py-3
+    bg-green-500 hover:bg-green-600
+    text-white
+    px-3 py-3
     rounded-full
-    shadow-lg
+    shadow-2xl
     transition-all duration-300
-    hover:scale-105">
-   <a
-        href="https://wa.me/918920817608"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex h-8 w-24 items-center justify-center rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl transition-all duration-300 hover:scale-110 hover:text-green-400"
-      >
-        <FaWhatsapp />
-      </a>
-</button>
+    hover:scale-110
+    animate-bounce
+  "
+>
+  <FaWhatsapp className="text-3xl" />
+  <span className="font-semibold hidden sm:block">
+    Chat with us
+  </span>
+</a>
       
 
       {/* Chat Popup */}
