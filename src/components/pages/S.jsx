@@ -6,46 +6,55 @@ const testimonials = [
     title: "1. Product-Based Businesses",
     heading: "(E-commerce • D2C • FMCG • Manufacturing • Retail Brands)",
     text: "Launch, manage, and scale your product business with complete e-commerce, branding, marketing, inventory, logistics, and technology solutions.",
+    Image:"https://res.cloudinary.com/dzu9qjxqa/image/upload/v1784532351/16_2_nkhb5p.jpg"
   },
   {
     title: "2. Service-Based Businesses",
     heading: "(Consultants • Agencies • Healthcare • Education • Professionals)",
     text: "Grow your service business through automation, CRM, lead generation, branding, websites, digital marketing, and client management solutions.",
+     Image:"https://res.cloudinary.com/dzu9qjxqa/image/upload/v1784532351/15_1_rwbktj.jpg"
   },
   {
     title: "3. Real Estate Businesses",
     heading: "(Builders • Developers • Brokers • Property Consultants)",
     text: "Digitize your real estate business with property portals, CRM, ERP, lead management, marketing, and sales automation solutions.",
+     Image:"https://res.cloudinary.com/dzu9qjxqa/image/upload/v1784532350/14_1_lrxzno.jpg"
   },
   {
     title: "4. Startups",
     heading: "(Idea Stage • MVP • Early Growth)",
     text: "Transform your business idea into a successful startup with branding, MVP development, funding readiness, legal support, and go-to-market strategy.",
+     Image:"https://res.cloudinary.com/dzu9qjxqa/image/upload/v1784532358/9_1_erc1ej.jpg"
   },
   {
     title: "5. MSMEs & Enterprises",
     heading: "(Small Businesses • Manufacturers • Large Organizations)",
     text: "Empower your business with ERP systems, automation, AI solutions, HR software, finance management, compliance, and digital transformation.",
+     Image:"https://res.cloudinary.com/dzu9qjxqa/image/upload/v1784532351/10_1_p90r1k.jpg"
   },
   {
     title: "6. Franchise Businesses",
     heading: "(Food • Retail • Education • Healthcare)",
     text: "Expand your franchise with branding, franchise development, lead generation, CRM, marketing automation, and technology solutions.",
+     Image:"https://res.cloudinary.com/dzu9qjxqa/image/upload/v1784536282/11_1_lek7sz.jpg"
   },
   {
     title: "7. Export & Import Businesses",
     heading: "(International Trade • Exporters • Importers)",
     text: "Simplify global trade with export-import consulting, documentation, compliance, branding, websites, and digital marketing solutions.",
+     Image:"https://res.cloudinary.com/dzu9qjxqa/image/upload/v1784536281/12_1_lxofl6.jpg"
   },
   {
     title: "8. Local Businesses",
     heading: "(Restaurants • Salons • Gyms • Clinics • Shops)",
     text: "Grow your local business through Google Business optimization, websites, digital marketing, customer engagement, and automation.",
+     Image:"https://res.cloudinary.com/dzu9qjxqa/image/upload/v1784532350/13_1_ewqqez.jpg"
   },
   {
     title: "9. Educational Institutions",
     heading: "(Schools • Colleges • Coaching • EdTech)",
     text: "Modernize education with ERP software, admission systems, learning management platforms, branding, websites, and digital transformation.",
+      Image:"https://res.cloudinary.com/dzu9qjxqa/image/upload/v1784532350/13_1_ewqqez.jpg"
   },
 ];
 
@@ -86,41 +95,58 @@ export default function Testimonial() {
 
         {/* Card */}
         <AnimatePresence mode="wait">
-          <motion.div
-            key={current}
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -40 }}
-            transition={{ duration: 0.6 }}
-            className="bg-white/80 backdrop-blur-xl border border-white rounded-[32px] shadow-2xl p-8 md:p-14"
-          >
-            <div className="inline-flex items-center bg-red-100 text-red-700 px-5 py-2 rounded-full font-semibold text-sm mb-6">
-              Business Category
-            </div>
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
 
-            <h3 className="text-3xl md:text-5xl font-extrabold text-gray-900">
-              {testimonials[current].title}
-            </h3>
+  {/* Left */}
+  <div>
+    <div className="inline-flex items-center bg-red-100 text-red-700 px-5 py-2 rounded-full font-semibold text-sm mb-6">
+      Business Category
+    </div>
 
-            <p className="mt-4 text-red-600 font-semibold text-lg md:text-xl">
-              {testimonials[current].heading}
-            </p>
+    <h3 className="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+      {testimonials[current].title}
+    </h3>
 
-            <p className="mt-8 text-gray-600 text-lg leading-9 max-w-4xl">
-              {testimonials[current].text}
-            </p>
+    <p className="mt-4 text-red-600 font-semibold text-lg md:text-xl">
+      {testimonials[current].heading}
+    </p>
 
-            {/* Progress Bar */}
-            <div className="mt-10 h-2 bg-red-100 rounded-full overflow-hidden">
-              <motion.div
-                key={current}
-                initial={{ width: 0 }}
-                animate={{ width: "100%" }}
-                transition={{ duration: 5, ease: "linear" }}
-                className="h-full bg-gradient-to-r from-red-500 to-red-700 rounded-full"
-              />
-            </div>
-          </motion.div>
+    <p className="mt-8 text-gray-600 text-lg leading-9">
+      {testimonials[current].text}
+    </p>
+  </div>
+
+  {/* Right */}
+  <div>
+    {testimonials[current].Image ? (
+      
+      <img
+  src={testimonials[current].Image}
+  alt={testimonials[current].title}
+  className="w-auto h-[500px] object-contain rounded-3xl bg-gray-100"
+/>
+      
+    ) : (
+      <div className="w-full h-[450px] rounded-3xl bg-gray-100 flex items-center justify-center">
+        <span className="text-gray-500 text-lg font-medium">
+          Image Coming Soon
+        </span>
+      </div>
+    )}
+  </div>
+
+</div>
+
+{/* Progress Bar */}
+<div className="mt-10 h-2 bg-red-100 rounded-full overflow-hidden">
+  <motion.div
+    key={current}
+    initial={{ width: 0 }}
+    animate={{ width: "100%" }}
+    transition={{ duration: 5, ease: "linear" }}
+    className="h-full bg-gradient-to-r from-red-500 to-red-700 rounded-full"
+  />
+</div>
         </AnimatePresence>
 
         {/* Navigation */}

@@ -1165,7 +1165,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
       absolute left-1/2 top-full z-50
       w-72 -translate-x-1/2
       rounded-2xl border border-white/10
-      bg-[#0B0B0F]/95 backdrop-blur-2xl
+      bg-white backdrop-blur-2xl
       shadow-2xl overflow-hidden
       opacity-0 invisible translate-y-5
       transition-all duration-300
@@ -1174,17 +1174,17 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
       group-hover:translate-y-0
     "
   >
-    <Link to="/entrepreneurship" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">Entrepreneurship</Link>
-    <Link to="/ai-for-business" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">AI for Business</Link>
-    <Link to="/digital-marketing" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">Digital Marketing</Link>
-    <Link to="/sales" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">Sales</Link>
-    <Link to="/finance" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">Finance</Link>
-    <Link to="/business-operations" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">Business Operations</Link>
-    <Link to="/startup-masterclass" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">Startup Masterclass</Link>
-    <Link to="/live-workshops" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">Live Workshops</Link>
-    <Link to="/mentorship-programs" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">Mentorship Programs</Link>
-    <Link to="/certifications" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">Certifications</Link>
-    <Link to="/internship" className="block px-5 py-3 text-sm text-gray-300 hover:bg-red-600/10 hover:text-red-400">Internship</Link>
+    <Link to="/entrepreneurship" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-400">Entrepreneurship</Link>
+    <Link to="/ai-for-business" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-400">AI for Business</Link>
+    <Link to="/digital-marketing" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-400">Digital Marketing</Link>
+    <Link to="/sales" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-400">Sales</Link>
+    <Link to="/finance" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-400">Finance</Link>
+    <Link to="/business-operations" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-400">Business Operations</Link>
+    <Link to="/startup-masterclass" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-400">Startup Masterclass</Link>
+    <Link to="/live-workshops" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-400">Live Workshops</Link>
+    <Link to="/mentorship-programs" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-400">Mentorship Programs</Link>
+    <Link to="/certifications" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-400">Certifications</Link>
+    <Link to="/internship" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-400">Internship</Link>
   </div>
 </li>
 <li className="relative group">
