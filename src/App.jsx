@@ -41,6 +41,7 @@ const News = lazy(() => import("./components/services/News.jsx"));
 const Networking = lazy(() => import("./components/services/Networking.jsx"));
 const Ourteam = lazy(() => import("./components/services/Ourteam.jsx"));
 const Ourjourney =lazy(()=>import("./components/Abouts/Ourjourney.jsx"))
+const Ourvision = lazy(()=>import("./components/Abouts/Ourvision.jsx"))
 
 export default function App() {
   return (
@@ -89,6 +90,7 @@ export default function App() {
             <Route path="our-team" element={<Ourteam />} />
             <Route path ="mission" element={<OurMission/>}/>
             <Route path="our-journey" element={<Ourjourney/>}/>
+            <Route path="vision" element={<Ourvision/>}/>
           </Route>
         </Routes>
       </Suspense>
