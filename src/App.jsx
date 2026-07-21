@@ -8,6 +8,7 @@ import "./App.css";
 
 const Home = lazy(() => import("./components/shivam/Home.jsx"));
 const Our = lazy(() => import("./components/shivam/Our.jsx"));
+const OurMission =lazy(()=>import("./components/Abouts/OurMission.jsx"))
 
 const IT = lazy(() => import("./components/pages/IT"));
 const BPO = lazy(() => import("./components/pages/BPO"));
@@ -39,6 +40,7 @@ const Marketing = lazy(() => import("./components/services/Marketing.jsx"));
 const News = lazy(() => import("./components/services/News.jsx"));
 const Networking = lazy(() => import("./components/services/Networking.jsx"));
 const Ourteam = lazy(() => import("./components/services/Ourteam.jsx"));
+const Ourjourney =lazy(()=>import("./components/Abouts/Ourjourney.jsx"))
 
 export default function App() {
   return (
@@ -85,6 +87,8 @@ export default function App() {
             <Route path="networking" element={<Networking />} />
             <Route path="news" element={<News />} />
             <Route path="our-team" element={<Ourteam />} />
+            <Route path ="mission" element={<OurMission/>}/>
+            <Route path="our-journey" element={<Ourjourney/>}/>
           </Route>
         </Routes>
       </Suspense>
