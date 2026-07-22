@@ -89,10 +89,10 @@ export default function Testimonial() {
             Industries We Serve
           </span>
 
-          <h2 className="mt-6 text-4xl md:text-6xl font-black text-gray-900 leading-tight">
-            Solutions for Every
-            <span className="text-red-600"> Business</span>
-          </h2>
+         <h2 className="mt-6 text-4xl md:text-6xl font-black text-gray-900 leading-tight">
+  Our
+  <span className="text-red-600"> Specialization</span>
+</h2>
 
           <p className="mt-6 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-8">
             We help businesses across industries with complete digital,
@@ -103,45 +103,43 @@ export default function Testimonial() {
         {/* Card */}
        
         {/* Cards */}
-<div className="grid md:grid-cols-3 gap-8">
+<AnimatePresence mode="wait">
+  <motion.div
+    key={current}
+    className="grid md:grid-cols-3 gap-8"
+    initial={{ x: 200, opacity: 0 }}
+    animate={{ x: 0, opacity: 1 }}
+    exit={{ x: -200, opacity: 0 }}
+    transition={{ duration: 0.8 }}
+  >
+    {testimonials.slice(current, current + 3).map((item, index) => (
+      <motion.div
+        key={item.title}
+        className="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition"
+      >
+        <img
+          src={item.Image}
+          alt={item.title}
+          className="w-full h-[350px] object-cover"
+        />
 
-  {testimonials.slice(current, current + 3).map((item,index)=>( 
+        <div className="p-6">
+          <h3 className="text-2xl font-bold text-gray-900">
+            {item.title}
+          </h3>
 
-    <motion.div
-      key={index}
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      className="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition"
-    >
+          <p className="mt-3 text-red-600 font-semibold">
+            {item.heading}
+          </p>
 
-      <img
-        src={item.Image}
-        alt={item.title}
-        className="w-full h-[350px] object-cover"
-      />
-
-      <div className="p-6">
-
-        <h3 className="text-2xl font-bold text-gray-900">
-          {item.title}
-        </h3>
-
-        <p className="mt-3 text-red-600 font-semibold">
-          {item.heading}
-        </p>
-
-        <p className="mt-4 text-gray-600 leading-7">
-          {item.text}
-        </p>
-
-      </div>
-
-    </motion.div>
-
-  ))}
-
-</div>
+          <p className="mt-4 text-gray-600 leading-7">
+            {item.text}
+          </p>
+        </div>
+      </motion.div>
+    ))}
+  </motion.div>
+</AnimatePresence>
   
   
 

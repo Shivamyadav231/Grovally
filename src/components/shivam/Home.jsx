@@ -204,59 +204,31 @@ export default function Home() {
   ) : (
     filteredCards.map((card, index) => (
       <motion.article
-        key={index}
-        initial={{ opacity: 0, y: 80, scale: 0.9 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{
-          duration: 0.6,
-          delay: index * 0.1,
-        }}
-        animate={{
-          y: [0, -5, 0],
-        }}
-        whileHover={{
-          y: -15,
-          scale: 1.04,
-          rotateX: 4,
-          rotateY: -4,
-        }}
+      
         className="group relative overflow-hidden rounded-[28px] border border-white/20 bg-white/90 p-6 shadow-xl backdrop-blur-xl transition-all duration-500 hover:shadow-red-500/30"
       >
       
 
         <div className="relative object-cover z-20 text-center">
 
-          {/* Image */}
+          
           <motion.img
   src={card.Image}
   alt={card.subheading}
   loading="lazy"
   decoding="async"
-  animate={{
-    y: [0, -12, 0],
-  }}
-  transition={{
-    repeat: Infinity,
-    duration: 3,
-    ease: "easeInOut",
-  }}
-  whileHover={{
-    scale: 1.2,
-    rotate: -5,
-  }}
+ 
   className="mx-auto w-48 h-40 object-contain scale-150 -mt-10"
 />
 
           {/* Heading */}
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mb-5 -mt-7 text-sm font-bold leading-snug text-black"
-          >
-            {card.subheading}
-          </motion.h3>
+         
+            <motion.div
+            className="text-red-500 font-bold"
+  
+>
+  {card.subheading}
+</motion.div>
 
           {/* Services */}
           <ul className="space-y-3 text-sm text-black">
@@ -265,23 +237,11 @@ export default function Home() {
               .filter((item) => item.trim() !== "")
               .map((item, i) => (
                 <motion.li
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{
-                    delay: i * 0.05,
-                  }}
-                  whileHover={{ x: 6 }}
+                  
                   className="flex items-start gap-2"
                 >
                   <motion.span
-                    animate={{
-                      scale: [1, 1.4, 1],
-                    }}
-                    transition={{
-                      repeat: Infinity,
-                      duration: 2,
-                    }}
+                    
                     className="text-red-600"
                   >
                     ●
@@ -299,8 +259,7 @@ export default function Home() {
 
           {/* Button */}
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+      
             className="mt-8 flex justify-center"
           >
             <Link

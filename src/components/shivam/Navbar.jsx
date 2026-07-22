@@ -1043,7 +1043,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
       {/* ================= Business Solutions ================= */}
       <div>
         <h3 className="text-red-600 font-bold text-lg mb-8">
-          AI Solutions
+          Business Finance Solutions
         </h3>
 
         <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-6">
@@ -1088,7 +1088,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
       {/* ================= Industry Solutions ================= */}
       <div>
         <h3 className="text-red-600 font-bold text-lg mb-6">
-            Business Software
+            Business Solutions
         </h3>
 
         <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
@@ -1133,7 +1133,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
       </div>
        <div>
         <h3 className="text-red-600 font-bold text-lg mb-6">
-           Mobile Apps
+           Business Inverstors 
         </h3>
 
         <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
@@ -1176,7 +1176,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
       </div>
       <div>
         <h3 className="text-red-600 font-bold text-lg mb-6">
-          Websites & Portals
+          Business Portals Solutions
         </h3>
 
         <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">

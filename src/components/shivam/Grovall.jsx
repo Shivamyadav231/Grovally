@@ -50,6 +50,7 @@ export default function ChatBot() {
   const recognition = new SpeechRecognition();
 
   recognition.lang = "en-US";
+  recognition.long= "hi-IN"
   recognition.continuous = false;
   recognition.interimResults = false;
 recognition.onresult = (event) => {
@@ -101,11 +102,19 @@ recognition.onresult = (event) => {
 
   const utterance = new SpeechSynthesisUtterance(text);
 
+  const voices = window.speechSynthesis.getVoices();
+
+  // Best available voice choose karega
+  utterance.voice =
+    voices.find(v => v.name.includes("Google")) ||
+    voices.find(v => v.name.includes("Microsoft")) ||
+    voices.find(v => v.lang === "en-US") ||
+    voices[0];
+
   utterance.lang = "en-US";
   utterance.rate = 1;
   utterance.pitch = 1;
 
- 
   utterance.onend = () => {
     if (!voiceMode) return;
 
@@ -118,6 +127,7 @@ recognition.onresult = (event) => {
 
   window.speechSynthesis.speak(utterance);
 };
+
  
   const sendMessage = async (voiceText = null) => {
     const userText = voiceText || message.trim();
@@ -196,6 +206,7 @@ if (command === "open instagram") {
 if (command === "open whatsapp") {
   window.open("https://web.whatsapp.com", "_blank");
   speak("Opening WhatsApp");
+  
   return;
 }
 
@@ -388,9 +399,10 @@ if (!res.ok) {
       }`}
     >
       {recording ? (
-        <MicOff size={18} />
+         <Mic size={18} />
+        
       ) : (
-        <Mic size={18} />
+        <MicOff size={18} />
       )}
     </button>
 

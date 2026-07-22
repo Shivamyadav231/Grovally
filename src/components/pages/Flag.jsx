@@ -78,12 +78,12 @@ export default function IndiaMap() {
         {/* Bottom Stats */}
         <div className="grid grid-cols-4 gap-6 mt-16 text-center">
           <div className="bg-red-50 rounded-2xl p-6 shadow-md">
-            <h3 className="text-4xl font-bold text-red-600">100+</h3>
+            <h3 className="text-4xl font-bold text-red-600">150+</h3>
             <p className="text-gray-600 mt-2">Happy Clients</p>
           </div>
 
           <div className="bg-red-50 rounded-2xl p-6 shadow-md">
-            <h3 className="text-4xl font-bold text-red-600">15+</h3>
+            <h3 className="text-4xl font-bold text-red-600">20+</h3>
             <p className="text-gray-600 mt-2">Indian States</p>
           </div>
 

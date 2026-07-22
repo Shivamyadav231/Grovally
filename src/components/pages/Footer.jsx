@@ -178,7 +178,7 @@ const Quicks = [
 );
 
   return (
-    <footer className="bg-black text-white relative overflow-hidden">
+    <footer className="bg-black/100 text-white relative overflow-hidden">
 
       {/* HEADER TEXT */}
       <div className="relative overflow-hidden border-b border-white/10">
@@ -200,14 +200,14 @@ const Quicks = [
 
     <div className="mx-auto mt-6 h-1 w-28 rounded-full bg-red-600"></div>
 
-    <p className="mx-auto mt-8 max-w-4xl text-gray-300 text-base md:text-lg leading-8">
+    <p className="mx-auto mt-8 max-w-3xl text-gray-300 text-base md:text-lg leading-8">
       GROVALLY is building one of India's most comprehensive business growth
       ecosystems, bringing together technology, business solutions, funding,
       government opportunities, education, and strategic resources on a single
       platform.
     </p>
 
-    <p className="mx-auto mt-6 max-w-4xl text-gray-400 text-base leading-8">
+    <p className="mx-auto mt-6 max-w-3xl text-gray-400 text-base leading-8">
       Our mission is to simplify entrepreneurship and empower startups,
       MSMEs, enterprises, and innovators with everything they need to build,
       grow, and scale successfully—from digital transformation and business
@@ -215,7 +215,7 @@ const Quicks = [
       solutions, and industry-specific services.
     </p>
 
-    <p className="mx-auto mt-6 max-w-3xl text-gray-300 text-base leading-8">
+    <p className="mx-auto mt-6 max-w-4xl text-gray-300 text-base leading-8">
       <span className="font-bold text-white">GROVALLY</span> is committed to
       becoming the trusted growth partner for millions of businesses across
       India and beyond.
@@ -288,11 +288,9 @@ const Quicks = [
      
 <div className="relative border-y border-white/10 bg-gradient-to-b from-white/[0.02] to-transparent">
 
-  <div className="max-w-6xl mx-auto px-6 py-20 text-center">
+  <div className="max-w-7xl mx-auto px-7 py-24 text-center">
 
-    {/* <span className="inline-flex items-center rounded-full border border-red-500/30 bg-red-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-red-400">
-      Our Vision
-    </span> */}
+     
 
     <h3 className="mt-6 text-3xl md:text-5xl font-bold text-white leading-tight">
       Building the Future of
@@ -303,14 +301,14 @@ const Quicks = [
 
     <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-red-600"></div>
 
-    <p className="mt-8 max-w-5xl mx-auto text-gray-300 text-base md:text-lg leading-9">
+    <p className="mt-8 max-w-7xl mx-auto text-gray-300 text-base md:text-lg leading-9">
       Every year, thousands of entrepreneurs begin their journey with
       extraordinary dreams. Many never reach their true potential—not because
       they lack ambition, but because they lack timely guidance, the right
       resources, trusted support, and access to life-changing opportunities.
     </p>
 
-    <p className="mt-8 max-w-5xl mx-auto text-gray-400 text-base md:text-lg leading-9">
+    <p className="mt-8 max-w-6xl mx-auto text-gray-400 text-base md:text-lg leading-9">
       At <span className="font-bold text-red-600">GROVALLY</span>, we believe no
       great dream should end because help was too difficult to find. Our vision
       is to build India's most trusted and comprehensive business growth
@@ -319,7 +317,7 @@ const Quicks = [
       opportunities, and business solutions through one unified platform.
     </p>
 
-    <p className="mt-8 max-w-4xl mx-auto text-lg font-medium text-white leading-9">
+    <p className="mt-8 max-w-5xl mx-auto text-lg font-medium text-white leading-10">
       Together, we are empowering millions of businesses to
       <span className="text-red-500"> build, grow, scale, </span>
       and create a stronger future for India.
@@ -328,7 +326,7 @@ const Quicks = [
     <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8">
 
       <div>
-        <h4 className="text-3xl font-bold text-red-500">1k+</h4>
+        <h4 className="text-3xl font-bold text-red-500">1.5 K</h4>
         <p className="mt-2 text-sm text-gray-400">Businesses to Empower</p>
       </div>
 
@@ -384,7 +382,7 @@ const Quicks = [
     <Social icon={<FaFacebook />} />
   </a>
 
-  <a href="tel:+919876543210">
+  <a href="tel:+919876543210" className="rotate-180">
     <Social icon={<FaPhone />} />
   </a>
 </div>
