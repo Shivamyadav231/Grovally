@@ -49,11 +49,11 @@ export default function ChatBot() {
 
   const recognition = new SpeechRecognition();
 
-  recognition.lang = "en-US";
-  recognition.long= "hi-IN"
+  
+  recognition.lang= "hi-IN"
   recognition.continuous = false;
   recognition.interimResults = false;
-recognition.onresult = (event) => {
+  recognition.onresult = (event) => {
   // Sunte hi mic stop
   recognition.stop();
 
@@ -98,37 +98,35 @@ recognition.onresult = (event) => {
   const speak = (text) => {
   if (!voiceMode) return;
 
-  window.speechSynthesis.cancel();
+  speechSynthesis.cancel();
 
   const utterance = new SpeechSynthesisUtterance(text);
 
-  const voices = window.speechSynthesis.getVoices();
+  const voices = speechSynthesis.getVoices();
 
-  // Best available voice choose karega
-  utterance.voice =
-    voices.find(v => v.name.includes("Google")) ||
-    voices.find(v => v.name.includes("Microsoft")) ||
-    voices.find(v => v.lang === "en-US") ||
-    voices[0];
+  // Hindi voice ढूंढो
+  let voice = voices.find(v => v.lang.startsWith("hi"));
 
-  utterance.lang = "en-US";
+  // अगर Hindi voice नहीं मिली तो Indian English voice
+  if (!voice) {
+    voice = voices.find(v => v.lang === "en-IN");
+  }
+
+  if (voice) {
+    utterance.voice = voice;
+  }
+
+  utterance.lang = voice ? voice.lang : "hi-IN";
   utterance.rate = 1;
   utterance.pitch = 1;
 
-  utterance.onend = () => {
-    if (!voiceMode) return;
-
-    setTimeout(() => {
-      try {
-        recognitionRef.current?.start();
-      } catch (e) {}
-    }, 600);
-  };
-
-  window.speechSynthesis.speak(utterance);
+  speechSynthesis.speak(utterance);
 };
 
- 
+// Voice list लोड होने दो
+speechSynthesis.onvoiceschanged = () => {
+  console.log(speechSynthesis.getVoices());
+};
   const sendMessage = async (voiceText = null) => {
     const userText = voiceText || message.trim();
 
