@@ -13,6 +13,7 @@ export default function ChatBot() {
   const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [recording, setRecording] = useState(false);
+  const [voiceMode, setVoiceMode] = useState(false);
 
   const [messages, setMessages] = useState([
     {
@@ -28,7 +29,7 @@ export default function ChatBot() {
     import.meta.env.VITE_BACKEND_URL ||
     "https://grovally-backend-14.onrender.com";
 
-  // Auto Scroll
+ 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({
       behavior: "smooth",
@@ -36,55 +37,56 @@ export default function ChatBot() {
     });
   }, [messages, loading]);
 
-  // Speech Recognition
   useEffect(() => {
-    const SpeechRecognition =
-      window.SpeechRecognition ||
-      window.webkitSpeechRecognition;
+  const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
 
-    if (!SpeechRecognition) {
-      alert("Speech Recognition is not supported in this browser.");
-      return;
-    }
+  if (!SpeechRecognition) {
+    alert("Speech Recognition is not supported.");
+    return;
+  }
 
-    const recognition = new SpeechRecognition();
+  const recognition = new SpeechRecognition();
 
-    recognition.lang = "en-US"; // Hindi: hi-IN
-    recognition.continuous = false;
-    recognition.interimResults = false;
+  recognition.lang = "en-US";
+  recognition.continuous = false;
+  recognition.interimResults = false;
+recognition.onresult = (event) => {
+  // Sunte hi mic stop
+  recognition.stop();
 
-    recognition.onresult = (event) => {
-      const text = event.results[0][0].transcript;
-      sendMessage(text);
-    };
+  const text = event.results[0][0].transcript;
 
-    recognition.onstart = () => {
-      setRecording(true);
-    };
+  sendMessage(text);
+};
+  recognition.onstart = () => setRecording(true);
 
-    recognition.onend = () => {
-      setRecording(false);
-    };
+  recognition.onend = () => setRecording(false);
 
-    recognition.onerror = () => {
-      setRecording(false);
-    };
+  recognition.onerror = () => setRecording(false);
 
-    recognitionRef.current = recognition;
-  }, []);
-
+  recognitionRef.current = recognition;
+}, []);
   // Voice Button
-  const handleVoice = () => {
-    if (!recognitionRef.current) return;
+ const handleVoice = () => {
+  if (!recognitionRef.current) return;
 
-    if (recording) {
-      recognitionRef.current.stop();
-    } else {
+  if (voiceMode) {
+    setVoiceMode(false);
+    recognitionRef.current.stop();
+    window.speechSynthesis.cancel();
+    setRecording(false);
+  } else {
+    setVoiceMode(true);
+
+    try {
       recognitionRef.current.start();
-    }
-  };
+    } catch (e) {}
+  }
+};
 
-  // File Upload
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
 
@@ -92,24 +94,31 @@ export default function ChatBot() {
 
     setSelectedFile(file);
   };
-
-  // Text To Speech
   const speak = (text) => {
-    if (!window.speechSynthesis) return;
+  if (!voiceMode) return;
 
-    window.speechSynthesis.cancel();
+  window.speechSynthesis.cancel();
 
-    const utterance = new SpeechSynthesisUtterance(text);
+  const utterance = new SpeechSynthesisUtterance(text);
 
-    utterance.lang = "en-US"; // Hindi = hi-IN
-    utterance.rate = 1;
-    utterance.pitch = 1;
-    utterance.volume = 1;
+  utterance.lang = "en-US";
+  utterance.rate = 1;
+  utterance.pitch = 1;
 
-    window.speechSynthesis.speak(utterance);
+ 
+  utterance.onend = () => {
+    if (!voiceMode) return;
+
+    setTimeout(() => {
+      try {
+        recognitionRef.current?.start();
+      } catch (e) {}
+    }, 600);
   };
 
-  // Send Message
+  window.speechSynthesis.speak(utterance);
+};
+ 
   const sendMessage = async (voiceText = null) => {
     const userText = voiceText || message.trim();
 
@@ -128,24 +137,98 @@ export default function ChatBot() {
     setLoading(true);
 
     try {
-      const formData = new FormData();
+     const res = await fetch(`${BACKEND}/get`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    msg: userText,
+  }),
+});
+const command = userText.toLowerCase().trim();
 
-      formData.append("msg", userText);
 
-      if (selectedFile) {
-        formData.append("file", selectedFile);
-      }
+if (command.startsWith("open youtube")) {
+  const search = command.replace("open youtube", "").trim();
 
-      const res = await fetch(`${BACKEND}/get`, {
-        method: "POST",
-        body: formData,
-      });
+  if (search) {
+    window.open(
+      `https://www.youtube.com/results?search_query=${encodeURIComponent(search)}`,
+      "_blank"
+    );
+    speak(`Opening YouTube and searching ${search}`);
+  } else {
+    window.open("https://www.youtube.com", "_blank");
+    speak("Opening YouTube");
+  }
+  return;
+}
 
-      const data = await res.json();
+// Google
+if (command.startsWith("search")) {
+  const search = command.replace("search", "").trim();
 
-      if (!res.ok) {
-        throw new Error(data.detail || "Server Error");
-      }
+  window.open(
+    `https://www.google.com/search?q=${encodeURIComponent(search)}`,
+    "_blank"
+  );
+
+  speak(`Searching ${search} on Google`);
+  return;
+}
+
+// Facebook
+if (command === "open facebook") {
+  window.open("https://www.facebook.com", "_blank");
+  speak("Opening Facebook");
+  return;
+}
+
+// Instagram
+if (command === "open instagram") {
+  window.open("https://www.instagram.com", "_blank");
+  speak("Opening Instagram");
+  return;
+}
+
+// WhatsApp
+if (command === "open whatsapp") {
+  window.open("https://web.whatsapp.com", "_blank");
+  speak("Opening WhatsApp");
+  return;
+}
+
+// Gmail
+if (command === "open gmail") {
+  window.open("https://mail.google.com", "_blank");
+  speak("Opening Gmail");
+  return;
+}
+
+// Google Maps
+if (command.startsWith("open maps")) {
+  const place = command.replace("open maps", "").trim();
+
+  if (place) {
+    window.open(
+      `https://www.google.com/maps/search/${encodeURIComponent(place)}`,
+      "_blank"
+    );
+    speak(`Opening maps for ${place}`);
+  } else {
+    window.open("https://maps.google.com", "_blank");
+    speak("Opening Google Maps");
+  }
+
+  return;
+}
+
+const data = await res.json();
+
+if (!res.ok) {
+  throw new Error(data.detail || "Server Error");
+}
 
       const botReply =
         data.response ||
@@ -160,10 +243,14 @@ export default function ChatBot() {
         },
       ]);
 
-      // AI Voice Reply
-      speak(botReply);
+      
+    if (voiceMode) {
+  try {
+    recognitionRef.current?.stop();
+  } catch (e) {}
 
-      // Clear Uploaded File
+  speak(botReply);
+}
       setSelectedFile(null);
     } catch (error) {
       console.error("Chat Error:", error);
@@ -180,20 +267,18 @@ export default function ChatBot() {
     }
   };
 
-  return ( <div className="h-screen bg-gray-50 flex flex-col pt-20">
+  return (<div className="h-dvh flex flex-col bg-[#f5f5f5] pt-16 sm:pt-20">
 
-  {/* Header */}
+ 
   <div className="bg-gradient-to-r from-red-600 to-red-500 text-white p-4 mt-8 shadow-xl">
     <h3 className="font-bold text-lg">
-      🤖 Grovally AI Assistant
+       Grovally AI Assistant
     </h3>
 
-    <p className="text-xs text-green-100">
-      🟢 Online Now
-    </p>
+   
   </div>
 
-  {/* Messages */}
+ 
   <div className="flex-1 overflow-y-auto p-4 bg-gray-50 space-y-4">
 
     {messages.map((msg, index) => (
@@ -219,7 +304,7 @@ export default function ChatBot() {
       </div>
     ))}
 
-    {/* Typing Animation */}
+   
     {loading && (
       <div className="flex justify-start">
         <div className="bg-white rounded-2xl shadow px-4 py-3">
@@ -242,80 +327,85 @@ export default function ChatBot() {
 
   </div>
     {/* Input Area */}
-  <div className="border-t bg-white p-4">
+  <div className="sticky bottom-0 border-t border-gray-200 bg-white/95 backdrop-blur-md px-3 py-3 pb-[calc(env(safe-area-inset-bottom)+12px)]">
 
-    <div className="flex items-center gap-2">
+  {/* Selected File */}
+  {selectedFile && (
+    <div className="mb-3 flex items-center gap-2 rounded-xl bg-red-50 border border-red-100 px-3 py-2 text-sm text-gray-700">
+      <Paperclip size={16} className="text-red-600 flex-shrink-0" />
 
-      {/* File Upload */}
-      <input
-        type="file"
-        id="file"
-        hidden
-        onChange={handleFileChange}
-      />
+      <span className="flex-1 truncate">
+        {selectedFile.name}
+      </span>
 
-      <label
-        htmlFor="file"
-        className="cursor-pointer rounded-xl bg-black p-3 transition hover:bg-red-400"
-      >
-        <Paperclip size={20} />
-      </label>
-
-      {/* Message Input */}
-      <input
-        type="text"
-        value={message}
-        placeholder="Type your message..."
-        onChange={(e) => setMessage(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            sendMessage();
-          }
-        }}
-        disabled={loading}
-        className="flex-1 rounded-xl border px-4 py-3 text-black outline-none focus:border-red-500 disabled:bg-black"
-      />
-
-      {/* Voice Button */}
       <button
-        onClick={handleVoice}
-        disabled={loading}
-        className={`rounded-xl p-3 transition ${
-          recording
-            ? "bg-red-600 text-white animate-pulse"
-            : "bg-black hover:bg-red-200"
-        }`}
+        onClick={() => setSelectedFile(null)}
+        className="text-red-600 hover:text-red-700 font-bold"
       >
-        {recording ? <MicOff size={20} /> : <Mic size={20} />}
+        ✕
       </button>
-
-      {/* Send Button */}
-      <button
-        onClick={() => sendMessage()}
-        disabled={loading || (!message.trim() && !selectedFile)}
-        className="rounded-xl bg-red-600 px-5 py-3 text-white transition hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-50"
-      >
-        <Send size={20} />
-      </button>
-
     </div>
+  )}
 
-    {/* Selected File */}
-    {selectedFile && (
-      <div className="mt-3 flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-2 text-sm text-gray-700">
-        <Paperclip size={16} />
-        <span className="truncate">{selectedFile.name}</span>
+  <div className="flex items-center gap-2">
 
-        <button
-          onClick={() => setSelectedFile(null)}
-          className="ml-auto text-red-600 hover:text-red-700"
-        >
-          ✕
-        </button>
-      </div>
-    )}
+    {/* File Upload */}
+    <input
+      type="file"
+      id="file"
+      hidden
+      onChange={handleFileChange}
+    />
+
+    <label
+      htmlFor="file"
+      className="flex h-11 w-11 flex-shrink-0 cursor-pointer items-center justify-center rounded-full bg-gray-900 text-white transition hover:bg-red-500"
+    >
+      <Paperclip size={18} />
+    </label>
+
+    {/* Input */}
+    <input
+      type="text"
+      value={message}
+      placeholder="Ask Grovally AI..."
+      onChange={(e) => setMessage(e.target.value)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") sendMessage();
+      }}
+      disabled={loading}
+      className="flex-1 rounded-full border border-gray-300 bg-white px-4 py-3 text-sm text-black outline-none transition focus:border-red-500"
+    />
+
+    {/* Mic */}
+    <button
+      onClick={handleVoice}
+      disabled={loading}
+      className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full transition ${
+        recording
+          ? "bg-red-600 text-white animate-pulse"
+          : "bg-gray-900 text-white hover:bg-red-500"
+      }`}
+    >
+      {recording ? (
+        <MicOff size={18} />
+      ) : (
+        <Mic size={18} />
+      )}
+    </button>
+
+    {/* Send */}
+    <button
+      onClick={() => sendMessage()}
+      disabled={loading || (!message.trim() && !selectedFile)}
+      className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-red-600 text-white transition hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-50"
+    >
+      <Send size={18} />
+    </button>
 
   </div>
+
+</div>
 
 </div>
   );
