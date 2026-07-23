@@ -5,6 +5,7 @@ import Ok from "./Ok.jsx";
 import OrganizationSchema from "./components/OrganizationSchema";
 
 import "./App.css";
+import Products from "./components/Resources/Products.jsx";
 
 const Home = lazy(() => import("./components/shivam/Home.jsx"));
 const Our = lazy(() => import("./components/shivam/Our.jsx"));
@@ -42,6 +43,15 @@ const Networking = lazy(() => import("./components/services/Networking.jsx"));
 const Ourteam = lazy(() => import("./components/services/Ourteam.jsx"));
 const Ourjourney =lazy(()=>import("./components/Abouts/Ourjourney.jsx"))
 const Ourvision = lazy(()=>import("./components/Abouts/Ourvision.jsx"))
+const Ainews =lazy(()=>import("./components/Resources/Ainews.jsx"))
+const Bnews =lazy(()=>import("./components/Resources/Bnews.jsx"))
+const Btemplete =lazy(()=>import("./components/Resources/Btemplete.jsx"))
+const Case =lazy (()=>import("./components/Resources/Case.jsx"))
+const products =lazy(()=>import("./components/Resources/Products.jsx"))
+const Repots = lazy(()=>import("./components/Resources/Repots.jsx"))
+const Startup = lazy(()=>import("./components/Resources/Startup.jsx"))
+const Webinrs =lazy(()=>(import("./components/Resources/Webinrs.jsx")))
+
 
 export default function App() {
   return (
@@ -91,6 +101,17 @@ export default function App() {
             <Route path ="mission" element={<OurMission/>}/>
             <Route path="our-journey" element={<Ourjourney/>}/>
             <Route path="vision" element={<Ourvision/>}/>
+
+
+           <Route path="ai-news" element={<Ainews />} />
+<Route path="business-news" element={<Bnews />} />
+<Route path="business-templates" element={<Btemplete />} />
+<Route path="case-studies" element={<Case />} />
+<Route path="podcasts" element={<Products />} />
+<Route path="industry-reports" element={<Repots />} />
+<Route path="startup-stories" element={<Startup />} />
+<Route path="webinars" element={<Webinrs />} />
+           
           </Route>
         </Routes>
       </Suspense>

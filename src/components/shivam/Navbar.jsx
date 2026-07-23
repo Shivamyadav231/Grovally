@@ -1735,15 +1735,13 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
       group-hover:translate-y-0
     "
   >
-    <Link to="/blogs" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Blogs</Link>
+    <Link to="/blog" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Blogs</Link>
     <Link to="/business-news" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Business News</Link>
     <Link to="/ai-news" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">AI News</Link>
     <Link to="/startup-stories" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Startup Stories</Link>
     <Link to="/case-studies" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Case Studies</Link>
     <Link to="/business-templates" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Business Templates</Link>
-    <Link to="/calculators" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Calculators</Link>
-    <Link to="/quotes" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Quotes</Link>
-    <Link to="/downloads" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Downloads</Link>
+    
     <Link to="/webinars" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Webinars</Link>
     <Link to="/podcasts" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Podcasts</Link>
     <Link to="/industry-reports" className="block px-5 py-3 text-sm text-black hover:bg-red-600/10 hover:text-red-600">Industry Reports</Link>
@@ -1808,9 +1806,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
       Why GROVALLY
     </Link>
 
-    <Link to="/leadership-team" className="block px-5 py-3 text-sm text-black transition hover:bg-red-600/10 hover:text-red-600">
-      Leadership Team
-    </Link>
+   
 
     <Link to="/our-journey" className="block px-5 py-3 text-sm text-black transition hover:bg-red-600/10 hover:text-red-600">
       Our Journey
@@ -1820,9 +1816,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
       Careers
     </Link>
 
-    <Link to="/partners" className="block px-5 py-3 text-sm text-black transition hover:bg-red-600/10 hover:text-red-600">
-      Partners
-    </Link>
+   
 
     <Link to="/media" className="block px-5 py-3 text-sm text-black transition hover:bg-red-600/10 hover:text-red-600">
       Media
