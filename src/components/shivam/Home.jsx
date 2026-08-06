@@ -40,7 +40,7 @@ subheading:"Build. Automate. Scale. Grow.",
 
  Private Funding & Venture Capital ,
 
-Financial Consultancy & Planning,
+
 
 Business Valuation & Investment Advisory`,
 subheading:" Funding Every Stage of Your Business Journey",
@@ -62,7 +62,7 @@ Private Tender Assistance,
 
  Documentation & Bid Preparation ,
 
- Technical & Financial Bid Assistance ,
+ 
 
  Tender Compliance & Contract Support`,
   buttonText: "Explore Tender Solutions ",
@@ -83,7 +83,7 @@ Finance & Fundraising Programs ,
 
  Business Analytics & Research ,
 
- Leadership & Management Skills ,
+ 
 
 Premium Courses, Workshops & Certifications
 `,
@@ -258,31 +258,24 @@ export default function Home() {
           </ul>
 
           {/* Button */}
-          <motion.div
-      
-            className="mt-8 flex justify-center"
-          >
-            <Link
-              to={card.link}
-              className="group relative inline-flex items-center overflow-hidden rounded-full bg-gradient-to-r from-red-600 via-red-500 to-red-700 px-6 py-3 text-sm font-semibold text-white shadow-xl"
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                {card.buttonText}
+          <Link
+  to={card.link}
+  className="group relative -bottom-5 inline-flex items-center overflow-hidden rounded-full bg-gradient-to-r from-red-600 via-red-500 to-red-700 px-6 py-3 text-sm font-semibold text-white shadow-xl"
+>
+  <span className="relative z-10 flex items-center gap-2">
+    {card.buttonText}
 
-                <motion.span
-                  animate={{ x: [0, 6, 0] }}
-                  transition={{
-                    repeat: Infinity,
-                    duration: 1,
-                  }}
-                >
-                  →
-                </motion.span>
-              </span>
-
-         
-            </Link>
-          </motion.div>
+    <motion.span
+      animate={{ x: [0, 6, 0] }}
+      transition={{
+        repeat: Infinity,
+        duration: 1,
+      }}
+    >
+      →
+    </motion.span>
+  </span>
+</Link>
 
         </div>
       </motion.article>

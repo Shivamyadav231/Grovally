@@ -367,7 +367,7 @@ const Quicks = [
   </a>
 
   <a
-    href="https://www.instagram.com/yourusername"
+    href="https://www.instagram.com/grovallygroup"
     target="_blank"
     rel="noopener noreferrer"
   >
@@ -375,7 +375,8 @@ const Quicks = [
   </a>
 
   <a
-    href="https://www.facebook.com/yourpage"
+    href= "https://www.facebook.com/profile.php?id=61580907737242"
+    
     target="_blank"
     rel="noopener noreferrer"
   >
