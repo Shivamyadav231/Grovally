@@ -1,19 +1,55 @@
-<urlset>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<url>
-<loc>https://grovally.com/</loc>
-</url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-<url>
-<loc>https://grovally.com/about</loc>
-</url>
+  <url>
+    <loc>https://grovally.com/</loc>
+    <lastmod>2026-08-06</lastmod>
+  </url>
 
-<url>
-<loc>https://grovally.com/services</loc>
-</url>
-<url>
-<loc>https://grovally.com/grovallyAI</loc>
-</url>
+  <url>
+    <loc>https://grovally.com/about</loc>
+    <lastmod>2026-08-06</lastmod>
+  </url>
 
+  <url>
+    <loc>https://grovally.com/services</loc>
+    <lastmod>2026-08-06</lastmod>
+  </url>
+
+  <url>
+    <loc>https://grovally.com/grovallyAI</loc>
+    <lastmod>2026-08-06</lastmod>
+  </url>
+
+  <url>
+    <loc>https://grovally.com/it</loc>
+    <lastmod>2026-08-06</lastmod>
+  </url>
+
+  <url>
+    <loc>https://grovally.com/business</loc>
+    <lastmod>2026-08-06</lastmod>
+  </url>
+
+  <url>
+    <loc>https://grovally.com/tender</loc>
+    <lastmod>2026-08-06</lastmod>
+  </url>
+
+  <url>
+    <loc>https://grovally.com/bank</loc>
+    <lastmod>2026-08-06</lastmod>
+  </url>
+
+  <url>
+    <loc>https://grovally.com/contact</loc>
+    <lastmod>2026-08-06</lastmod>
+  </url>
+
+  <url>
+    <loc>https://grovally.com/blog</loc>
+    <lastmod>2026-08-06</lastmod>
+  </url>
 
 </urlset>

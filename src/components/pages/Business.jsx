@@ -20,24 +20,8 @@ const shivam=[
   description:
     "Cash Credit, Overdraft, Invoice Discounting, Supply Chain Finance, Receivables Financing",
 },
-{
-  icon: "🏭",
-  title: "Suitable For",
-  description:
-    "Manufacturing, Traders, Exporters, Wholesalers, Retailers, Service Providers",
-},
-{
-  icon: "✅",
-  title: "Eligibility Criteria",
-  description:
-    "Minimum 2 Years Business Vintage, GST Registration, PAN Card, Bank Statements",
-},
-{
-  icon: "📄",
-  title: "Documents Required",
-  description:
-    "PAN Card, Aadhaar Card, GST Certificate, ITR Returns, Bank Statements",
-},
+
+   
 {
   icon: "💳",
   title: "Cash Credit",
@@ -233,55 +217,55 @@ function Business() {
       </section>
 
      
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-          {shivam.map((card, index) => (
-            <div
-              key={index}
-              className="group relative overflow-hidden rounded-3xl bg-white p-8 border border-gray-100 shadow-lg hover:shadow-[0_20px_60px_rgba(236,72,153,0.20)] hover:-translate-y-3 transition-all duration-500"
-            >
-              
-              <div className="absolute top-0 left-0 h-1.5 w-full bg-gradient-to-r from-pink-500 via-red-500 to-orange-500"></div>
+     <section className="max-w-7xl mx-auto px-6 py-20">
+  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+    {shivam.map((card, index) => (
+      <div
+        key={index}
+        className="group relative flex flex-col overflow-hidden rounded-3xl bg-white p-8 border border-gray-100 shadow-lg hover:shadow-[0_20px_60px_rgba(236,72,153,0.20)] hover:-translate-y-3 transition-all duration-500"
+      >
+        {/* Top Gradient */}
+        <div className="absolute top-0 left-0 h-1.5 w-full bg-gradient-to-r from-pink-500 via-red-500 to-orange-500"></div>
 
-             
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-pink-50 via-white to-red-50 transition duration-500"></div>
+        {/* Hover Background */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-pink-50 via-white to-red-50 transition duration-500"></div>
 
-              <div className="relative z-10 ">
-               
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-pink-500 to-red-500 flex items-center justify-center text-3xl text-white mb-6 shadow-lg">
-                  {card.icon}
-                </div>
+        <div className="relative z-10 flex flex-col flex-1">
+          {/* Icon */}
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-r from-pink-500 to-red-500 flex items-center justify-center text-3xl text-white mb-6 shadow-lg">
+            {card.icon}
+          </div>
 
-              
-                <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                  {card.title}
-                </h3>
+          {/* Title */}
+          <h3 className="text-2xl font-bold text-gray-800 mb-6">
+            {card.title}
+          </h3>
 
-                
-                <ul className="space-y-3">
-                  {card.description.split(",").map((item, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start gap-3 text-gray-600"
-                    >
-                      <span className="text-red-800 font-bold text-lg">
-                        •
-                      </span>
-                      <span>{item.trim()}</span>
-                    </li>
-                  ))}
-                </ul>
+          {/* Description */}
+          <ul className="space-y-3 flex-1">
+            {card.description.split(",").map((item, i) => (
+              <li
+                key={i}
+                className="flex items-start gap-3 text-gray-600"
+              >
+                <span className="text-red-800 font-bold text-lg">•</span>
+                <span>{item.trim()}</span>
+              </li>
+            ))}
+          </ul>
 
-                
-               <div>
-                <Link to="/login" className="mt-8 block w-full text-center bg-gradient-to-r from-pink-500 to-red-500 text-white py-3 rounded-xl font-semibold hover:scale-105 transition-transform duration-300">Apply Now</Link>
-               </div>
-               
-              </div>
-            </div>
-          ))}
+          {/* Button */}
+          <Link
+            to="/login"
+            className="mt-8 w-full text-center bg-gradient-to-r from-pink-500 to-red-500 text-white py-3 rounded-xl font-semibold hover:scale-105 hover:shadow-lg transition-all duration-300"
+          >
+            Apply Now
+          </Link>
         </div>
-      </section>
+      </div>
+    ))}
+  </div>
+</section>
 
       {/* CTA Section */}
       <section className="px-6 pb-20">
@@ -322,7 +306,7 @@ function Business() {
 
   <div className="flex flex-wrap gap-4 mt-8">
     <button
-      onClick={() => navigate("/bank")}
+      onClick={() => navigate("/bankslogo")}
       className="px-8 py-4 rounded-2xl bg-gradient-to-r from-red-600 to-red-500 text-white font-semibold shadow-lg hover:shadow-red-200 hover:scale-105 transition-all duration-300"
     >
       View All Banks →

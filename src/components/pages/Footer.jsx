@@ -359,7 +359,7 @@ const Quicks = [
       {/* SOCIAL ICONS */}
       <div className="mt-8 flex justify-center gap-4">
   <a
-    href="https://wa.me/919876543210"
+    href="https://wa.me/919217753755 "
     target="_blank"
     rel="noopener noreferrer"
   >
@@ -383,7 +383,7 @@ const Quicks = [
     <Social icon={<FaFacebook />} />
   </a>
 
-  <a href="tel:+919876543210" className="rotate-180">
+  <a href="tel:+919217753755 " className="rotate-180">
     <Social icon={<FaPhone />} />
   </a>
 </div>
