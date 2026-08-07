@@ -21,7 +21,7 @@ export default function OrganizationSchema() {
 
     "email": "info@grovally.com",
 
-    "telephone": "+91-6200072000",
+    "telephone": "+91-8920817608",
 
     "address": {
       "@type": "PostalAddress",
