@@ -9,6 +9,7 @@ import Komo from "./components/pages/Flag";
 import Chat from "./components/chat/Chat.jsx";
 import Blog from "./components/pages/Blog.jsx";
 import S from "./components/pages/S.jsx"
+import  Flag from "./components/services/Flag.jsx"
 
 
 
@@ -27,6 +28,7 @@ export default function Layout() {
         {location.pathname === "/" && (
           <>
           <S />
+          <Flag/>
             <Wow />
             
             <Testimonial />
