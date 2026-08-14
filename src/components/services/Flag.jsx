@@ -15,31 +15,6 @@ export default function Flag() {
       {/* ================= MAIN CONTENT ================= */}
       <div className="relative z-10 text-center px-5">
 
-        {/* ================= HAPPY INDEPENDENCE DAY ================= */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">
-
-            <span className="text-[#FF9933]">
-              Happy
-            </span>{" "}
-
-            <span className="text-[#000080]">
-              Independence
-            </span>{" "}
-
-            <span className="text-[#138808]">
-              Day
-            </span>
-
-          </h2>
-        </motion.div>
-
-
         {/* ================= MAIN HEADING ================= */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
@@ -48,15 +23,14 @@ export default function Flag() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="
             mt-6
-            text-4xl
-            md:text-6xl
-            lg:text-7xl
+            text-xl
+            md:text-3xl
+            lg:text-5xl
             font-extrabold
             tracking-tight
             text-gray-900
           "
         >
-
           Celebrating India's Freedom.
 
           <br />
@@ -64,7 +38,6 @@ export default function Flag() {
           <span className="bg-gradient-to-r from-[#FF9933] via-gray-800 to-[#138808] bg-clip-text text-transparent">
             Building India's Future.
           </span>
-
         </motion.h1>
 
 
@@ -74,7 +47,7 @@ export default function Flag() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="-mt-10 flex flex-col items-center"
+          className="-mt-16 flex flex-col items-center"
         >
 
           {/* Grovally Logo */}
@@ -86,8 +59,8 @@ export default function Flag() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="
-              w-[130px]
-              md:w-[240px]
+              w-[180px]
+              md:w-[300px]
               h-auto
               object-contain
             "
@@ -97,11 +70,11 @@ export default function Flag() {
           {/* Description */}
           <p
             className="
-              -mt-11
+              -mt-20
               text-base
               md:text-xl
               text-gray-600
-              max-w-3xl
+              max-w-5xl
               mx-auto
               leading-relaxed
             "
@@ -111,10 +84,6 @@ export default function Flag() {
           </p>
 
         </motion.div>
-
-
-        {/* ================= SERVICES ================= */}
-      
 
 
         {/* ================= INDIA TO WORLD ================= */}
@@ -134,7 +103,7 @@ export default function Flag() {
             text-gray-500
           "
         >
-          From India 🇮🇳 to the World 🌍
+          Happy Independence Day • Proudly Indian 🇮🇳
         </motion.p>
 
       </div>
@@ -144,20 +113,22 @@ export default function Flag() {
       {/* ================= MOVING FLAGS ================== */}
       {/* ================================================= */}
 
-      <div className="
-        relative
-        z-10
-        w-full
-        overflow-hidden
-        mt-14
-        py-8
-      ">
+      <div
+        className="
+          relative
+          z-10
+          w-full
+          overflow-hidden
+          
+          py-6
+        "
+      >
 
         <motion.div
           className="
             flex
             items-center
-            gap-10
+            gap-6
             w-max
           "
           animate={{
@@ -176,7 +147,7 @@ export default function Flag() {
               key={index}
               animate={{
                 rotate: [0, 2, -2, 0],
-                y: [0, -5, 5, 0],
+                y: [0, -4, 4, 0],
               }}
               transition={{
                 duration: 2.5,
@@ -186,14 +157,14 @@ export default function Flag() {
               }}
               className="
                 relative
-                w-[130px]
-                md:w-[170px]
-                h-[78px]
-                md:h-[100px]
+                w-[90px]
+                md:w-[120px]
+                h-[54px]
+                md:h-[72px]
                 shrink-0
                 rounded-sm
                 overflow-hidden
-                shadow-lg
+                shadow-md
               "
             >
 
@@ -232,17 +203,16 @@ export default function Flag() {
                 <div
                   className="
                     relative
-                    w-8
-                    h-8
-                    md:w-9
-                    md:h-9
+                    w-5
+                    h-5
+                    md:w-7
+                    md:h-7
                     rounded-full
-                    border-2
+                    border
+                    md:border-2
                     border-[#000080]
                   "
                 >
-
-                  {/* Chakra Spokes */}
 
                   {Array.from({ length: 24 }).map((_, i) => (
 
@@ -253,7 +223,7 @@ export default function Flag() {
                         top-1/2
                         left-0
                         w-full
-                        h-[1px]
+                        h-[0.5px]
                         bg-[#000080]
                       "
                       style={{
@@ -273,8 +243,8 @@ export default function Flag() {
                       left-1/2
                       -translate-x-1/2
                       -translate-y-1/2
-                      w-1.5
-                      h-1.5
+                      w-1
+                      h-1
                       rounded-full
                       bg-[#000080]
                     "
@@ -334,8 +304,6 @@ export default function Flag() {
         "
       >
 
-        {/* Main Bottom Text */}
-
         <p
           className="
             text-lg
@@ -344,11 +312,8 @@ export default function Flag() {
             text-gray-800
           "
         >
-          Proudly Building from India 🇮🇳
+          Proudly Building from India 
         </p>
-
-
-        {/* Services */}
 
         <p
           className="
@@ -364,56 +329,5 @@ export default function Flag() {
       </motion.div>
 
     </section>
-  );
-}
-
-
-/* ================================================= */
-/* ================= SERVICE PILL ================== */
-/* ================================================= */
-
-function Service({ text, color }) {
-
-  const colors = {
-
-    orange:
-      "text-[#FF9933] border-orange-200 bg-orange-50",
-
-    blue:
-      "text-[#000080] border-blue-200 bg-blue-50",
-
-    green:
-      "text-[#138808] border-green-200 bg-green-50",
-
-  };
-
-
-  return (
-
-    <motion.div
-      whileHover={{
-        y: -5,
-        scale: 1.05,
-      }}
-      transition={{
-        duration: 0.2,
-      }}
-      className={`
-        px-6
-        py-2.5
-        rounded-full
-        border
-        shadow-sm
-        font-bold
-        text-sm
-        md:text-base
-        ${colors[color]}
-      `}
-    >
-
-      {text}
-
-    </motion.div>
-
   );
 }
