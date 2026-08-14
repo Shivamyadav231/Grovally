@@ -103,7 +103,7 @@ export default function Flag() {
             text-gray-500
           "
         >
-          Happy Independence Day • Proudly Indian 🇮🇳
+          Happy Independence Day • Proudly Indian 
         </motion.p>
 
       </div>
