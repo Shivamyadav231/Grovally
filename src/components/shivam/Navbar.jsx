@@ -64,7 +64,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
           className={`mx-auto flex items-center justify-between px-6 transition-all duration-500 ${
             scrolled
               ? "max-w-full bg-black/55 backdrop-blur-xl shadow-xl h-16"
-              : "  left-0 max-w-9xl w-[95%] mt-6 bg-[#C90102] rounded-2xl h-20"
+              : "  left-0 max-w-9xl w-[95%] mt-7 bg-[#C90102] rounded-2xl h-20"
           }`}
           
         >
