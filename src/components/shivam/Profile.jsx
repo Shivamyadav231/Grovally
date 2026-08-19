@@ -40,6 +40,17 @@ const docRequirements = {
   ],
 };
 
+// CIBIL band definitions drive both the label/color logic and the
+// segmented range meter below, so the two never fall out of sync.
+const CIBIL_MIN = 300;
+const CIBIL_MAX = 900;
+const cibilBands = [
+  { key: "poor", from: 300, to: 549, label: "Poor", text: "text-rose-600", dot: "bg-rose-500", track: "bg-rose-400" },
+  { key: "average", from: 550, to: 699, label: "Average", text: "text-amber-600", dot: "bg-amber-500", track: "bg-amber-400" },
+  { key: "good", from: 700, to: 799, label: "Good", text: "text-blue-600", dot: "bg-blue-500", track: "bg-blue-400" },
+  { key: "excellent", from: 800, to: 900, label: "Excellent", text: "text-emerald-600", dot: "bg-emerald-500", track: "bg-emerald-400" },
+];
+
 function Profile() {
 
   const navigate = useNavigate();
@@ -156,52 +167,30 @@ function Profile() {
 
   // ================= CIBIL =================
 
-  const getCibilStatus = () => {
-
-    if (cibilScore >= 350 && cibilScore < 550)
-      return {
-        text: "Poor Score",
-        color: "text-red-400",
-        bar: "bg-red-500",
-      };
-
-    if (cibilScore >= 550 && cibilScore < 700)
-      return {
-        text: "Average Score",
-        color: "text-yellow-400",
-        bar: "bg-yellow-500",
-      };
-
-    if (cibilScore >= 700 && cibilScore < 800)
-      return {
-        text: "Good Score",
-        color: "text-green-400",
-        bar: "bg-green-500",
-      };
-
-    if (cibilScore >= 800)
-      return {
-        text: "Excellent Score",
-        color: "text-emerald-400",
-        bar: "bg-emerald-500",
-      };
-
-    return {
-      text: "",
-      color: "",
-      bar: "bg-gray-500",
-    };
+  const getCibilBand = () => {
+    const score = Number(cibilScore);
+    if (!score) return null;
+    return cibilBands.find((b) => score >= b.from && score <= b.to) || null;
   };
 
-  const cibil = getCibilStatus();
+  const cibilBand = getCibilBand();
+  const cibilPercent = cibilScore
+    ? Math.min(
+        100,
+        Math.max(
+          0,
+          ((Number(cibilScore) - CIBIL_MIN) / (CIBIL_MAX - CIBIL_MIN)) * 100
+        )
+      )
+    : 0;
 
   if (!profile) {
 
     return (
 
-      <div className="flex min-h-screen items-center justify-center bg-[#020617] text-4xl font-black text-cyan-400">
+      <div className="flex min-h-screen items-center justify-center bg-slate-50 text-lg font-semibold text-slate-400">
 
-        Loading...
+        Loading your dashboard…
 
       </div>
     );
@@ -209,154 +198,161 @@ function Profile() {
 
   return (
 
-    <section className="relative min-h-screen w-full top-10 overflow-hidden bg-[#020617] px-6 py-20 text-white">
+    <section className="relative  min-h-screen w-full bg-slate-50 px-6 py-16 text-slate-900 antialiased">
 
-      {/* Background */}
-      <div className="absolute inset-0 overflow-hidden">
-
-        <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-cyan-500/20 blur-[120px] animate-pulse"></div>
-
-        <div className="absolute bottom-0 right-0 h-[500px] w-[500px] rounded-full bg-purple-500/20 blur-[120px] animate-pulse"></div>
-
-      </div>
-
-      {/* Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
-
-      <div className="relative z-10 w-full">
+      <div className="mx-auto w-full max-w-6xl">
 
         {/* Header */}
-        <div className="mb-10 flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+        <div className="mb-8 flex flex-col mt-11 gap-6 sm:flex-row sm:items-center sm:justify-between">
 
           <div>
-
-            <h1 className="text-5xl font-black">
-
-              Welcome
-              <span className="block bg-gradient-to-r from-cyan-400 via-red-500 to-purple-500 bg-clip-text text-transparent">
-
-                {profile?.name}
-
-              </span>
-
+            <p className="text-sm font-medium text-red-600">Welcome back</p>
+            <h1 className="mt-1 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              {profile?.name}
             </h1>
-
-            <p className="mt-3 text-slate-400">
-
-              AI Powered Loan Dashboard
-
+            <p className="mt-1 text-sm text-slate-500">
+              Track your loan eligibility, documents, and applications in one place.
             </p>
-
-            {selectedCourseName && (
-              <div className="mt-6 rounded-[32px] border border-cyan-500/20 bg-cyan-500/10 p-5 text-slate-100">
-                <p className="text-sm uppercase tracking-[0.18em] text-cyan-300">Selected course</p>
-                <h2 className="mt-2 text-2xl font-semibold text-white">{selectedCourseName}</h2>
-                <p className="mt-2 text-sm text-slate-300">
-                  You selected this course from the internship page. Continue here to manage attendance, session access, and profile details.
-                </p>
-              </div>
-            )}
-
-            {redirect === "apply" && (
-              <div className="mb-10 rounded-[40px] border border-white/10 bg-white/5 p-10 backdrop-blur-2xl">
-                <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-                  <div>
-                    <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">Internship Application</p>
-                    <h2 className="mt-3 text-3xl font-black text-white">Submit your application</h2>
-                    <p className="mt-2 max-w-2xl text-slate-400">
-                      Complete the internship application form below to start your journey.
-                    </p>
-                  </div>
-                  <div className="rounded-3xl bg-cyan-500/10 px-4 py-3 text-cyan-200">
-                    Application mode enabled
-                  </div>
-                </div>
-
-                <form onSubmit={handleApplicationSubmit} className="mt-10 grid gap-6 lg:grid-cols-2">
-                  <div className="space-y-4">
-                    <label className="block text-sm font-semibold text-slate-200">Selected Course</label>
-                    <input
-                      type="text"
-                      name="course"
-                      value={application.course}
-                      readOnly
-                      className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white outline-none"
-                    />
-
-                    <label className="block text-sm font-semibold text-slate-200">Phone Number</label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={application.phone}
-                      onChange={handleApplicationChange}
-                      placeholder="+91 98765 43210"
-                      className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white outline-none"
-                    />
-
-                    <label className="block text-sm font-semibold text-slate-200">Resume</label>
-                    <input
-                      type="file"
-                      name="resume"
-                      accept=".pdf,.doc,.docx"
-                      onChange={handleApplicationChange}
-                      className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white outline-none"
-                    />
-
-                    {application.resume && (
-                      <p className="text-sm text-slate-300">Uploaded: {application.resume.name}</p>
-                    )}
-                  </div>
-
-                  <div className="space-y-4">
-                    <label className="block text-sm font-semibold text-slate-200">Motivation</label>
-                    <textarea
-                      name="motivation"
-                      value={application.motivation}
-                      onChange={handleApplicationChange}
-                      placeholder="Tell us why you want this internship"
-                      rows="7"
-                      className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-white outline-none"
-                    />
-
-                    <button
-                      type="submit"
-                      className="w-full rounded-2xl bg-cyan-400 px-6 py-4 text-lg font-semibold text-slate-950 transition hover:bg-cyan-300"
-                    >
-                      Submit Application
-                    </button>
-
-                    {applicationStatus && (
-                      <p className="mt-2 text-sm text-emerald-300">{applicationStatus}</p>
-                    )}
-                  </div>
-                </form>
-              </div>
-            )}
-
           </div>
 
           <button
             onClick={logout}
-            className="rounded-2xl bg-red-600 px-8 py-4 font-bold transition hover:bg-red-700"
+            className="inline-flex items-center justify-center self-start rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-600 shadow-sm transition hover:border-rose-200 hover:bg-rose-50 hover:text-rose-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-300 sm:self-auto"
           >
-            Logout
+            Log out
           </button>
 
         </div>
 
+        {selectedCourseName && (
+          <div className="mb-6 flex items-start gap-4 rounded-2xl border border-indigo-100 bg-indigo-50 p-5">
+            <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-sm font-bold text-white">
+              ✓
+            </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wide text-indigo-500">
+                Selected course
+              </p>
+              <h2 className="mt-0.5 text-lg font-semibold text-slate-900">
+                {selectedCourseName}
+              </h2>
+              <p className="mt-1 text-sm text-slate-600">
+                Continue here to manage attendance, session access, and profile details.
+              </p>
+            </div>
+          </div>
+        )}
+
+        {redirect === "apply" && (
+          <div className="mb-8 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+            <div className="flex flex-col gap-4 border-b border-slate-100 pb-6 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-indigo-500">
+                  Internship application
+                </p>
+                <h2 className="mt-1 text-2xl font-bold text-slate-900">
+                  Submit your application
+                </h2>
+                <p className="mt-1 max-w-xl text-sm text-slate-500">
+                  Fill out the details below to start your journey.
+                </p>
+              </div>
+              <span className="inline-flex w-fit items-center rounded-full bg-indigo-50 px-3 py-1.5 text-xs font-semibold text-indigo-600">
+                Application mode enabled
+              </span>
+            </div>
+
+            <form onSubmit={handleApplicationSubmit} className="mt-6 grid gap-6 lg:grid-cols-2">
+              <div className="space-y-4">
+                <div>
+                  <label className="mb-1.5 block text-sm font-medium text-slate-700">
+                    Selected course
+                  </label>
+                  <input
+                    type="text"
+                    name="course"
+                    value={application.course}
+                    readOnly
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm text-slate-600 outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label className="mb-1.5 block text-sm font-medium text-slate-700">
+                    Phone number
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={application.phone}
+                    onChange={handleApplicationChange}
+                    placeholder="+91 98765 43210"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                  />
+                </div>
+
+                <div>
+                  <label className="mb-1.5 block text-sm font-medium text-slate-700">
+                    Resume
+                  </label>
+                  <input
+                    type="file"
+                    name="resume"
+                    accept=".pdf,.doc,.docx"
+                    onChange={handleApplicationChange}
+                    className="w-full rounded-xl border border-dashed border-slate-300 bg-slate-50 px-4 py-2.5 text-sm text-slate-500 outline-none file:mr-4 file:rounded-lg file:border-0 file:bg-indigo-600 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-white hover:file:bg-indigo-700"
+                  />
+                  {application.resume && (
+                    <p className="mt-1.5 text-xs text-slate-500">
+                      Uploaded: {application.resume.name}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-4">
+                <div className="flex-1">
+                  <label className="mb-1.5 block text-sm font-medium text-slate-700">
+                    Motivation
+                  </label>
+                  <textarea
+                    name="motivation"
+                    value={application.motivation}
+                    onChange={handleApplicationChange}
+                    placeholder="Tell us why you want this internship"
+                    rows="6"
+                    className="h-full w-full resize-none rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full rounded-xl bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+                >
+                  Submit application
+                </button>
+
+                {applicationStatus && (
+                  <p className="text-sm font-medium text-emerald-600">
+                    {applicationStatus}
+                  </p>
+                )}
+              </div>
+            </form>
+          </div>
+        )}
+
         {/* Profile Card */}
         <motion.div
-
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-
-          className="mb-10 overflow-hidden rounded-[40px] border border-white/10 bg-white/5 p-10 backdrop-blur-2xl shadow-[0_20px_120px_rgba(0,255,255,0.15)]"
+          transition={{ duration: 0.35, ease: "easeOut" }}
+          className="mb-6 overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-sm"
         >
-
-          <div className="grid gap-10 lg:grid-cols-2">
+          <div className="grid gap-10 lg:grid-cols-[auto_1fr]">
 
             {/* Left */}
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center gap-4">
 
               <input
                 ref={photoInputRef}
@@ -374,34 +370,30 @@ function Profile() {
                 onClick={() =>
                   photoInputRef.current.click()
                 }
-                className="group relative cursor-pointer"
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === "Enter" && photoInputRef.current.click()}
+                className="group relative cursor-pointer focus:outline-none"
               >
-
                 {profile?.photo ? (
-
                   <img
                     loading="lazy"
                     src={`${BACKEND}/uploads/${profile.photo}`}
                     alt="profile"
-                    className="h-56 w-56 rounded-full border-4 border-cyan-400 object-cover"
+                    className="h-32 w-32 rounded-full border-4 border-white object-cover shadow-md ring-1 ring-slate-200"
                   />
-
                 ) : (
-
-                  <div className="flex h-56 w-56 items-center justify-center rounded-full bg-gradient-to-br from-cyan-500 to-purple-500 text-7xl font-black">
-
+                  <div className="flex h-32 w-32 items-center justify-center rounded-full bg-indigo-600 text-4xl font-bold text-white shadow-md">
                     {profile?.name?.charAt(0)}
-
                   </div>
-
                 )}
-
-                <div className="absolute inset-0 rounded-full bg-black/40 opacity-0 transition group-hover:opacity-100"></div>
-
+                <div className="absolute inset-0 flex items-center justify-center rounded-full bg-slate-900/40 text-xs font-semibold text-white opacity-0 transition group-hover:opacity-100">
+                  Change
+                </div>
               </div>
 
-              <button className="mt-6 rounded-2xl bg-cyan-400 px-8 py-4 font-bold text-slate-950 transition hover:scale-105">
-                Upload Photo
+              <button className="rounded-xl border border-slate-200 bg-white px-5 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-indigo-200 hover:text-indigo-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-200">
+                Upload photo
               </button>
 
             </div>
@@ -409,20 +401,26 @@ function Profile() {
             {/* Right */}
             <div>
 
-              <h2 className="text-4xl font-black">
-                Profile Overview
+              <h2 className="text-xl font-bold text-red-600">
+                Profile overview
               </h2>
-
-              <p className="mt-3 text-slate-400">
+              <p className="mt-1 text-sm text-slate-500">
                 {profile?.email}
               </p>
 
               {/* CIBIL */}
-              <div className="mt-10 rounded-[30px] border border-white/10 bg-white/5 p-8">
+              <div className="mt-6 rounded-2xl border border-slate-100 bg-slate-50 p-6">
 
-                <h2 className="mb-6 text-3xl font-bold">
-                  CIBIL Score
-                </h2>
+                <div className="mb-4 flex items-center justify-between">
+                  <h3 className="text-base font-semibold text-red-600">
+                    CIBIL score
+                  </h3>
+                  {cibilBand && (
+                    <span className={`text-sm font-semibold ${cibilBand.text}`}>
+                      {cibilBand.label}
+                    </span>
+                  )}
+                </div>
 
                 <input
                   type="number"
@@ -432,40 +430,42 @@ function Profile() {
                       Number(e.target.value)
                     )
                   }
-                  placeholder="Enter CIBIL Score"
-                  className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 outline-none focus:border-cyan-400"
+                  placeholder="Enter CIBIL score"
+                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
                 />
 
                 {cibilScore > 0 && (
-
                   <div className="mt-6">
 
-                    <div className="h-4 w-full overflow-hidden rounded-full bg-slate-700">
-
+                    {/* Segmented range meter with score marker */}
+                    <div className="relative">
+                      <div className="flex h-2.5 w-full overflow-hidden rounded-full">
+                        {cibilBands.map((band) => (
+                          <div
+                            key={band.key}
+                            className={`${band.track} h-full`}
+                            style={{
+                              width: `${((band.to - band.from + 1) / (CIBIL_MAX - CIBIL_MIN)) * 100}%`,
+                            }}
+                          />
+                        ))}
+                      </div>
                       <div
-                        style={{
-                          width: `${Math.min(
-                            100,
-                            (cibilScore / 900) * 100
-                          )}%`,
-                        }}
-                        className={`${cibil.bar} h-4 rounded-full transition-all duration-500`}
+                        className="absolute -top-1 h-4.5 w-0.5 rounded-full bg-slate-900 transition-all duration-500"
+                        style={{ left: `calc(${cibilPercent}% - 1px)` }}
                       />
-
                     </div>
 
-                    <p className="mt-4 text-lg">
-                      Score: {cibilScore}
-                    </p>
+                    <div className="mt-2 flex justify-between text-xs text-slate-400">
+                      <span>300</span>
+                      <span>900</span>
+                    </div>
 
-                    <p
-                      className={`mt-2 font-bold ${cibil.color}`}
-                    >
-                      {cibil.text}
+                    <p className="mt-4 text-sm text-slate-600">
+                      Score: <span className="font-semibold text-slate-900">{cibilScore}</span>
                     </p>
 
                   </div>
-
                 )}
 
               </div>
@@ -477,41 +477,91 @@ function Profile() {
         </motion.div>
 
         {/* Upload Docs */}
-        <div className="mb-10 rounded-[40px] border border-white/10 bg-white/5 p-10 backdrop-blur-2xl">
+        
 
-          <h2 className="mb-8 text-4xl font-black">
-            Upload Documents
+        {/* Apply Loan */}
+        <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+
+          <h2 className="mb-6 text-xl font-bold text-slate-900">
+            Apply for a loan
+          </h2>
+
+          <form className="grid gap-4 lg:grid-cols-3">
+
+            <div>
+              <label className="mb-1.5 block text-sm font-medium text-slate-700">
+                Loan type
+              </label>
+              <select
+                value={loanType}
+                onChange={(e) =>
+                  setLoanType(
+                    e.target.value
+                  )
+                }
+                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+              >
+                {Object.keys(docRequirements).map((loan) => (
+                  <option key={loan}>{loan}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="mb-1.5 block text-sm font-medium text-slate-700">
+                Loan amount
+              </label>
+              <input
+                type="number"
+                placeholder="₹ 0"
+                value={loanAmount}
+                onChange={(e) =>
+                  setLoanAmount(
+                    e.target.value
+                  )
+                }
+                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
+              />
+            </div>
+
+            <div className="flex items-end">
+              <button className="w-full rounded-xl bg-indigo-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300">
+                Apply loan
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+        <div className="mb-6 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+
+          <h2 className="mb-6 text-xl font-bold text-red-600">
+            Upload documents
           </h2>
 
           <div className="grid gap-8 lg:grid-cols-2">
 
             <div>
-
-              <h3 className="mb-5 text-xl font-bold">
-                Required Documents
+              <h3 className="mb-3 text-sm font-semibold text-slate-700">
+                Required for {loanType}
               </h3>
 
-              <div className="flex flex-wrap gap-4">
-
-                {(docRequirements[
-                  loanType
-                ] || []).map((doc) => (
-
+              <div className="flex flex-wrap gap-2">
+                {(docRequirements[loanType] || []).map((doc) => (
                   <span
                     key={doc}
-                    className="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-5 py-3 text-cyan-300"
+                    className="rounded-full border border-indigo-100 bg-indigo-50 px-4 py-1.5 text-sm font-medium text-indigo-600"
                   >
                     {doc}
                   </span>
-
                 ))}
-
               </div>
-
             </div>
 
             <div>
-
+              <label className="mb-1.5 block text-sm font-medium text-red-600">
+                Document type
+              </label>
               <select
                 value={selectedDocType}
                 onChange={(e) =>
@@ -519,24 +569,17 @@ function Profile() {
                     e.target.value
                   )
                 }
-                className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 outline-none"
+                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100"
               >
-
-                {(docRequirements[
-                  loanType
-                ] || []).map((doc) => (
-                  <option key={doc}>
-                    {doc}
-                  </option>
+                {(docRequirements[loanType] || []).map((doc) => (
+                  <option key={doc}>{doc}</option>
                 ))}
-
               </select>
-
             </div>
 
           </div>
 
-          <div className="mt-8 flex flex-col gap-4 md:flex-row">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
 
             <input
               type="file"
@@ -548,63 +591,20 @@ function Profile() {
                   )
                 )
               }
-              className="rounded-2xl border border-white/10 bg-white/5 p-4"
+              className="flex-1 rounded-xl border border-dashed border-slate-300 bg-slate-50 px-4 py-2.5 text-sm text-slate-500 outline-none file:mr-4 file:rounded-lg file:border-0 file:bg-slate-200 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-slate-700 hover:file:bg-slate-300"
             />
 
-            <button className="rounded-2xl bg-green-500 px-10 py-4 font-bold transition hover:bg-green-600">
-              Upload Docs
+            <button className="rounded-xl bg-emerald-600 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300">
+              Upload docs
             </button>
 
           </div>
 
-        </div>
-
-        {/* Apply Loan */}
-        <div className="rounded-[40px] border border-white/10 bg-white/5 p-10 backdrop-blur-2xl">
-
-          <h2 className="mb-8 text-4xl font-black">
-            Apply Loan
-          </h2>
-
-          <form className="grid gap-5 lg:grid-cols-3">
-
-            <select
-              value={loanType}
-              onChange={(e) =>
-                setLoanType(
-                  e.target.value
-                )
-              }
-              className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 outline-none"
-            >
-
-              {Object.keys(
-                docRequirements
-              ).map((loan) => (
-                <option key={loan}>
-                  {loan}
-                </option>
-              ))}
-
-            </select>
-
-            <input
-              type="number"
-              placeholder="Loan Amount"
-              value={loanAmount}
-              onChange={(e) =>
-                setLoanAmount(
-                  e.target.value
-                )
-              }
-              className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 outline-none"
-            />
-
-            <button className="rounded-2xl bg-cyan-400 px-8 py-4 font-bold text-slate-950 transition hover:scale-105">
-              Apply Loan
-            </button>
-
-          </form>
+          {docFiles.length > 0 && (
+            <p className="mt-3 text-xs text-slate-500">
+              {docFiles.length} file{docFiles.length > 1 ? "s" : ""} selected
+            </p>
+          )}
 
         </div>
 

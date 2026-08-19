@@ -52,6 +52,10 @@ const products =lazy(()=>import("./components/Resources/Products.jsx"))
 const Repots = lazy(()=>import("./components/Resources/Repots.jsx"))
 const Startup = lazy(()=>import("./components/Resources/Startup.jsx"))
 const Webinrs =lazy(()=>(import("./components/Resources/Webinrs.jsx")))
+const Cyber = lazy(()=>(import("./components/products/Cyber.jsx")))
+const Cloude =lazy(()=>(import("./components/products/Cloude.jsx")))
+const Softwere =lazy(()=>(import("./components/products/Softwere.jsx")))
+const Website =lazy(()=>(import("./components/products/Website.jsx")))
 
 
 export default function App() {
@@ -70,6 +74,10 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<><WOf /><Home /></>} />
+            <Route path="cyber" element={<Cyber/>}/>
+            <Route path="cloude" element={<Cloude/>}/>
+            <Route path="software" element={<Softwere/>}/>
+            <Route path="website" element={<Website/>}/>
 
             <Route path="services" element={<Services />} />
             <Route path="it" element={<IT />} />

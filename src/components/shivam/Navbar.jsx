@@ -189,20 +189,20 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
         <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
           {[
              ["ERP Software", "/erp-software"],
-  ["CRM Software", "/crm-software"],
-  ["HRMS Software", "/hrms-software"],
-  ["Accounting Software", "/accounting-software"],
-  ["Inventory Management Software", "/inventory-management-software"],
+  ["CRM Software", "/it"],
+  ["HRMS Software", "/it"],
+  ["Accounting Software", "/it"],
+  ["Inventory Management Software", "/it"],
   ["Payroll Software", "/payroll-software"],
-  ["School Management Software", "/school-management-software"],
-  ["Hospital Management Software", "/hospital-management-software"],
-  ["Hotel Management Software", "/hotel-management-software"],
-  ["Restaurant Software", "/restaurant-software"],
-  ["Real Estate Software", "/real-estate-software"],
-  ["Microfinance Software", "/microfinance-software"],
-  ["NGO Management Software", "/ngo-management-software"],
-  ["Logistics Software", "/logistics-software"],
-  ["Manufacturing Software", "/manufacturing-software"],
+  ["School Management Software", "/it"],
+  ["Hospital Management Software", "/it"],
+  ["Hotel Management Software", "/it"],
+  ["Restaurant Software", "/it"],
+  ["Real Estate Software", "/it"],
+  ["Microfinance Software", "/it"],
+  ["NGO Management Software", "/it"],
+  ["Logistics Software", "/it"],
+  ["Manufacturing Software", "/it"],
 
            
           ].map(([title, link], index, arr) => (
@@ -237,19 +237,19 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
         <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
           {[
-             ["E-Commerce App", "/ecommerce-app"],
-  ["Food Delivery App", "/food-delivery-app"],
-  ["Hotel Booking App", "/hotel-booking-app"],
-  ["Education App", "/education-app"],
-  ["Healthcare App", "/healthcare-app"],
-  ["Real Estate App", "/real-estate-app"],
-  ["Grocery Delivery App", "/grocery-delivery-app"],
-  ["Quick Commerce App", "/quick-commerce-app"],
-  ["Bike Taxi App", "/bike-taxi-app"],
-  ["Cab Booking App", "/cab-booking-app"],
-  ["Travel App", "/travel-app"],
-  ["Doctor Appointment App", "/doctor-appointment-app"],
-  ["NGO App", "/ngo-app"],
+             ["E-Commerce App", "/app-services"],
+  ["Food Delivery App", "/app-services"],
+  ["Hotel Booking App", "/app-services"],
+  ["Education App", "/app-services"],
+  ["Healthcare App", "/app-services"],
+  ["Real Estate App", "/app-services"],
+  ["Grocery Delivery App", "/app-services"],
+  ["Quick Commerce App", "/app-services"],
+  ["Bike Taxi App", "/app-services"],
+  ["Cab Booking App", "/app-services"],
+  ["Travel App", "/app-services"],
+  ["Doctor Appointment App", "/app-services"],
+  ["NGO App", "/app-services"],
           ].map(([title, link], index, arr) => (
             <li
               key={title}
@@ -282,20 +282,20 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
         <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
           {[
-              ["Corporate Website", "/corporate-website"],
-  ["Business Website", "/business-website"],
-  ["E-Commerce Website", "/ecommerce-website"],
-  ["School Portal", "/school-portal"],
-  ["Hospital Portal", "/hospital-portal"],
-  ["College Portal", "/college-portal"],
-  ["Customer Portal", "/customer-portal"],
-  ["Vendor Portal", "/vendor-portal"],
-  ["Employee Portal", "/employee-portal"],
-  ["Franchise Portal", "/franchise-portal"],
-  ["NGO Portal", "/ngo-portal"],
-  ["B2B Marketplace", "/b2b-marketplace"],
-  ["Job Portal", "/job-portal"],
-  ["Government Portal", "/government-portal"],
+              ["Corporate Website", "/website"],
+  ["Business Website", "/website"],
+  ["E-Commerce Website", "/website"],
+  ["School Portal", "/website"],
+  ["Hospital Portal", "/website"],
+  ["College Portal", "/website"],
+  ["Customer Portal", "/website"],
+  ["Vendor Portal", "/website"],
+  ["Employee Portal", "/website"],
+  ["Franchise Portal", "/website"],
+  ["NGO Portal", "/website"],
+  ["B2B Marketplace", "/website"],
+  ["Job Portal", "/website"],
+  ["Government Portal", "/website"],
           ].map(([title, link], index, arr) => (
             <li
               key={title}
@@ -387,22 +387,22 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
           <ul className="space-y-4 text-gray-700">
 
             <li>
-              <Link to="/website-development" className="font-semibold hover:text-red-600">
+              <Link to="/website" className="font-semibold hover:text-red-600">
                 Website Development
               </Link>
 
               <ul className="ml-5 mt-2 border-l border-gray-300 pl-4 space-y-2 text-sm">
 
-                <li><Link to="/static-website" className="hover:text-red-600">├── Static Website</Link></li>
-                <li><Link to="/dynamic-website" className="hover:text-red-600">├── Dynamic Website</Link></li>
-                <li><Link to="/business-website" className="hover:text-red-600">├── Business Website</Link></li>
-                <li><Link to="/corporate-website" className="hover:text-red-600">├── Corporate Website</Link></li>
-                <li><Link to="/ecommerce-website" className="hover:text-red-600">├── Ecommerce Website</Link></li>
-                <li><Link to="/school-website" className="hover:text-red-600">├── School Website</Link></li>
-                <li><Link to="/hospital-website" className="hover:text-red-600">├── Hospital Website</Link></li>
-                <li><Link to="/landing-page" className="hover:text-red-600">├── Landing Pages</Link></li>
-                <li><Link to="/portal-development" className="hover:text-red-600">├── Web Portals</Link></li>
-                <li><Link to="/cms-development" className="hover:text-red-600">└── CMS Website</Link></li>
+                <li><Link to="/website" className="hover:text-red-600">├── Static Website</Link></li>
+                <li><Link to="/website" className="hover:text-red-600">├── Dynamic Website</Link></li>
+                <li><Link to="/website" className="hover:text-red-600">├── Business Website</Link></li>
+                <li><Link to="/website" className="hover:text-red-600">├── Corporate Website</Link></li>
+                <li><Link to="/website" className="hover:text-red-600">├── Ecommerce Website</Link></li>
+                <li><Link to="/website" className="hover:text-red-600">├── School Website</Link></li>
+                <li><Link to="/website" className="hover:text-red-600">├── Hospital Website</Link></li>
+                <li><Link to="/website" className="hover:text-red-600">├── Landing Pages</Link></li>
+                <li><Link to="/website" className="hover:text-red-600">├── Web Portals</Link></li>
+                <li><Link to="/website" className="hover:text-red-600">└── CMS Website</Link></li>
 
               </ul>
             </li>
@@ -424,7 +424,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
             <li>
 
               <Link
-                to="/software-development"
+                to="/software"
                 className="font-semibold hover:text-red-600"
               >
                 Software Development
@@ -432,16 +432,16 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
               <ul className="ml-5 mt-2 border-l border-gray-300 pl-4 space-y-2 text-sm">
 
-                <li><Link to="/erp" className="hover:text-red-600">├── ERP Software</Link></li>
-                <li><Link to="/crm" className="hover:text-red-600">├── CRM Software</Link></li>
-                <li><Link to="/hrms" className="hover:text-red-600">├── HRMS Software</Link></li>
-                <li><Link to="/accounting" className="hover:text-red-600">├── Accounting Software</Link></li>
-                <li><Link to="/inventory" className="hover:text-red-600">├── Inventory Software</Link></li>
-                <li><Link to="/hospital-management" className="hover:text-red-600">├── Hospital Management</Link></li>
-                <li><Link to="/school-management" className="hover:text-red-600">├── School Management</Link></li>
-                <li><Link to="/hotel-management" className="hover:text-red-600">├── Hotel Management</Link></li>
-                <li><Link to="/manufacturing-software" className="hover:text-red-600">├── Manufacturing ERP</Link></li>
-                <li><Link to="/custom-software" className="hover:text-red-600">└── Custom Software</Link></li>
+                <li><Link to="/software" className="hover:text-red-600">├── ERP Software</Link></li>
+                <li><Link to="/software" className="hover:text-red-600">├── CRM Software</Link></li>
+                <li><Link to="/software" className="hover:text-red-600">├── HRMS Software</Link></li>
+                <li><Link to="/software" className="hover:text-red-600">├── Accounting Software</Link></li>
+                <li><Link to="/software" className="hover:text-red-600">├── Inventory Software</Link></li>
+                <li><Link to="/software-management" className="hover:text-red-600">├── Hospital Management</Link></li>
+                <li><Link to="/software" className="hover:text-red-600">├── School Management</Link></li>
+                <li><Link to="/software" className="hover:text-red-600">├── Hotel Management</Link></li>
+                <li><Link to="/software" className="hover:text-red-600">├── Manufacturing ERP</Link></li>
+                <li><Link to="/software" className="hover:text-red-600">└── Custom Software</Link></li>
 
               </ul>
 
@@ -464,7 +464,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
             <li>
 
               <Link
-                to="/mobile-app-development"
+                to="/app-services"
                 className="font-semibold hover:text-red-600"
               >
                 Mobile Applications
@@ -555,16 +555,16 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
               <ul className="ml-5 mt-2 border-l border-gray-300 pl-4 space-y-2 text-sm">
 
-                <li><Link to="/ai-chatbot" className="hover:text-red-600">├── AI Chatbot</Link></li>
-                <li><Link to="/ai-agent" className="hover:text-red-600">├── AI Agent Development</Link></li>
-                <li><Link to="/ai-automation" className="hover:text-red-600">├── AI Automation</Link></li>
-                <li><Link to="/ai-attendance" className="hover:text-red-600">├── AI Attendance System</Link></li>
-                <li><Link to="/ai-crm" className="hover:text-red-600">├── AI CRM</Link></li>
-                <li><Link to="/ai-erp" className="hover:text-red-600">├── AI ERP Assistant</Link></li>
-                <li><Link to="/ai-content" className="hover:text-red-600">├── AI Content Creator</Link></li>
-                <li><Link to="/ai-voice" className="hover:text-red-600">├── AI Voice Assistant</Link></li>
-                <li><Link to="/ai-call-center" className="hover:text-red-600">├── AI Call Center</Link></li>
-                <li><Link to="/ai-consulting" className="hover:text-red-600">└── AI Consulting</Link></li>
+                <li><Link to="/app-services" className="hover:text-red-600">├── AI Chatbot</Link></li>
+                <li><Link to="/app-services" className="hover:text-red-600">├── AI Agent Development</Link></li>
+                <li><Link to="/app-services" className="hover:text-red-600">├── AI Automation</Link></li>
+                <li><Link to="/app-services" className="hover:text-red-600">├── AI Attendance System</Link></li>
+                <li><Link to="/app-services" className="hover:text-red-600">├── AI CRM</Link></li>
+                <li><Link to="/app-services" className="hover:text-red-600">├── AI ERP Assistant</Link></li>
+                <li><Link to="/app-services" className="hover:text-red-600">├── AI Content Creator</Link></li>
+                <li><Link to="/app-services" className="hover:text-red-600">├── AI Voice Assistant</Link></li>
+                <li><Link to="/app-services" className="hover:text-red-600">├── AI Call Center</Link></li>
+                <li><Link to="/app-services" className="hover:text-red-600">└── AI Consulting</Link></li>
 
               </ul>
 
@@ -627,7 +627,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
             <li>
 
               <Link
-                to="/cloud-services"
+                to="/cloude"
                 className="font-semibold hover:text-red-600"
               >
                 Cloud Solutions
@@ -635,16 +635,16 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
               <ul className="ml-5 mt-2 border-l border-gray-300 pl-4 space-y-2 text-sm">
 
-                <li><Link to="/aws" className="hover:text-red-600">├── AWS</Link></li>
-                <li><Link to="/azure" className="hover:text-red-600">├── Microsoft Azure</Link></li>
-                <li><Link to="/google-cloud" className="hover:text-red-600">├── Google Cloud</Link></li>
-                <li><Link to="/cloud-hosting" className="hover:text-red-600">├── Cloud Hosting</Link></li>
-                <li><Link to="/server-management" className="hover:text-red-600">├── Server Management</Link></li>
-                <li><Link to="/devops" className="hover:text-red-600">├── DevOps</Link></li>
-                <li><Link to="/docker" className="hover:text-red-600">├── Docker</Link></li>
-                <li><Link to="/kubernetes" className="hover:text-red-600">├── Kubernetes</Link></li>
-                <li><Link to="/cloud-migration" className="hover:text-red-600">├── Cloud Migration</Link></li>
-                <li><Link to="/backup-disaster" className="hover:text-red-600">└── Backup & Disaster Recovery</Link></li>
+                <li><Link to="/cloude" className="hover:text-red-600">├── AWS</Link></li>
+                <li><Link to="/cloude" className="hover:text-red-600">├── Microsoft Azure</Link></li>
+                <li><Link to="/cloude" className="hover:text-red-600">├── Google Cloud</Link></li>
+                <li><Link to="/cloude" className="hover:text-red-600">├── Cloud Hosting</Link></li>
+                <li><Link to="/cloude" className="hover:text-red-600">├── Server Management</Link></li>
+                <li><Link to="/cloude" className="hover:text-red-600">├── DevOps</Link></li>
+                <li><Link to="/cloude" className="hover:text-red-600">├── Docker</Link></li>
+                <li><Link to="/cloude" className="hover:text-red-600">├── Kubernetes</Link></li>
+                <li><Link to="/cloude" className="hover:text-red-600">├── Cloud Migration</Link></li>
+                <li><Link to="/cloude" className="hover:text-red-600">└── Backup & Disaster Recovery</Link></li>
 
               </ul>
 
@@ -667,7 +667,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
             <li>
 
               <Link
-                to="/cyber-security"
+                to="/cyber"
                 className="font-semibold hover:text-red-600"
               >
                 Security Services
@@ -675,16 +675,16 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
               <ul className="ml-5 mt-2 border-l border-gray-300 pl-4 space-y-2 text-sm">
 
-                <li><Link to="/penetration-testing" className="hover:text-red-600">├── Penetration Testing</Link></li>
-                <li><Link to="/vapt" className="hover:text-red-600">├── VAPT</Link></li>
-                <li><Link to="/network-security" className="hover:text-red-600">├── Network Security</Link></li>
-                <li><Link to="/endpoint-security" className="hover:text-red-600">├── Endpoint Security</Link></li>
-                <li><Link to="/cloud-security" className="hover:text-red-600">├── Cloud Security</Link></li>
-                <li><Link to="/soc-services" className="hover:text-red-600">├── SOC Services</Link></li>
-                <li><Link to="/firewall" className="hover:text-red-600">├── Firewall Management</Link></li>
-                <li><Link to="/security-audit" className="hover:text-red-600">├── Security Audit</Link></li>
-                <li><Link to="/iso-27001" className="hover:text-red-600">├── ISO 27001 Consulting</Link></li>
-                <li><Link to="/cyber-training" className="hover:text-red-600">└── Cyber Security Training</Link></li>
+                <li><Link to="/cyber" className="hover:text-red-600">├── Penetration Testing</Link></li>
+                <li><Link to="/cyber" className="hover:text-red-600">├── VAPT</Link></li>
+                <li><Link to="/cyber" className="hover:text-red-600">├── Network Security</Link></li>
+                <li><Link to="/cyber" className="hover:text-red-600">├── Endpoint Security</Link></li>
+                <li><Link to="/cyber" className="hover:text-red-600">├── Cloud Security</Link></li>
+                <li><Link to="/cyber" className="hover:text-red-600">├── SOC Services</Link></li>
+                <li><Link to="/cyber" className="hover:text-red-600">├── Firewall Management</Link></li>
+                <li><Link to="/cyber" className="hover:text-red-600">├── Security Audit</Link></li>
+                <li><Link to="/cyber" className="hover:text-red-600">├── ISO 27001 Consulting</Link></li>
+                <li><Link to="/cyber" className="hover:text-red-600">└── Cyber Security Training</Link></li>
 
               </ul>
 
@@ -712,7 +712,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
             <li>
 
               <Link
-                to="/bpo-services"
+                to="/bpo"
                 className="font-semibold hover:text-red-600"
               >
                 Outsourcing Services
@@ -720,16 +720,16 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
               <ul className="ml-5 mt-2 border-l border-gray-300 pl-4 space-y-2 text-sm">
 
-                <li><Link to="/call-center" className="hover:text-red-600">├── Call Center</Link></li>
-                <li><Link to="/voice-support" className="hover:text-red-600">├── Voice Support</Link></li>
-                <li><Link to="/email-support" className="hover:text-red-600">├── Email Support</Link></li>
-                <li><Link to="/chat-support" className="hover:text-red-600">├── Chat Support</Link></li>
-                <li><Link to="/technical-support" className="hover:text-red-600">├── Technical Support</Link></li>
-                <li><Link to="/lead-generation" className="hover:text-red-600">├── Lead Generation</Link></li>
-                <li><Link to="/back-office" className="hover:text-red-600">├── Back Office Support</Link></li>
-                <li><Link to="/data-entry" className="hover:text-red-600">├── Data Entry</Link></li>
-                <li><Link to="/research-services" className="hover:text-red-600">├── Research Services</Link></li>
-                <li><Link to="/kpo-services" className="hover:text-red-600">└── KPO Services</Link></li>
+                <li><Link to="/bpo" className="hover:text-red-600">├── Call Center</Link></li>
+                <li><Link to="/bpo" className="hover:text-red-600">├── Voice Support</Link></li>
+                <li><Link to="/bpo" className="hover:text-red-600">├── Email Support</Link></li>
+                <li><Link to="/bpo" className="hover:text-red-600">├── Chat Support</Link></li>
+                <li><Link to="/bpo" className="hover:text-red-600">├── Technical Support</Link></li>
+                <li><Link to="/bpo" className="hover:text-red-600">├── Lead Generation</Link></li>
+                <li><Link to="/bpo" className="hover:text-red-600">├── Back Office Support</Link></li>
+                <li><Link to="/bpo" className="hover:text-red-600">├── Data Entry</Link></li>
+                <li><Link to="/bpo" className="hover:text-red-600">├── Research Services</Link></li>
+                <li><Link to="/kpo" className="hover:text-red-600">└── KPO Services</Link></li>
 
               </ul>
 
