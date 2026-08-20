@@ -95,7 +95,7 @@ export default function Cyber() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#e21010] opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-[#e21010]" />
             </span>
-            Live threat monitoring — 24/7 SOC
+            Live threat monitoring — 24/7 
           </div>
 
           <motion.h1
@@ -203,8 +203,8 @@ export default function Cyber() {
             back to a fix.
           </p>
         </div>
-
-        <div className="grid gap-px overflow-hidden rounded-2xl border border-red-200 bg-red-200 sm:grid-cols-2 lg:grid-cols-3">
+         
+         <div className="grid gap-px overflow-hidden rounded-2xl border border-red-600/30 bg-red-600 sm:grid-cols-2 lg:grid-cols-3">
   {services.map(({ title, desc, icon: Icon }, i) => (
     <motion.div
       key={title}
@@ -215,24 +215,30 @@ export default function Cyber() {
       className="group relative flex flex-col gap-4 bg-white p-7 transition-all duration-300 hover:bg-red-50"
     >
       {/* Red hover indicator */}
-      <div className="absolute left-0 top-0 h-full w-[2px] scale-y-0 bg-red-500 transition-transform duration-300 group-hover:scale-y-100" />
+      <div
+        className="absolute left-0 top-0 h-full w-[3px] origin-top scale-y-0 bg-red-600 transition-transform duration-300 group-hover:scale-y-100"
+      />
 
+      {/* Number + Icon */}
       <div className="flex items-center justify-between">
-        <span className="font-mono text-xs text-gray-400">
+        <span className="font-mono text-xs font-semibold text-red-500">
           {String(i + 1).padStart(2, "0")}
         </span>
 
-        <Icon className="h-5 w-5 text-gray-500 transition-colors duration-300 group-hover:text-red-500" />
+        <Icon className="h-5 w-5 text-gray-500 transition-colors duration-300 group-hover:text-red-600" />
       </div>
 
-      <h3 className="text-base font-semibold text-red-600 transition-colors duration-300 group-hover:text-red-700">
+      {/* Title */}
+      <h3 className="text-base font-semibold text-gray-900 transition-colors duration-300 group-hover:text-red-700">
         {title}
       </h3>
 
+      {/* Description */}
       <p className="text-sm leading-relaxed text-gray-500">
         {desc}
       </p>
 
+      {/* Learn More */}
       <div className="mt-auto flex items-center gap-1 pt-2 text-xs font-semibold text-red-600 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
         Learn more
         <ArrowRight className="h-3.5 w-3.5" />
@@ -240,6 +246,7 @@ export default function Cyber() {
     </motion.div>
   ))}
 </div>
+
       </div>
 
       

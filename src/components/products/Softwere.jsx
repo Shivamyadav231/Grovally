@@ -127,7 +127,7 @@ export default function Softewre() {
       <div className="relative mx-auto -mt-28 w-full max-w-6xl">
 
         {/* Tabs */}
-        <div className="mb-12 flex justify-center">
+        <div className="mb-6 my-8 flex justify-center">
           <div className="inline-flex rounded-full border border-[#1F2421]/10 bg-white p-1">
             {Object.entries(categories).map(([key, cat]) => (
               <button

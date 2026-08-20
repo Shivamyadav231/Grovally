@@ -21,13 +21,13 @@ export default function Footer() {
   {
     name: "Products",
     children: [
-      { name: "Business Software", path: "/products/software" },
-      { name: "AI Products", path: "/products/ai" },
+      { name: "Business Software", path: "/software" },
+      { name: "AI Products", path: "ai" },
       { name: "Mobile Apps", path: "/products/apps" },
-      { name: "Websites", path: "/products/websites" },
-      { name: "IT Services", path: "/services/it" },
-      { name: "Marketing", path: "/services/marketing" },
-      { name: "Finance", path: "/services/finance" },
+      { name: "Websites", path: "/websites" },
+      { name: "IT Services", path: "/it" },
+      { name: "Marketing", path: "/marketing" },
+      { name: "Finance", path: "/finance" },
       { name: "Consulting", path: "/services/consulting" },
     ],
   },
@@ -108,10 +108,10 @@ const group = [
   { name: "Grovally Academy", path: "/academy" },
 ];
 const Quicks = [
-    { name: "Funding", path: "/funding" },
-  { name: "Government Tenders", path: "/government-tenders" },
+    { name: "Funding", path: "/business" },
+  { name: "Government Tenders", path: "/tender" },
   { name: "Academy", path: "/academy" },
-  { name: "Resources", path: "/resources" },
+
   { name: "Blog", path: "/blog" },
   { name: "Careers", path: "/careers" },
   { name: "Contact Us", path: "/contact" },

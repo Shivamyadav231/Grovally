@@ -56,6 +56,7 @@ const Cyber = lazy(()=>(import("./components/products/Cyber.jsx")))
 const Cloude =lazy(()=>(import("./components/products/Cloude.jsx")))
 const Softwere =lazy(()=>(import("./components/products/Softwere.jsx")))
 const Website =lazy(()=>(import("./components/products/Website.jsx")))
+const OOO =lazy(()=>(import("./components/products/OOO.jsx")))
 
 
 export default function App() {
@@ -78,6 +79,7 @@ export default function App() {
             <Route path="cloude" element={<Cloude/>}/>
             <Route path="software" element={<Softwere/>}/>
             <Route path="website" element={<Website/>}/>
+            <Route path ="portal" element={<OOO/>}/>
 
             <Route path="services" element={<Services />} />
             <Route path="it" element={<IT />} />
@@ -97,7 +99,7 @@ export default function App() {
             <Route path="business" element={<Business />} />
             <Route path="tender" element={<Tender />} />
             <Route path="ourservices" element={<Our />} />
-            <Route path="bank" element={<School />} />
+            <Route path="acadamy" element={<School />} />
 
             {/* Services Routes */}
             <Route path="ai-services" element={<AI />} />

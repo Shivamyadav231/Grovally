@@ -188,21 +188,21 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
         <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
           {[
-             ["ERP Software", "/erp-software"],
-  ["CRM Software", "/it"],
-  ["HRMS Software", "/it"],
-  ["Accounting Software", "/it"],
-  ["Inventory Management Software", "/it"],
-  ["Payroll Software", "/payroll-software"],
-  ["School Management Software", "/it"],
-  ["Hospital Management Software", "/it"],
-  ["Hotel Management Software", "/it"],
-  ["Restaurant Software", "/it"],
-  ["Real Estate Software", "/it"],
-  ["Microfinance Software", "/it"],
-  ["NGO Management Software", "/it"],
-  ["Logistics Software", "/it"],
-  ["Manufacturing Software", "/it"],
+             ["ERP Software", "/software"],
+  ["CRM Software", "/software"],
+  ["HRMS Software", "/software"],
+  ["Accounting Software", "/software"],
+  ["Inventory Management Software", "/software"],
+  ["Payroll Software", "/software"],
+  ["School Management Software", "/software"],
+  ["Hospital Management Software", "/software"],
+  ["Hotel Management Software", "/software"],
+  ["Restaurant Software", "/software"],
+  ["Real Estate Software", "/software"],
+  ["Microfinance Software", "/software"],
+  ["NGO Management Software", "/software"],
+  ["Logistics Software", "/software"],
+  ["Manufacturing Software", "/software"],
 
            
           ].map(([title, link], index, arr) => (
@@ -905,13 +905,13 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
         <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
           {[
-            ["Startup Solutions", "/startup-solutions"],
-            ["Launch", "/launch"],
-            ["Growth", "/growth"],
-            ["Scale", "/scale"],
-            ["MSME Solutions", "/msme-solutions"],
-            ["Enterprise Solutions", "/enterprise-solutions"],
-            ["Custom Business Solution", "/custom-business-solution"],
+            ["Startup Solutions", "/business"],
+            ["Launch", "/business"],
+            ["Growth", "/business"],
+            ["Scale", "/business"],
+            ["MSME Solutions", "/business"],
+            ["Enterprise Solutions", "/business"],
+            ["Custom Business Solution", "/business"],
           ].map(([title, link], index, arr) => (
             <li
               key={title}
@@ -1040,7 +1040,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   >
     <div className="grid grid-cols-4 gap-10">
 
-      {/* ================= Business Solutions ================= */}
+      
       <div>
         <h3 className="text-red-600 font-bold text-lg mb-8">
           Business Finance Solutions
@@ -1049,16 +1049,16 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
         <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-6">
           {[
           
-           ["Business Loans", "/business-loans"],
-    ["MSME Loan", "/msme-loan"],
-    ["Working Capital Loan", "/working-capital-loan"],
-    ["Loan Against Property", "/lap"],
-    ["Machinery Loan", "/machinery-loan"],
-    ["OD / CC", "/od-cc"],
-    ["Project Finance", "/project-finance"],
-    ["Business Expansion Finance", "/business-expansion-finance"],
-    ["Financial Advisory", "/financial-advisory"],
-    ["Private Investors", "/private-investors"],
+           ["Business Loans", "/business"],
+    ["MSME Loan", "/business"],
+    ["Working Capital Loan", "/business"],
+    ["Loan Against Property", "/business"],
+    ["Machinery Loan", "/business"],
+    ["OD / CC", "/business"],
+    ["Project Finance", "/business"],
+    ["Business Expansion Finance", "/business"],
+    ["Financial Advisory", "/business"],
+    ["Private Investors", "/business"],
           ].map(([title, link], index, arr) => (
             <li
               key={title}
@@ -1088,21 +1088,21 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
       {/* ================= Industry Solutions ================= */}
       <div>
         <h3 className="text-red-600 font-bold text-lg mb-6">
-            Business Solutions
+            International Trade & Cross-Border Finance
         </h3>
 
         <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
           {[
-               ["Export Finance", "/export-finance"],
-    ["Import Finance", "/import-finance"],
-    ["Trade Finance", "/trade-finance"],
-    ["Letter of Credit (LC)", "/letter-of-credit"],
-    ["Bank Guarantee (BG)", "/bank-guarantee"],
-    ["Overseas Business Funding", "/overseas-business-funding"],
-    ["Foreign Investment", "/foreign-investment"],
-    ["Cross Border Funding", "/cross-border-funding"],
-    ["Supply Chain Finance", "/supply-chain-finance"],
-    ["Invoice Discounting", "/invoice-discounting"],
+               ["Export Finance", "/portal"],
+    ["Import Finance", "/portal"],
+    ["Trade Finance", "/portal"],
+    ["Letter of Credit (LC)", "/portal"],
+    ["Bank Guarantee (BG)", "/portal"],
+    ["Overseas Business Funding", "/portal"],
+    ["Foreign Investment", "/portal"],
+    ["Cross Border Funding", "/portal"],
+    ["Supply Chain Finance", "/portal"],
+    ["Invoice Discounting", "/portal"],
       
 
            
@@ -1132,48 +1132,48 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
         </ul>
       </div>
        <div>
-        <h3 className="text-red-600 font-bold text-lg mb-6">
-           Business Inverstors 
-        </h3>
+  <h3 className="mb-6 text-lg font-bold text-red-600">
+    Business Investors
+  </h3>
 
-        <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
-          {[
-              ["Business Valuation", "/business-valuation"],
-    ["Investor Connect", "/investor-connect"],
-    ["Angel Investors", "/angel-investors"],
-    ["Venture Capital", "/venture-capital"],
-    ["Private Equity", "/private-equity"],
-    ["Financial Planning", "/financial-planning"],
-    ["Fund Raising", "/fund-raising"],
-    ["Mergers & Acquisitions", "/mergers-acquisitions"],
-    ["Due Diligence", "/due-diligence"],
-    ["IPO Advisory", "/ipo-advisory"],
-  
-          ].map(([title, link], index, arr) => (
-            <li
-              key={title}
-              className={`relative pl-6 ${
-                index === arr.length - 1
-                  ? "after:absolute after:left-0 after:top-1/2 after:bottom-0 after:w-[2px] after:bg-white"
-                  : ""
-              }`}
-            >
-              {/* Horizontal Branch */}
-              <span className="absolute left-0 top-1/2 h-[2px] w-4 bg-gray-300"></span>
+  <ul className="relative ml-4 space-y-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-red-200">
+    {[
+      ["Business Valuation", "/portal"],
+      ["Investor Connect", "/portal"],
+      ["Angel Investors", "/portal"],
+      ["Venture Capital", "/portal"],
+      ["Private Equity", "/portal"],
+      ["Financial Planning", "/portal"],
+      ["Fund Raising", "/portal"],
+      ["Mergers & Acquisitions", "/portal"],
+      ["Due Diligence", "/portal"],
+      ["IPO Advisory", "/portal"],
+    ].map(([title, link], index, arr) => (
+      <li
+        key={title}
+        className={`relative pl-6 ${
+          index === arr.length - 1
+            ? "after:absolute after:left-0 after:top-1/2 after:bottom-0 after:w-[2px] after:bg-white"
+            : ""
+        }`}
+      >
+        {/* Horizontal Branch */}
+        <span className="absolute left-0 top-1/2 h-[2px] w-4 bg-red-200" />
 
-              {/* Dot */}
-              <span className="absolute -left-[5px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-red-600 border-2 border-white"></span>
+        {/* Dot */}
+        <span className="absolute -left-[5px] top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full border-2 border-white bg-red-600 transition-transform duration-300 hover:scale-125" />
 
-              <Link
-                to={link}
-                className="block font-medium text-gray-700 transition-all duration-300 hover:text-red-600 hover:translate-x-2"
-              >
-                {title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+        {/* Link */}
+        <Link
+          to={link}
+          className="block font-medium text-gray-700 transition-all duration-300 hover:translate-x-2 hover:text-red-600"
+        >
+          {title}
+        </Link>
+      </li>
+    ))}
+  </ul>
+</div>
       <div>
         <h3 className="text-red-600 font-bold text-lg mb-6">
           Business Portals Solutions
@@ -1181,20 +1181,20 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
         <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
           {[
-              ["Corporate Website", "/corporate-website"],
-  ["Business Website", "/business-website"],
-  ["E-Commerce Website", "/ecommerce-website"],
-  ["School Portal", "/school-portal"],
-  ["Hospital Portal", "/hospital-portal"],
-  ["College Portal", "/college-portal"],
-  ["Customer Portal", "/customer-portal"],
-  ["Vendor Portal", "/vendor-portal"],
-  ["Employee Portal", "/employee-portal"],
-  ["Franchise Portal", "/franchise-portal"],
-  ["NGO Portal", "/ngo-portal"],
-  ["B2B Marketplace", "/b2b-marketplace"],
-  ["Job Portal", "/job-portal"],
-  ["Government Portal", "/government-portal"],
+              ["Corporate Website", "/website"],
+  ["Business Website", "/website"],
+  ["E-Commerce Website", "/website"],
+  ["School Portal", "/website"],
+  ["Hospital Portal", "/website"],
+  ["College Portal", "/website"],
+  ["Customer Portal", "/website"],
+  ["Vendor Portal", "/website"],
+  ["Employee Portal", "/website"],
+  ["Franchise Portal", "/website"],
+  ["NGO Portal", "/website"],
+  ["B2B Marketplace", "website"],
+  ["Job Portal", "/website"],
+  ["Government Portal", "/website"],
           ].map(([title, link], index, arr) => (
             <li
               key={title}
@@ -1429,7 +1429,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
         <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
 
           {[
-            ["MSMEs","/msmes"],
+            ["MSMEs","/business"],
             ["Startups","/startups"],
             ["Manufacturers","/manufacturers"],
             ["Contractors","/contractors"],
