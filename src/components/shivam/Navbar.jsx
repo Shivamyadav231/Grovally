@@ -2,14 +2,14 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { FaBars, FaRobot, FaTimes } from "react-icons/fa";
+import { FaBars,  FaTimes } from "react-icons/fa";
 
 
 export default function Navbar() {
   const navigate = useNavigate();
 
   
-const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+
   
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -840,16 +840,16 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
               <ul className="ml-5 mt-2 border-l border-gray-300 pl-4 space-y-2 text-sm">
 
-                <li><Link to="/gst-registration" className="hover:text-red-600">├── GST Registration</Link></li>
-                <li><Link to="/company-registration" className="hover:text-red-600">├── Company Registration</Link></li>
-                <li><Link to="/llp-registration" className="hover:text-red-600">├── LLP Registration</Link></li>
-                <li><Link to="/trademark" className="hover:text-red-600">├── Trademark Registration</Link></li>
-                <li><Link to="/copyright" className="hover:text-red-600">├── Copyright</Link></li>
-                <li><Link to="/patent" className="hover:text-red-600">├── Patent Registration</Link></li>
-                <li><Link to="/iso-certification" className="hover:text-red-600">├── ISO Certification</Link></li>
-                <li><Link to="/fssai" className="hover:text-red-600">├── FSSAI License</Link></li>
-                <li><Link to="/legal-documentation" className="hover:text-red-600">├── Legal Documentation</Link></li>
-                <li><Link to="/annual-compliance" className="hover:text-red-600">└── Annual Compliance</Link></li>
+                <li><Link to="/ourservices" className="hover:text-red-600">├── GST Registration</Link></li>
+                <li><Link to="/ourservices" className="hover:text-red-600">├── Company Registration</Link></li>
+                <li><Link to="/ourservices" className="hover:text-red-600">├── LLP Registration</Link></li>
+                <li><Link to="/ourservices" className="hover:text-red-600">├── Trademark Registration</Link></li>
+                <li><Link to="/ourservices" className="hover:text-red-600">├── Copyright</Link></li>
+                <li><Link to="/ourservices" className="hover:text-red-600">├── Patent Registration</Link></li>
+                <li><Link to="/ourservices" className="hover:text-red-600">├── ISO Certification</Link></li>
+                <li><Link to="/ourservices" className="hover:text-red-600">├── FSSAI License</Link></li>
+                <li><Link to="/ourservices" className="hover:text-red-600">├── Legal Documentation</Link></li>
+                <li><Link to="/ourservices" className="hover:text-red-600">└── Annual Compliance</Link></li>
 
               </ul>
 
@@ -1265,7 +1265,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   >
     <div className="grid grid-cols-4 gap-10">
 
-      {/* ================= Types of Tenders ================= */}
+  
 
       <div>
         <h3 className="text-red-600 font-bold text-lg mb-6">
@@ -1275,16 +1275,16 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
         <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
 
           {[
-            ["Government Tenders","/government-tenders"],
-            ["PSU Tenders","/psu-tenders"],
-            ["Private Tenders","/private-tenders"],
-            ["International Tenders","/international-tenders"],
-            ["Live Tenders","/live-tenders"],
-            ["GeM Bids","/gem-bids"],
-            ["E-Tenders","/e-tenders"],
-            ["Reverse Auctions","/reverse-auctions"],
-            ["Tender Results","/tender-results"],
-            ["Smart Tender Search","/smart-search"],
+            ["Government Tenders","/tender"],
+            ["PSU Tenders","/tender"],
+            ["Private Tenders","/tender"],
+            ["International Tenders","/tender"],
+            ["Live Tenders","/tender"],
+            ["GeM Bids","/tender"],
+            ["E-Tenders","/tender"],
+            ["Reverse Auctions","/tenser"],
+            ["Tender Results","/tenser"],
+            ["Smart Tender Search","/tender"],
           ].map(([title,link],index,arr)=>(
 
             <li
@@ -1317,7 +1317,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
       </div>
 
-      {/* ================= Find Tenders ================= */}
+      
 
       <div>
 
@@ -1328,16 +1328,16 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
         <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
 
           {[
-            ["Product Name","/product-name"],
-            ["Service Category","/service-category"],
-            ["Department","/department"],
-            ["State","/state"],
-            ["City","/city"],
-            ["Organization","/organization"],
-            ["Tender ID","/tender-id"],
-            ["Keywords","/keywords"],
-            ["CPV Code","/cpv-code"],
-            ["Closing Date","/closing-date"],
+            ["Product Name","/tenders"],
+            ["Service Category","/tenders"],
+            ["Department","/tenders"],
+            ["State","/tenders"],
+            ["City","/tenders"],
+            ["Organization","/tenders"],
+            ["Tender ID","/tenders"],
+            ["Keywords","/tenders"],
+            ["CPV Code","/tenders"],
+            ["Closing Date","/tenders"],
           ].map(([title,link],index,arr)=>(
 
             <li
@@ -1378,16 +1378,16 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
         <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
 
           {[
-            ["Technical Bid","/technical-bid"],
-            ["Financial Bid","/financial-bid"],
-            ["BOQ Preparation","/boq-preparation"],
-            ["Compliance Documents","/compliance-documents"],
-            ["Affidavits","/affidavits"],
-            ["Declarations","/declarations"],
-            ["Experience Certificates","/experience-certificates"],
-            ["OEM Authorization","/oem-authorization"],
-            ["EMD Documentation","/emd-documentation"],
-            ["Bank Guarantee","/bank-guarantee"],
+            ["Technical Bid","/tenders"],
+            ["Financial Bid","/tenders"],
+            ["BOQ Preparation","/tenders"],
+            ["Compliance Documents","/tenders"],
+            ["Affidavits","/tenders"],
+            ["Declarations","/tenders"],
+            ["Experience Certificates","/tenders"],
+            ["OEM Authorization","/tenders"],
+            ["EMD Documentation","/tenders"],
+            ["Bank Guarantee","/tenders"],
           ].map(([title,link],index,arr)=>(
 
             <li
@@ -1479,18 +1479,18 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
         <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
           {[
-            ["Daily Tender Alerts", "/daily-tender-alerts"],
-            ["Email Alerts", "/email-alerts"],
-            ["WhatsApp Notifications", "/whatsapp-alerts"],
-            ["Deadline Reminders", "/deadline-reminders"],
-            ["Bid Tracking Dashboard", "/bid-tracking"],
-            ["Tender Status Monitoring", "/tender-status"],
-            ["Document Management", "/document-management"],
-            ["Tender Calendar", "/tender-calendar"],
-            ["Award Tracking", "/award-tracking"],
-            ["Team Collaboration", "/team-collaboration"],
-            ["Multi User Access", "/multi-user"],
-            ["Reports & Analytics", "/tender-reports"],
+            ["Daily Tender Alerts", "/tenders"],
+            ["Email Alerts", "/tenders"],
+            ["WhatsApp Notifications", "/tenders"],
+            ["Deadline Reminders", "/tenders"],
+            ["Bid Tracking Dashboard", "/tenders"],
+            ["Tender Status Monitoring", "/tenders"],
+            ["Document Management", "/tenders"],
+            ["Tender Calendar", "/tenders"],
+            ["Award Tracking", "/tenders"],
+            ["Team Collaboration", "/tenders"],
+            ["Multi User Access", "/tenders"],
+            ["Reports & Analytics", "/tenders"],
           ].map(([title, link], index, arr) => (
             <li
               key={title}
@@ -1524,26 +1524,26 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
     {[
-      ["Construction", "/construction-tenders"],
-      ["Civil Engineering", "/civil-engineering-tenders"],
-      ["Electrical", "/electrical-tenders"],
-      ["Mechanical", "/mechanical-tenders"],
-      ["Information Technology", "/it-tenders"],
-      ["Healthcare", "/healthcare-tenders"],
-      ["Pharmaceuticals", "/pharma-tenders"],
-      ["Railways", "/railway-tenders"],
-      ["Defence", "/defence-tenders"],
-      ["Smart City Projects", "/smart-city-tenders"],
-      ["Energy", "/energy-tenders"],
-      ["Solar", "/solar-tenders"],
-      ["Telecom", "/telecom-tenders"],
-      ["Manufacturing", "/manufacturing-tenders"],
-      ["Water Supply", "/water-supply-tenders"],
-      ["Mining", "/mining-tenders"],
-      ["Education", "/education-tenders"],
-      ["Food & Catering", "/food-catering-tenders"],
-      ["Security Services", "/security-tenders"],
-      ["Facility Management", "/facility-management-tenders"],
+      ["Construction", "/tenders"],
+      ["Civil Engineering", "/tenders"],
+      ["Electrical", "/tenders"],
+      ["Mechanical", "/tenders"],
+      ["Information Technology", "/tenders"],
+      ["Healthcare", "/tenders"],
+      ["Pharmaceuticals", "/tenders"],
+      ["Railways", "/tenders"],
+      ["Defence", "/tenders"],
+      ["Smart City Projects", "/tenders"],
+      ["Energy", "/tenders"],
+      ["Solar", "/tenders"],
+      ["Telecom", "/tenders"],
+      ["Manufacturing", "/tenders"],
+      ["Water Supply", "/tenders"],
+      ["Mining", "/tenders"],
+      ["Education", "/tenders"],
+      ["Food & Catering", "/tenders"],
+      ["Security Services", "/tenders"],
+      ["Facility Management", "/tenders"],
     ].map(([title, link], index, arr) => (
       <li
         key={title}
@@ -1578,15 +1578,15 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
     {[
-      ["Bid Consultancy", "/bid-consultancy"],
-      ["Tender Eligibility Analysis", "/tender-eligibility-analysis"],
-      ["Bid Strategy & Planning", "/bid-strategy-planning"],
-      ["Document Verification", "/document-verification"],
-      ["Technical Compliance", "/technical-compliance"],
-      ["Financial Bid Review", "/financial-bid-review"],
-      ["Bid Submission Assistance", "/bid-submission-assistance"],
-      ["Post-Bid Support", "/post-bid-support"],
-      ["Tender Clarification Assistance", "/tender-clarification"],
+      ["Bid Consultancy", "/tenders"],
+      ["Tender Eligibility Analysis", "/tenders"],
+      ["Bid Strategy & Planning", "/tenders"],
+      ["Document Verification", "/tenders"],
+      ["Technical Compliance", "/tenders"],
+      ["Financial Bid Review", "/tenders"],
+      ["Bid Submission Assistance", "/tenders"],
+      ["Post-Bid Support", "/tenders"],
+      ["Tender Clarification Assistance", "/tenders"],
     ].map(([title, link], index, arr) => (
       <li
         key={title}
@@ -1621,18 +1621,18 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
         <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
           {[
-            ["GeM Registration", "/gem-registration"],
-            ["Vendor Registration", "/vendor-registration"],
-            ["Product Listing", "/product-listing"],
-            ["Catalogue Creation", "/catalogue-creation"],
-            ["Profile Management", "/profile-management"],
-            ["Bid Participation", "/bid-participation"],
-            ["Order Management", "/order-management"],
-            ["Vendor Empanelment", "/vendor-empanelment"],
-            ["Procurement Consultancy", "/procurement-consultancy"],
-            ["OEM Registration", "/oem-registration"],
-            ["Government Procurement", "/government-procurement"],
-            ["Supply Chain Support", "/supply-chain"],
+            ["GeM Registration", "/tenders"],
+            ["Vendor Registration", "/tenders"],
+            ["Product Listing", "/tenders"],
+            ["Catalogue Creation", "/tenders"],
+            ["Profile Management", "/tenders"],
+            ["Bid Participation", "/tenders"],
+            ["Order Management", "/tenders"],
+            ["Vendor Empanelment", "/tenders"],
+            ["Procurement Consultancy", "/tenders"],
+            ["OEM Registration", "/tenders"],
+            ["Government Procurement", "/tenders"],
+            ["Supply Chain Support", "/tenders"],
           ].map(([title, link], index, arr) => (
             <li
               key={title}
@@ -1883,7 +1883,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
           >
             {/* HEADER */}
             <div className="flex justify-between items-center mb-10">
-              <img loading="lazy" src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770397/lolo_t6dwpa.png" className="h-12 bg-red-600 object-contain" />
+              <img loading="lazy" src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770397/lolo_t6dwpa.png" className="h-16  bg-slate-100 rounded-full  object-contain" />
               <button onClick={() => setMenuOpen(false)}>
                 <FaTimes className="text-white text-3xl" />
               </button>
@@ -1905,7 +1905,7 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
               <Link
   to="/grovallyAI"
   onClick={() => setMenuOpen(false)}
-  className="mt-4 bg-cyan-400 text-black font-bold py-3 rounded-xl text-center"
+  className="mt-4 bg-red-600 text-black font-bold py-3 rounded-xl text-center"
 >
   Grovally AI
 </Link>
@@ -1917,6 +1917,12 @@ const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
               className=" text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition"
             >
               Signup
+            </Link>
+             <Link
+              to="/Login"
+              className=" text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition"
+            >
+              Login
             </Link>
 
                 

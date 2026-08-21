@@ -73,6 +73,17 @@ export default function Chat() {
     });
   }, [messages, loading]);
 
+  // lock background scroll on mobile while the chat sheet is open
+  useEffect(() => {
+    if (open) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = prev;
+      };
+    }
+  }, [open]);
+
   const appendMessage = (text, role) => {
     setMessages((prev) => [...prev, { text, role }]);
   };
@@ -109,101 +120,115 @@ export default function Chat() {
 
   return (
     <>
-    {/* Floating Button */}
-<button
-  onClick={() => setOpen(!open)}
-  className="
-    fixed bottom-8 right-5 z-50
-    flex items-center gap-3
-    bg-red-600 hover:bg-red-700
-    text-white
-    px-5 py-3
-    rounded-full
-    shadow-2xl
-    transition-all duration-300
-    hover:scale-110
-    
-    animate-bounce
-  "
->
-   <FaRobot className="text-3xl"/>
-  <span className="font-semibold hidden sm:block"> Help Desk</span>
-  
+      {/* Floating Buttons */}
+      {!open && (
+        <button
+          onClick={() => setOpen(true)}
+          className="
+            fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-4 sm:right-5 z-50
+            flex items-center gap-2 sm:gap-3
+            bg-red-600 hover:bg-red-700
+            text-white
+            h-14 w-14 sm:w-auto sm:h-auto
+            sm:px-5 sm:py-3
+            rounded-full
+            shadow-2xl
+            transition-all duration-300
+            hover:scale-110 active:scale-95
+            justify-center
+          "
+          aria-label="Open Help Desk"
+        >
+          <FaRobot className="text-2xl sm:text-3xl" />
+          <span className="font-semibold hidden sm:block">Help Desk</span>
+        </button>
+      )}
 
-  
-</button>
-
-
-<a
-  href="https://wa.me/918920817608"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="
-    fixed bottom-24 right-5 z-50
-    flex items-center gap-3
-    bg-green-500 hover:bg-green-600
-    text-white
-    px-3 py-3
-    rounded-full
-    shadow-2xl
-    transition-all duration-300
-    hover:scale-110
-    animate-bounce
-  "
->
-  <FaWhatsapp className="text-3xl" />
-  <span className="font-semibold hidden sm:block">
-    Chat with us
-  </span>
-</a>
-      
+      {!open && (
+        <a
+          href="https://wa.me/918920817608"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="
+            fixed bottom-[max(5.5rem,calc(env(safe-area-inset-bottom)+4.5rem))] right-4 sm:right-5 z-50
+            flex items-center gap-2 sm:gap-3
+            bg-green-500 hover:bg-green-600
+            text-white
+            h-12 w-12 sm:h-auto sm:w-auto
+            sm:px-4 sm:py-3
+            rounded-full
+            shadow-2xl
+            transition-all duration-300
+            hover:scale-110 active:scale-95
+            justify-center
+          "
+          aria-label="Chat on WhatsApp"
+        >
+          <FaWhatsapp className="text-xl sm:text-2xl" />
+          <span className="font-semibold hidden sm:block">Chat with us</span>
+        </a>
+      )}
 
       {/* Chat Popup */}
       {open && (
-        <div className="fixed bottom-28 right-4 z-50 w-[95%] sm:w-[420px] h-[80vh] bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col">
-
+        <div
+          className="
+            fixed inset-0 sm:inset-auto
+            sm:bottom-24 sm:right-4
+            z-50
+            w-full sm:w-[420px]
+            h-full sm:h-[80vh] sm:max-h-[640px]
+            bg-white
+            rounded-none sm:rounded-3xl
+            shadow-2xl
+            overflow-hidden
+            flex flex-col
+          "
+        >
           {/* Header */}
-          <div className="bg-red-600 text-white px-5 py-4 flex justify-between items-center">
+          <div
+            className="bg-red-600 text-white px-4 sm:px-5 py-4 flex justify-between items-center flex-shrink-0"
+            style={{ paddingTop: "max(1rem, env(safe-area-inset-top))" }}
+          >
             <div className="flex items-center gap-3">
-              
+              <FaRobot className="text-2xl" />
               <div>
-                <h2 className="font-bold">
-                  Grovally Help
-                </h2>
-                <p className="text-xs">
-                  ● Online
-                </p>
+                <h2 className="font-bold">Grovally Help</h2>
+                <p className="text-xs">● Online</p>
               </div>
             </div>
-            
 
-           
+            <button
+              onClick={() => setOpen(false)}
+              aria-label="Close chat"
+              className="h-9 w-9 flex items-center justify-center rounded-full bg-white/15 hover:bg-white/25 transition-colors active:scale-95"
+            >
+              <FaTimes />
+            </button>
           </div>
 
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-5 bg-gray-50">
             {messages.length === 0 && (
-              <div className="text-center mt-10">
-                <FaRobot className="text-6xl text-red-600 mx-auto" />
+              <div className="text-center mt-6 sm:mt-10">
+                <FaRobot className="text-5xl sm:text-6xl text-red-600 mx-auto" />
 
-                <h2 className="font-bold text-red-600 text-xl mt-4">
+                <h2 className="font-bold text-red-600 text-lg sm:text-xl mt-4">
                   Grovally Help Desk
                 </h2>
 
-                <p className="text-gray-500 mt-2">
+                <p className="text-gray-500 text-sm mt-2">
                   Ask anything about our services.
                 </p>
               </div>
             )}
 
-            <div className="flex flex-wrap te gap-2">
+            <div className="flex flex-wrap gap-2">
               {serviceResponses.map((service) => (
                 <button
                   key={service.title}
-                  onClick={() =>
-                    handleServiceClick(service.title)
-                  }
-                  className="text-xs border px-3 py-2  text-black rounded-full bg-white hover:bg-red-50 hover:border-red-600"
+                  onClick={() => handleServiceClick(service.title)}
+                  className="text-xs border px-3 py-2 text-black rounded-full bg-white hover:bg-red-50 hover:border-red-600 active:scale-95 transition"
                 >
                   {service.title}
                 </button>
@@ -214,19 +239,15 @@ export default function Chat() {
               <div
                 key={index}
                 className={`flex ${
-                  item.role === "user"
-                    ? "justify-end"
-                    : "justify-start"
+                  item.role === "user" ? "justify-end" : "justify-start"
                 }`}
               >
                 <div
-                  className={`flex gap-2 ${
-                    item.role === "user"
-                      ? "flex-row-reverse"
-                      : " text-black"
+                  className={`flex gap-2 max-w-[85%] sm:max-w-[80%] ${
+                    item.role === "user" ? "flex-row-reverse" : "text-black"
                   }`}
                 >
-                  <div className="text-2xl">
+                  <div className="text-2xl flex-shrink-0">
                     {item.role === "user" ? (
                       <FaUserCircle />
                     ) : (
@@ -235,7 +256,7 @@ export default function Chat() {
                   </div>
 
                   <div
-                    className={`px-4 py-3 rounded-3xl max-w-[250px] text-sm ${
+                    className={`px-4 py-3 rounded-3xl text-sm break-words ${
                       item.role === "user"
                         ? "bg-red-600 text-white"
                         : "bg-white border"
@@ -249,7 +270,7 @@ export default function Chat() {
 
             {loading && (
               <div className="flex gap-2">
-                <FaRobot className="text-red-600 text-2xl" />
+                <FaRobot className="text-red-600 text-2xl flex-shrink-0" />
 
                 <div className="bg-white border rounded-3xl px-4 py-3">
                   Thinking...
@@ -261,24 +282,23 @@ export default function Chat() {
           </div>
 
           {/* Input */}
-          <div className="border-t p-3 flex gap-2">
+          <div
+            className="border-t p-3 flex gap-2 flex-shrink-0"
+            style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
+          >
             <input
               type="text"
               value={msg}
-              onChange={(e) =>
-                setMsg(e.target.value)
-              }
-              onKeyDown={(e) =>
-                e.key === "Enter" && sendMessage()
-              }
+              onChange={(e) => setMsg(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && sendMessage()}
               placeholder="Message Grovally AI..."
-              className="flex-1 border rounded-full px-4 py-3 text-black outline-none focus:border-red-600"
+              className="flex-1 min-w-0 border rounded-full px-4 py-3 text-black text-sm outline-none focus:border-red-600"
             />
 
             <button
               onClick={sendMessage}
               disabled={loading}
-              className="w-12 h-12 rounded-full bg-red-600 text-white flex items-center justify-center"
+              className="w-12 h-12 flex-shrink-0 rounded-full bg-red-600 text-white flex items-center justify-center disabled:opacity-50 active:scale-95 transition"
             >
               <FaPaperPlane />
             </button>

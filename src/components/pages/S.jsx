@@ -179,7 +179,7 @@ export default function Testimonial() {
                         {item.heading}
                       </p>
 
-                      <p className="mt-3 sm:mt-4 text-sm text-gray-600 leading-6 sm:leading-7">
+                      <p className="mt-3 sm:mt-4 text-sm text-black/50 leading-6 sm:leading-7">
                         {item.text}
                       </p>
                     </div>

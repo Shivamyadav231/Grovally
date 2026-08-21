@@ -1,5 +1,6 @@
-﻿import { useState } from "react";
+﻿import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { motion, useInView } from "framer-motion";
 import {
   FaInstagram,
   FaFacebook,
@@ -18,415 +19,472 @@ export default function Footer() {
   };
 
   const quickLinks = [
-  {
-    name: "Products",
-    children: [
-      { name: "Business Software", path: "/software" },
-      { name: "AI Products", path: "ai" },
-      { name: "Mobile Apps", path: "/products/apps" },
-      { name: "Websites", path: "/websites" },
-      { name: "IT Services", path: "/it" },
-      { name: "Marketing", path: "/marketing" },
-      { name: "Finance", path: "/finance" },
-      { name: "Consulting", path: "/services/consulting" },
-    ],
-  },
- 
+    {
+      name: "Products",
+      children: [
+        { name: "Business Software", path: "/software" },
+        { name: "AI Products", path: "ai" },
+        { name: "Mobile Apps", path: "/products/apps" },
+        { name: "Websites", path: "/websites" },
+        { name: "IT Services", path: "/it" },
+        { name: "Marketing", path: "/marketing" },
+        { name: "Finance", path: "/finance" },
+        { name: "Consulting", path: "/services/consulting" },
+      ],
+    },
+  ];
 
-];
+  const businessSolutions = [
+    {
+      name: "Business Registration",
+      children: [
+        { name: "Company Registration", path: "/company-registration" },
+        { name: "Trademark & IP", path: "/trademark-ip" },
+        { name: "GST & Taxation", path: "/gst-taxation" },
+        { name: "Startup Consulting", path: "/startup-consulting" },
+        { name: "AI Solutions", path: "/ai-solutions" },
+        { name: "Digital Marketing", path: "/digital-marketing" },
+        { name: "Business Automation", path: "/business-automation" },
+        { name: "Government Projects", path: "/government-projects" },
+      ],
+    },
+  ];
 
-const businessSolutions = [
-  {
-    name: "Business Registration",
-    children: [
-      { name: "Company Registration", path: "/company-registration" },
-      { name: "Trademark & IP", path: "/trademark-ip" },
-      { name: "GST & Taxation", path: "/gst-taxation" },
-       { name: "Startup Consulting", path: "/startup-consulting" },
-      { name: "AI Solutions", path: "/ai-solutions" },
-      { name: "Digital Marketing", path: "/digital-marketing" },
-      { name: "Business Automation", path: "/business-automation" },
-      { name: "Government Projects", path: "/government-projects" },
-    ],
-  },
- 
- 
-];
+  const industries = [
+    {
+      name: "Business",
+      children: [
+        { name: "Startups", path: "/industries/startups" },
+        { name: "MSMEs", path: "/industries/msmes" },
+        { name: "Enterprises", path: "/industries/enterprises" },
+        { name: "Manufacturing", path: "/industries/manufacturing" },
+        { name: "Retail & E-commerce", path: "/industries/retail-ecommerce" },
+        { name: "Logistics", path: "/industries/logistics-supply-chain" },
+        { name: "Healthcare", path: "/industries/healthcare" },
+        { name: "Government", path: "/industries/government-public-sector" },
+      ],
+    },
+  ];
 
-const industries = [
-  {
-    name: "Business",
-    children: [
-      { name: "Startups", path: "/industries/startups" },
-      { name: "MSMEs", path: "/industries/msmes" },
-      { name: "Enterprises", path: "/industries/enterprises" },
-       { name: "Manufacturing", path: "/industries/manufacturing" },
-      { name: "Retail & E-commerce", path: "/industries/retail-ecommerce" },
-      { name: "Logistics", path: "/industries/logistics-supply-chain" },
-      { name: "Healthcare", path: "/industries/healthcare" },
-       { name: "Government", path: "/industries/government-public-sector" },
-   
-      
-    ],
-  },
- 
+  const resources = [
+    {
+      name: "Knowledge",
+      children: [
+        { name: "Business Guides", path: "/resources/guides" },
+        { name: "Startup Knowledge", path: "/resources/knowledge" },
+        { name: "Learning Center", path: "/resources/learning" },
+        { name: "Funding Resources", path: "/resources/funding" },
+        { name: "Tender Assistance", path: "/resources/tenders" },
+        { name: "Industry Insights", path: "/resources/insights" },
+        { name: "Case Studies", path: "/resources/case-studies" },
+        { name: "Help Center", path: "/resources/help-center" },
+      ],
+    },
+  ];
 
-];
+  const legal = [
+    { name: "Privacy Policy", path: "/privacy-policy" },
+    { name: "Terms & Conditions", path: "/terms" },
+    { name: "Cookie Policy", path: "/cookie-policy" },
+    { name: "Refund Policy", path: "/refund" },
+    { name: "Disclaimer", path: "/disclaimer" },
+    { name: "Security", path: "/security" },
+    { name: "Accessibility", path: "/accessibility" },
+  ];
 
-const resources = [
-  {
-    name: "Knowledge",
-    children: [
-      { name: "Business Guides", path: "/resources/guides" },
-      { name: "Startup Knowledge", path: "/resources/knowledge" },
-      { name: "Learning Center", path: "/resources/learning" },
-      { name: "Funding Resources", path: "/resources/funding" },
-      { name: "Tender Assistance", path: "/resources/tenders" },
-      { name: "Industry Insights", path: "/resources/insights" },
-      { name: "Case Studies", path: "/resources/case-studies" },
-      { name: "Help Center", path: "/resources/help-center" },
-    ],
-  },
- 
-];
+  const group = [
+    { name: "Grovally Business Solutions", path: "/business" },
+    { name: "Grovally Finance Solutions", path: "/finance" },
+    { name: "Grovally Tender Solutions", path: "/tender" },
+    { name: "Grovally Pro Tools", path: "/tools" },
+    { name: "Grovally Academy", path: "/academy" },
+  ];
 
-const legal = [
-  { name: "Privacy Policy", path: "/privacy-policy" },
-  { name: "Terms & Conditions", path: "/terms" },
-  { name: "Cookie Policy", path: "/cookie-policy" },
-  { name: "Refund Policy", path: "/refund" },
-  { name: "Disclaimer", path: "/disclaimer" },
-  { name: "Security", path: "/security" },
-  { name: "Accessibility", path: "/accessibility" },
-];
-
-const group = [
-  { name: "Grovally Business Solutions", path: "/business" },
-  { name: "Grovally Finance Solutions", path: "/finance" },
-  { name: "Grovally Tender Solutions", path: "/tender" },
-  { name: "Grovally Pro Tools", path: "/tools" },
-  { name: "Grovally Academy", path: "/academy" },
-];
-const Quicks = [
+  const Quicks = [
     { name: "Funding", path: "/business" },
-  { name: "Government Tenders", path: "/tender" },
-  { name: "Academy", path: "/academy" },
+    { name: "Government Tenders", path: "/tender" },
+    { name: "Academy", path: "/academy" },
+    { name: "Blog", path: "/blog" },
+    { name: "Careers", path: "/careers" },
+    { name: "Contact Us", path: "/contact" },
+  ];
 
-  { name: "Blog", path: "/blog" },
-  { name: "Careers", path: "/careers" },
-  { name: "Contact Us", path: "/contact" },
- 
-];
   // 🔥 SECTION COMPONENT (ACCORDION)
-  const Section = ({ title, items, id }) => (
-  <div className="border-b border-white/10 lg:border-none">
-    {/* Header */}
-    <button
-      onClick={() => toggle(id)}
-      className="w-full flex justify-between items-center py-4 lg:cursor-default"
+  const Section = ({ title, items, id, index = 0 }) => (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.5, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+      className="border-b border-white/10 lg:border-none"
     >
-      <h3 className="text-white font-bold text-base">{title}</h3>
+      {/* Header */}
+      <button
+        onClick={() => toggle(id)}
+        className="w-full flex justify-between items-center py-4 lg:cursor-default"
+      >
+        <h3 className="text-white font-bold text-base">{title}</h3>
 
-      <span className="lg:hidden text-red-500 text-xl">
-        {open === id ? "−" : "+"}
-      </span>
-    </button>
+        <span className="lg:hidden text-red-500 text-xl transition-transform duration-300" style={{ transform: open === id ? "rotate(180deg)" : "rotate(0deg)" }}>
+          {open === id ? "−" : "+"}
+        </span>
+      </button>
 
-    {/* Content */}
-    <div
-      className={`overflow-hidden transition-all duration-300 ${
-        open === id ? "max-h-[900px] pb-4" : "max-h-0 lg:max-h-full"
-      }`}
-    >
-      {items.map((item, index) => (
-        <div key={index} className="mb-5">
-          {item.children ? (
-            <>
-              {/* Parent */}
-              <div className="text-white font-semibold text-sm mb-2 flex items-center gap-2">
-                <span className="text-red-500">●</span>
+      {/* Content */}
+      <div
+        className={`overflow-hidden transition-all duration-300 ${
+          open === id ? "max-h-[900px] pb-4" : "max-h-0 lg:max-h-full"
+        }`}
+      >
+        {items.map((item, idx) => (
+          <div key={idx} className="mb-5">
+            {item.children ? (
+              <>
+                {/* Parent */}
+                <div className="text-white font-semibold text-sm mb-2 flex items-center gap-2">
+                  <span className="text-red-500">●</span>
+                  {item.name}
+                </div>
+
+                {/* Branch */}
+                <div className="ml-3 border-l border-white/20 pl-4">
+                  {item.children.map((child) => (
+                    <Link
+                      key={child.name}
+                      to={child.path}
+                      className="flex items-center gap-2 py-1.5 text-gray-400 hover:text-red-400 hover:translate-x-1 transition-all duration-300"
+                    >
+                      <span className="text-red-500">├─</span>
+                      {child.name}
+                    </Link>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <Link
+                to={item.path}
+                className="group flex items-center gap-2 py-1.5 text-gray-300 hover:text-red-400 transition-all duration-300"
+              >
+                <FaArrowRight className="text-red-500 text-[10px] transition-transform duration-300 group-hover:translate-x-1" />
                 {item.name}
-              </div>
-
-              {/* Branch */}
-              <div className="ml-3 border-l border-white/20 pl-4">
-                {item.children.map((child) => (
-                  <Link
-                    key={child.name}
-                    to={child.path}
-                    className="flex items-center gap-2 py-1.5 text-gray-400 hover:text-red-400 transition"
-                  >
-                    <span className="text-red-500">├─</span>
-                    {child.name}
-                  </Link>
-                ))}
-              </div>
-            </>
-          ) : (
-            <Link
-              to={item.path}
-              className="flex items-center gap-2 py-1.5 text-gray-300 hover:text-red-400 transition"
-            >
-              <FaArrowRight className="text-red-500 text-[10px]" />
-              {item.name}
-            </Link>
-          )}
-        </div>
-      ))}
-    </div>
-  </div>
-);
+              </Link>
+            )}
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  );
 
   return (
-    <footer className="bg-black/100 text-white relative overflow-hidden">
+    <footer className="bg-black text-white relative overflow-hidden">
+      {/* ============ ANIMATED BACKGROUND ============ */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        {/* moving grid */}
+        <div
+          className="absolute inset-0 opacity-[0.05]"
+          style={{
+            backgroundImage:
+              "linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)",
+            backgroundSize: "44px 44px",
+          }}
+        />
+
+        {/* drifting glow blobs */}
+        <motion.div
+          className="absolute -top-32 -left-24 h-[420px] w-[420px] rounded-full bg-red-600/20 blur-[130px]"
+          animate={{ x: [0, 60, 0], y: [0, 40, 0] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute top-1/3 -right-24 h-[380px] w-[380px] rounded-full bg-red-500/15 blur-[120px]"
+          animate={{ x: [0, -50, 0], y: [0, -30, 0] }}
+          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
+        <motion.div
+          className="absolute bottom-0 left-1/3 h-[360px] w-[360px] rounded-full bg-red-700/15 blur-[130px]"
+          animate={{ x: [0, 40, 0], y: [0, -40, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        />
+
+        {/* slow rotating ring accent */}
+        <motion.div
+          className="absolute top-10 right-10 h-64 w-64 rounded-full border border-red-500/10"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+        />
+
+        {/* floating particles */}
+        {Array.from({ length: 18 }).map((_, i) => (
+          <motion.span
+            key={i}
+            className="absolute h-1 w-1 rounded-full bg-red-400/40"
+            style={{
+              left: `${(i * 37) % 100}%`,
+              top: `${(i * 53) % 100}%`,
+            }}
+            animate={{ y: [0, -18, 0], opacity: [0.2, 0.7, 0.2] }}
+            transition={{
+              duration: 5 + (i % 5),
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.3,
+            }}
+          />
+        ))}
+      </div>
 
       {/* HEADER TEXT */}
-      <div className="relative overflow-hidden border-b border-white/10">
+      <div className="relative z-10 overflow-hidden border-b border-white/10">
+        {/* Background Glow */}
+        <div className="absolute inset-0 bg-gradient-to-b from-red-900/10 via-transparent to-transparent" />
 
-  {/* Background Glow */}
-  <div className="absolute inset-0 bg-gradient-to-b from-red-900/10 via-transparent to-transparent"></div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="relative max-w-6xl mx-auto px-6 py-20 text-center"
+        >
+          <motion.span
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-red-400"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
+            GROVALLY BUSINESS ECOSYSTEM
+          </motion.span>
 
-  <div className="relative max-w-6xl mx-auto px-6 py-20 text-center">
+          <h2 className="mt-6 text-4xl md:text-6xl font-extrabold leading-tight">
+            <span className="text-white">Empowering India's</span>
+            <br />
+            <span className="text-red-500">Next Generation of Businesses</span>
+          </h2>
 
-    <span className="inline-flex items-center rounded-full border border-red-500/30 bg-red-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-red-400">
-      GROVALLY BUSINESS ECOSYSTEM
-    </span>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mx-auto mt-6 h-1 w-28 origin-center rounded-full bg-red-600"
+          />
 
-    <h2 className="mt-6 text-4xl md:text-6xl font-extrabold leading-tight">
-      <span className="text-white">Empowering India's</span>
-      <br />
-      <span className="text-red-500">Next Generation of Businesses</span>
-    </h2>
+          <p className="mx-auto mt-8 max-w-3xl text-gray-300 text-base md:text-lg leading-8">
+            GROVALLY is building one of India's most comprehensive business growth
+            ecosystems, bringing together technology, business solutions, funding,
+            government opportunities, education, and strategic resources on a single
+            platform.
+          </p>
 
-    <div className="mx-auto mt-6 h-1 w-28 rounded-full bg-red-600"></div>
+          <p className="mx-auto mt-6 max-w-3xl text-gray-400 text-base leading-8">
+            Our mission is to simplify entrepreneurship and empower startups,
+            MSMEs, enterprises, and innovators with everything they need to build,
+            grow, and scale successfully—from digital transformation and business
+            consulting to tender assistance, investment support, AI-powered
+            solutions, and industry-specific services.
+          </p>
 
-    <p className="mx-auto mt-8 max-w-3xl text-gray-300 text-base md:text-lg leading-8">
-      GROVALLY is building one of India's most comprehensive business growth
-      ecosystems, bringing together technology, business solutions, funding,
-      government opportunities, education, and strategic resources on a single
-      platform.
-    </p>
+          <p className="mx-auto mt-6 max-w-4xl text-gray-300 text-base leading-8">
+            <span className="font-bold text-white">GROVALLY</span> is committed to
+            becoming the trusted growth partner for millions of businesses across
+            India and beyond.
+          </p>
 
-    <p className="mx-auto mt-6 max-w-3xl text-gray-400 text-base leading-8">
-      Our mission is to simplify entrepreneurship and empower startups,
-      MSMEs, enterprises, and innovators with everything they need to build,
-      grow, and scale successfully—from digital transformation and business
-      consulting to tender assistance, investment support, AI-powered
-      solutions, and industry-specific services.
-    </p>
-
-    <p className="mx-auto mt-6 max-w-4xl text-gray-300 text-base leading-8">
-      <span className="font-bold text-white">GROVALLY</span> is committed to
-      becoming the trusted growth partner for millions of businesses across
-      India and beyond.
-    </p>
-
-    <div className="mt-10 flex justify-center">
-      <div className="rounded-full border border-red-500/30 bg-red-500/10 px-8 py-4">
-        <p className="text-sm md:text-base font-bold uppercase tracking-[0.2em] text-red-400">
-          Building Businesses • Creating Opportunities • Transforming India's Future
-        </p>
+          <div className="mt-10 flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="rounded-full border border-red-500/30 bg-red-500/10 px-8 py-4"
+            >
+              <p className="text-sm md:text-base font-bold uppercase tracking-[0.2em] text-red-400">
+                Building Businesses • Creating Opportunities • Transforming India's Future
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
-    </div>
-
-  </div>
-</div>
 
       {/* GRID */}
-     <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-10">
-  
-  <Section title="Quick Links" items={quickLinks} id="q" />
-  <Section title="Business Solutions" items={businessSolutions} id="b" />
-  <Section title="Industries" items={industries} id="i" />
-  <Section title="Resources" items={resources} id="r" />
-  <Section title="Legal" items={legal} id="l" />
-  <Section title="Grovally Group" items={group} id="g" />
-  <Section title="Quick" items={Quicks} id="s"/>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-10">
+        <Section title="Quick Links" items={quickLinks} id="q" index={0} />
+        <Section title="Business Solutions" items={businessSolutions} id="b" index={1} />
+        <Section title="Industries" items={industries} id="i" index={2} />
+        <Section title="Resources" items={resources} id="r" index={3} />
+        <Section title="Legal" items={legal} id="l" index={4} />
+        <Section title="Grovally Group" items={group} id="g" index={5} />
+        <Section title="Quick" items={Quicks} id="s" index={6} />
 
-  {/* CONTACT */}
-  <div className="py-4">
-    <h3 className="text-sm font-bold mb-4 text-white">Contact</h3>
+        {/* CONTACT */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
+          className="py-4"
+        >
+          <h3 className="text-sm font-bold mb-4 text-white">Contact</h3>
 
-    <div className="space-y-4 text-sm text-gray-300 leading-6">
+          <div className="space-y-4 text-sm text-gray-300 leading-6">
+            <div className="flex gap-2 items-start">
+              <FaEnvelope className="text-red-500 mt-1" />
+              <span>support@grovally.com</span>
+            </div>
 
-      <div className="flex gap-2 items-start">
-        <FaEnvelope className="text-red-500 mt-1" />
-        <span>support@grovally.com</span>
+            <div className="flex gap-2 items-start">
+              <FaPhone className="text-red-500 rotate-180 mt-1" />
+              <span>+91 8920817608</span>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <FaMapMarkerAlt className="text-3xl text-red-500" />
+
+              <a
+                href="https://maps.google.com/?q=TF-03+Suntwinlight+Delta-1+Greater+Noida+UP+201310"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 transition hover:text-red-500"
+              >
+                TF-03, Suntwinlight, Delta-1, Greater Noida,
+                Uttar Pradesh - 201310
+              </a>
+            </div>
+
+            <div className="text-gray-400 text-3xl font-bold pt-2 border-t border-white/10">
+              Business Growth Ecosystem for Modern India
+            </div>
+          </div>
+        </motion.div>
       </div>
-
-      <div className="flex gap-2 items-start">
-        <FaPhone className="text-red-500 rotate-180 mt-1" />
-        <span>+91 8920817608</span>
-      </div>
-
-     <div className="flex items-start gap-3">
-  <FaMapMarkerAlt className=" text-3xl text-red-500" />
-
-  <a
-    href="https://maps.google.com/?q=TF-03+Suntwinlight+Delta-1+Greater+Noida+UP+201310"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-gray-300 transition hover:text-red-500"
-  >
-    TF-03, Suntwinlight, Delta-1, Greater Noida,
-    Uttar Pradesh - 201310
-  </a>
-</div>
-
-      <div className="text-gray-400 text-3xl font-bold pt-2 border-t border-white/10">
-        Business Growth Ecosystem for Modern India
-      </div>
-
-     
-
-    </div>
-  </div>
-
-</div>
 
       {/* SECOND ROW */}
-     
-<div className="relative border-y border-white/10 bg-gradient-to-b from-white/[0.02] to-transparent">
+      <div className="relative z-10 border-y border-white/10 bg-gradient-to-b from-white/[0.02] to-transparent">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-7xl mx-auto px-7 py-24 text-center"
+        >
+          <h3 className="mt-6 text-3xl md:text-5xl font-bold text-white leading-tight">
+            Building the Future of
+            <span className="block text-red-500">
+              Indian Entrepreneurship
+            </span>
+          </h3>
 
-  <div className="max-w-7xl mx-auto px-7 py-24 text-center">
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mx-auto mt-6 h-1 w-24 origin-center rounded-full bg-red-600"
+          />
 
-     
+          <p className="mt-8 max-w-7xl mx-auto text-gray-300 text-base md:text-lg leading-9">
+            Every year, thousands of entrepreneurs begin their journey with
+            extraordinary dreams. Many never reach their true potential—not because
+            they lack ambition, but because they lack timely guidance, the right
+            resources, trusted support, and access to life-changing opportunities.
+          </p>
 
-    <h3 className="mt-6 text-3xl md:text-5xl font-bold text-white leading-tight">
-      Building the Future of
-      <span className="block text-red-500">
-        Indian Entrepreneurship
-      </span>
-    </h3>
+          <p className="mt-8 max-w-6xl mx-auto text-gray-400 text-base md:text-lg leading-9">
+            At <span className="font-bold text-red-600">GROVALLY</span>, we believe no
+            great dream should end because help was too difficult to find. Our vision
+            is to build India's most trusted and comprehensive business growth
+            ecosystem, where every entrepreneur, startup, MSME, and enterprise can
+            access world-class technology, expert knowledge, funding, government
+            opportunities, and business solutions through one unified platform.
+          </p>
 
-    <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-red-600"></div>
+          <p className="mt-8 max-w-5xl mx-auto text-lg font-medium text-white leading-10">
+            Together, we are empowering millions of businesses to
+            <span className="text-red-500"> build, grow, scale, </span>
+            and create a stronger future for India.
+          </p>
 
-    <p className="mt-8 max-w-7xl mx-auto text-gray-300 text-base md:text-lg leading-9">
-      Every year, thousands of entrepreneurs begin their journey with
-      extraordinary dreams. Many never reach their true potential—not because
-      they lack ambition, but because they lack timely guidance, the right
-      resources, trusted support, and access to life-changing opportunities.
-    </p>
-
-    <p className="mt-8 max-w-6xl mx-auto text-gray-400 text-base md:text-lg leading-9">
-      At <span className="font-bold text-red-600">GROVALLY</span>, we believe no
-      great dream should end because help was too difficult to find. Our vision
-      is to build India's most trusted and comprehensive business growth
-      ecosystem, where every entrepreneur, startup, MSME, and enterprise can
-      access world-class technology, expert knowledge, funding, government
-      opportunities, and business solutions through one unified platform.
-    </p>
-
-    <p className="mt-8 max-w-5xl mx-auto text-lg font-medium text-white leading-10">
-      Together, we are empowering millions of businesses to
-      <span className="text-red-500"> build, grow, scale, </span>
-      and create a stronger future for India.
-    </p>
-
-    <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8">
-
-      <div>
-        <h4 className="text-3xl font-bold text-red-500">1.5 K</h4>
-        <p className="mt-2 text-sm text-gray-400">Businesses to Empower</p>
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <StatItem value="1.5 K" label="Businesses to Empower" delay={0} />
+            <StatItem value="360°" label="Business Solutions" delay={0.1} />
+            <StatItem value="AI" label="Powered Innovation" delay={0.2} />
+            <StatItem value="24×7" label="Business Support" delay={0.3} />
+          </div>
+        </motion.div>
       </div>
-
-      <div>
-        <h4 className="text-3xl font-bold text-red-500">360°</h4>
-        <p className="mt-2 text-sm text-gray-400">Business Solutions</p>
-      </div>
-
-      <div>
-        <h4 className="text-3xl font-bold text-red-500">AI</h4>
-        <p className="mt-2 text-sm text-gray-400">Powered Innovation</p>
-      </div>
-
-      <div>
-        <h4 className="text-3xl font-bold text-red-500">24×7</h4>
-        <p className="mt-2 text-sm text-gray-400">Business Support</p>
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-        
-        
-
-        
-      
 
       {/* SOCIAL ICONS */}
-      <div className="mt-8 flex justify-center gap-4">
-  <a
-    href="https://wa.me/919217753755 "
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <Social icon={<FaWhatsapp />} />
-  </a>
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="relative z-10 mt-8 flex justify-center gap-4"
+      >
+        <a
+          href="https://wa.me/919217753755"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Social icon={<FaWhatsapp />} />
+        </a>
 
-  <a
-    href="https://www.instagram.com/grovallygroup"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <Social icon={<FaInstagram />} />
-  </a>
+        <a
+          href="https://www.instagram.com/grovallygroup"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Social icon={<FaInstagram />} />
+        </a>
 
-  <a
-    href= "https://www.facebook.com/profile.php?id=61580907737242"
-    
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <Social icon={<FaFacebook />} />
-  </a>
+        <a
+          href="https://www.facebook.com/profile.php?id=61580907737242"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Social icon={<FaFacebook />} />
+        </a>
 
-  <a href="tel:+919217753755 " className="rotate-180">
-    <Social icon={<FaPhone />} />
-  </a>
-</div>
+        <a href="tel:+919217753755" className="rotate-180">
+          <Social icon={<FaPhone />} />
+        </a>
+      </motion.div>
 
       {/* COPYRIGHT */}
-     <div className="border-t border-white/10 mt-10">
+      <div className="relative z-10 border-t border-white/10 mt-10">
+        <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col lg:flex-row items-center justify-between gap-6">
+          {/* Left */}
+          <div className="text-center lg:text-left">
+            <p className="text-sm text-gray-400 leading-7">
+              <span className="font-bold text-red-500">
+                © 2026 GROVALLY.
+              </span>{" "}
+              All Rights Reserved.
+            </p>
 
-  <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col lg:flex-row items-center justify-between gap-6">
+            <p className="mt-2 text-xs md:text-sm text-gray-500 leading-6 max-w-2xl">
+              Proudly built in India through innovation, integrity, collaboration,
+              and an unwavering commitment to empowering entrepreneurs, startups,
+              MSMEs, and enterprises.
+            </p>
+          </div>
 
-    {/* Left */}
-    <div className="text-center lg:text-left">
-      <p className="text-sm text-gray-400 leading-7">
-        <span className="font-bold text-red-500">
-          © 2026 GROVALLY.
-        </span>{" "}
-        All Rights Reserved.
-      </p>
+          {/* Center */}
+          <div className="hidden lg:block h-12 w-px bg-white/10" />
 
-      <p className="mt-2 text-xs md:text-sm text-gray-500 leading-6 max-w-2xl">
-        Proudly built in India through innovation, integrity, collaboration,
-        and an unwavering commitment to empowering entrepreneurs, startups,
-        MSMEs, and enterprises.
-      </p>
-    </div>
+          {/* Right */}
+          <div className="text-center lg:text-right">
+            <h3 className="text-red-500 font-bold tracking-wider uppercase">
+              Building India's Largest
+            </h3>
 
-    {/* Center */}
-    <div className="hidden lg:block h-12 w-px bg-white/10"></div>
-
-    {/* Right */}
-    <div className="text-center lg:text-right">
-      <h3 className="text-red-500 font-bold tracking-wider uppercase">
-        Building India's Largest
-      </h3>
-
-      <p className="text-white text-sm mt-1">
-        Business Growth Ecosystem
-      </p>
-    </div>
-
-  </div>
-
-</div>
-
+            <p className="text-white text-sm mt-1">
+              Business Growth Ecosystem
+            </p>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 }
@@ -434,8 +492,49 @@ const Quicks = [
 /* SOCIAL */
 function Social({ icon }) {
   return (
-    <div className="h-11 w-11 flex items-center justify-center rounded-full bg-white/10 border border-white/20 hover:scale-110 transition">
+    <motion.div
+      whileHover={{ scale: 1.15, rotate: 8 }}
+      whileTap={{ scale: 0.92 }}
+      className="h-11 w-11 flex items-center justify-center rounded-full bg-white/10 border border-white/20 transition-colors hover:border-red-500/40 hover:bg-red-500/10"
+    >
       {icon}
-    </div>
+    </motion.div>
+  );
+}
+
+/* ANIMATED STAT COUNTER */
+function StatItem({ value, label, delay = 0 }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-20px" });
+  const numeric = parseFloat(value);
+  const isNumeric = !Number.isNaN(numeric);
+  const [display, setDisplay] = useState(isNumeric ? 0 : value);
+
+  useEffect(() => {
+    if (!inView || !isNumeric) return;
+    const duration = 1200;
+    const start = performance.now();
+    const suffix = value.replace(/[\d.]/g, "");
+    const tick = (now) => {
+      const p = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const current = (eased * numeric).toFixed(numeric % 1 !== 0 ? 1 : 0);
+      setDisplay(`${current}${suffix}`);
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, [inView, isNumeric, numeric, value]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay }}
+    >
+      <h4 className="text-3xl font-bold text-red-500">{display}</h4>
+      <p className="mt-2 text-sm text-gray-400">{label}</p>
+    </motion.div>
   );
 }
