@@ -83,19 +83,17 @@ export default function Footer() {
   ];
 
   const legal = [
-    { name: "Privacy Policy", path: "/privacy-policy" },
+    { name: "Privacy Policy", path: "/policy" },
     { name: "Terms & Conditions", path: "/terms" },
-    { name: "Cookie Policy", path: "/cookie-policy" },
-    { name: "Refund Policy", path: "/refund" },
-    { name: "Disclaimer", path: "/disclaimer" },
-    { name: "Security", path: "/security" },
-    { name: "Accessibility", path: "/accessibility" },
+    { name: "Cookie Policy", path: "/cookies" },
+    
+    
   ];
 
   const group = [
     { name: "Grovally Business Solutions", path: "/business" },
     { name: "Grovally Finance Solutions", path: "/finance" },
-    { name: "Grovally Tender Solutions", path: "/tender" },
+    { name: "Grovally Tender Solutions", path: "/tenders" },
     { name: "Grovally Pro Tools", path: "/tools" },
     { name: "Grovally Academy", path: "/academy" },
   ];

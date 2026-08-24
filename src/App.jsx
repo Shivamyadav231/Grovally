@@ -1,8 +1,8 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./Layout";
+import Layout from "./Layout.jsx";
 import Ok from "./Ok.jsx";
-import OrganizationSchema from "./components/OrganizationSchema";
+import OrganizationSchema from "./components/OrganizationSchema.jsx";
 
 import "./App.css";
 import Products from "./components/Resources/Products.jsx";
@@ -11,10 +11,10 @@ const Home = lazy(() => import("./components/shivam/Home.jsx"));
 const Our = lazy(() => import("./components/shivam/Our.jsx"));
 const OurMission =lazy(()=>import("./components/Abouts/OurMission.jsx"))
 
-const IT = lazy(() => import("./components/pages/IT"));
-const BPO = lazy(() => import("./components/pages/BPO"));
-const KPO = lazy(() => import("./components/pages/KPO"));
-const Finance = lazy(() => import("./components/pages/Finance"));
+const IT = lazy(() => import("./components/pages/IT.jsx"));
+const BPO = lazy(() => import("./components/pages/BPO.jsx"));
+const KPO = lazy(() => import("./components/pages/KPO.jsx"));
+const Finance = lazy(() => import("./components/pages/Finance.jsx"));
 
 const Services = lazy(() => import("./components/shivam/Services.jsx"));
 const About = lazy(() => import("./components/pages/About.jsx"));
@@ -58,6 +58,14 @@ const Softwere =lazy(()=>(import("./components/products/Softwere.jsx")))
 const Website =lazy(()=>(import("./components/products/Website.jsx")))
 const OOO =lazy(()=>(import("./components/products/OOO.jsx")))
 const Komal = lazy(()=>(import("./components/products/Komal.jsx")))
+const NOpage = lazy(()=>(import("./components/Term/Nopage.jsx")))
+const Cookie = lazy(()=>(import("./components/Term/Cookie.jsx")))
+const OKKK = lazy(()=>(import("./components/Term/OKKK.jsx")))
+const Term = lazy(()=>(import("./components/Term/Term.jsx")))
+const Policy = lazy(()=>(import("./components/Term/Policy.jsx")))
+
+
+
 
 
 export default function App() {
@@ -82,6 +90,11 @@ export default function App() {
             <Route path="website" element={<Website/>}/>
             <Route path ="portal" element={<OOO/>}/>
             <Route path ="tenders" element={<Komal/>}/>
+            <Route path="cookies" element={<Cookie/>}/>
+            <Route path="shivam" element={<OKKK/>}/>
+         
+            <Route path="policy" element={<Policy/>}/>
+            <Route path="terms" element={<Term/>}/>
 
             <Route path="services" element={<Services />} />
             <Route path="it" element={<IT />} />
@@ -125,6 +138,7 @@ export default function App() {
 <Route path="startup-stories" element={<Startup />} />
 <Route path="webinars" element={<Webinrs />} />
 <Route path ="bankslogo" element= {<Bt/>}/>
+<Route path="*" element = {<NOpage/>}/>
            
           </Route>
         </Routes>
