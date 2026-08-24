@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, } from "framer-motion";
 
 const cards = [
   {
@@ -95,62 +95,7 @@ Premium Courses, Workshops & Certifications
 ];
 
 // Custom mouse-follow cursor (desktop only)
-function MouseCursor() {
-  const [enabled, setEnabled] = useState(false);
-  const [hovering, setHovering] = useState(false);
-  const x = useMotionValue(-100);
-  const y = useMotionValue(-100);
-  const sx = useSpring(x, { stiffness: 500, damping: 40 });
-  const sy = useSpring(y, { stiffness: 500, damping: 40 });
 
-  useEffect(() => {
-    if (!window.matchMedia("(pointer: fine)").matches) return;
-    setEnabled(true);
-    const move = (e) => {
-      x.set(e.clientX);
-      y.set(e.clientY);
-      const el = document.elementFromPoint(e.clientX, e.clientY);
-      setHovering(!!el?.closest("a, button, input"));
-    };
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
-  }, [x, y]);
-
-  if (!enabled) return null;
-
-  return (
-    <>
-      {/* outer ring */}
-      <motion.div
-        className="pointer-events-none fixed left-0 top-0 z-[999] rounded-full border-2 border-red-600"
-        style={{
-          x: sx,
-          y: sy,
-          translateX: "-50%",
-          translateY: "-50%",
-        }}
-        animate={{
-          width: hovering ? 46 : 30,
-          height: hovering ? 46 : 30,
-          opacity: hovering ? 0.6 : 0.35,
-        }}
-        transition={{ duration: 0.2 }}
-      />
-      {/* inner dot */}
-      <motion.div
-        className="pointer-events-none fixed left-0 top-0 z-[999] rounded-full bg-red-600"
-        style={{
-          x,
-          y,
-          translateX: "-50%",
-          translateY: "-50%",
-        }}
-        animate={{ width: hovering ? 6 : 8, height: hovering ? 6 : 8 }}
-        transition={{ duration: 0.2 }}
-      />
-    </>
-  );
-}
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -161,7 +106,7 @@ export default function Home() {
 
   return (
     <section className="relative  min-h-screen overflow-hidden bg-white text-black cursor-none sm:cursor-none">
-      <MouseCursor />
+      
 
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden">

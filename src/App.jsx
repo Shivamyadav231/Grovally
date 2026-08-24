@@ -91,7 +91,7 @@ export default function App() {
             <Route path ="portal" element={<OOO/>}/>
             <Route path ="tenders" element={<Komal/>}/>
             <Route path="cookies" element={<Cookie/>}/>
-            <Route path="shivam" element={<OKKK/>}/>
+            <Route path="businesssolution" element={<OKKK/>}/>
          
             <Route path="policy" element={<Policy/>}/>
             <Route path="terms" element={<Term/>}/>

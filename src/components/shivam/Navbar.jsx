@@ -760,16 +760,16 @@ export default function Navbar() {
 
               <ul className="ml-5 mt-2 border-l border-gray-300 pl-4 space-y-2 text-sm">
 
-                <li><Link to="/startup-consulting" className="hover:text-red-600">├── Startup Consulting</Link></li>
-                <li><Link to="/msme-consulting" className="hover:text-red-600">├── MSME Consulting</Link></li>
-                <li><Link to="/business-registration" className="hover:text-red-600">├── Business Registration</Link></li>
-                <li><Link to="/company-formation" className="hover:text-red-600">├── Company Formation</Link></li>
-                <li><Link to="/project-report" className="hover:text-red-600">├── Project Report</Link></li>
-                <li><Link to="/market-research" className="hover:text-red-600">├── Market Research</Link></li>
-                <li><Link to="/business-plan" className="hover:text-red-600">├── Business Plan</Link></li>
-                <li><Link to="/franchise-consulting" className="hover:text-red-600">├── Franchise Consulting</Link></li>
-                <li><Link to="/strategy-consulting" className="hover:text-red-600">├── Strategy Consulting</Link></li>
-                <li><Link to="/growth-consulting" className="hover:text-red-600">└── Growth Consulting</Link></li>
+                <li><Link to="/businesssolution" className="hover:text-red-600">├── Startup Consulting</Link></li>
+                <li><Link to="/businesssolution" className="hover:text-red-600">├── MSME Consulting</Link></li>
+                <li><Link to="/businesssolution" className="hover:text-red-600">├── Business Registration</Link></li>
+                <li><Link to="/businesssolution" className="hover:text-red-600">├── Company Formation</Link></li>
+                <li><Link to="/businesssolution" className="hover:text-red-600">├── Project Report</Link></li>
+                <li><Link to="/businesssolution" className="hover:text-red-600">├── Market Research</Link></li>
+                <li><Link to="/businesssolution" className="hover:text-red-600">├── Business Plan</Link></li>
+                <li><Link to="/businesssolution" className="hover:text-red-600">├── Franchise Consulting</Link></li>
+                <li><Link to="/businesssolution" className="hover:text-red-600">├── Strategy Consulting</Link></li>
+                <li><Link to="/businesssolution" className="hover:text-red-600">└── Growth Consulting</Link></li>
 
               </ul>
 
@@ -800,16 +800,16 @@ export default function Navbar() {
 
               <ul className="ml-5 mt-2 border-l border-gray-300 pl-4 space-y-2 text-sm">
 
-                <li><Link to="/iec-registration" className="hover:text-red-600">├── IEC Registration</Link></li>
-                <li><Link to="/dgft-license" className="hover:text-red-600">├── DGFT License</Link></li>
-                <li><Link to="/custom-clearance" className="hover:text-red-600">├── Custom Clearance</Link></li>
-                <li><Link to="/international-shipping" className="hover:text-red-600">├── International Shipping</Link></li>
-                <li><Link to="/export-documentation" className="hover:text-red-600">├── Export Documentation</Link></li>
-                <li><Link to="/buyer-search" className="hover:text-red-600">├── International Buyers</Link></li>
-                <li><Link to="/supplier-search" className="hover:text-red-600">├── Supplier Sourcing</Link></li>
-                <li><Link to="/trade-finance" className="hover:text-red-600">├── Trade Finance</Link></li>
-                <li><Link to="/export-consulting" className="hover:text-red-600">├── Export Consulting</Link></li>
-                <li><Link to="/global-business" className="hover:text-red-600">└── Global Business Expansion</Link></li>
+                <li><Link to="/businesssolution" className="hover:text-red-600">├── IEC Registration</Link></li>
+                <li><Link to="/businesssolution" className="hover:text-red-600">├── DGFT License</Link></li>
+                <li><Link to="/businesssolution" className="hover:text-red-600">├── Custom Clearance</Link></li>
+                <li><Link to="/businesssolution" className="hover:text-red-600">├── International Shipping</Link></li>
+                <li><Link to="/businesssolution" className="hover:text-red-600">├── Export Documentation</Link></li>
+                <li><Link to="/businesssolution" className="hover:text-red-600">├── International Buyers</Link></li>
+                <li><Link to="/businesssolution" className="hover:text-red-600">├── Supplier Sourcing</Link></li>
+                <li><Link to="/businesssolution" className="hover:text-red-600">├── Trade Finance</Link></li>
+                <li><Link to="/businesssolution" className="hover:text-red-600">├── Export Consulting</Link></li>
+                <li><Link to="/businesssolution" className="hover:text-red-600">└── Global Business Expansion</Link></li>
 
               </ul>
 
@@ -946,19 +946,19 @@ export default function Navbar() {
 
         <ul className="relative ml-4 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-gray-200 space-y-4">
           {[
-            ["Healthcare Solutions", "/healthcare-solutions"],
-            ["Education Solutions", "/education-solutions"],
-            ["Real Estate Solutions", "/real-estate-solutions"],
-            ["Hospitality Solutions", "/hospitality-solutions"],
-            ["Restaurant Solutions", "/restaurant-solutions"],
-            ["Retail & E-Commerce Solutions", "/retail-ecommerce-solutions"],
-            ["Manufacturing Solutions", "/manufacturing-solutions"],
-            ["Logistics Solutions", "/logistics-solutions"],
-            ["NGO Solutions", "/ngo-solutions"],
-            ["Finance Solutions", "/finance-solutions"],
-            ["Travel Solutions", "/travel-solutions"],
-            ["Government Solutions", "/government-solutions"],
-            ["Import Export Solutions", "/import-export-solutions"],
+            ["Healthcare Solutions", "/business"],
+            ["Education Solutions", "/business"],
+            ["Real Estate Solutions", "/business"],
+            ["Hospitality Solutions", "/business"],
+            ["Restaurant Solutions", "/business"],
+            ["Retail & E-Commerce Solutions", "/business"],
+            ["Manufacturing Solutions", "/business"],
+            ["Logistics Solutions", "/business"],
+            ["NGO Solutions", "/business"],
+            ["Finance Solutions", "/business"],
+            ["Travel Solutions", "/business"],
+            ["Government Solutions", "/business"],
+            ["Import Export Solutions", "/business"],
            
           ].map(([title, link], index, arr) => (
             <li

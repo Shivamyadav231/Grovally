@@ -70,14 +70,14 @@ export default function Testimonial() {
   }, []);
 
   return (
-    <section className="py-24 bg-gradient-to-br from-red-50 via-white to-red-100 overflow-hidden">
+    <section className="py-16 bg-gradient-to-br from-red-50 via-white to-red-100 overflow-hidden">
       
       return (
-  <section className="py-24 bg-gradient-to-br from-red-50 via-white to-red-100">
+  <section className="py-14 -mt-24 bg-gradient-to-br from-red-50 via-white to-red-100">
     <div className="max-w-7xl mx-auto px-6">
 
       {/* Heading */}
-      <div className="text-center mb-16">
+      <div className="text-center mb-10">
         <h2 className="text-3xl sm:text-5xl font-extrabold text-red-700">
           What Our Clients Say
         </h2>
