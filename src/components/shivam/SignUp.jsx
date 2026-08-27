@@ -12,7 +12,7 @@ import { faFacebook } from "@fortawesome/free-brands-svg-icons/faFacebook";
 
 import { motion } from "framer-motion";
 
-const BACKEND = import.meta.env.VITE_BACKEND_URL || "https://grovally-backend-14.onrender.com";
+const BACKEND = import.meta.env.VITE_BACKEND_URL || "http://127.0.0.1:8000/";
 
 function SignUp() {
   const navigate = useNavigate();
