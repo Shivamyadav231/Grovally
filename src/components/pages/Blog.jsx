@@ -95,18 +95,14 @@ export default function Blog() {
         <div className="text-center mb-14">
 
           <p className="text-sm font-semibold tracking-widest text-red-600 uppercase">
-            Chhabra Properties Insights
+            Grovally Blogs
           </p>
 
-          <h1 className="text-4xl md:text-6xl font-bold mt-3">
+          <h1 className="text-4xl md:text-6xl  text-black ont-bold mt-3">
             Latest Blogs
           </h1>
 
-          <p className="max-w-2xl mx-auto text-gray-700 mt-5">
-            Read the latest real estate insights,
-            property updates, Noida news and
-            investment information.
-          </p>
+       +
 
         </div>
 
@@ -279,7 +275,7 @@ export default function Blog() {
 
                     {/* TITLE */}
 
-                    <h2 className="text-2xl font-bold mt-3 line-clamp-2">
+                    <h2 className="text-2xl  text-black font-bold mt-3 line-clamp-2">
 
                       {blog.title}
 
