@@ -1895,7 +1895,7 @@ export default function Navbar() {
              
               <Link onClick={() => setMenuOpen(false)} to="/services">Services</Link>
               <Link onClick={()=>setMenuOpen(false)} to="/ourservices">Our Services</Link>
-                <Link onClick={() => setMenuOpen(false)} to="/tender">Tender</Link>
+                <Link onClick={() => setMenuOpen(false)} to="/tenders">Tender</Link>
               <Link onClick={()=>setMenuOpen(false)} to="/blog" >Blog</Link>
                <Link onClick={() => setMenuOpen(false)} to="/about">About</Link>
               <Link onClick={() => setMenuOpen(false)} to="/contact">Contact</Link>
