@@ -63,7 +63,7 @@ function Wow() {
       {/* ambient glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[28rem] h-[28rem] bg-red-200/20 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="relative max-w-9xl mx-auto px-4 sm:px-6">
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -80,7 +80,7 @@ function Wow() {
             Brands That Trust
           </h2>
 
-          <div className="flex justify-center items-center mt-1 sm:-mt-6">
+          <div className="flex  -mt-6 justify-center items-center  sm:-mt-6">
             <img
               loading="lazy"
               src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770397/lolo_t6dwpa.png"
@@ -89,7 +89,7 @@ function Wow() {
             />
           </div>
 
-          <p className="max-w-3xl mx-auto mt-3 sm:mt-2 text-sm sm:text-lg text-gray-600 leading-6 sm:leading-8 px-2">
+          <p className="max-w-3xl mx-auto top-3 sm:mt-2 text-sm sm:text-lg text-gray-600 leading-6 sm:leading-8 px-2">
             From startups to established enterprises, businesses trust
             Grovally for innovative IT solutions, AI automation, BPO, KPO,
             financial services, and digital transformation.
@@ -121,7 +121,7 @@ function Wow() {
                   decoding="async"
                   src={logo}
                   alt={`Logo ${index}`}
-                  className="max-h-10 sm:max-h-20 w-auto object-contain px-3 sm:px-6 grayscale-0 transition duration-300"
+                  className="max-h-40 sm:max-h-60 w-auto object-contain px-3 sm:px-6 grayscale-0 transition duration-300"
                 />
               </div>
             ))}
