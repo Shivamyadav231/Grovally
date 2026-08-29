@@ -7,9 +7,7 @@ import OrganizationSchema from "./components/OrganizationSchema.jsx";
 
 import "./App.css";
 
-// =========================
-// MAIN WEBSITE
-// =========================
+
 
 const Home = lazy(() => import("./components/shivam/Home.jsx"));
 const Our = lazy(() => import("./components/shivam/Our.jsx"));
@@ -40,9 +38,7 @@ const School = lazy(() => import("./components/chat/School.jsx"));
 
 const WOf = lazy(() => import("./components/shivam/WOf.jsx"));
 
-// =========================
-// SERVICES
-// =========================
+
 
 const AI = lazy(() => import("./components/services/AI.jsx"));
 const Ap = lazy(() => import("./components/services/Ap.jsx"));
@@ -52,10 +48,6 @@ const News = lazy(() => import("./components/services/News.jsx"));
 const Networking = lazy(() => import("./components/services/Networking.jsx"));
 const Ourteam = lazy(() => import("./components/services/Ourteam.jsx"));
 
-// =========================
-// ABOUT
-// =========================
-
 const Ourjourney = lazy(() =>
   import("./components/Abouts/Ourjourney.jsx")
 );
@@ -64,9 +56,7 @@ const Ourvision = lazy(() =>
   import("./components/Abouts/Ourvision.jsx")
 );
 
-// =========================
-// RESOURCES
-// =========================
+
 
 const Ainews = lazy(() => import("./components/Resources/Ainews.jsx"));
 const Bnews = lazy(() => import("./components/Resources/Bnews.jsx"));
