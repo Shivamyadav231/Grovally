@@ -226,7 +226,7 @@ export default function Home() {
                   />
 
                   {/* Heading */}
-                  <motion.div className="text-red-500 font-bold">
+                  <motion.div className= "text-red-500 -mt-10 font-bold">
                     {card.subheading}
                   </motion.div>
 

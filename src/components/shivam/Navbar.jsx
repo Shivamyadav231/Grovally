@@ -1855,11 +1855,7 @@ export default function Navbar() {
          
 
           {/* LOGIN / SIGNUP */}
-          <div className="hidden lg:flex items-center gap-4">
-            
-
-           
-          </div>
+          
 
           {/* MOBILE BUTTON */}
           <button
@@ -1873,64 +1869,189 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ duration: 0.35 }}
-            className="fixed top-0 right-0 w-full h-screen bg-black/95 backdrop-blur-2xl z-50 p-6 overflow-y-auto"
+  {menuOpen && (
+    <motion.div
+      initial={{ x: "100%" }}
+      animate={{ x: 0 }}
+      exit={{ x: "100%" }}
+      transition={{ duration: 0.35, ease: "easeInOut" }}
+     className="
+  fixed
+  
+  right-0
+  z-[9999]
+  h-[calc(100dvh-20px)]
+  w-full
+  sm:w-[420px]
+  md:w-[500px]
+  lg:hidden
+  bg-black/95
+  backdrop-blur-2xl
+  p-5
+  sm:p-7
+  overflow-y-auto
+  rounded-l-2xl
+"
+      
+    >
+      {/* HEADER */}
+      <div className="flex justify-between items-center mb-8 sm:mb-10">
+        <img
+          loading="lazy"
+          src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770397/lolo_t6dwpa.png"
+          alt="Logo"
+          className="
+            h-14
+            sm:h-16
+            w-auto
+            bg-slate-100
+            rounded-full
+            object-contain
+          "
+        />
+
+        <button
+          type="button"
+          onClick={() => setMenuOpen(false)}
+          className="p-2"
+          aria-label="Close menu"
+        >
+          <FaTimes className="text-white text-3xl sm:text-4xl" />
+        </button>
+      </div>
+
+      {/* LINKS */}
+      <div className="flex flex-col gap-4 sm:gap-5 text-white text-lg sm:text-xl">
+
+        <Link
+          onClick={() => setMenuOpen(false)}
+          to="/"
+          className="py-2 hover:text-red-500 transition"
+        >
+          Home
+        </Link>
+         <Link
+          onClick={() => setMenuOpen(false)}
+          to="/website"
+          className="py-2 hover:text-red-500 transition"
+        >
+          Product
+        </Link>
+
+        <Link
+          onClick={() => setMenuOpen(false)}
+          to="/services"
+          className="py-2 hover:text-red-500 transition"
+        >
+          Services
+        </Link>
+
+        <Link
+          onClick={() => setMenuOpen(false)}
+          to="/ourservices"
+          className="py-2 hover:text-red-500 transition"
+        >
+          Our Services
+        </Link>
+
+        <Link
+          onClick={() => setMenuOpen(false)}
+          to="/tenders"
+          className="py-2 hover:text-red-500 transition"
+        >
+          Tender
+        </Link>
+
+        <Link
+          onClick={() => setMenuOpen(false)}
+          to="/blog"
+          className="py-2 hover:text-red-500 transition"
+        >
+          Blog
+        </Link>
+        
+
+        <Link
+          onClick={() => setMenuOpen(false)}
+          to="/about"
+          className="py-2 hover:text-red-500 transition"
+        >
+          About
+        </Link>
+
+        <Link
+          onClick={() => setMenuOpen(false)}
+          to="/contact"
+          className="py-2 hover:text-red-500 transition"
+        >
+          Contact
+        </Link>
+
+        {/* GROVALLY AI */}
+        <Link
+          to="/grovallyAI"
+          onClick={() => setMenuOpen(false)}
+          className="
+            mt-3
+            bg-red-600
+            text-white
+            font-bold
+            py-3
+            rounded-xl
+            text-center
+            hover:bg-red-700
+            transition
+          "
+        >
+          Grovally AI
+        </Link>
+
+        {/* AUTH BUTTONS */}
+        <div className="mt-6 grid grid-cols-2 gap-3">
+
+          <Link
+            to="/signup"
+            onClick={() => setMenuOpen(false)}
+            className="
+              border border-white/30
+              text-white
+              px-4
+              py-3
+              rounded-xl
+              font-bold
+              text-center
+              hover:bg-white
+              hover:text-black
+              transition
+            "
           >
-            {/* HEADER */}
-            <div className="flex justify-between items-center mb-10">
-              <img loading="lazy" src="https://res.cloudinary.com/dzu9qjxqa/image/upload/f_auto,q_auto,w_800/v1781770397/lolo_t6dwpa.png" className="h-16  bg-slate-100 rounded-full  object-contain" />
-              <button onClick={() => setMenuOpen(false)}>
-                <FaTimes className="text-white text-3xl" />
-              </button>
-            </div>
+            Signup
+          </Link>
 
-            {/* LINKS */}
-            <div className="flex flex-col gap-5 text-white text-lg">
-              <Link onClick={() => setMenuOpen(false)} to="/">Home</Link>
-             
-              <Link onClick={() => setMenuOpen(false)} to="/services">Services</Link>
-              <Link onClick={()=>setMenuOpen(false)} to="/ourservices">Our Services</Link>
-                <Link onClick={() => setMenuOpen(false)} to="/tenders">Tender</Link>
-              <Link onClick={()=>setMenuOpen(false)} to="/blog" >Blog</Link>
-               <Link onClick={() => setMenuOpen(false)} to="/about">About</Link>
-              <Link onClick={() => setMenuOpen(false)} to="/contact">Contact</Link>
-            
+          <Link
+            to="/Login"
+            onClick={() => setMenuOpen(false)}
+            className="
+              border border-white/30
+              text-white
+              px-4
+              py-3
+              rounded-xl
+              font-bold
+              text-center
+              hover:bg-white
+              hover:text-black
+              transition
+            "
+          >
+            Login
+          </Link>
 
-
-              <Link
-  to="/grovallyAI"
-  onClick={() => setMenuOpen(false)}
-  className="mt-4 bg-red-600 text-black font-bold py-3 rounded-xl text-center"
->
-  Grovally AI
-</Link>
-
-              <div className="mt-10 grid grid-cols-2 gap-4">
-                
-                <Link
-              to="/signup"
-              className=" text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition"
-            >
-              Signup
-            </Link>
-             <Link
-              to="/Login"
-              className=" text-white px-4 py-2 rounded-full font-bold hover:scale-105 transition"
-            >
-              Login
-            </Link>
-
-                
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      </div>
+    </motion.div>
+  )}
+</AnimatePresence>
     </>
   );
 }

@@ -358,59 +358,103 @@ export default function Footer() {
       </div>
 
       {/* SECOND ROW */}
-      <div className="relative z-10 border-y border-white/10 bg-gradient-to-b from-white/[0.02] to-transparent">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-7xl mx-auto px-7 py-24 text-center"
-        >
-          <h3 className="mt-6 text-3xl md:text-5xl font-bold text-white leading-tight">
-            Building the Future of
-            <span className="block text-red-500">
-              Indian Entrepreneurship
-            </span>
-          </h3>
+     <div className="relative z-10 border-y border-white/10 bg-gradient-to-b from-white/[0.02] to-transparent">
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.7 }}
+    className="max-w-7xl mx-auto px-4 sm:px-6 md:px-7 py-16 sm:py-20 md:py-24 text-center"
+  >
 
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mx-auto mt-6 h-1 w-24 origin-center rounded-full bg-red-600"
-          />
+    {/* HEADING */}
+    <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+      Building the Future of
+      <span className="block text-red-500 mt-2">
+        Indian Entrepreneurship
+      </span>
+    </h3>
 
-          <p className="mt-8 max-w-7xl mx-auto text-gray-300 text-base md:text-lg leading-9">
-            Every year, thousands of entrepreneurs begin their journey with
-            extraordinary dreams. Many never reach their true potential—not because
-            they lack ambition, but because they lack timely guidance, the right
-            resources, trusted support, and access to life-changing opportunities.
-          </p>
+    {/* LINE */}
+    <div className="mx-auto mt-6 h-1 w-20 rounded-full bg-red-600" />
 
-          <p className="mt-8 max-w-6xl mx-auto text-gray-400 text-base md:text-lg leading-9">
-            At <span className="font-bold text-red-600">GROVALLY</span>, we believe no
-            great dream should end because help was too difficult to find. Our vision
-            is to build India's most trusted and comprehensive business growth
-            ecosystem, where every entrepreneur, startup, MSME, and enterprise can
-            access world-class technology, expert knowledge, funding, government
-            opportunities, and business solutions through one unified platform.
-          </p>
+    {/* TEXT */}
+    <p className="mt-8 max-w-5xl mx-auto text-gray-300 text-base sm:text-lg leading-7 sm:leading-9">
+      Every year, thousands of entrepreneurs begin their journey with
+      extraordinary dreams. Many never reach their true potential—not because
+      they lack ambition, but because they lack timely guidance, the right
+      resources, trusted support, and access to life-changing opportunities.
+    </p>
 
-          <p className="mt-8 max-w-5xl mx-auto text-lg font-medium text-white leading-10">
-            Together, we are empowering millions of businesses to
-            <span className="text-red-500"> build, grow, scale, </span>
-            and create a stronger future for India.
-          </p>
+    <p className="mt-8 max-w-5xl mx-auto text-gray-400 text-base sm:text-lg leading-7 sm:leading-9">
+      At{" "}
+      <span className="font-bold text-red-600">GROVALLY</span>, we believe no
+      great dream should end because help was too difficult to find. Our vision
+      is to build India's most trusted and comprehensive business growth
+      ecosystem, where every entrepreneur, startup, MSME, and enterprise can
+      access world-class technology, expert knowledge, funding, government
+      opportunities, and business solutions through one unified platform.
+    </p>
 
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8">
-            <StatItem value="1.5 K" label="Businesses to Empower" delay={0} />
-            <StatItem value="360°" label="Business Solutions" delay={0.1} />
-            <StatItem value="AI" label="Powered Innovation" delay={0.2} />
-            <StatItem value="24×7" label="Business Support" delay={0.3} />
-          </div>
-        </motion.div>
+    <p className="mt-8 max-w-4xl mx-auto text-base sm:text-lg md:text-xl font-medium text-white leading-8 sm:leading-10">
+      Together, we are empowering millions of businesses to{" "}
+      <span className="text-red-500">
+        build, grow, scale,
+      </span>{" "}
+      and create a stronger future for India.
+    </p>
+
+    {/* ================= STATS ================= */}
+    <div className="mt-12 w-full grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-4 md:gap-8">
+
+      {/* 1 */}
+      <div className="flex flex-col items-center justify-center min-w-0">
+        <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-red-500 whitespace-nowrap">
+          1.5 K
+        </div>
+
+        <p className="mt-3 text-xs sm:text-sm md:text-base text-gray-400 leading-5">
+          Businesses to Empower
+        </p>
       </div>
+
+      {/* 2 */}
+      <div className="flex flex-col items-center justify-center min-w-0">
+        <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-red-500 whitespace-nowrap">
+          360°
+        </div>
+
+        <p className="mt-3 text-xs sm:text-sm md:text-base text-gray-400 leading-5">
+          Business Solutions
+        </p>
+      </div>
+
+      {/* 3 */}
+      <div className="flex flex-col items-center justify-center min-w-0">
+        <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-red-500 whitespace-nowrap">
+          AI
+        </div>
+
+        <p className="mt-3 text-xs sm:text-sm md:text-base text-gray-400 leading-5">
+          Powered Innovation
+        </p>
+      </div>
+
+      {/* 4 */}
+      <div className="flex flex-col items-center justify-center min-w-0">
+        <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-red-500 whitespace-nowrap">
+          24x7
+        </div>
+
+        <p className="mt-3 text-xs sm:text-sm md:text-base text-gray-400 leading-5">
+          Business Support
+        </p>
+      </div>
+
+    </div>
+
+  </motion.div>
+</div>
 
       {/* SOCIAL ICONS */}
       <motion.div

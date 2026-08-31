@@ -89,7 +89,7 @@ function Wow() {
             />
           </div>
 
-          <p className="max-w-3xl mx-auto top-3 sm:mt-2 text-sm sm:text-lg text-gray-600 leading-6 sm:leading-8 px-2">
+          <p className="max-w-3xl mx-auto  sm:mt-2 text-sm sm:text-lg text-gray-600 leading-6 sm:leading-8 px-2">
             From startups to established enterprises, businesses trust
             Grovally for innovative IT solutions, AI automation, BPO, KPO,
             financial services, and digital transformation.
@@ -114,7 +114,7 @@ function Wow() {
             {[...logos, ...logos].map((logo, index) => (
               <div
                 key={index}
-                className="group flex items-center justify-center min-w-[120px] h-16 sm:min-w-[220px] sm:h-32 bg-white rounded-xl sm:rounded-3xl border border-gray-100 shadow-sm sm:shadow-md hover:shadow-xl sm:hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 sm:hover:-translate-y-2"
+                className="group flex items-center justify-center min-w-[120px] h-24 sm:min-w-[220px] sm:h-32 bg-white rounded-xl sm:rounded-3xl border border-gray-100 shadow-sm sm:shadow-md hover:shadow-xl sm:hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 sm:hover:-translate-y-2"
               >
                 <img
                   loading="lazy"
