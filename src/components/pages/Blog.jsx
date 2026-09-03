@@ -8,6 +8,7 @@ const API = "https://blogbackendss-1.onrender.com/api/blogs";
 // instead of failing immediately.
 const FETCH_TIMEOUT_MS = 20000;
 const MAX_RETRIES = 3;
+const MOBILE_INTERVAL_MS = 3000;
 
 function fetchWithTimeout(url, ms) {
   const controller = new AbortController();
@@ -28,6 +29,54 @@ function SkeletonCard() {
         <div className="h-4 w-2/3 bg-gray-100 rounded animate-pulse" />
       </div>
     </div>
+  );
+}
+
+// Card body shared by the mobile single-card view and the desktop grid
+function BlogCardBody({ blog, onOpen }) {
+  return (
+    <>
+      {blog.image ? (
+        <div className="overflow-hidden cursor-pointer" onClick={() => onOpen(blog)}>
+          <img
+            src={blog.image}
+            alt={blog.title}
+            className="w-full h-56 object-cover group-hover:scale-105 transition duration-500"
+          />
+        </div>
+      ) : (
+        <div
+          className="w-full h-56 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center cursor-pointer"
+          onClick={() => onOpen(blog)}
+        >
+          <span className="text-gray-400">No Image</span>
+        </div>
+      )}
+
+      <div className="p-6">
+        {blog.category && (
+          <span className="inline-block text-xs font-bold tracking-wider uppercase text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">
+            {blog.category}
+          </span>
+        )}
+
+        <h2 className="text-2xl text-black font-bold mt-3 line-clamp-2 group-hover:text-red-600 transition-colors">
+          {blog.title}
+        </h2>
+
+        <p className="text-gray-600 mt-3 line-clamp-3">{blog.description}</p>
+
+        <div className="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
+          <span className="text-sm text-gray-400">{blog.author}</span>
+          <button
+            onClick={() => onOpen(blog)}
+            className="font-semibold text-red-600 hover:text-red-800 hover:translate-x-1 transition cursor-pointer"
+          >
+            Read More →
+          </button>
+        </div>
+      </div>
+    </>
   );
 }
 
@@ -105,7 +154,6 @@ export default function Blog() {
     setError("");
     setLoading(true);
     setAttempt(0);
-    // re-trigger the effect logic manually
     (async () => {
       for (let i = 1; i <= MAX_RETRIES; i++) {
         if (cancelled.current) return;
@@ -146,6 +194,57 @@ export default function Blog() {
   const closeBlog = () => {
     setSelectedBlog(null);
     document.body.style.overflow = "auto";
+  };
+
+  /* ---------- Mobile: single card, auto-advances with a full 360° rotate ---------- */
+  const [mobileIndex, setMobileIndex] = useState(0);
+  const [mobileDir, setMobileDir] = useState(1);
+  const touchStartX = useRef(null);
+
+  const advanceMobile = (direction = 1) => {
+    if (blogs.length === 0) return;
+    setMobileDir(direction);
+    setMobileIndex((i) => (i + direction + blogs.length) % blogs.length);
+  };
+
+  useEffect(() => {
+    if (blogs.length === 0) return;
+    setMobileIndex(0);
+    const timer = setInterval(() => advanceMobile(1), MOBILE_INTERVAL_MS);
+    return () => clearInterval(timer);
+  }, [blogs.length]);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const delta = e.changedTouches[0].clientX - touchStartX.current;
+    if (delta > 50) advanceMobile(-1);
+    else if (delta < -50) advanceMobile(1);
+    touchStartX.current = null;
+  };
+
+  // Full 360° rotateY: each card spins a complete turn in, the previous
+  // one spins a complete turn out — direction-aware so swiping back
+  // spins the opposite way.
+  const spinVariants = {
+    enter: (dir) => ({
+      rotateY: dir > 0 ? 360 : -360,
+      opacity: 0,
+      scale: 0.9,
+    }),
+    center: {
+      rotateY: 0,
+      opacity: 1,
+      scale: 1,
+    },
+    exit: (dir) => ({
+      rotateY: dir > 0 ? -360 : 360,
+      opacity: 0,
+      scale: 0.9,
+    }),
   };
 
   return (
@@ -222,74 +321,83 @@ export default function Blog() {
           </div>
         )}
 
-        {/* BLOG CARDS */}
         {!loading && !error && blogs.length > 0 && (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogs.map((blog, idx) => (
-              <motion.article
-                key={blog.id || blog._id || blog.slug}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{
-                  duration: 0.5,
-                  delay: Math.min(idx, 6) * 0.08,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                whileHover={{ y: -6 }}
-                className="group overflow-hidden rounded-3xl border border-gray-200 bg-white hover:shadow-2xl hover:border-red-100 transition-shadow duration-300"
-              >
-                {/* IMAGE */}
-                {blog.image ? (
-                  <div
-                    className="overflow-hidden cursor-pointer"
-                    onClick={() => openBlog(blog)}
+          <>
+            {/* ---------- MOBILE: single card, full 360° rotate every 3s ---------- */}
+            <div
+              className="sm:hidden relative flex justify-center"
+              style={{ perspective: "1600px" }}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
+              <motion.div
+                className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-red-400 via-red-300 to-rose-400 blur-xl opacity-30"
+                animate={{ opacity: [0.15, 0.35, 0.15] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              />
+
+              <div className="relative w-full max-w-sm min-w-0 overflow-hidden">
+                <AnimatePresence mode="wait" custom={mobileDir}>
+                  <motion.article
+                    key={blogs[mobileIndex].id || blogs[mobileIndex]._id || blogs[mobileIndex].slug}
+                    custom={mobileDir}
+                    variants={spinVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    style={{
+                      transformStyle: "preserve-3d",
+                      backfaceVisibility: "hidden",
+                    }}
+                    className="group relative bg-white rounded-3xl shadow-2xl ring-1 ring-red-100 overflow-hidden min-w-0 w-full"
                   >
-                    <img
-                      src={blog.image}
-                      alt={blog.title}
-                      className="w-full h-56 object-cover group-hover:scale-105 transition duration-500"
-                    />
-                  </div>
-                ) : (
-                  <div
-                    className="w-full h-56 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center cursor-pointer"
-                    onClick={() => openBlog(blog)}
-                  >
-                    <span className="text-gray-400">No Image</span>
-                  </div>
-                )}
+                    <BlogCardBody blog={blogs[mobileIndex]} onOpen={openBlog} />
+                  </motion.article>
+                </AnimatePresence>
+              </div>
+            </div>
 
-                {/* CONTENT */}
-                <div className="p-6">
-                  {blog.category && (
-                    <span className="inline-block text-xs font-bold tracking-wider uppercase text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">
-                      {blog.category}
-                    </span>
-                  )}
+            {/* dots for mobile */}
+            <div className="sm:hidden flex justify-center gap-1.5 mt-6">
+              {blogs.map((_, i) => (
+                <span
+                  key={i}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    i === mobileIndex ? "w-5 bg-red-600" : "w-1.5 bg-red-200"
+                  }`}
+                />
+              ))}
+            </div>
 
-                  <h2 className="text-2xl text-black font-bold mt-3 line-clamp-2 group-hover:text-red-600 transition-colors">
-                    {blog.title}
-                  </h2>
-
-                  <p className="text-gray-600 mt-3 line-clamp-3">
-                    {blog.description}
-                  </p>
-
-                  <div className="flex items-center justify-between mt-6 pt-4 border-t border-gray-100">
-                    <span className="text-sm text-gray-400">{blog.author}</span>
-
-                    <button
-                      onClick={() => openBlog(blog)}
-                      className="font-semibold text-red-600 hover:text-red-800 hover:translate-x-1 transition cursor-pointer"
-                    >
-                      Read More →
-                    </button>
-                  </div>
-                </div>
-              </motion.article>
-            ))}
-          </div>
+            {/* ---------- DESKTOP: grid of all cards ---------- */}
+            <div
+              className="hidden sm:grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+              style={{ perspective: "1600px" }}
+            >
+              {blogs.map((blog, idx) => (
+                <motion.article
+                  key={blog.id || blog._id || blog.slug}
+                  initial={{ opacity: 0, y: 24, rotateY: 360, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, rotateY: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{
+                    duration: 0.8,
+                    delay: Math.min(idx, 6) * 0.08,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  whileHover={{ y: -6 }}
+                  style={{
+                    transformStyle: "preserve-3d",
+                    backfaceVisibility: "hidden",
+                  }}
+                  className="group overflow-hidden rounded-3xl border border-gray-200 bg-white hover:shadow-2xl hover:border-red-100 transition-shadow duration-300"
+                >
+                  <BlogCardBody blog={blog} onOpen={openBlog} />
+                </motion.article>
+              ))}
+            </div>
+          </>
         )}
       </div>
 

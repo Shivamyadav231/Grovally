@@ -145,22 +145,22 @@ export default function Testimonial() {
     touchStartX.current = null;
   };
 
-  // Full 360° spin: card rotates a complete turn and the new face fades in near the top of the turn
-  const spinVariants = {
+  // Mobile card transition: horizontal slide, direction-aware
+  const slideVariants = {
     enter: (dir) => ({
-      rotateY: dir > 0 ? 180 : -180,
+      x: dir > 0 ? 180 : -180,
       opacity: 0,
-      scale: 0.85,
+      scale: 0.96,
     }),
     center: {
-      rotateY: 360,
+      x: 0,
       opacity: 1,
       scale: 1,
     },
     exit: (dir) => ({
-      rotateY: dir > 0 ? 540 : 180,
+      x: dir > 0 ? -180 : 180,
       opacity: 0,
-      scale: 0.85,
+      scale: 0.96,
     }),
   };
 
@@ -188,10 +188,9 @@ export default function Testimonial() {
           </p>
         </div>
 
-        {/* ---------- MOBILE: single card, full 360° flip every 3s ---------- */}
+        {/* ---------- MOBILE: single card, horizontal slide every 3s ---------- */}
         <div
           className="sm:hidden relative flex justify-center"
-          style={{ perspective: "1600px" }}
           onTouchStart={handleTouchStart}
           onTouchEnd={(e) => handleTouchEnd(e, true)}
         >
@@ -207,15 +206,11 @@ export default function Testimonial() {
               <motion.div
                 key={testimonials[mobileIndex].title}
                 custom={mobileDir}
-                variants={spinVariants}
+                variants={slideVariants}
                 initial="enter"
                 animate="center"
                 exit="exit"
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                style={{
-                  transformStyle: "preserve-3d",
-                  backfaceVisibility: "hidden",
-                }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 className="relative bg-white rounded-3xl shadow-2xl ring-1 ring-red-100 overflow-hidden min-w-0 w-full"
               >
                 <TestimonialCard item={testimonials[mobileIndex]} compact />
